@@ -22,7 +22,8 @@ gratuit, etc). En dehors des comportements non définis.
 
 ## Partie Obligatoire
 
-|Nom du programme| minishell |
+|--|--|
+|Nom du programme | minishell |
 |Fichier a rendre| Makefile, *.c, *.h|
 | Arguement | AUCUN |
 | Fonction externe authorise | readline, rl_clear_history, rl_on_new_line,
