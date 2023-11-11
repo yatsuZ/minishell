@@ -4,6 +4,12 @@ Ce fichier explique comment Yassine et Ilhma ont rangé leurs documents, fichier
 
 **Si une nouvelle règle est créée, créez une section.**
 
+## Norme de compilation et `Makefile`
+
+Les règles obligatoires des variables pour chaque commande et dossier dans le dossier source.
+
+Tous les fichiers `.o` seront mis dans un dossier séparé nommé `obj_compilation`.
+
 ## Norme `main.c`
 
 Pour un main bien compréhensible, il sera créé de cette manière :
