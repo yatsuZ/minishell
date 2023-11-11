@@ -16,6 +16,7 @@ La racine :
        - [Synthése de l'énoncé du projet Minishell](./documentation/Synthése_de_lenonce.md) : Fichier md où nous avons énuméré et interprété les consignes et expliqué le déroulement de la création du projet.
        - [Documentation](./documentation/Documentation.md) : fichier md qui contient la liste des source et fonction externe qui seront utile pour la creations du projet.
        - [Test](./documentation/Test.md) : fichier md qui liste les verification et les tests à faire.
+       - [Norme a du projet](./documentation/Norme_Minishell.md) : Liste des norme crée par Yassine et Ilhame pour le projet
 
 
 Et pour faciliter le suivi du projet voici le chahier des charger / Liste de chose à faire :
