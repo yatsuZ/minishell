@@ -9,7 +9,7 @@ Projet de groupe en duo avec [Ilham](https://github.com/ouachani-il).
 Pour faire ce projet il est important de bien range ces document alors je vais vous expose comment son range nos document :
 
 La racine :
-   - [REAME](./README.md) : Ce fichier qui sert de vitrine du projet.
+   - [README](./README.md) : Ce fichier qui sert de vitrine du projet.
    - Dossier Code : Contient d'autre dossier qui son des ebauche pour le projet final.
    - Dossier Documentation :
        - [sujet](./documentation/sujet_enonce.pdf) : L'enonce exacte du sujet format pdf.
