@@ -26,7 +26,7 @@ Et pour faciliter le suivi du projet voici le chahier des charger / Liste de cho
 
 | **DOSSIER** |	**CE QU'ON DOIS FAIRE**	|	**Valide**	|	**Responsable** |
 |--|--|--|--|
-| 0 | Fair un programme qui affiche "Hello World" avec le respect de la norme 42 et du projet et avec toute les regles obligatoire du Makefile	 | ❌ | Y |
+| 0 | Fair un programme qui affiche "Hello World" avec le respect de la norme 42 et du projet et avec toute les regles obligatoire du Makefile	 | 📈 | IY |
 
 **Légende des colone :**
 - Colone DOSSIER : Redirection vers les dossier en question.
