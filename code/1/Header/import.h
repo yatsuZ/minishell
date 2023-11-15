@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/11 03:21:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/15 01:05:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,35 @@
 # define IMPORT_H
 
 # include "./constante.h"
+
 # include <stdio.h>
+
+# include <readline/history.h>
+
+# include <readline/readline.h>
+
+# include <stdlib.h>
+
+# include <unistd.h>
+
+# include <fcntl.h>
+
+# include <sys/wait.h>
+
+# include <signal.h>
+
+# include <sys/stat.h>
+
+# include <dirent.h>
+
+# include <string.h>
+
+# include <termios.h>
+
+# include <term.h>
+
+# include <term.h>
+
+# include <sys/ioctl.h>
 
 #endif

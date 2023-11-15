@@ -6,14 +6,16 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/11/13 02:08:52 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/11/15 02:20:14 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
 MINISHELL_PATH = Source/
-MINISHELL_FILES = main.c
+MINISHELL_FILES =	main.c \
+					invite_de_comande.c
+
 MINISHELL_SRC = ${addprefix ${MINISHELL_PATH}, ${MINISHELL_FILES}}
 
 OBJ_PATH = obj/
@@ -29,14 +31,13 @@ PROGRAM_NAME = minishell
 
 ############### COMMANDE OBLIGATOIRE
 
-.PHONY: all clean fclean re
-
 all: $(OBJ_PATH) ${PROGRAM_NAME}
 
 ${PROGRAM_NAME}: ${MINISHELL_OBJ}
 	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} -o ${PROGRAM_NAME}
 
-$(OBJ_PATH)%.o: $(MINISHELL_SRC)
+$(OBJ_PATH)%.o: $(MINISHELL_PATH)%.c
+	@mkdir -p $(@D)
 	$(CC) $(C_FLAGS) -c $< -o $@
 
 $(OBJ_PATH):

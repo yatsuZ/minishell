@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Minishell.h                                        :+:      :+:    :+:   */
+/*   invite_de_comande.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/15 02:16:12 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/11/15 02:20:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "./../Header/Minishell.h"
 
-# include "./struct.h"
-
-void	invite_de_comande(void);
-
-#endif
+void	invite_de_comande(void)
+{
+	printf("Minishell_Ilham_et_Yassine$>");
+}
