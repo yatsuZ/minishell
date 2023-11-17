@@ -2,6 +2,10 @@
 
 Ce fichier contient toutes les sources utiles à la création du projet.
 
+## un invité de commande
+
+Un "invité de commande" est un programme informatique qui permet à l'utilisateur d'interagir avec un système d'exploitation en saisissant des commandes textuelles. C'est une interface en ligne de commande qui permet d'effectuer diverses tâches sans recourir à une interface graphique.
+
 ## Sources de documentation
 
 - [Tutoriels Minishell](https://github.com/maxime-42/minishell/tree/master/tutorials)
@@ -11,57 +15,57 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 
 Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 
-| Nom de la fonction          | Library | Description brève |
-|-----------------------------|---------|-------------------|
-| readline                    |         |                   |
-| rl_clear_history            |         |                   |
-| rl_on_new_line              |         |                   |
-| rl_replace_line             |         |                   |
-| rl_redisplay add_history    |         |                   |
-| printfq                     |         |                   |
-| malloc                      |         |                   |
-| free                        |         |                   |
-| write                       |         |                   |
-| access                      |         |                   |
-| open                        |         |                   |
-| read                        |         |                   |
-| close                       |         |                   |
-| fork                        |         |                   |
-| wait                        |         |                   |
-| waitpid                     |         |                   |
-| wait3                       |         |                   |
-| wait4                       |         |                   |
-| signal                      |         |                   |
-| sigaction                   |         |                   |
-| sigemptyset                 |         |                   |
-| sigaddset                   |         |                   |
-| kill                        |         |                   |
-| exit                        |         |                   |
-| getcwd                      |         |                   |
-| chdir                       |         |                   |
-| stat                        |         |                   |
-| lstat                       |         |                   |
-| fstat                       |         |                   |
-| unlink                      |         |                   |
-| execve                      |         |                   |
-| dup                         |         |                   |
-| dup2                        |         |                   |
-| pipe                        |         |                   |
-| opendir                     |         |                   |
-| readdir                     |         |                   |
-| closedir                    |         |                   |
-| strerror                    |         |                   |
-| perror                      |         |                   |
-| isatty                      |         |                   |
-| ttyname                     |         |                   |
-| ttyslot                     |         |                   |
-| ioctl                       |         |                   |
-| getenv                      |         |                   |
-| tcsetattr                   |         |                   |
-| tcgetattr                   |         |                   |
-| tgetent                     |         |                   |
-| tgetflag                    |         |                   |
-| tgetnum                     |         |                   |
-| tgetstr                     |         |                   |
-| tgoto                       |         |                   |
-| tputs                       |         |                   |
+| Nom de la fonction          | En-tête de la bibliothèque | Description brève                                                                                     |
+|-----------------------------|----------------------------|-------------------------------------------------------------------------------------------------------|
+| rl_clear_history            | `<readline/history.h>`     | Efface l'historique des commandes dans GNU Readline.                                                  |
+| readline                    | `<readline/readline.h>`    | Lit une ligne à partir de l'entrée utilisateur avec des fonctionnalités d'édition de ligne.           |
+| rl_on_new_line              | `<readline/readline.h>`    | Signale le début d'une nouvelle ligne dans GNU Readline.                                              |
+| rl_replace_line             | `<readline/readline.h>`    | Remplace la ligne courante dans GNU Readline.                                                         |
+| rl_redisplay add_history    | `<readline/readline.h>`    | Redisplays la ligne d'entrée courante et l'ajoute à l'historique dans GNU Readline.                   |
+| printf                      | `<stdio.h>`                | Affiche une sortie formatée sur la console.                                                           |
+| perror                      | `<stdio.h>`                | Affiche une description de la dernière erreur survenue.                                               |
+| malloc                      | `<stdlib.h>`               | Alloue un nombre spécifié d'octets de mémoire.                                                        |
+| free                        | `<stdlib.h>`               | Désalloue la mémoire précédemment allouée par malloc.                                                 |
+| exit                        | `<stdlib.h>`               | Quitte le processus en cours.                                                                         |
+| getenv                      | `<stdlib.h>`               | Récupère la valeur d'une variable d'environnement.                                                    |
+| open                        | `<fcntl.h>`                | Ouvre un fichier ou un périphérique.                                                                  |
+| write                       | `<unistd.h>`               | Écrit des données sur un descripteur de fichier.                                                      |
+| access                      | `<unistd.h>`               | Vérifie si un fichier existe ou si le processus peut y accéder.                                       |
+| read                        | `<unistd.h>`               | Lit des données à partir d'un descripteur de fichier.                                                 |
+| close                       | `<unistd.h>`               | Ferme un descripteur de fichier.                                                                      |
+| fork                        | `<unistd.h>`               | Crée un nouveau processus en dupliquant le processus existant.                                        |
+| getcwd                      | `<unistd.h>`               | Obtient le répertoire de travail actuel.                                                              |
+| chdir                       | `<unistd.h>`               | Change le répertoire de travail actuel.                                                               |
+| unlink                      | `<unistd.h>`               | Supprime un nom du système de fichiers.                                                               |
+| execve                      | `<unistd.h>`               | Exécute un programme.                                                                                 |
+| dup                         | `<unistd.h>`               | Duplique un descripteur de fichier.                                                                   |
+| dup2                        | `<unistd.h>`               | Duplique un descripteur de fichier vers un descripteur de fichier spécifié.                           |
+| pipe                        | `<unistd.h>`               | Crée un tube, un canal de communication unidirectionnel.                                              |
+| isatty                      | `<unistd.h>`               | Vérifie si un descripteur de fichier fait référence à un terminal.                                    |
+| ttyname                     | `<unistd.h>`               | Retourne le nom du fichier terminal associé à un descripteur de fichier.                              |
+| ttyslot                     | `<unistd.h>`               | Obtient l'index de l'entrée dans le fichier termcap correspondant au terminal.                        |
+| wait                        | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état.                                             |
+| waitpid                     | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état.                                  |
+| wait3                       | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état avec des options supplémentaires.            |
+| wait4                       | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état avec des options supplémentaires. |
+| signal                      | `<signal.h>`               | Définit une fonction pour gérer un signal spécifique.                                                 |
+| sigaction                   | `<signal.h>`               | Examine et modifie l'action du signal.                                                                |
+| sigemptyset                 | `<signal.h>`               | Initialise un ensemble de signaux vide.                                                               |
+| sigaddset                   | `<signal.h>`               | Ajoute un signal à un ensemble de signaux.                                                            |
+| kill                        | `<signal.h>`               | Envoie un signal à un processus.                                                                      |
+| stat                        | `<sys/stat.h>`             | Obtient des informations sur un fichier.                                                              |
+| lstat                       | `<sys/stat.h>`             | Obtient des informations sur un lien symbolique.                                                      |
+| fstat                       | `<sys/stat.h>`             | Obtient des informations sur un fichier à partir d'un descripteur de fichier.                         |
+| opendir                     | `<dirent.h>`               | Ouvre un répertoire pour la lecture.                                                                  |
+| readdir                     | `<dirent.h>`               | Lit une entrée de répertoire.                                                                         |
+| closedir                    | `<dirent.h>`               | Ferme un flux de répertoire.                                                                          |
+| strerror                    | `<string.h>`               | Retourne un pointeur vers la représentation textuelle de la valeur errno actuelle.                    |
+| ioctl                       | `<sys/ioctl.h>`            | Effectue des opérations spécifiques au périphérique.                                                  |
+| tcsetattr                   | `<termios.h>`              | Définit les paramètres associés au terminal.                                                          |
+| tcgetattr                   | `<termios.h>`              | Obtient les paramètres associés au terminal.                                                          |
+| tgetent                     | `<term.h>`                 | Initialise la structure de données termcap.                                                           |
+| tgetflag                    | `<term.h>`                 | Obtient la valeur booléenne d'une capacité termcap.                                                   |
+| tgetnum                     | `<term.h>`                 | Obtient la valeur numérique d'une capacité termcap.                                                   |
+| tgetstr                     | `<term.h>`                 | Obtient la valeur de chaîne d'une capacité termcap.                                                   |
+| tgoto                       | `<term.h>`                 | Prépare une séquence d'adressage de curseur.                                                          |
+| tputs                       | `<term.h>`                 | Affiche une capacité termcap.                                                                         |

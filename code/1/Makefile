@@ -51,4 +51,8 @@ clean:
 fclean: clean
 	$(RM) ${PROGRAM_NAME}
 
+norme:
+	clear
+	@ if ! norminette | grep "Error"; then echo "\033[32mOK!\033[0m"; fi
+
 re: fclean all

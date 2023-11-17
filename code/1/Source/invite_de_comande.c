@@ -46,7 +46,8 @@ void	invite_de_comande(void)
 	printf("\033[35mMagenta\033[0m\n");
 	printf("\033[36mCyan\033[0m\n");
 	printf("\033[37mBlanc\033[0m\n");
-	entree = "\033[31mMini-Shell\033[0m\033[33mIlham\033[0m\033[32mYassine\033[0m\033[34m>\033[0m";
+	entree = "\n\033[31mMini-Shell\033[0m\033[33mIlham\033[0m\033\
+[32mYassine\033[0m\033[34m>\033[0m";
 	while (its_exit)
 	{
 		input = readline(entree);
