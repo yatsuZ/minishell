@@ -27,7 +27,7 @@ Et pour faciliter le suivi du projet voici le chahier des charger / Liste de cho
 | **DOSSIER** |	**CE QU'ON DOIS FAIRE**	|	**Valide**	|	**Responsable** |
 |--|--|--|--|
 | [0](./code/0/) | Fair un programme qui affiche "Hello World" avec le respect de la norme 42 et du projet et avec toute les regles obligatoire du Makefile	 | ✅ | IY |
-| [1](./code/1/) | Fair un invité de commande et pouvoir quité avec ctrl+D et exit	 | ❌ | Y |
+| [1](./code/1/) | Fair un invité de commande et pouvoir quité avec ctrl+D et exit	 | ✅ | Y |
 
 **Légende des colone :**
 - Colone DOSSIER : Redirection vers les dossier en question.
