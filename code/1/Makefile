@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/11/15 02:20:14 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/11/17 14:33:08 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ RM = rm -rf
 CC = cc
 C_FLAGS = -g3 -Wall -Wextra -Werror
 
+READLINE = -lreadline
+
 PROGRAM_NAME = minishell
 
 ############### COMMANDE OBLIGATOIRE
@@ -34,7 +36,7 @@ PROGRAM_NAME = minishell
 all: $(OBJ_PATH) ${PROGRAM_NAME}
 
 ${PROGRAM_NAME}: ${MINISHELL_OBJ}
-	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} -o ${PROGRAM_NAME}
+	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} $(READLINE) -o ${PROGRAM_NAME}
 
 $(OBJ_PATH)%.o: $(MINISHELL_PATH)%.c
 	@mkdir -p $(@D)

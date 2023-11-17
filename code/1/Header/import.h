@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/15 01:05:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/17 14:16:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 # include <stdio.h>
 
-# include <readline/history.h>
-
 # include <readline/readline.h>
+
+# include <readline/history.h>
 
 # include <stdlib.h>
 
