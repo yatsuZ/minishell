@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/11/17 14:33:08 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/11/29 02:44:54 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@
 MINISHELL_PATH = Source/
 MINISHELL_FILES =	main.c \
 					invite_de_comande.c
-
-MINISHELL_SRC = ${addprefix ${MINISHELL_PATH}, ${MINISHELL_FILES}}
 
 OBJ_PATH = obj/
 MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
