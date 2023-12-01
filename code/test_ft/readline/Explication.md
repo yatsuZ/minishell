@@ -5,6 +5,14 @@ La fonction readline permet de lire une ligne depuis le terminal. Elle est décl
 char *readline (const char *prompt)
 ```
 
+- [Readline](#readline)
+	- [Utilisation de la fonction `readline`](#utilisation-de-la-fonction-readline)
+		- [Prérequis à installer :](#prérequis-à-installer-)
+		- [Inclusion des bibliothèques nécessaires :](#inclusion-des-bibliothèques-nécessaires-)
+		- [Compilation du programme :](#compilation-du-programme-)
+	- [Description de la fonction `readline`](#description-de-la-fonction-readline)
+	- [Tester la fonction `readline`](#tester-la-fonction-readline)
+
 ## Utilisation de la fonction `readline`
 
 Pour utiliser la fonction readline, suivez ces étapes :
