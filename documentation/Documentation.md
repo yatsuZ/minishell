@@ -23,7 +23,7 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |    🤔  | [rl_replace_line](./../code/test_ft/rl_replace_line)      | `<readline/readline.h>`    | Remplace la ligne courante dans GNU Readline.                                                         |
 |    🤔  | [rl_redisplay](./../code/test_ft/rl_redisplay)            | `<readline/readline.h>`    | Redisplays la ligne d'entrée courante dans GNU Readline.                                              |
 |    ✔️  | [add_history](./../code/test_ft/add_history)              | `<readline/history.h>`     | Ajoute la ligne courante à l'historique dans GNU Readline.                                            |
-|    ❌  | [printf](./../code/test_ft/printf)                        | `<stdio.h>`                | Affiche une sortie formatée sur la console.                                                           |
+|    ✔️  | [printf](./../code/test_ft/printf)                        | `<stdio.h>`                | Affiche une sortie formatée sur la console.                                                           |
 |    ❌  | [malloc](./../code/test_ft/malloc)                        | `<stdlib.h>`               | Alloue un nombre spécifié d'octets de mémoire.                                                        |
 |    ❌  | [free](./../code/test_ft/free)                            | `<stdlib.h>`               | Désalloue la mémoire précédemment allouée par malloc.                                                 |
 |    ❌  | [write](./../code/test_ft/write)                          | `<unistd.h>`               | Écrit des données sur un descripteur de fichier.                                                      |
