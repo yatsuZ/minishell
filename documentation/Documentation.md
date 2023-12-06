@@ -34,8 +34,8 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |    ✔️  | [fork](./../code/test_ft/fork)                            | `<unistd.h>`               | Crée un nouveau processus en dupliquant le processus existant.                                        |
 |    ✔️  | [wait](./../code/test_ft/wait)                            | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état.                                             |
 |    ✔️  | [waitpid](./../code/test_ft/waitpid)                      | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état.                                  |
-|    ❌  | [wait3](./../code/test_ft/wait3)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état avec des options supplémentaires.            |
-|    ❌  | [wait4](./../code/test_ft/wait4)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état avec des options supplémentaires. |
+|    ✔️  | [wait3](./../code/test_ft/wait3)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état avec des options supplémentaires.            |
+|    ✔️  | [wait4](./../code/test_ft/wait4)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état avec des options supplémentaires. |
 |    ❌  | [signal](./../code/test_ft/signal)                        | `<signal.h>`               | Définit une fonction pour gérer un signal spécifique.                                                 |
 |    ❌  | [sigaction](./../code/test_ft/sigaction)                  | `<signal.h>`               | Examine et modifie l'action du signal.                                                                |
 |    ❌  | [sigemptyset](./../code/test_ft/sigemptyset)              | `<signal.h>`               | Initialise un ensemble de signaux vide.                                                               |
