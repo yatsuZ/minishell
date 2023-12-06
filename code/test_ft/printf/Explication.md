@@ -1,7 +1,5 @@
 # printf
 
-# printf
-
 La fonction `printf` est une fonction de sortie utilisée en langage C pour afficher des informations à l'écran ou dans un fichier. Elle est définie par la library `stdio.h` et est largement utilisée pour afficher des chaînes de caractères formatées.
 
 
