@@ -36,27 +36,27 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |    ✔️  | [waitpid](./../code/test_ft/waitpid)                      | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état.                                  |
 |    ✔️  | [wait3](./../code/test_ft/wait3)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant et récupère son état avec des options supplémentaires.            |
 |    ✔️  | [wait4](./../code/test_ft/wait4)                          | `<sys/wait.h>`             | Attend la fin d'un processus enfant spécifique et récupère son état avec des options supplémentaires. |
-|    ❌  | [signal](./../code/test_ft/signal)                        | `<signal.h>`               | Définit une fonction pour gérer un signal spécifique.                                                 |
-|    ❌  | [sigaction](./../code/test_ft/sigaction)                  | `<signal.h>`               | Examine et modifie l'action du signal.                                                                |
-|    ❌  | [sigemptyset](./../code/test_ft/sigemptyset)              | `<signal.h>`               | Initialise un ensemble de signaux vide.                                                               |
-|    ❌  | [sigaddset](./../code/test_ft/sigaddset)                  | `<signal.h>`               | Ajoute un signal à un ensemble de signaux.                                                            |
-|    ❌  | [kill](./../code/test_ft/kill)                            | `<signal.h>`               | Envoie un signal à un processus.                                                                      |
-|    ❌  | [exit](./../code/test_ft/exit)                            | `<stdlib.h>`               | Quitte le processus en cours.                                                                         |
-|    ❌  | [getcwd](./../code/test_ft/getcwd)                        | `<unistd.h>`               | Obtient le répertoire de travail actuel.                                                              |
-|    ❌  | [chdir](./../code/test_ft/chdir)                          | `<unistd.h>`               | Change le répertoire de travail actuel.                                                               |
-|    ❌  | [stat](./../code/test_ft/stat)                            | `<sys/stat.h>`             | Obtient des informations sur un fichier.                                                              |
-|    ❌  | [lstat](./../code/test_ft/lstat)                          | `<sys/stat.h>`             | Obtient des informations sur un lien symbolique.                                                      |
-|    ❌  | [fstat](./../code/test_ft/fstat)                          | `<sys/stat.h>`             | Obtient des informations sur un fichier à partir d'un descripteur de fichier.                         |
-|    ❌  | [unlink](./../code/test_ft/unlink)                        | `<unistd.h>`               | Supprime un nom du système de fichiers.                                                               |
-|    ❌  | [execve](./../code/test_ft/execve)                        | `<unistd.h>`               | Exécute un programme.                                                                                 |
-|    ❌  | [dup](./../code/test_ft/dup)                              | `<unistd.h>`               | Duplique un descripteur de fichier.                                                                   |
-|    ❌  | [dup2](./../code/test_ft/dup2)                            | `<unistd.h>`               | Duplique un descripteur de fichier vers un descripteur de fichier spécifié.                           |
-|    ❌  | [pipe](./../code/test_ft/pipe)                            | `<unistd.h>`               | Crée un tube, un canal de communication unidirectionnel.                                              |
-|    ❌  | [opendir](./../code/test_ft/opendir)                      | `<dirent.h>`               | Ouvre un répertoire pour la lecture.                                                                  |
-|    ❌  | [readdir](./../code/test_ft/readdir)                      | `<dirent.h>`               | Lit une entrée de répertoire.                                                                         |
-|    ❌  | [closedir](./../code/test_ft/closedir)                    | `<dirent.h>`               | Ferme un flux de répertoire.                                                                          |
-|    ❌  | [strerror](./../code/test_ft/strerror)                    | `<string.h>`               | Retourne un pointeur vers la représentation textuelle de la valeur errno actuelle.                    |
-|    ❌  | [perror](./../code/test_ft/perror)                        | `<stdio.h>`                | Affiche une description de la dernière erreur survenue.                                               |
+|    ✔️  | [signal](./../code/test_ft/signal)                        | `<signal.h>`               | Définit une fonction pour gérer un signal spécifique.                                                 |
+|    ✔️  | [sigaction](./../code/test_ft/sigaction)                  | `<signal.h>`               | Examine et modifie l'action du signal.                                                                |
+|    ✔️  | [sigemptyset](./../code/test_ft/sigemptyset)              | `<signal.h>`               | Initialise un ensemble de signaux vide.                                                               |
+|    ✔️  | [sigaddset](./../code/test_ft/sigaddset)                  | `<signal.h>`               | Ajoute un signal à un ensemble de signaux.                                                            |
+|    ✔️  | [kill](./../code/test_ft/kill)                            | `<signal.h>`               | Envoie un signal à un processus.                                                                      |
+|    ✔️  | [exit](./../code/test_ft/exit)                            | `<stdlib.h>`               | Quitte le processus en cours.                                                                         |
+|    ✔️  | [getcwd](./../code/test_ft/getcwd)                        | `<unistd.h>`               | Obtient le répertoire de travail actuel.                                                              |
+|    ✔️  | [chdir](./../code/test_ft/chdir)                          | `<unistd.h>`               | Change le répertoire de travail actuel.                                                               |
+|    ✔️  | [stat](./../code/test_ft/stat)                            | `<sys/stat.h>`             | Obtient des informations sur un fichier.                                                              |
+|    ✔️  | [lstat](./../code/test_ft/lstat)                          | `<sys/stat.h>`             | Obtient des informations sur un lien symbolique.                                                      |
+|    ✔️  | [fstat](./../code/test_ft/fstat)                          | `<sys/stat.h>`             | Obtient des informations sur un fichier à partir d'un descripteur de fichier.                         |
+|    ✔️   | [unlink](./../code/test_ft/unlink)                        | `<unistd.h>`               | Supprime un nom du système de fichiers.                                                               |
+|    ✔️  | [execve](./../code/test_ft/execve)                        | `<unistd.h>`               | Exécute un programme.                                                                                 |
+|    ✔️  | [dup](./../code/test_ft/dup)                              | `<unistd.h>`               | Duplique un descripteur de fichier.                                                                   |
+|    🤔  | [dup2](./../code/test_ft/dup2)                            | `<unistd.h>`               | Duplique un descripteur de fichier vers un descripteur de fichier spécifié.                           |
+|    ✔️  | [pipe](./../code/test_ft/pipe)                            | `<unistd.h>`               | Crée un tube, un canal de communication unidirectionnel.                                              |
+|    ✔️  | [opendir](./../code/test_ft/opendir)                      | `<dirent.h>`               | Ouvre un répertoire pour la lecture.                                                                  |
+|    ✔️  | [readdir](./../code/test_ft/readdir)                      | `<dirent.h>`               | Lit une entrée de répertoire.                                                                         |
+|    ✔️  | [closedir](./../code/test_ft/closedir)                    | `<dirent.h>`               | Ferme un flux de répertoire.                                                                          |
+|    ✔️  | [strerror](./../code/test_ft/strerror)                    | `<string.h>`               | Retourne un pointeur vers la représentation textuelle de la valeur errno actuelle.                    |
+|    ✔️  | [perror](./../code/test_ft/perror)                        | `<stdio.h>`                | Affiche une description de la dernière erreur survenue.                                               |
 |    ❌  | [isatty](./../code/test_ft/isatty)                        | `<unistd.h>`               | Vérifie si un descripteur de fichier fait référence à un terminal.                                    |
 |    ❌  | [ttyname](./../code/test_ft/ttyname)                      | `<unistd.h>`               | Retourne le nom du fichier terminal associé à un descripteur de fichier.                              |
 |    ❌  | [ttyslot](./../code/test_ft/ttyslot)                      | `<unistd.h>`               | Obtient l'index de l'entrée dans le fichier termcap correspondant au terminal.                        |
@@ -72,6 +72,6 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |    ❌  | [tputs](./../code/test_ft/tputs)                          | `<term.h>`                 | Affiche une capacité termcap.                                                                         |
 
 Légende : 
-- 🤔 = pas compris l'utilite ou de fonctionement.
+- 🤔 = pas compris l'utilite ou le fonctionement.
 - ✔️ = compris.
 - ❌ = pas enocre documenté.
