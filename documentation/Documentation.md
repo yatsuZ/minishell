@@ -57,19 +57,19 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |    ✔️  | [closedir](./../code/test_ft/closedir)                    | `<dirent.h>`               | Ferme un flux de répertoire.                                                                          |
 |    ✔️  | [strerror](./../code/test_ft/strerror)                    | `<string.h>`               | Retourne un pointeur vers la représentation textuelle de la valeur errno actuelle.                    |
 |    ✔️  | [perror](./../code/test_ft/perror)                        | `<stdio.h>`                | Affiche une description de la dernière erreur survenue.                                               |
-|    ❌  | [isatty](./../code/test_ft/isatty)                        | `<unistd.h>`               | Vérifie si un descripteur de fichier fait référence à un terminal.                                    |
-|    ❌  | [ttyname](./../code/test_ft/ttyname)                      | `<unistd.h>`               | Retourne le nom du fichier terminal associé à un descripteur de fichier.                              |
-|    ❌  | [ttyslot](./../code/test_ft/ttyslot)                      | `<unistd.h>`               | Obtient l'index de l'entrée dans le fichier termcap correspondant au terminal.                        |
-|    ❌  | [ioctl](./../code/test_ft/ioctl)                          | `<sys/ioctl.h>`            | Effectue des opérations spécifiques au périphérique.                                                  |
-|    ❌  | [getenv](./../code/test_ft/getenv)                        | `<stdlib.h>`               | Récupère la valeur d'une variable d'environnement.                                                    |
-|    ❌  | [tcsetattr](./../code/test_ft/tcsetattr)                  | `<termios.h>`              | Définit les paramètres associés au terminal.                                                          |
-|    ❌  | [tcgetattr](./../code/test_ft/tcgetattr)                  | `<termios.h>`              | Obtient les paramètres associés au terminal.                                                          |
-|    ❌  | [tgetent](./../code/test_ft/tgetent)                      | `<term.h>`                 | Initialise la structure de données termcap.                                                           |
-|    ❌  | [tgetflag](./../code/test_ft/tgetflag)                    | `<term.h>`                 | Obtient la valeur booléenne d'une capacité termcap.                                                   |
-|    ❌  | [tgetnum](./../code/test_ft/tgetnum)                      | `<term.h>`                 | Obtient la valeur numérique d'une capacité termcap.                                                   |
-|    ❌  | [tgetstr](./../code/test_ft/tgetstr)                      | `<term.h>`                 | Obtient la valeur de chaîne d'une capacité termcap.                                                   |
-|    ❌  | [tgoto](./../code/test_ft/tgoto)                          | `<term.h>`                 | Prépare une séquence d'adressage de curseur.                                                          |
-|    ❌  | [tputs](./../code/test_ft/tputs)                          | `<term.h>`                 | Affiche une capacité termcap.                                                                         |
+|    ✔️  | [isatty](./../code/test_ft/isatty)                        | `<unistd.h>`               | Vérifie si un descripteur de fichier fait référence à un terminal.                                    |
+|    ✔️  | [ttyname](./../code/test_ft/ttyname)                      | `<unistd.h>`               | Retourne le nom du fichier terminal associé à un descripteur de fichier.                              |
+|    ✔️  | [ttyslot](./../code/test_ft/ttyslot)                      | `<unistd.h>`               | Obtient l'index de l'entrée dans le fichier termcap correspondant au terminal.                        |
+|    🤔  | [ioctl](./../code/test_ft/ioctl)                          | `<sys/ioctl.h>`            | Effectue des opérations spécifiques au périphérique.                                                  |
+|    ✔️  | [getenv](./../code/test_ft/getenv)                        | `<stdlib.h>`               | Récupère la valeur d'une variable d'environnement.                                                    |
+|    🤔  | [tcsetattr](./../code/test_ft/tcsetattr)                  | `<termios.h>`              | Définit les paramètres associés au terminal.                                                          |
+|    🤔  | [tcgetattr](./../code/test_ft/tcgetattr)                  | `<termios.h>`              | Obtient les paramètres associés au terminal.                                                          |
+|    🤔  | [tgetent](./../code/test_ft/tgetent)                      | `<term.h>`                 | Initialise la structure de données termcap.                                                           |
+|    ✔️  | [tgetflag](./../code/test_ft/tgetflag)                    | `<term.h>`                 | Obtient la valeur booléenne d'une capacité termcap.                                                   |
+|    🤔  | [tgetnum](./../code/test_ft/tgetnum)                      | `<term.h>`                 | Obtient la valeur numérique d'une capacité termcap.                                                   |
+|    🤔  | [tgetstr](./../code/test_ft/tgetstr)                      | `<term.h>`                 | Obtient la valeur de chaîne d'une capacité termcap.                                                   |
+|    🤔  | [tgoto](./../code/test_ft/tgoto)                          | `<term.h>`                 | Prépare une séquence d'adressage de curseur.                                                          |
+|    🤔  | [tputs](./../code/test_ft/tputs)                          | `<term.h>`                 | Affiche une capacité termcap.                                                                         |
 
 Légende : 
 - 🤔 = pas compris l'utilite ou le fonctionement.
