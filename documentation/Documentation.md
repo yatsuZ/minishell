@@ -9,7 +9,11 @@ Un "invité de commande" est un programme informatique qui permet à l'utilisate
 ## Sources de documentation
 
 - [Tutoriels Minishell](https://github.com/maxime-42/minishell/tree/master/tutorials)
-- [Lexical Analysis - Wikipedia](https://en.wikipedia.org/wiki/Lexical_analysis)
+- [Analyse Lexicale - Wikipedia](https://fr.wikipedia.org/wiki/Analyse_lexicale)
+- [conseil minishell](https://harm-smits.github.io/42docs/projects/minishell)
+- [Syntaxe de shell](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
+- [Shell langage](https://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html)
+- [Pays du 42 un goat](http://i.paysdu42.fr/?page=minishell.c)
 
 ## Liste de toutes les fonctions externes autorisées
 
@@ -18,7 +22,7 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 | Compris | Nom de la fonction                                        | En-tête de la bibliothèque | Description brève                                                                                     |
 |---------|-----------------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------|
 |    ✔️  | [readline](./../code/test_ft/readline/)                   | `<readline/readline.h>`    | Lit une ligne à partir de l'entrée utilisateur avec des fonctionnalités d'édition de ligne.           |
-|    🤔  | [rl_clear_history](./../code/test_ft/rl_clear_history)    | `<readline/history.h>`     | Efface l'historique des commandes dans GNU Readline.                                                  |
+|    ✔️  | [rl_clear_history](./../code/test_ft/rl_clear_history)    | `<readline/history.h>`     | Efface l'historique des commandes dans GNU Readline.                                                  |
 |    🤔  | [rl_on_new_line](./../code/test_ft/rl_on_new_line)        | `<readline/readline.h>`    | Signale le début d'une nouvelle ligne dans GNU Readline.                                              |
 |    🤔  | [rl_replace_line](./../code/test_ft/rl_replace_line)      | `<readline/readline.h>`    | Remplace la ligne courante dans GNU Readline.                                                         |
 |    🤔  | [rl_redisplay](./../code/test_ft/rl_redisplay)            | `<readline/readline.h>`    | Redisplays la ligne d'entrée courante dans GNU Readline.                                              |

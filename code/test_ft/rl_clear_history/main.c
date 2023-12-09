@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:11:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/01 19:59:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/09 18:15:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,27 +66,55 @@ void	blabla(void)
 	printf("Debut du programme : \n\n");
 }
 
-int main(int argc, char **argv)
-{
-	(void) argv;
-	HIST_ENTRY **history;
+// int main(int argc, char **argv)
+// {
+// 	(void) argv;
+// 	HIST_ENTRY **history;
 
-	blabla();
-	ajout_dans_history();
-	history = history_list();// Fonction interdite pour minishell je lutilise pour recupere la structure HIST_ENTRY
-	show_history(history);
+// 	blabla();
+// 	ajout_dans_history();
+// 	history = history_list();// Fonction interdite pour minishell je lutilise pour recupere la structure HIST_ENTRY
+// 	show_history(history);
 
-	put_color(ROUGE);
-	if (argc == 1)
-		printf("Je n'utilise pas rl_clear_history !\n");
-	else
-	{
+// 	put_color(ROUGE);
+// 	if (argc == 1)
+// 		printf("Je n'utilise pas rl_clear_history !\n");
+// 	else
+// 	{
+// 		put_color(VERT);
+// 		printf("J'utilise rl_clear_history !\n");
+// 		rl_clear_history();// Libere tout les element de history mais ne libere pas la structure history c'est pour cela que je dois la free plus tard
+// 	}
+// 	free(history);
+// 	history = NULL;
+// 	put_color(DEFAUT);
+// 	return (0);
+// }
+
+int main() {
+	char	*input;
+	int		i;
+
+	i = 0;
+	while (1) {
 		put_color(VERT);
-		printf("J'utilise rl_clear_history !\n");
-		rl_clear_history();// Libere tout les element de history mais ne libere pas la structure history c'est pour cela que je dois la free plus tard
+		input = readline("Entrez une commande (ou 'exit' pour quitter faire ↑ pour recuperer l'historique): ");
+		if (strcmp(input, "exit") == 0) {
+			free(input);
+			break;
+		}
+		if (input && *input)
+			add_history(input);
+		put_color(BLEU);
+		printf("Vous avez saisi : %s\n", input);
+		free(input);
+		put_color(ROUGE);
+		if (++i % 5 == 0)
+		{
+			printf("\nJe suprime l'historique\n");
+			clear_history();
+		}
+		put_color(DEFAUT);
 	}
-	free(history);
-	history = NULL;
-	put_color(DEFAUT);
-	return (0);
+	return 0;
 }
