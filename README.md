@@ -31,7 +31,7 @@ Et pour faciliter le suivi du projet voici le chahier des charger / Liste de cho
 | [1](./code/1/) | Fair un invité de commande et pouvoir quité avec ctrl+D et exit	 | ✅ | Y |
 | [test fonction externe](./code/test_ft/) | Teste chaque fonction externe pour bien comprendre leur utilité	 | ✅ | Y |
 | [Determiner objectif de travail](./documentation/objectif.md) | Je suis paume je dois me donner des objectif precis | ✅ | Y |
-| [Bordel](./code/boerdel) | Je ne sais pas quoi faire mais je dois coder ☠️ je vais coder un read avec mon get next line evoire ce que je peux faire enfaite.| ❌ | Y |
+| [Bordel](./code/bordel) | Je ne sais pas quoi faire mais je dois coder ☠️ je vais coder un read avec mon get next line evoire ce que je peux faire enfaite.| ❌ | Y |
 
 **Légende des colone :**
 - Colone DOSSIER : Redirection vers les dossier en question.
