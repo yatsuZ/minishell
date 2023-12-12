@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initfree_all.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/12 22:08:54 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/13 00:56:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../Header/Minishell.h"
+#include "../../Header/Minishell.h"
 
-// Faire un get prompte qui recupere tout le prompte de la meme maniere que geat next line. 
-
-void	ft_minishell(t_all_struct *all)
+int	init_all(t_all_struct **res)
 {
-
-
+	if (ft_calloc_verif(1, sizeof(t_all_struct), (void **)res))
+		return (1);
+	if (init_prompt((*res)->prompte))
+		return (1);
+	(*res).err = 0;
+	return (0);
 }
 
-int	main(void)
+void	free_all(t_all_struct *all)
 {
-	t_all_struct	*all;
-
-	if (init_all(&all))
-		return (free_all(all));
-	ft_minishell(all);
-	return (free_all(all));
+	
 }
+

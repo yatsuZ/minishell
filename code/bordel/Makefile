@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/11 00:45:03 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/12 20:22:12 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,18 @@ FT_UTILE_PATH = fonction_utile/
 FT_UTILE_FILES =	ft_strcpm.c	\
 					ft_strlen.c
 
+INUTILE_PATH = inutile/
+INUTILE_FILES = color.c
+
+STRUCT_PATH = struct/
+STRUCT_FILES = init_all.c
+
 MINISHELL_PATH = Source/
 MINISHELL_FILES =	main.c 				\
 					invite_de_comande.c	\
-					out_context.c		\
-					${addprefix ${FT_UTILE_PATH}, ${FT_UTILE_FILES}}
+					${addprefix ${FT_UTILE_PATH}, ${FT_UTILE_FILES}}	\
+					${addprefix ${INUTILE_PATH}, ${INUTILE_FILES}}		\
+					${addprefix ${STRUCT_PATH}, ${STRUCT_FILES}}
 
 OBJ_PATH = obj/
 MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
