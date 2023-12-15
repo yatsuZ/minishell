@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   initfree_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/15 13:00:52 by ilouacha         ###   ########.fr       */
+/*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
+/*   Updated: 2023/12/15 14:47:20 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../../Header/Minishell.h"
 
-# include "./import.h"
-
-typedef enum {
-	false,
-	true
-} bool;
-
-typedef struct s_node
+int	init_node(t_node *n, char *str)
 {
-	char	*str;
-	t_node	*next_node;
-}	t_node;
+	if (ft_calloc_verif(1, sizeof(t_node), (void **)&n))
+		return (1);
+	n->str = str;
+	n->next_node = NULL;
+	retunr (0);
+}
 
-typedef struct s_prompt
+int	free_node(t_node *n)
 {
-	char	*invite;
-	t_node	*all_cmd_line;
-	bool	end_of_prompt;
-}	t_prompt;
+	free(n->str);
+	n->str = NULL;
+	free(n);
+	n = NULL;
+}
 
-typedef struct s_all_struct
+int	add_node(t_node *previous_n, char *str)
 {
-	t_prompt	*prompte;
-	int			err;
-} t_all_struct;
 
-#endif
+}

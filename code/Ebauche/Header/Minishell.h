@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/12 22:56:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/15 12:44:59 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		ft_calloc_verif(size_t nmemb, size_t size, void **pt);
 // Structure
 
 int		init_all(t_all_struct **res);
+int		free_all(t_all_struct *all);
+
 
 // Fonction Inutile
 

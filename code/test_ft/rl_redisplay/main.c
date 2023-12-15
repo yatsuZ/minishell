@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:33:38 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/03 23:31:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/15 13:11:15 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main() {
 		printf("Vous avez saisi : %s\n", str);
 		// Modification du contenu de la ligne de saisie
 		rl_save_prompt(); // Sauvegarde du prompt
-		rl_replace_line("Nouvelle saisie", 0); // Remplace la saisie précédente
+		rl_replace_line("Nouvelle saisie", 10); // Remplace la saisie précédente
 		rl_redisplay(); // Réaffiche la ligne modifiée
 		rl_restore_prompt(); // Restaure le prompt
 		// Attends un peu avant de quitter (juste pour observer le changement)
