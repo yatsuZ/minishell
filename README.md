@@ -1,7 +1,5 @@
 # Minishell
 
-salem
-
 L'objectif de ce projet est de créer un simple shell.
 
 Projet de groupe en duo avec [Ilham](https://github.com/ouachani-il).
