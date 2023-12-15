@@ -69,7 +69,7 @@ Ces instructions sont cruciales pour garantir la qualité et la stabilité du pr
 
 2. **Historique de travail :** Le shell doit maintenir un historique des commandes précédemment exécutées.
 
-3. **Recherche et exécution d'exécutables :** Le programme doit rechercher et lancer le bon exécutable, en fonction de la variable PATH ou en utilisant un chemin relatif ou absolu. (Verifier si on as les droit dexecution aussi).
+3. **Recherche et exécution d'exécutables :** Le programme doit rechercher et lancer le bon exécutable, en fonction de la variable PATH ou en utilisant un chemin relatif ou absolu. (Verifier si on a aussi les droit d'exécution).
 
 4. **Gestion des signaux :** Limiter l'utilisation d'une seule variable globale pour indiquer un signal reçu, sans accéder aux principales structures de données.
 
@@ -81,7 +81,7 @@ Ces instructions sont cruciales pour garantir la qualité et la stabilité du pr
    - `<<` : Lecture de l'entrée jusqu'à un délimiteur.
    - `>>` : Redirection de la sortie en mode ajout.
 
-7. **Implémentation des PIP :** Utilisation du caractère `|` pour connecter la sortie de chaque commande dans le pipeline à l'entrée de la commande suivante.
+7. **Implémentation du PIPE :** Utilisation du caractère `|` pour connecter la sortie de chaque commande dans le pipeline à l'entrée de la commande suivante.
 
 8. **Gestion des variables d'environnement :** Prise en charge des variables d'environnement ($ suivi d'une séquence de caractères) avec extension de leur valeur.
 

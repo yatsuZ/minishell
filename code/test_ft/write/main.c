@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:13:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/05 21:53:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/15 11:44:48 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ int	main(void)
 	ecrire_dans_un_fichier_text();
 	ecrire_dans_terminal();
 	// Écriture dans un socket réseau;
-	return (0);
+	return (212);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 00:12:10 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/04 00:25:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/15 11:31:08 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 int main() {
 	char *input;
-	// Initialisation de l'historique
-	using_history();
 	// Boucle pour lire plusieurs commandes
 	while (1) {
 		// Lecture de l'entrée utilisateur
@@ -29,9 +27,7 @@ int main() {
 			break;
 		}
 		// Ajout de l'entrée à l'historique si elle n'est pas vide
-		if (input && *input) {
-			add_history(input);
-		}
+		add_history(input);
 		// Affichage de l'entrée saisie
 		printf("Vous avez saisi : %s\n", input);
 		// Libération de la mémoire allouée par readline

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initfree_all.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/13 00:56:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/15 11:24:14 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	init_all(t_all_struct **res)
 		return (1);
 	if (init_prompt((*res)->prompte))
 		return (1);
-	(*res).err = 0;
+	(*res)->err = 0;
 	return (0);
 }
 
