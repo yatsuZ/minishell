@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
-/*   Updated: 2023/12/15 13:06:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/17 15:25:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	free_node(t_node *n)
 
 int	add_node(t_node *previous_n, char *str)
 {
+	if (!previous_n)
+		return (1);
 	return (init_node(&(previous_n->next_node), str));
 }
 
