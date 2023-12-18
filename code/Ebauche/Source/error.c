@@ -6,15 +6,25 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 20:22:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/15 01:06:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/17 22:35:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
 
-int	end(t_all_struct *all)
+int	show_error(t_all_struct *all)
 {
 	if (!all || all->err == 1)
-		return (perror("Malloc faillure."), free_all(all), 1);
-	return (free_all(all), 0);
+		return (perror("Malloc faillure. "), 1);
+	return (all->err);
+}
+
+void	end(t_all_struct *all)
+{
+	int	retourne;
+
+	retourne = show_error(all);
+	free_all(all);
+	clear_history();
+	exit(retourne);
 }

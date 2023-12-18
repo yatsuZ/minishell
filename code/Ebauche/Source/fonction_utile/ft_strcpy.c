@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 11:13:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/15 11:16:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 00:24:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		i++;
 	}
 	if (i < size)
-	{
 		dest[i++] = '\0';
-	}
 	return (ft_strlen((char *)src));
 }
 
@@ -45,5 +43,22 @@ char	*ft_strdup(const char *s)
 	if (!ptr)
 		return (NULL);
 	ft_strlcpy(ptr, str, len);
+	return (ptr);
+}
+
+char	*ft_strcut(const char *s, size_t start, size_t end)
+{
+	char	*ptr;
+	size_t	len;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	str = (char *) s;
+	len = end - start + 1;
+	ptr = ft_calloc(len, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, str + start, len);
 	return (ptr);
 }

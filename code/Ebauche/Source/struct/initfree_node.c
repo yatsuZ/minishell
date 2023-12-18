@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
-/*   Updated: 2023/12/17 15:25:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 00:54:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,13 @@ void	free_all_node(t_node *tete)
 	free_all_node(tete->next_node);
 	tete->next_node = NULL;
 	free_node(tete);
+}
+
+int	add_last_node(t_node **tete, char *str)
+{
+	if (!(*tete))
+		return (init_node(tete, str));
+	else if (!(*tete)->next_node)
+		return (add_node((*tete), str));
+	return (add_last_node(&(*tete)->next_node, str));
 }

@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/15 11:19:53 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/17 22:41:34 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ FT_UTILE_FILES =	ft_strcpm.c	\
 					ft_strcpy.c
 
 INUTILE_PATH = inutile/
-INUTILE_FILES = color.c
+INUTILE_FILES = color.c	\
+				show_struct.c
 
 STRUCT_PATH = struct/
 STRUCT_FILES = 	initfree_all.c	\
@@ -29,6 +30,7 @@ STRUCT_FILES = 	initfree_all.c	\
 MINISHELL_PATH = Source/
 MINISHELL_FILES =	main.c 				\
 					invite_de_comande.c	\
+					error.c				\
 					${addprefix ${FT_UTILE_PATH}, ${FT_UTILE_FILES}}	\
 					${addprefix ${INUTILE_PATH}, ${INUTILE_FILES}}		\
 					${addprefix ${STRUCT_PATH}, ${STRUCT_FILES}}

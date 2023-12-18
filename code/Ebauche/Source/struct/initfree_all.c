@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/15 12:00:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/17 21:39:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	init_all(t_all_struct **res)
 {
 	if (ft_calloc_verif(1, sizeof(t_all_struct), (void **)res))
 		return (1);
-	if (init_prompt(&(*res)->prompte))
-		return (1);
-	(*res)->err = 0;
-	return (0);
+	(*res)->err = init_prompt(&(*res)->prompte);
+	return ((*res)->err);
 }
 
 void	free_all(t_all_struct *all)
