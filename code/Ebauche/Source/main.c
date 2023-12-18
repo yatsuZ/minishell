@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 13:13:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 19:24:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	ft_minishell(t_all_struct *all)
 {
 	int	tour;
-	
+
 	tour = 2;
 	while (tour--)
 	{
@@ -34,7 +34,9 @@ void	ft_minishell(t_all_struct *all)
 int	main(void)
 {
 	t_all_struct	*all;
+	static int		signal;
 
+	signal = 0;
 	if (init_all(&all))
 		end(all);
 	ft_minishell(all);

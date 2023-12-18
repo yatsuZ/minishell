@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:56:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 00:59:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 19:24:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	free_prompt(t_prompt *promp)
 {
 	if (!promp)
 		return ;
-	// free_all_node(promp->all_cmd_line);
 	free(promp->invite);
 	free(promp);
 	promp = NULL;

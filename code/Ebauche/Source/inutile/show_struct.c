@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 01:14:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 19:25:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	show_prompt(t_prompt *promp)
 	while (tmp)
 	{
 		put_color_txt(BLEU);
-		printf("Mot numéro ");
+		printf("Mot numéro");
 		put_color_txt(ROUGE);
 		printf("[%d]: \t", i++);
 		put_color_txt(VERT);

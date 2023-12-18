@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:07:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/17 22:59:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 19:25:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	show_color(void)
 	printf("\033[36mCyan\033[0m\n");
 	printf("\033[37mBlanc\033[0m\n");
 }
+
 void	put_color_txt(int color)
 {
 	if (color == ROUGE)

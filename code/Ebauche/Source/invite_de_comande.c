@@ -6,12 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 01:13:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/18 19:20:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
-
 
 size_t	is_separator(char *str, size_t i)
 {
@@ -30,14 +29,14 @@ size_t	is_separator(char *str, size_t i)
 		res++;
 	if (res)
 		return (res);
-	return(res);
+	return (res);
 }
 
 void	str_to_node(char *str, t_node **res)
 {
 	size_t	i_start;
 	size_t	i_end;
-	
+
 	if (!str)
 		return ;
 	i_end = 0;

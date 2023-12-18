@@ -6,4 +6,14 @@
 | 2. Quand j'écris quelque chose, il réécrit en dessous |OUI|
 | 3. Pouvoir quitter quand j'appuie sur Ctrl+D ou "exit" |OUI|
 | Le rendre esthethique  |OUI|
-| Faire un get next line qui retourne tout ce que le read à | NON |
+| Faire un get next line qui retourne tout ce que le read à | OUI |
+| INterpreter chaque node pour precise le type d'input | NON |
+| GERER les siganux | NON |
+
+## Conseil
+
+utuilise 
+```bash
+bash --posix
+```
+comme reference d'exemple
