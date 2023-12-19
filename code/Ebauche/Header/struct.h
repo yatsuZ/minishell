@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 15:25:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 21:34:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_redirection
 	int						type_rd;
 	struct s_redirection	*next;
 }	t_redirection;
-
 
 typedef struct s_execute
 {
