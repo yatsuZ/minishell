@@ -17,3 +17,12 @@ utuilise
 bash --posix
 ```
 comme reference d'exemple
+
+## Comment marche un terminal cmd
+
+[Executable option redirection] PIP.
+
+- Executable : verifier qu'il peut etre executer.
+- option : tout ce qui suit apres un executable à noter qu'il peut etre en deordre avec un redirection
+- redirection : ce qui suit un <<, >> ou <, > redirige lentre ou la sortie d'un fichier.
+- si cela suit un pip alors reirgier la sortie principal et rebolote.

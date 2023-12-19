@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpm.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 23:44:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:26:45 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/19 01:44:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/Minishell.h"
+#include "./../../Header/Minishell.h"
 
-int	ft_strcpm(char *s1, char *s2)
+void	define_type_input(t_prompt *promp)
 {
-	long	i;
 
-	i = 0;
-	if (!s1 && !s2)
-		return (1);
-	else if (!s1 || !s2)
-		return (0);
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	if (s1[i] != s2[i])
-		return (0);
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 20:22:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 19:22:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 01:17:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	end(t_all_struct *all)
 	retourne = show_error(all);
 	free_all(all);
 	clear_history();
-	exit(signal);
+	exit(retourne);
 }

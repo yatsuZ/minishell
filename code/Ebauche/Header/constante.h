@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 19:14:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 01:12:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,22 @@
 
 ////// TYPE INPUT
 
-// SPECIAL
-# define NOTHING 0 // RIEN
-# define IDK 1 // Si je ne sais pas ce que c'est
-# define SIGNAUX 2 // Si c'est un signal
-// SEPERATOR
-# define SEPERATOR 3 // Espace tab ou autre
-# define NEW_LINE 4 // saut de ligne
+# define SEPERATOR 0 // Espace tab ou autre
+# define EXECUTABLE 1 // Si c'est un fichier executable
+# define OPTION 2 // option pares commande
+// ENVIROENEMNT
+# define VA_ENV 3 // $[texte]
+# define VA_SIGNAUX 4 // $?
 //Guillmet
 # define SINGLE_COTE 5 // '
 # define DOUBLE_COTE 6// "
 // REDIRECTION
 # define R_IN 7 // <
 # define R_OUT 8 // >
-# define F_IN 9 // fichier apres < ou <<
-# define F_OUT 10 // fichier apres > ou >>
-# define R_IN_LIMIT 11 // <<
-# define R_OUT_ADD 12 // >>
+# define R_IN_LIMIT 9 // <<
+# define R_OUT_ADD 10 // >>
+# define F_RD 11 // fichier de redirevtion (sortie ou entre)
 // PIP
-# define PIP 13 // |
-// ENVIROENEMNT
-# define VA_ENV 14 // $[texte]
-# define VA_SIGNAUX 15 // $?
-// EXECUTABLE
-# define EXECUTABLE 16 // Si c'est un fichier executable
-// BUILTIN
-# define ECHO 17
-# define CD 18
-# define PWD 19
-# define EXPORT 20
-# define UNSET 21
-# define ENV 22
-# define EXIT 23
-# define OPTION 24 // option pares commande
+# define PIP 12 // |
 
 #endif

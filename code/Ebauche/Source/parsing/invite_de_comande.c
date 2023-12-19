@@ -6,29 +6,27 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 19:20:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 01:43:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../Header/Minishell.h"
+#include "./../../Header/Minishell.h"
 
 size_t	is_separator(char *str, size_t i)
 {
 	size_t	res;
 
 	res = 0;
-	while (str[i + res] == ' ')
-		res++;
-	if (res)
+	if (!str[i])
 		return (res);
-	while (str[i + res] == '\t')
+	if ((str[i] == '>' && str[i + 1] == '>') || \
+	(str[i] == '<' && str[i + 1] == '<'))
+		return (2);
+	while (str[i + res] == ' ' || str[i + res] == '\t')
 		res++;
-	if (res)
-		return (res);
-	if (str[i] == '>' || str[i] == '<')
-		res++;
-	if (res)
-		return (res);
+	if (str[i] == '>' || str[i] == '<' || str[i] == '\'' \
+	|| str[i] == '\"' || str[i] == '|' || str[i] == '$')
+		return (1);
 	return (res);
 }
 
@@ -68,5 +66,6 @@ int	get_invite_de_comande(t_prompt *promp)
 	str_to_node(input, &(promp->all_cmd_line));
 	free(input);
 	input = NULL;
+	define_type_input(promp)// A FAIRE
 	return (0);
 }
