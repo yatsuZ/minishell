@@ -6,15 +6,15 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:46:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 14:44:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
 
-void	init_minishell_signal()
+void	init_minishell_signal(int *mss)
 {
-	minishell_signal = 0;
+	(*mss) = 0;
 	// redefinir ctrl+d,+c,+/
 }
 
@@ -42,7 +42,7 @@ int	main(void)
 	t_all_struct	*all;
 	static int		minishell_signal;
 
-	init_minishell_signal();// A FAIRE
+	init_minishell_signal(&minishell_signal);// A FAIRE
 	if (init_all(&all))
 		end(all);
 	ft_minishell(all);

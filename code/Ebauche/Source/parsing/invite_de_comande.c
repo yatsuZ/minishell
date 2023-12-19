@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:43:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 15:30:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int	get_invite_de_comande(t_prompt *promp)
 	str_to_node(input, &(promp->all_cmd_line));
 	free(input);
 	input = NULL;
-	define_type_input(promp)// A FAIRE
 	return (0);
 }

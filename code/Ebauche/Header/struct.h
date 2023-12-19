@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/18 16:36:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 15:25:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define STRUCT_H
 
 # include "./import.h"
+
+typedef struct s_redirection
+{
+	char					*str_rd;
+	char					*str_file;
+	int						type_rd;
+	struct s_redirection	*next;
+}	t_redirection;
+
+
+typedef struct s_execute
+{
+	char				*cmd;
+	char				**arg;
+	t_redirection		*all_rd;
+	struct s_execute	*pip;
+}	t_execute;
 
 typedef struct s_node
 {
