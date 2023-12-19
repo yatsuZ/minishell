@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 15:30:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 16:53:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	get_invite_de_comande(t_prompt *promp)
 
 	input = readline(promp->invite);
 	str_to_node(input, &(promp->all_cmd_line));
+	define_type_input(promp);// A faire
 	free(input);
 	input = NULL;
 	return (0);

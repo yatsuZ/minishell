@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:12:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/19 16:37:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 ////// TYPE INPUT
 
 # define SEPERATOR 0 // Espace tab ou autre
-# define EXECUTABLE 1 // Si c'est un fichier executable
-# define OPTION 2 // option pares commande
+# define CMD 1 // Si c'est un fichier executable
+# define ARGUMENT 2 // Tout ce qui suit un cmd
 // ENVIROENEMNT
 # define VA_ENV 3 // $[texte]
-# define VA_SIGNAUX 4 // $?
+# define VA_RETOUR 4// $?
 //Guillmet
 # define SINGLE_COTE 5 // '
 # define DOUBLE_COTE 6// "

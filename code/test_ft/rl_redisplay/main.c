@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:33:38 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/15 13:11:15 by ilouacha         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:32:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,36 @@
 #include <readline/history.h>
 #include <stdlib.h>
 #include<unistd.h>
+#include <signal.h>
+
+extern int    g_exit_stt;
+
+void    handle_ctrl_c(int signal)
+{
+    // g_exit_stt += signal;
+    if (signal == SIGINT)
+    {
+        // g_exit_stt = 130;
+        printf("\n");
+        // rl_on_new_line();
+        rl_replace_line("change :", 0);
+        rl_redisplay();
+    }
+}
+
 
 int main() {
-	rl_initialize(); // Initialisation de Readline
-	// Modification du prompt
-	char *rl_prompt = "Entrez quelque chose> ";
-	// Lecture de la saisie
-	char *str = readline(rl_prompt);
-	if (str != NULL) {
-		printf("Vous avez saisi : %s\n", str);
-		// Modification du contenu de la ligne de saisie
-		rl_save_prompt(); // Sauvegarde du prompt
-		rl_replace_line("Nouvelle saisie", 10); // Remplace la saisie précédente
-		rl_redisplay(); // Réaffiche la ligne modifiée
-		rl_restore_prompt(); // Restaure le prompt
-		// Attends un peu avant de quitter (juste pour observer le changement)
-		sleep(2);
-		// Libère la mémoire de la saisie
-		free(str);
+	int	i;
+    char *input;
+
+	i = 0;
+    signal(SIGINT, &handle_ctrl_c);
+    // Demande à l'utilisateur de saisir une ligne
+	while (i++ < 10)
+	{
+		input =readline("Entrez une ligne : ");
+        printf("input = %s\n", input);
+        free(input);
 	}
-	return 0;
+    return 0;
 }

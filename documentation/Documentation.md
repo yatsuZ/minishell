@@ -23,9 +23,9 @@ Consultez le manuel de chaque fonction pour comprendre son fonctionnement.
 |---------|-----------------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------|
 |    ✔️  | [readline](./../code/test_ft/readline/)                   | `<readline/readline.h>`    | Lit une ligne à partir de l'entrée utilisateur avec des fonctionnalités d'édition de ligne.           |
 |    ✔️  | [rl_clear_history](./../code/test_ft/rl_clear_history)    | `<readline/history.h>`     | Efface l'historique des commandes dans GNU Readline.                                                  |
-|    🤔  | [rl_on_new_line](./../code/test_ft/rl_on_new_line)        | `<readline/readline.h>`    | Signale le début d'une nouvelle ligne dans GNU Readline.                                              |
-|    🤔  | [rl_replace_line](./../code/test_ft/rl_replace_line)      | `<readline/readline.h>`    | Remplace la ligne courante dans GNU Readline.                                                         |
-|    🤔  | [rl_redisplay](./../code/test_ft/rl_redisplay)            | `<readline/readline.h>`    | Redisplays la ligne d'entrée courante dans GNU Readline.                                              |
+|    ✔️  | [rl_on_new_line](./../code/test_ft/rl_on_new_line)        | `<readline/readline.h>`    | Signale le début d'une nouvelle ligne dans GNU Readline.                                              |
+|    ✔️  | [rl_replace_line](./../code/test_ft/rl_replace_line)      | `<readline/readline.h>`    | Remplace la ligne courante dans GNU Readline.                                                         |
+|    ✔️  | [rl_redisplay](./../code/test_ft/rl_redisplay)            | `<readline/readline.h>`    | Redisplays la ligne d'entrée courante dans GNU Readline.                                              |
 |    ✔️  | [add_history](./../code/test_ft/add_history)              | `<readline/history.h>`     | Ajoute la ligne courante à l'historique dans GNU Readline.                                            |
 |    ✔️  | [printf](./../code/test_ft/printf)                        | `<stdio.h>`                | Affiche une sortie formatée sur la console.                                                           |
 |    ✔️  | [malloc](./../code/test_ft/malloc)                        | `<stdlib.h>`               | Alloue un nombre spécifié d'octets de mémoire0.                                                        |
