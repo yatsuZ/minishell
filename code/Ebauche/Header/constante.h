@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 21:34:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/21 11:43:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_color {
 }	t_color;
 
 ////// TYPE INPUT
+// char * si il fais partie d'un ensemble de string
 // Espace tab ou autre
 // *char fichier executable = un chemin = Premier text
 // **char Tout ce qui suit un cmd
@@ -46,6 +47,7 @@ typedef enum e_color {
 // *char ce aui suit une R
 // | doit faire une redirection de sortie principal quoi qu'il arrive
 typedef enum e_type_input {
+	STR,
 	SINGLE_COTE ,
 	DOUBLE_COTE ,
 	SEPARATOR ,

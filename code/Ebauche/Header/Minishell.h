@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:45:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/21 11:39:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // Parsing
 int		get_invite_de_comande(t_prompt *promp);
-void	define_type_input(t_prompt *promp);
+void	define_type_input(t_all_struct *all);
 
 // Fonction de fin
 
