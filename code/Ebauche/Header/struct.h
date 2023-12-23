@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/21 11:36:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/23 22:27:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ typedef struct s_prompt
 {
 	char	*invite;
 	t_node	*all_cmd_line;
-	int		end_of_prompt;
+	int		err_parsing;
 }	t_prompt;
 
 typedef struct s_all_struct
 {
 	struct s_prompt	*prompte;
 	int				err;
-	static int		minishell_signal;
 }	t_all_struct;
 
 #endif

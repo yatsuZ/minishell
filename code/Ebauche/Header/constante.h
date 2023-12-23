@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/21 11:52:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:14:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef enum e_color {
 // *char ce aui suit une R
 // | doit faire une redirection de sortie principal quoi qu'il arrive
 typedef enum e_type_input {
+	NON_DEFINI,
 	STR,
 	SINGLE_COTE ,
 	DOUBLE_COTE ,

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/21 11:38:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/23 19:33:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ size_t	is_separator(char *str, size_t i)
 	(str[i] == '<' && str[i + 1] == '<'))
 		return (2);
 	while (str[i + res] == ' ' || str[i + res] == '\t')
+	{
 		res++;
+	}
 	if (str[i] == '>' || str[i] == '<' || str[i] == '\'' \
 	|| str[i] == '\"' || str[i] == '|' || str[i] == '$')
 		return (1);

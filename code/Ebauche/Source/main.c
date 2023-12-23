@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/21 11:40:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/23 22:33:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_minishell(t_all_struct *all)
 		all->err = get_invite_de_comande(all->prompte);
 		if (all->err)
 			return ;
-		define_type_input(all);// A faire
+		parsing(all);
 		show_prompt(all->prompte);
 		free_all_node(all->prompte->all_cmd_line);
 		all->prompte->all_cmd_line = NULL;

@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initfree_all.c                                     :+:      :+:    :+:   */
+/*   va_env1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:34:08 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/23 22:39:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-void	init_minishell_signal(int *mss)
+int	is_a_legit_va_env(char *str)
 {
-	(*mss) = 0;
-}
-
-int	init_all(t_all_struct **res)
-{
-	if (ft_calloc_verif(1, sizeof(t_all_struct), (void **)res))
-		return (1);
-	(*res)->err = init_prompt(&(*res)->prompte);
-	return ((*res)->err);
-}
-
-void	free_all(t_all_struct *all)
-{
-	if (!all)
-		return ;
-	free_prompt(all->prompte);
-	free(all);
-	all = NULL;
+	if (!str)
+		return (FALSE);
+	return (TRUE);
 }

@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/19 01:17:26 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/23 22:39:04 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FT_UTILE_PATH = fonction_utile/
 FT_UTILE_FILES =	ft_strcpm.c	\
 					ft_strlen.c	\
 					ft_calloc.c	\
-					ft_strcpy.c
+					ft_strcpy.c	\
+					va_env1.c
 
 INUTILE_PATH = inutile/
 INUTILE_FILES = color.c	\
@@ -24,7 +25,8 @@ INUTILE_FILES = color.c	\
 
 PARSING_PATH = parsing/
 PARSING_FILES =	invite_de_comande.c	\
-				
+				parsing.c			\
+				first_parsing.c
 
 STRUCT_PATH = struct/
 STRUCT_FILES = 	initfree_all.c	\
