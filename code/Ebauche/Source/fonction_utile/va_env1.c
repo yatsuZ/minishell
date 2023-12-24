@@ -6,15 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:39:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 19:15:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-int	is_a_legit_va_env(char *str)
+int	is_a_legit_va_env(char *s)
 {
-	if (!str)
+	if (!s || (s[0] >= '0' && s[0] <= '9') || type_of_str(s) >= 0)
+	{
+		if (s && s[0] == '$')
+			return (TRUE);
 		return (FALSE);
+	}
 	return (TRUE);
 }

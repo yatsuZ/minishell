@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 23:44:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/19 01:26:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 18:17:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	ft_strcpm(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (1);
 	else if (!s1 || !s2)
-		return (0);
+		return (FALSE);
 	while (s1[i] && s2[i])
 	{
 		if (s1[i] != s2[i])
-			return (0);
+			return (FALSE);
 		i++;
 	}
 	if (s1[i] != s2[i])
-		return (0);
-	return (1);
+		return (FALSE);
+	return (TRUE);
 }

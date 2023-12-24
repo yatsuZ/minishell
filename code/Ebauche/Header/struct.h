@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:27:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 17:15:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_node
 	char			*str;
 	struct s_node	*next_node;
 	int				type_input;
+	size_t			index;
 }	t_node;
 
 typedef struct s_prompt

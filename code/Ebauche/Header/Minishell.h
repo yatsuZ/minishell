@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:50:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 19:13:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int		get_invite_de_comande(t_prompt *promp);
 int		parsing(t_all_struct *all);
 int		first_parsing(t_all_struct *all);
+int		fusion_str_and_env(t_node *tete_str);
 
 // Fonction de fin
 
@@ -30,9 +31,13 @@ int		ft_strcpm(char *s1, char *s2);
 int		ft_calloc_verif(size_t nmemb, size_t size, void **pt);
 size_t	ft_strlen(const char *cha);
 char	*ft_strdup(const char *s);
-int		ft_strcpm(char *s1, char *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strcut(const char *s, size_t start, size_t end);
+int		is_a_legit_va_env(char *str);
+int		type_of_str(char *s);
+int		is_str_or_cote(int type);
+void	fusion_node(t_node *n, int new_type);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 // Structure
 

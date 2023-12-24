@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 21:14:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 15:43:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_color {
 }	t_color;
 
 ////// TYPE INPUT
+// si je nai pas encore categoriser les string
 // char * si il fais partie d'un ensemble de string
 // Espace tab ou autre
 // *char fichier executable = un chemin = Premier text

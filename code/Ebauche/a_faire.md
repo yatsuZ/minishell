@@ -34,3 +34,7 @@ si une string na pas de sparateur alors on fusion les string
 Je dois faire la fonction : fusion_str_and_env(all->prompte->all_cmd_line)
 
 Qui va permetre de fusione les string et le va denv et verifier si il y a une erreru de parsing
+
+## les variable denvironement 
+
+Comment savoir si une variable denvirnoement respecte la syntaxe ?

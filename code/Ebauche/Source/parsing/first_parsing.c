@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 21:32:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:57:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/24 19:12:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	first_define_tinput(t_node *n, int option)
 // cote et fusion la va_d'envirnement si elle est legit.
 int	first_parsing(t_all_struct *all)
 {
-	if (all->prompte->all_cmd_line = NULL)
+	if (all->prompte->all_cmd_line == NULL)
 		return (0);
 	first_define_tinput(all->prompte->all_cmd_line, NON_DEFINI);
 	return (fusion_str_and_env(all->prompte->all_cmd_line));
