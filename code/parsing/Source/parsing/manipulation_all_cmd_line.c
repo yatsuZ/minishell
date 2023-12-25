@@ -6,11 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 15:34:50 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 18:20:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 00:02:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
+
+// a remplacer
 
 // Fusion de VA_ENV en de hors de cote donc si sa echoue == NON_INDEFINI
 // doit fusione avec le noeud suivant si lenoeud suivant et legit sinon change

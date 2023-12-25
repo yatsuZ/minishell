@@ -6,31 +6,39 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/24 19:13:43 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/26 00:01:42 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
-FT_UTILE_PATH = fonction_utile/
-FT_UTILE_FILES =	ft_strcpm.c		\
+STR_MANIP_PATH = str_manip/
+STR_MANIP_FILES = 	ft_strcpm.c		\
 					ft_strlen.c		\
-					ft_calloc.c		\
 					ft_strcpy.c		\
+					ft_strjoin.c
+
+FT_UTILE_PATH = fonction_utile/
+FT_UTILE_FILES =	ft_calloc.c		\
 					va_env1.c		\
 					manip_node.c	\
 					type_of_str.c	\
-					ft_strjoin.c
+					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 
 INUTILE_PATH = inutile/
 INUTILE_FILES = color.c	\
 				show_struct.c
 
+FIND_TYPE_PATH =	find_type_input/
+FIND_TYPE_FILES =	cote_and_va_env.c	\
+					find_all_rd_and_pip.c
 PARSING_PATH = parsing/
 PARSING_FILES =	first_parsing.c				\
-				invite_de_comande.c			\
+				get_all_input.c				\
 				manipulation_all_cmd_line.c	\
-				parsing.c
+				parsing.c					\
+				${addprefix ${FIND_TYPE_PATH}, ${FIND_TYPE_FILES}}
+
 
 STRUCT_PATH = struct/
 STRUCT_FILES = 	initfree_all.c	\

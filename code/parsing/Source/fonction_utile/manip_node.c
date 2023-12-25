@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 19:32:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 22:35:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	del_node(t_node *n)
 	new_n = n->next_node;
 	n->next_node = NULL;
 	free_node(n);
-	n = new_next_n;
+	n = new_n;
 	index_update(n);
 }
 

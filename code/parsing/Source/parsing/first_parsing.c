@@ -6,11 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 21:32:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 19:12:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 00:02:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
+
+// a remplacer
 
 static void	first_define_tinput(t_node *n, int option);
 

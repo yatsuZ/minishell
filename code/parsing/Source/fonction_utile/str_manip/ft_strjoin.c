@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:47:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 18:15:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 22:57:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/Minishell.h"
+#include "../../../Header/Minishell.h"
 
 static void	init_ij(size_t *i, size_t *j)
 {

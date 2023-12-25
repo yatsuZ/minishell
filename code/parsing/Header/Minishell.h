@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 19:13:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 23:06:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "./struct.h"
 
 // Parsing
-int		get_invite_de_comande(t_prompt *promp);
+int		get_all_input(t_prompt *promp);
 int		parsing(t_all_struct *all);
 int		first_parsing(t_all_struct *all);
 int		fusion_str_and_env(t_node *tete_str);

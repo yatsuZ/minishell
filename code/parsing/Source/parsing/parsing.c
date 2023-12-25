@@ -6,11 +6,28 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/23 22:38:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 23:56:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
+
+t_execute	*prompt_to_execute(t_all_struct *all)
+{
+	if (!all)
+		return (NULL);
+	return (NULL);
+}
+
+void	fusion_cote(t_all_struct *all)
+{
+
+}
+
+void	fusion_va(t_all_struct *all)
+{
+	
+}
 
 // Fonction qui va permertre de defnir quelle sont les type d'inpute
 // Verifier les cote puis double cote entre les deux c'est des string
@@ -25,6 +42,14 @@ int	parsing(t_all_struct *all)
 {
 	int	err_parsing;
 
-	err_parsing = first_parsing(all);
+	err_parsing = find_cote_and_va(all);
+	if (err_parsing)
+		return (err_parsing);
+	fusion_cote(all);
+	fusion_va(all);
+	err_parsing = find_all_rd_and_pip(all);
+	if (err_parsing)
+		return (err_parsing);
+	// err_parsing = first_parsing(all);
 	return (err_parsing);
 }

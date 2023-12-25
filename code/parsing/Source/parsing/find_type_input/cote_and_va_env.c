@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   cote_and_va_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 23:45:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/17 21:43:37 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/25 23:43:18 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/25 23:44:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/Minishell.h"
+#include "../../../Header/Minishell.h"
 
-size_t	ft_strlen(const char *cha)
+int	find_cote_and_va(t_all_struct *all)
 {
-	size_t	i;
 
-	i = 0;
-	while (cha[i] != '\0')
-		i++;
-	return (i);
 }

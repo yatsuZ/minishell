@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   invite_de_comande.c                                :+:      :+:    :+:   */
+/*   get_all_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 02:13:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 15:07:14 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/25 23:06:33 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/25 23:06:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ size_t	is_separator(char *str, size_t i)
 		res++;
 	}
 	if (str[i] == '>' || str[i] == '<' || str[i] == '\'' \
-	|| str[i] == '\"' || str[i] == '|' || str[i] == '$' \
-	|| str[i] == '\\')
+	|| str[i] == '\"' || str[i] == '|' || str[i] == '$')
 		return (1);
 	return (res);
 }
@@ -61,7 +60,7 @@ void	str_to_node(char *str, t_node **res)
 	}
 }
 
-int	get_invite_de_comande(t_prompt *promp)
+int	get_all_input(t_prompt *promp)
 {
 	char	*input;
 
