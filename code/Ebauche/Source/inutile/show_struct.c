@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 19:33:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 18:17:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	show_type_input2(t_node *n)
 {
-	else if (n->type_input == CMD)
+	if (n->type_input == CMD)
 		printf("CMD");
 	else if (n->type_input == ARGUMENT)
 		printf("ARGUMENT");

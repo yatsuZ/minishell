@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 15:34:50 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 19:47:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/25 18:21:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ int	fusion_str_and_env(t_node *tete)
 		return (0);
 	else if (tete->type_input == VA_ENV)
 		fusion_va_env(tete, NON_DEFINI);// NON JE DOIS changer sa car je dois dabors modifier les string puis verfier la va denvironement une string peut etre une va
-	else if (tete->type_input == SINGLE_COTE)
-	{
-		if (fusion_single_cote(tete))
-			return (1);
-		tete = tete->next_node;
-	}
-	else if (tete->type_input == DOUBLE_COTE)
-	{
-		if (fusion_double_cote(tete))
-			return (1);
-		tete = tete->next_node;
-	}
+	// else if (tete->type_input == SINGLE_COTE)
+	// {
+	// 	if (fusion_single_cote(tete))
+	// 		return (1);
+	// 	tete = tete->next_node;
+	// }
+	// else if (tete->type_input == DOUBLE_COTE)
+	// {
+	// 	if (fusion_double_cote(tete))
+	// 		return (1);
+	// 	tete = tete->next_node;
+	// }
 	return (fusion_str_and_env(tete->next_node));
 }

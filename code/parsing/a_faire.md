@@ -9,7 +9,6 @@ Le parsing aura en entre un chaine de caractere en entre et je vais deoire redon
 | Enum: Type_input | input |Description |
 |------------------|---------|-------------|
 | NON_DEFINI | Tout lors de l'initialisation de la structure | Si les chaînes n'ont pas encore été catégorisées |
-| BACK_SLASH | \, \\, \", \', \$ | Désactive et transforme en chaîne ou argument si spécifié en tant que type d'entrée spécial. S'il termine seul sans erreur de syntaxe, permet la continuation du texte. Sinon, ne fait rien. EN GROS ce qui suit le \ et une string ou arguement |
 | SINGLE_COT | ' | Ne doit pas être encapsulé par des guillemets. Doit être fermé par un autre guillemet simple sinon erreur de syntaxe. Tout entre ces guillemets forme une seule chaîne de caractères. |
 | DOUBLE_COT | " | Comme les guillemets simples, mais peut contenir des variables d'environnement (VA_ENV). |
 | SEPARATOR | \t ou " " | Espace, tabulation, ou autre. Ils sont considérés comme des séparateurs. |
@@ -26,7 +25,7 @@ Le parsing aura en entre un chaine de caractere en entre et je vais deoire redon
 
 1. Recuperer readline et couper la string en fonction des input speciaux puis les metre dans des noeud et on pouras savoir le type d'inpute qu'on as.
 Pendant cette etapde decoupage je peux catgoriser les BACK_SLASH et le reste NON_DEFINI.
-2. Une fois qu'onas cree des noeud et tout divisée on dois categoriser chaque noeud puis fusione les noeud voici la procedure :
+1. Une fois qu'onas cree des noeud et tout divisée on dois categoriser chaque noeud puis fusione les noeud voici la procedure :
    1. Puis trouver les cote simple double et Variable denvironement.
    2. Je dois fusionée ce qui a entre les cote car ce sont des STR.
    Ca speciaux pour les double cote et Variable d'envirnoment et 
@@ -34,11 +33,13 @@ Pendant cette etapde decoupage je peux catgoriser les BACK_SLASH et le reste NON
    3. Je dois fusione les noeud de variable d'environement. (Cas speciaux si le $ et suivie d'une cote)
    4. Je dois trouver toute les Redirection et leur fichier de redirection atribuer si il na pas de fichier de redirection erreur syntax + verifier leur existance et Leur droit de lecture si ces un R_IN et verifier leur droit decriture si c des R_OUT ou R_OUT_ADD. Si c'est faux alors retour syntaxe erreur
    5. Verifier Les PIP et qu'il ne se suivent pas.
-3. Apres avoir categoriser, Je dois replacer les VA_ENV pour leur valeur. Et les faire fusionée si ils sont compris dans des string. et retirer les BACSLASH et les cote pour les string pur les transformr en argument.
-4. Je vais devoirs metre tout ces noeud dans cette structure :
+2. Apres avoir categoriser, Je dois replacer les VA_ENV pour leur valeur. Et les faire fusionée si ils sont compris dans des string. et retirer les BACSLASH et les cote pour les string pur les transformr en argument.
+3. Je vais devoirs metre tout ces noeud dans cette structure :
 [CMD] -> CHAR *
 [ARG] -> CHAR **
 [RD] -> Noeud de redirection
 [PIP] -> Redirection Veris les prochainne commande>
-5. Puis la partie parsing sera fini et il restera l'execution c'est Ilham qui prendra la suite.
+4. Puis la partie parsing sera fini et il restera l'execution c'est Ilham qui prendra la suite.
 les builtin et les signaux.
+
+Les rd se font de gauche a droite mais les R_IN_LIMIT recupere en rpioriée le buffer.
