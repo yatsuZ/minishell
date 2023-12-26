@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:06:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 23:06:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 09:46:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,8 @@ void	str_to_node(char *str, t_node **res)
 
 int	get_all_input(t_prompt *promp)
 {
-	char	*input;
-
-	input = readline(promp->invite);
-	str_to_node(input, &(promp->all_cmd_line));
-	free(input);
-	input = NULL;
+	promp->brut = readline(promp->invite);
+	printf("%s\n", )
+	str_to_node(promp->brut, &(promp->all_cmd_line));
 	return (0);
 }

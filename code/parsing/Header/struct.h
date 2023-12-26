@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 17:15:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 09:40:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_node
 typedef struct s_prompt
 {
 	char	*invite;
+	char	*brut;
 	t_node	*all_cmd_line;
 	int		err_parsing;
 }	t_prompt;

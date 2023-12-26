@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 20:22:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:30:03 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/26 09:30:18 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/26 09:37:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../Header/Minishell.h"
+#include "./../../Header/Minishell.h"
 
-int	show_error(t_all_struct *all)
+void	error_parsing(int iderr)
 {
-	if (!all || all->err == 1)
-		return (perror("Malloc faillure. "), 1);
-	return (all->err);
-}
-
-void	end(t_all_struct *all)
-{
-	int	retourne;
-
-	retourne = show_error(all);
-	free_all(all);
-	clear_history();
-	exit(retourne);
+	put_color_txt(ROUGE);
+	printf("Error Parsing :\t");
+	put_color_txt(JAUNE);
+	if (iderr == 0)
+		printf("Y a pas d'erreur.");
+	else if (iderr == 1)
+		printf("Les cotes ne sont pas refermée.");
+	printf("\n");
+	put_color_txt(EMPTY_COLOR);
 }

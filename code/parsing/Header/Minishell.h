@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 23:06:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 09:33:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int		get_all_input(t_prompt *promp);
 int		parsing(t_all_struct *all);
 int		first_parsing(t_all_struct *all);
 int		fusion_str_and_env(t_node *tete_str);
+void	error_parsing(int iderr);
+//
+int		find_cote_and_va(t_node *n, int previous_type);
 
 // Fonction de fin
 
@@ -56,5 +59,6 @@ int		add_last_node(t_node **tete, char *str);
 void	show_color(void);
 void	put_color_txt(int color);
 void	show_prompt(t_prompt *promp);
+void	show_type_input(int ti);
 
 #endif

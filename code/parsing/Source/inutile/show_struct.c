@@ -6,77 +6,77 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 22:35:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 09:38:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-void	show_type_input2(t_node *n)
+void	show_type_input2(int ti)
 {
-	if (n->type_input == CMD)
+	if (ti == CMD)
 		printf("CMD");
-	else if (n->type_input == ARGUMENT)
+	else if (ti == ARGUMENT)
 		printf("ARGUMENT");
-	else if (n->type_input == VA_ENV)
+	else if (ti == VA_ENV)
 	{
 		put_color_txt(JAUNE);
 		printf("VA_ENV");
 	}
-	else if (n->type_input == VA_RETOUR)
+	else if (ti == VA_RETOUR)
 		printf("VA_RETOUR");
-	else if (n->type_input == R_IN)
+	else if (ti == R_IN)
 		printf("R_IN");
-	else if (n->type_input == R_OUT)
+	else if (ti == R_OUT)
 		printf("R_OUT");
-	else if (n->type_input == R_IN_LIMIT)
+	else if (ti == R_IN_LIMIT)
 		printf("R_IN_LIMIT");
-	else if (n->type_input == R_OUT_ADD)
+	else if (ti == R_OUT_ADD)
 		printf("R_OUT_ADD");
-	else if (n->type_input == F_RD)
+	else if (ti == F_RD)
 		printf("F_RD");
-	else if (n->type_input == PIP)
+	else if (ti == PIP)
 		printf("PIP");
 	put_color_txt(EMPTY_COLOR);
 }
 
-void	show_type_input(t_node *n)
+void	show_type_input(int ti)
 {
 	put_color_txt(VERT);
-	if (n->type_input == NON_DEFINI)
+	if (ti == NON_DEFINI)
 	{
 		put_color_txt(ROUGE);
 		printf("NON defini!!");
 	}
-	else if (n->type_input == STR)
+	else if (ti == STR)
 	{
 		put_color_txt(EMPTY_COLOR);
 		printf("STR");
 	}
-	else if (n->type_input == SINGLE_COTE)
+	else if (ti == SINGLE_COTE)
 	{
 		put_color_txt(BLEU);
 		printf("SINGLE_COTE");
 	}
-	else if (n->type_input == DOUBLE_COTE)
+	else if (ti == DOUBLE_COTE)
 	{
 		put_color_txt(CYAN);
 		printf("DOUBLE_COTE");
 	}
-	else if (n->type_input == SEPARATOR)
+	else if (ti == SEPARATOR)
 		printf("SEPARATOR");
-	show_type_input2(n);
+	show_type_input2(ti);
 }
 
 void	show_prompt(t_prompt *promp)
 {
 	t_node	*tmp;
 
-	put_color_txt(JAUNE);
-	printf("adresse de la strcuture promp : %p\n", promp);
-	printf("Invitée de commande :");
-	put_color_txt(EMPTY_COLOR);
-	printf("%s\n", promp->invite);
+	// put_color_txt(JAUNE);
+	// printf("adresse de la strcuture promp : %p\n", promp);
+	// printf("Invitée de commande :");
+	// put_color_txt(EMPTY_COLOR);
+	// printf("%s\n", promp->invite);
 	tmp = promp->all_cmd_line;
 	while (tmp)
 	{
@@ -88,9 +88,10 @@ void	show_prompt(t_prompt *promp)
 		put_color_txt(VERT);
 		printf("\"%s\"\n", tmp->str);
 		printf("Type node = ");
-		show_type_input(tmp);
+		show_type_input(tmp->type_input);
 		printf("\n");
 		tmp = tmp->next_node;
 	}
 	put_color_txt(EMPTY_COLOR);
+	printf("---\n");
 }

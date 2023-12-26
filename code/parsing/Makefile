@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/26 00:01:42 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/26 09:35:09 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ PARSING_FILES =	first_parsing.c				\
 				get_all_input.c				\
 				manipulation_all_cmd_line.c	\
 				parsing.c					\
+				error_parsing.c				\
 				${addprefix ${FIND_TYPE_PATH}, ${FIND_TYPE_FILES}}
 
 

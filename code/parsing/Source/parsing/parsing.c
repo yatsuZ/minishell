@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 23:56:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 09:08:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ t_execute	*prompt_to_execute(t_all_struct *all)
 
 void	fusion_cote(t_all_struct *all)
 {
-
+	if (!all)
+		return ;
 }
 
 void	fusion_va(t_all_struct *all)
 {
-	
+	if (!all)
+		return ;
 }
 
 // Fonction qui va permertre de defnir quelle sont les type d'inpute
@@ -42,14 +44,14 @@ int	parsing(t_all_struct *all)
 {
 	int	err_parsing;
 
-	err_parsing = find_cote_and_va(all);
+	err_parsing = find_cote_and_va(all->prompte->all_cmd_line, NON_DEFINI);
 	if (err_parsing)
 		return (err_parsing);
-	fusion_cote(all);
-	fusion_va(all);
-	err_parsing = find_all_rd_and_pip(all);
-	if (err_parsing)
-		return (err_parsing);
+	// fusion_cote(all);
+	// fusion_va(all);
+	// err_parsing = find_all_rd_and_pip(all);
+	// if (err_parsing)
+	// 	return (err_parsing);
 	// err_parsing = first_parsing(all);
 	return (err_parsing);
 }
