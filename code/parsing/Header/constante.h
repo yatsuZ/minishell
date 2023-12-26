@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 17:02:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 15:23:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef enum e_color {
 // | doit faire une redirection de sortie principal quoi qu'il arrive
 typedef enum e_type_input {
 	NON_DEFINI,
-	BACK_SLASH,
 	STR,
 	SINGLE_COTE ,
 	DOUBLE_COTE ,

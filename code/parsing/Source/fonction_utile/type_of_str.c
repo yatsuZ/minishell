@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:12:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/24 17:57:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 18:29:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,23 @@ int	type_of_str(char *s)
 	return (-2);
 }
 
-int	is_str_or_cote(int type)
+size_t	is_separator(char *str, size_t i)
 {
-	return (type == STR || type == SINGLE_COTE || type == DOUBLE_COTE);
+	size_t	res;
+
+	res = 0;
+	if (!str[i])
+		return (res);
+	if ((str[i] == '>' && str[i + 1] == '>') || \
+	(str[i] == '<' && str[i + 1] == '<'))
+		return (2);
+	while (str[i + res] == ' ' || str[i + res] == '\t')
+	{
+		res++;
+	}
+	if (str[i] == '>' || str[i] == '<' || str[i] == '\'' \
+	|| str[i] == '\"' || str[i] == '|' || str[i] == '$' \
+	|| str[i] == '\\')
+		return (1);
+	return (res);
 }

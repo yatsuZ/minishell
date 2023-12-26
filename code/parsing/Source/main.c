@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:44:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 21:42:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,17 @@ void	ft_minishell(t_all_struct *all)
 	int	tour;
 	int	iderr;
 
-	tour = 2;
+	tour = 3;
 	while (tour--)
 	{
-		all->err = get_all_input(all->prompte);
-		if (all->err)
-			return ;
 		iderr = parsing(all);
 		show_prompt(all->prompte);
 		if (iderr)
 			error_parsing(iderr);
-		else
-			add_history(all->prompte->brut);
-		free_all_node(all->prompte->all_cmd_line);
+		add_history(all->prompte->brut);
 		free(all->prompte->brut);
 		all->prompte->brut = NULL;
+		free_all_node(all->prompte->all_cmd_line);
 		all->prompte->all_cmd_line = NULL;
 	}
 }

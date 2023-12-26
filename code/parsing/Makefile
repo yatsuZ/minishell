@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/26 09:35:09 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/26 18:25:13 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,13 @@ INUTILE_FILES = color.c	\
 FIND_TYPE_PATH =	find_type_input/
 FIND_TYPE_FILES =	cote_and_va_env.c	\
 					find_all_rd_and_pip.c
+FUSION_TYPE_PATH =	fusion_node/
+FUSION_TYPE_FILES =	fusion_cote.c
 PARSING_PATH = parsing/
-PARSING_FILES =	first_parsing.c				\
-				get_all_input.c				\
-				manipulation_all_cmd_line.c	\
-				parsing.c					\
+PARSING_FILES =	parsing.c					\
 				error_parsing.c				\
-				${addprefix ${FIND_TYPE_PATH}, ${FIND_TYPE_FILES}}
+				${addprefix ${FIND_TYPE_PATH}, ${FIND_TYPE_FILES}}	\
+				${addprefix ${FUSION_TYPE_PATH}, ${FUSION_TYPE_FILES}}
 
 
 STRUCT_PATH = struct/

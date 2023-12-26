@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 09:30:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:37:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 21:13:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,19 @@ void	error_parsing(int iderr)
 	if (iderr == 0)
 		printf("Y a pas d'erreur.");
 	else if (iderr == 1)
-		printf("Les cotes ne sont pas refermée.");
+		printf("SINGLE COTE non refermée.");
+	else if (iderr == 2)
+		printf("DOUBLE COTE non refermée.");
+	else if (iderr == 3)
+		printf("PIP a la suite.");
+	else if (iderr == 4)
+		printf("TERMINE par un PIP.");
+	else if (iderr == 5)
+		printf("COMMENCE par un PIP.");
+	else if (iderr == 6)
+		printf("Termine par une REDIRECTION VIDE");
+	else if (iderr == 7)
+		printf("REDIRECTION VIDE");
 	printf("\n");
 	put_color_txt(EMPTY_COLOR);
 }

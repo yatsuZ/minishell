@@ -6,13 +6,23 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:38:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 21:44:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-void	show_type_input2(int ti)
+void	show_type_input3(t_type_input ti)
+{
+	if (ti == PIP)
+	{
+		put_color_txt(MAGENTA);
+		printf("PIP");
+	}
+	put_color_txt(EMPTY_COLOR);
+}
+
+void	show_type_input2(t_type_input ti)
 {
 	if (ti == CMD)
 		printf("CMD");
@@ -25,7 +35,8 @@ void	show_type_input2(int ti)
 	}
 	else if (ti == VA_RETOUR)
 		printf("VA_RETOUR");
-	else if (ti == R_IN)
+	put_color_txt(BLANC);
+	if (ti == R_IN)
 		printf("R_IN");
 	else if (ti == R_OUT)
 		printf("R_OUT");
@@ -35,12 +46,10 @@ void	show_type_input2(int ti)
 		printf("R_OUT_ADD");
 	else if (ti == F_RD)
 		printf("F_RD");
-	else if (ti == PIP)
-		printf("PIP");
-	put_color_txt(EMPTY_COLOR);
+	show_type_input3(ti);
 }
 
-void	show_type_input(int ti)
+void	show_type_input(t_type_input ti)
 {
 	put_color_txt(VERT);
 	if (ti == NON_DEFINI)
@@ -68,16 +77,8 @@ void	show_type_input(int ti)
 	show_type_input2(ti);
 }
 
-void	show_prompt(t_prompt *promp)
+void	show_node(t_node *tmp)
 {
-	t_node	*tmp;
-
-	// put_color_txt(JAUNE);
-	// printf("adresse de la strcuture promp : %p\n", promp);
-	// printf("Invitée de commande :");
-	// put_color_txt(EMPTY_COLOR);
-	// printf("%s\n", promp->invite);
-	tmp = promp->all_cmd_line;
 	while (tmp)
 	{
 		printf("---\n");
@@ -94,4 +95,20 @@ void	show_prompt(t_prompt *promp)
 	}
 	put_color_txt(EMPTY_COLOR);
 	printf("---\n");
+}
+
+void	show_prompt(t_prompt *promp)
+{
+	put_color_txt(JAUNE);
+	printf("adresse de la strcuture promp : %p\n", promp);
+	printf("Invitée de commande :");
+	put_color_txt(EMPTY_COLOR);
+	printf("%s\n", promp->invite);
+	printf("input BRUT = %s\n", promp->brut);
+	show_node(promp->all_cmd_line);
+	put_color_txt(MAGENTA);
+	printf("Nombre de PIP\t: %d\n", promp->nbr_of_pip);
+	put_color_txt(CYAN);
+	printf("Nombre de RD \t: %d\n", promp->nbr_of_rd);
+	put_color_txt(EMPTY_COLOR);
 }

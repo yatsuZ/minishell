@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:08:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 21:41:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@ t_execute	*prompt_to_execute(t_all_struct *all)
 	if (!all)
 		return (NULL);
 	return (NULL);
-}
-
-void	fusion_cote(t_all_struct *all)
-{
-	if (!all)
-		return ;
 }
 
 void	fusion_va(t_all_struct *all)
@@ -44,14 +38,19 @@ int	parsing(t_all_struct *all)
 {
 	int	err_parsing;
 
+	all->prompte->brut = readline(all->prompte->invite);
+	str_to_node(all->prompte->brut, &(all->prompte->all_cmd_line));
 	err_parsing = find_cote_and_va(all->prompte->all_cmd_line, NON_DEFINI);
 	if (err_parsing)
 		return (err_parsing);
-	// fusion_cote(all);
+	fusion_cote(all->prompte->all_cmd_line);
+	err_parsing = find_all_rd_and_pip(all->prompte);
+	if (err_parsing)
+		return (err_parsing);
 	// fusion_va(all);
-	// err_parsing = find_all_rd_and_pip(all);
-	// if (err_parsing)
-	// 	return (err_parsing);
-	// err_parsing = first_parsing(all);
+	// find_cmd_and_arg(all);
 	return (err_parsing);
 }
+
+// Je dois cree un strcuture qui recupere 
+// l'environement et couper la string de l'env quavec les separateur

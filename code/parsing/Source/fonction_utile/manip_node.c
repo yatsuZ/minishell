@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 22:35:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 18:30:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,20 @@ void	index_update(t_node *n)
 	}
 }
 
-void	del_node(t_node *n)
+void	del_next_node(t_node *n)
 {
 	t_node	*new_n;
 
-	new_n = n->next_node;
-	n->next_node = NULL;
-	free_node(n);
-	n = new_n;
+	if (n == NULL || n->next_node == NULL)
+		return ;
+	new_n = n->next_node->next_node;
+	n->next_node->next_node = NULL;
+	free_node(n->next_node);
+	n->next_node = new_n;
 	index_update(n);
 }
 
-// fusion le noeud actuel par le suivant et remplace
-// le type sauf si new_type == -1
-// fusion les str et change lindex de tout les noeud
-// suivant ne fais rien ren si il na pas de noeud suivant
+// fusionne les noeud -1 garde le meme type
 void	fusion_node(t_node *n, int new_type)
 {
 	char	*new_str;
@@ -49,8 +48,37 @@ void	fusion_node(t_node *n, int new_type)
 		return ;
 	new_str = ft_strjoin(n->str, n->next_node->str);
 	free(n->str);
+	n->str = NULL;
 	n->str = new_str;
-	del_node(n->next_node);
+	del_next_node(n);
 	if (new_type != -1)
 		n->type_input = new_type;
+}
+
+void	str_to_node(char *str, t_node **res)
+{
+	size_t	i_start;
+	size_t	i_end;
+
+	if (!str)
+		return ;
+	i_end = 0;
+	i_start = 0;
+	while (str[i_end])
+	{
+		if (is_separator(str, i_end) != 0)
+		{
+			i_start = i_end;
+			i_end = i_end + is_separator(str, i_start);
+			add_last_node(res, ft_strcut(str, i_start, i_end));
+		}
+		if (is_separator(str, i_end) == 0 && str[i_end])
+		{
+			i_start = i_end;
+			while (is_separator(str, i_end) == 0 && str[i_end])
+				i_end++;
+			add_last_node(res, ft_strcut(str, i_start, i_end));
+			i_start = i_end;
+		}
+	}
 }

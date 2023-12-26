@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 09:40:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/26 21:36:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_node
 {
 	char			*str;
 	struct s_node	*next_node;
-	int				type_input;
+	t_type_input	type_input;
 	size_t			index;
 }	t_node;
 
@@ -45,11 +45,14 @@ typedef struct s_prompt
 	char	*brut;
 	t_node	*all_cmd_line;
 	int		err_parsing;
+	int		nbr_of_pip;
+	int		nbr_of_rd;
 }	t_prompt;
 
 typedef struct s_all_struct
 {
 	struct s_prompt	*prompte;
+	// char			**env;
 	int				err;
 }	t_all_struct;
 
