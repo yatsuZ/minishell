@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 14:52:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 20:57:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ void	show_prompt(t_prompt *promp)
 
 void	show_all_va(t_env *env)
 {
+	size_t	i;
+
+	i = 0;
 	put_color_txt(JAUNE);
 	printf("adresse de la strcuture env : %p\n", env);
 	if (!env)
@@ -126,15 +129,15 @@ void	show_all_va(t_env *env)
 	{
 		while (env)
 		{
-			printf("-----\n");
+			printf("-----\t%ld\n", i++);
 			put_color_txt(VERT);
-			printf("KEY\t=\t\"%s\"\n", env->key);
+			printf("KEY\t\t=\t\"%s\"\n", env->key);
 			put_color_txt(BLEU);
 			printf("VALUE\t=\t\"%s\"\n", env->value);
 			env = env->next_va;
 		}
-			printf("-----\n");
+			put_color_txt(ROUGE);
+			printf("-----\t%ld\nKEY\t\t=\t\"%p\"\nVALUE\t=\t\"%p\"\n-----\n", i, env, env);
 	}
-
 	put_color_txt(EMPTY_COLOR);
 }

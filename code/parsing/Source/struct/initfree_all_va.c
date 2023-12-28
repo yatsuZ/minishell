@@ -6,39 +6,52 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 15:50:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 21:18:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-static t_env *copy_env(t_env *tete, char **arg, size_t i, int *err)
+static t_env	*copy_env(t_env *tete, char **arg, size_t i, int *err)
 {
 	size_t	start;
 	size_t	stop;
 
-	if (arg[i] == NULL || *err)
+	if (arg[i] == NULL || *err > 0)
+		return (NULL);
+	else if (arg[i] == NULL)
 	{
-		tete = NULL;
-		return ;
+		if (*err == -1)
+		{
+			tete = ft_calloc(1, sizeof(t_env));
+			if (!tete)
+				return (*err = 1, NULL);
+			tete->key = ft_strdup("PWD");
+			tete->value = getcwd(0, 0);
+			tete->next_va = NULL;
+			return (tete);
+		}
 	}
 	tete = ft_calloc(1, sizeof(t_env));
 	if (!tete)
-	{
-		*err = 1;
-		return ;
-	}
+		return (*err = 1, NULL);
 	start = 0;
 	stop = 0;
 	while (arg[i][stop] != '=')
 		stop++;
 	tete->key = ft_strcut(arg[i], start, stop);
 	start = stop + 1;
-	while (arg[i][stop] != '=')
+	while (arg[i][stop])
 		stop++;
-	tete->value = ft_strcut(arg[i], start, stop);
-	i++;
-	copy_env(tete->next_va, arg, i, err);
+	if (ft_strcpm(tete->key, "PWD"))
+	{
+		*err = 0;
+		tete->value = ft_strcut(arg[i], start, stop);
+	}
+	else
+		tete->value = ft_strcut(arg[i], start, stop);
+	tete->next_va = copy_env(tete->next_va, arg, ++i, err);
+	return (tete);
 }
 
 int	init_all_va(t_env **all_va, char **arg_env)
@@ -46,7 +59,7 @@ int	init_all_va(t_env **all_va, char **arg_env)
 	t_env	*res;
 	int		err;
 
-	err = 0;
+	err = -1;
 	if (!arg_env || !arg_env[0])
 	{
 		res = ft_calloc(1, sizeof(t_env));
@@ -59,7 +72,7 @@ int	init_all_va(t_env **all_va, char **arg_env)
 	else
 	{
 		res = NULL;
-		copy_env(res, arg_env, 0, &err);
+		res = copy_env(res, arg_env, 0, &err);
 	}
 	return ((*all_va) = res, err);
 }

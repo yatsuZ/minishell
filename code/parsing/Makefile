@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/28 15:46:05 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/28 21:16:10 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ FIND_TYPE_PATH =	find_type_input/
 FIND_TYPE_FILES =	cote_and_va_env.c	\
 					find_all_rd_and_pip.c
 FUSION_TYPE_PATH =	fusion_node/
-FUSION_TYPE_FILES =	fusion_cote.c
+FUSION_TYPE_FILES =	fusion_cote.c	\
+					fusion_va.c
 PARSING_PATH = parsing/
 PARSING_FILES =	parsing.c					\
 				error_parsing.c				\

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 21:41:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 21:06:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	parsing(t_all_struct *all)
 	err_parsing = find_all_rd_and_pip(all->prompte);
 	if (err_parsing)
 		return (err_parsing);
-	// fusion_va(all);
+	fusion_va(all);
 	// find_cmd_and_arg(all);
 	return (err_parsing);
 }

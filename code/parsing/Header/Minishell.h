@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 15:46:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 21:15:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		find_cote_and_va(t_node *n, int previous_type);
 int		find_all_rd_and_pip(t_prompt *p);
 // fusion
 void	fusion_cote(t_node *all);
+void	fusion_va(t_all_struct *all);
 
 // Fonction de fin
 
