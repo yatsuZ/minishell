@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 21:42:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:47:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ void	ft_minishell(t_all_struct *all)
 	}
 }
 
-int	main(void)
+int	main(int ac, char **av, char **env)
 {
+	(void)	ac;
+	(void)	av;
 	t_all_struct	*all;
 
-	if (init_all(&all))
+	if (init_all(&all, env))
 		end(all);
-	ft_minishell(all);
+	show_all_va(all->all_va);
+	// ft_minishell(all);
 	end(all);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 21:44:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 14:52:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,31 @@ void	show_prompt(t_prompt *promp)
 	printf("Nombre de PIP\t: %d\n", promp->nbr_of_pip);
 	put_color_txt(CYAN);
 	printf("Nombre de RD \t: %d\n", promp->nbr_of_rd);
+	put_color_txt(EMPTY_COLOR);
+}
+
+void	show_all_va(t_env *env)
+{
+	put_color_txt(JAUNE);
+	printf("adresse de la strcuture env : %p\n", env);
+	if (!env)
+	{
+		put_color_txt(ROUGE);
+		printf("ENV est null\n");
+	}
+	else
+	{
+		while (env)
+		{
+			printf("-----\n");
+			put_color_txt(VERT);
+			printf("KEY\t=\t\"%s\"\n", env->key);
+			put_color_txt(BLEU);
+			printf("VALUE\t=\t\"%s\"\n", env->value);
+			env = env->next_va;
+		}
+			printf("-----\n");
+	}
+
 	put_color_txt(EMPTY_COLOR);
 }

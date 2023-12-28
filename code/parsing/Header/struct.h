@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 21:36:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 14:51:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,18 @@ typedef struct s_prompt
 	int		nbr_of_rd;
 }	t_prompt;
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next_va;
+}	t_env;
+
 typedef struct s_all_struct
 {
 	struct s_prompt	*prompte;
-	// char			**env;
+
+	t_env			*all_va;
 	int				err;
 }	t_all_struct;
 

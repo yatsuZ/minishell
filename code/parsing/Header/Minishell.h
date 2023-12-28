@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 19:41:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:46:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	str_to_node(char *str, t_node **res);
 
 // Structure
 
-int		init_all(t_all_struct **res);
+int		init_all(t_all_struct **res, char **env);
 int		init_prompt(t_prompt **promp);
 int		init_node(t_node **n, char *str);
 void	free_all(t_all_struct *all);
@@ -57,6 +57,8 @@ void	free_node(t_node *n);
 void	free_all_node(t_node *tete);
 int		add_node(t_node *previous_n, char *str);
 int		add_last_node(t_node **tete, char *str);
+int		init_all_va(t_env **all_va, char **arg_env);
+void	free_all_va(t_env *all_va);
 
 // Fonction Inutile
 
@@ -64,5 +66,6 @@ void	show_color(void);
 void	put_color_txt(int color);
 void	show_prompt(t_prompt *promp);
 void	show_type_input(t_type_input ti);
+void	show_all_va(t_env *env);
 
 #endif

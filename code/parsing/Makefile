@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/26 18:25:13 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/28 15:46:05 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,9 @@ PARSING_FILES =	parsing.c					\
 
 
 STRUCT_PATH = struct/
-STRUCT_FILES = 	initfree_all.c	\
-				initfree_node.c	\
+STRUCT_FILES = 	initfree_all.c		\
+				initfree_node.c		\
+				initfree_all_va.c		\
 				initfree_prompt.c
 
 MINISHELL_PATH = Source/
