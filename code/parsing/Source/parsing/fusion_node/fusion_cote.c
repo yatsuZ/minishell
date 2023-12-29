@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:46:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 21:39:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/29 18:14:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	fusion_double_cote(t_node *n)
 		return (fusion_cote(n->next_node));
 	while (n->next_node->type_input != DOUBLE_COTE)
 	{
-		if (n->next_node->type_input == VA_ENV) //[X]->[] == $
+		if (n->next_node->type_input == VA_ENV)
 		{
-			n = n->next_node;// [X]->[$]
-			if (n->next_node->type_input == DOUBLE_COTE) // [$]->[] == "
-				return (fusion_cote(n->next_node->next_node));// [$]->["]->[X]
-			n = n->next_node->next_node;//[$]->[KEY]->[X]
-			if (n->type_input == DOUBLE_COTE) //[X] == "
+			n = n->next_node;
+			if (n->next_node->type_input == DOUBLE_COTE)
+				return (fusion_cote(n->next_node->next_node));
+			n = n->next_node->next_node;
+			if (n->type_input == DOUBLE_COTE)
 				return (fusion_cote(n->next_node));
 		}
 		else

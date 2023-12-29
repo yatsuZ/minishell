@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 21:15:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/29 22:03:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	error_parsing(int iderr);
 // find
 int		find_cote_and_va(t_node *n, int previous_type);
 int		find_all_rd_and_pip(t_prompt *p);
+void	find_cmd_and_arg(t_node *node, t_type_input previous, int option);
 // fusion
 void	fusion_cote(t_node *all);
-void	fusion_va(t_all_struct *all);
+void	fusion_va(t_env *all_va, t_node *n);
 
 // Fonction de fin
 
@@ -41,11 +42,12 @@ char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strcut(const char *s, size_t start, size_t end);
 int		is_a_legit_va_env(char *str);
-int		type_of_str(char *s);
+int		type_of_str(char c);
 void	fusion_node(t_node *n, int new_type);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	is_separator(char *str, size_t i);
 void	str_to_node(char *str, t_node **res);
+char	*get_value(t_env *all_va, char *key);
 
 // Structure
 

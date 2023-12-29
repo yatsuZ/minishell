@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/28 21:16:10 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/29 22:03:59 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,14 @@ FT_UTILE_FILES =	ft_calloc.c		\
 					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 
 INUTILE_PATH = inutile/
-INUTILE_FILES = color.c	\
-				show_struct.c
+INUTILE_FILES = color.c			\
+				show_struct.c	\
+				show_struct2.c
 
 FIND_TYPE_PATH =	find_type_input/
-FIND_TYPE_FILES =	cote_and_va_env.c	\
-					find_all_rd_and_pip.c
+FIND_TYPE_FILES =	cote_and_va_env.c		\
+					find_all_rd_and_pip.c	\
+					find_cmd_and_arg.c
 FUSION_TYPE_PATH =	fusion_node/
 FUSION_TYPE_FILES =	fusion_cote.c	\
 					fusion_va.c
