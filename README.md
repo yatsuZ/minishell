@@ -31,7 +31,13 @@ Et pour faciliter le suivi du projet voici le chahier des charger / Liste de cho
 | [1](./code/1/) | Fair un invité de commande et pouvoir quité avec ctrl+D et exit	 | ✅ | Y |
 | [test fonction externe](./code/test_ft/) | Teste chaque fonction externe pour bien comprendre leur utilité	 | ✅ | Y |
 | [Determiner objectif de travail](./documentation/objectif.md) | Je suis paume je dois me donner des objectif precis | ✅ | Y |
-| [Ebauche](./code/Ebauche) | Je ne sais pas quoi faire mais je dois coder ☠️ je vais coder un read avec mon get next line evoire ce que je peux faire enfaite.| ❌ | Y |
+| [Ebauche](./code/Ebauche) | Je ne sais pas quoi faire mais je dois coder ☠️ je vais coder un read avec mon get next line evoire ce que je peux faire enfaite.| ✅ | Y |
+| [Parsing](./code/parsing) | Parsing recuperer une stringet la trasnformer en un structure specifique. Rajouter la va PATH| ✅ | Y |
+| [Parsing2](./code/parsing2) | Transformée ma structure de parsing en strucutrue d'exec avec les RD PIP etc.| ❌ | Y |
+| [EXEC](./code/exec) | A present executer mes executable | ❌ | Y |
+| [Signal](./code/signal) | Rajouter les signal et la variable denvironement $? comme variable global | ❌ | Y |
+| [BULTIN](./code/builtin) | Rajouter les builtin demande | ❌ | Y |
+
 
 **Légende des colone :**
 - Colone DOSSIER : Redirection vers les dossier en question.

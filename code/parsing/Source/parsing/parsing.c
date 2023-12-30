@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 19:09:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/30 19:50:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-static void	cut_new_space(t_node **tete, t_node *prev)
+void	cut_new_space(t_node **tete, t_node *prev)
 {
 	if (!(*tete))
 		return ;
@@ -22,15 +22,6 @@ static void	cut_new_space(t_node **tete, t_node *prev)
 	cut_new_space(&(prev->next_node), prev);
 }
 
-// Fonction qui va permertre de defnir quelle sont les type d'inpute
-// Verifier les cote puis double cote entre les deux c'est des string
-// Verifier les variable global
-// puis modifie la structure node par consequent + verfie la syntax
-// Verifier les pip + le nombre de pip
-// Verifier les redirection
-// puis modifie la structure node par consequent + verfie la syntax
-// Modifier les variable global et modifier les str 
-// (refaire un decoupage en gros) Verifier les cmd
 int	parsing(t_all_struct *all)
 {
 	int	err_parsing;
@@ -50,6 +41,3 @@ int	parsing(t_all_struct *all)
 	find_cmd_and_arg(all->prompte->all_cmd_line, PIP, 0);
 	return (err_parsing);
 }
-
-// Je dois cree un strcuture qui recupere 
-// l'environement et couper la string de l'env quavec les separateur
