@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 17:05:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/30 19:08:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 void	index_update(t_node *n)
 {
 	t_node	*index_n;
+	int		i;
 
 	if (!n)
 		return ;
+	i = n->index;
 	index_n = n->next_node;
 	while (index_n)
 	{
-		index_n->index = index_n->index - 1;
+		index_n->index = i + 1;
 		index_n = index_n->next_node;
+		i++;
 	}
 }
 

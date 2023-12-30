@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 15:23:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/30 18:44:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef enum e_type_input {
 	DOUBLE_COTE ,
 	SEPARATOR ,
 	CMD ,
-	ARGUMENT ,
+	ARG ,
 	VA_ENV ,
 	VA_RETOUR ,
 	R_IN ,

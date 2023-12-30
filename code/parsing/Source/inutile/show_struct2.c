@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:12:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/29 18:15:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/30 19:09:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	show_type_input2(t_type_input ti)
 {
 	if (ti == CMD)
 		printf("CMD");
-	else if (ti == ARGUMENT)
+	else if (ti == ARG)
 		printf("ARGUMENT");
 	else if (ti == VA_ENV)
 	{
