@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2023/12/29 22:03:59 by yzaoui           ###   ########.fr        #
+#    Updated: 2023/12/30 17:08:18 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ FT_UTILE_PATH = fonction_utile/
 FT_UTILE_FILES =	ft_calloc.c		\
 					va_env1.c		\
 					manip_node.c	\
+					manip_node2.c	\
 					type_of_str.c	\
 					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 

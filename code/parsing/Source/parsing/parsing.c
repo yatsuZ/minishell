@@ -6,17 +6,20 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/29 22:02:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:53:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-t_execute	*prompt_to_execute(t_all_struct *all)
+static void	cut_new_space(t_node **tete, t_node *prev)
 {
-	if (!all)
-		return (NULL);
-	return (NULL);
+	if (!(*tete))
+		return ;
+	if ((*tete)->type_input != NON_DEFINI)
+		return (cut_new_space(&((*tete)->next_node), (*tete)));
+	prev = no_define_to_node(tete, &prev);
+	cut_new_space(&(prev->next_node), prev);
 }
 
 // Fonction qui va permertre de defnir quelle sont les type d'inpute
@@ -42,7 +45,7 @@ int	parsing(t_all_struct *all)
 	if (err_parsing)
 		return (err_parsing);
 	fusion_va(all->all_va, all->prompte->all_cmd_line);
-//	cut_new_space(all->prompte);
+	cut_new_space(&(all->prompte->all_cmd_line), NULL);
 //	find_cmd_and_arg(all->prompte, PIP, 0);
 	return (err_parsing);
 }
