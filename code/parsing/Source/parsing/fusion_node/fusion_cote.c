@@ -6,39 +6,37 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 14:46:16 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/29 18:14:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/02 00:49:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-static void	fusion_double_cote(t_node *n)
+static void	fusion_double_cote(t_node *present)
 {
-	if (n->type_input == VA_ENV)
+	t_node	*passe;
+	t_node	*futur;
+
+	passe = NULL;
+	futur = present->next_node;
+	while (present->type_input != DOUBLE_COTE)
 	{
-		n = n->next_node;
-		if (n->type_input == DOUBLE_COTE)
-			return (fusion_cote(n->next_node));
-		else
-			n = n->next_node;
-	}
-	if (n->type_input == DOUBLE_COTE)
-		return (fusion_cote(n->next_node));
-	while (n->next_node->type_input != DOUBLE_COTE)
-	{
-		if (n->next_node->type_input == VA_ENV)
+		if (present->type_input == VA_ENV && futur->type_input == DOUBLE_COTE)
+			present->type_input = STR;
+		else if ((!passe || passe->type_input != VA_ENV) && \
+		present->type_input == STR && futur->type_input == STR)
 		{
-			n = n->next_node;
-			if (n->next_node->type_input == DOUBLE_COTE)
-				return (fusion_cote(n->next_node->next_node));
-			n = n->next_node->next_node;
-			if (n->type_input == DOUBLE_COTE)
-				return (fusion_cote(n->next_node));
+			fusion_node(present, -1);
+			futur = present->next_node;
 		}
 		else
-			fusion_node(n, STR);
+		{
+			passe = present;
+			present = futur;
+			futur = futur->next_node;
+		}
 	}
-	fusion_cote(n->next_node->next_node);
+	fusion_cote(futur);
 }
 
 static void	fusion_single_cote(t_node *n)

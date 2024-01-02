@@ -6,73 +6,72 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/29 21:18:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/02 02:10:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-static void	fail_key(t_env *all_va, t_node *n, t_node *prev)
+static void	fail_key(t_env *all_va, t_node *pres, t_node *pass)
 {
-	if (prev && (prev->type_input == NON_DEFINI || prev->type_input == STR))
+	t_node	*futur;
+
+	futur = pres->next_node;
+	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR))
 	{
-		fusion_node(prev, -1);
-		n = prev;
+		fusion_node(pass, -1);
+		pres = pass;
 	}
-	else if (prev && (prev->type_input == DOUBLE_COTE))
-		n->type_input = STR;
+	else if (pass && pass->type_input == DOUBLE_COTE && futur &&(futur->type_input == STR || futur->type_input == DOUBLE_COTE))
+		pres->type_input = STR;
 	else
-		n->type_input = NON_DEFINI;
-	if (n->next_node == NULL || n->next_node->type_input == DOUBLE_COTE || \
-	n->next_node->type_input == SEPARATOR)
-		return (fusion_va(all_va, n->next_node));
-	else if (n->next_node->type_input == NON_DEFINI || \
-	n->next_node->type_input == STR)
-		fusion_node(n, -1);
-	if (n->next_node && n->next_node->type_input == STR)
-		fusion_node(n, -1);
-	return (fusion_va(all_va, n->next_node));
+		pres->type_input = NON_DEFINI;
+	futur = pres->next_node;
+	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
+		fusion_node(pres, -1);
+	futur = pres->next_node;
+	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
+		fusion_node(pres, -1);
+	fusion_va(all_va, pres->next_node, pres);
 }
 
-static void	next_is_va(t_env *all_va, t_node *n, t_node *prev)
+static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 {
+	t_node	*futur;
 	char	*value;
 
-	if (n->next_node == NULL || is_a_legit_va_env(n->next_node->str) == FALSE)
-		return (fail_key(all_va, n, prev));
-	value = get_value(all_va, n->next_node->str);
-	if (prev && (prev->type_input == STR || prev->type_input == DOUBLE_COTE))
-		fusion_node(n, STR);
+	futur = pres->next_node;
+	if (futur == NULL || is_a_legit_va_env(futur->str) == FALSE)
+		return (fail_key(all_va, pres, pass));
+	value = get_value(all_va, futur->str);
+	if (pass && (pass->type_input == STR || pass->type_input == DOUBLE_COTE))
+		fusion_node(pres, STR);
 	else
-		fusion_node(n, NON_DEFINI);
-	free(n->str);
-	n->str = NULL;
-	n->str = value;
-	if (prev && (prev->type_input == NON_DEFINI || prev->type_input == STR))
+		fusion_node(pres, NON_DEFINI);
+	free(pres->str);
+	pres->str = NULL;
+	pres->str = value;
+	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR))
 	{
-		fusion_node(prev, -1);
-		n = prev;
+		fusion_node(pass, -1);
+		pres = pass;
 	}
-	if (n->next_node && \
-	(n->next_node->type_input == STR || n->next_node->type_input == NON_DEFINI))
-		fusion_node(n, -1);
-	fusion_va(all_va, n);
+	futur = pres->next_node;
+	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
+		fusion_node(pres, -1);
+	fusion_va(all_va, pres->next_node, pres);
 }
 
-void	fusion_va(t_env *all_va, t_node *n)
+
+void	fusion_va(t_env *all_va, t_node *present, t_node *previous)
 {
-	if (!n || n->next_node == NULL)
+	if (!present)
 		return ;
-	if (n->type_input == VA_ENV)
+	if (present->type_input == VA_ENV)
 	{
-		next_is_va(all_va, n, NULL);
+		is_va(all_va, present, previous);
 		return ;
 	}
-	else if (n->next_node->type_input == VA_ENV)
-	{
-		next_is_va(all_va, n->next_node, n);
-		return ;
-	}
-	fusion_va(all_va, n->next_node);
+	fusion_va(all_va, present->next_node, present);
 	return ;
 }
