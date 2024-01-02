@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 02:07:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/02 16:58:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ t_node		*no_define_to_node(t_node **nodef, t_node **prev);
 size_t		is_space(char *str, size_t i);
 t_boolean	have_space(char *s, size_t i);
 void		index_update(t_node *n);
-
+t_node		*no_define_to_node2(char *str, size_t i_start, size_t i_end);
+void	remplace_node(t_node **old, t_node *new, \
+t_node **previous, t_node *next);
 // Structure
 
 int			init_all(t_all_struct **res, char **env);
