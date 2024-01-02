@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 02:10:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/02 02:33:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	fail_key(t_env *all_va, t_node *pres, t_node *pass)
 	t_node	*futur;
 
 	futur = pres->next_node;
-	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR))
+	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR || pass->type_input == F_RD))
 	{
 		fusion_node(pass, -1);
 		pres = pass;
@@ -44,7 +44,7 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 	if (futur == NULL || is_a_legit_va_env(futur->str) == FALSE)
 		return (fail_key(all_va, pres, pass));
 	value = get_value(all_va, futur->str);
-	if (pass && (pass->type_input == STR || pass->type_input == DOUBLE_COTE))
+	if (pass && (pass->type_input == STR || pass->type_input == DOUBLE_COTE || pass->type_input == F_RD))
 		fusion_node(pres, STR);
 	else
 		fusion_node(pres, NON_DEFINI);
