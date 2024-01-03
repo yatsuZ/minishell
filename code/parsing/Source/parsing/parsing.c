@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 17:28:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/03 01:54:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	parsing(t_all_struct *all)
 	if (err_parsing)
 		return (err_parsing);
 	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL);
-	// find_cmd_and_arg(all->prompte->all_cmd_line, PIP, 0);// refusion les non def avec les autre et les separator
-	// index_update(all->prompte->all_cmd_line);
+	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0);
+	index_update(all->prompte->all_cmd_line);
 	return (err_parsing);
 }

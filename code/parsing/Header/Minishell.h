@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 16:58:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/03 01:19:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int			parsing(t_all_struct *all);
 int			first_parsing(t_all_struct *all);
 int			fusion_str_and_env(t_node *tete_str);
 void		error_parsing(int iderr);
+int			del_cote(t_node *av, t_node *entre, int option);
+int			cmd_or_arg(t_node *n, t_node *p, int o);
 // find
 int			find_cote_and_va(t_node *n, int previous_type);
 int			find_all_rd_and_pip(t_prompt *p);
-void		find_cmd_and_arg(t_node *node, t_type_input previous, int option);
+void		find_cmd_and_arg(t_node *n, t_node *prev, int option);
 // fusion
 void		fusion_cote(t_node *all);
 void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
@@ -53,8 +55,10 @@ size_t		is_space(char *str, size_t i);
 t_boolean	have_space(char *s, size_t i);
 void		index_update(t_node *n);
 t_node		*no_define_to_node2(char *str, size_t i_start, size_t i_end);
-void	remplace_node(t_node **old, t_node *new, \
+void		remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next);
+void		del_next_node(t_node *n);
+
 // Structure
 
 int			init_all(t_all_struct **res, char **env);

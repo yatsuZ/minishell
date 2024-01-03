@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 18:02:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/02 23:43:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-static t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
+t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
 {
 	t_node	*nn;
 

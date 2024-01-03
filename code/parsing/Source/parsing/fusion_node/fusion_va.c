@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 17:24:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/03 01:53:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static void	fail_key(t_env *all_va, t_node *pres, t_node *pass)
 	t_node	*futur;
 
 	futur = pres->next_node;
-	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR || pass->type_input == F_RD))
+	if (pass && (pass->type_input == NON_DEFINI || \
+	pass->type_input == STR || pass->type_input == F_RD))
 	{
 		fusion_node(pass, -1);
 		pres = pass;
 	}
-	else if (pass && pass->type_input == DOUBLE_COTE && futur &&(futur->type_input == STR || futur->type_input == DOUBLE_COTE))
+	else if (pass && pass->type_input == DOUBLE_COTE && \
+	futur && (futur->type_input == STR || futur->type_input == DOUBLE_COTE))
 		pres->type_input = STR;
 	else
 		pres->type_input = NON_DEFINI;
@@ -33,6 +35,18 @@ static void	fail_key(t_env *all_va, t_node *pres, t_node *pass)
 	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
 		fusion_node(pres, -1);
 	fusion_va(all_va, pres->next_node, pres);
+}
+
+static void	quick_define(t_node *n)
+{
+	while (n)
+	{
+		if (n->str[0] == ' ' || n->str[0] == '\t')
+			n->type_input = SEPARATOR;
+		else
+			n->type_input = NON_DEFINI;
+		n = n->next_node;
+	}
 }
 
 static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
@@ -46,7 +60,9 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 		return (fail_key(all_va, pres, pass));
 	value = get_value(all_va, futur->str);
 	new_pres = no_define_to_node2(value, 0, 0);
-	if (pass && (pass->type_input == STR || pass->type_input == DOUBLE_COTE || pass->type_input == F_RD))
+	quick_define(new_pres);
+	if (pass && (pass->type_input == STR || \
+	pass->type_input == DOUBLE_COTE || pass->type_input == F_RD))
 		fusion_node(pres, STR);
 	else
 		fusion_node(pres, NON_DEFINI);
@@ -54,7 +70,6 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 	remplace_node(&pres, new_pres, &pass, futur);
 	fusion_va(all_va, pres->next_node, pres);
 }
-
 
 void	fusion_va(t_env *all_va, t_node *present, t_node *previous)
 {

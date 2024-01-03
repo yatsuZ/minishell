@@ -6,21 +6,26 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:37:37 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 19:40:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/03 01:48:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-static t_boolean	is_r(t_type_input type)
+static t_boolean	is_r(t_node *n)
 {
+	t_type_input	type;
+
+	if (!n)
+		return (FALSE);
+	type = n->type_input;
 	if (type == R_IN || type == R_IN_LIMIT || \
 	type == R_OUT || type == R_OUT_ADD)
 		return (TRUE);
 	return (FALSE);
 }
 
-static int	cmd_or_arg(t_node *n, t_type_input p, int o)
+int	cmd_or_arg(t_node *n, t_node *p, int o)
 {
 	if (!is_r(p))
 	{
@@ -36,29 +41,28 @@ static int	cmd_or_arg(t_node *n, t_type_input p, int o)
 	}
 	else
 		n->type_input = F_RD;
+	if (n->next_node && n->next_node->type_input == NON_DEFINI)
+		fusion_node(n, -1);
 	return (o);
 }
 
-void	find_cmd_and_arg(t_node *node, t_type_input previous, int option)
+void	find_cmd_and_arg(t_node *n, t_node *prev, int option)
 {
-	if (!node)
+	if (!n)
 		return ;
-	if (node->type_input == NON_DEFINI)
+	if (n->type_input == SEPARATOR && n->next_node \
+	&& n->next_node->type_input == SEPARATOR)
+		fusion_node(n, -1);
+	else if (n->type_input == NON_DEFINI)
+		option = cmd_or_arg(n, prev, option);
+	else if (n->type_input == DOUBLE_COTE || n->type_input == SINGLE_COTE)
 	{
-		option = cmd_or_arg(node, previous, option);
+		del_cote(prev, n, option);
+		return ;
 	}
-	else if (node->type_input == DOUBLE_COTE || node->type_input == SINGLE_COTE)
-	{
-		node = node->next_node;
-		if (node->type_input == STR)
-		{
-			option = cmd_or_arg(node, previous, option);
-			node = node->next_node;
-		}
-	}
-	if (node->type_input != SEPARATOR)
-		previous = node->type_input;
-	if (previous == PIP)
+	if (n->type_input != SEPARATOR)
+		prev = n;
+	if (prev && prev->type_input == PIP)
 		option = 0;
-	find_cmd_and_arg(node->next_node, previous, option);
+	find_cmd_and_arg(n->next_node, prev, option);
 }
