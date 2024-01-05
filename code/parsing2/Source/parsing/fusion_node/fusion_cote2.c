@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 03:11:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 12:51:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,25 @@ int	no_legit_fusion_str(t_node *av)
 	return (1);
 }
 
+int	is_legitfusion(t_node *av)
+{
+	if (!av)
+		return (1);
+	if (av->type_input == NON_DEFINI || av->type_input == CMD || \
+	av->type_input == ARG || av->type_input == F_RD)
+	{
+		if (av->next_node->type_input != SEPARATOR)
+			return (0);
+	}
+	return (1);
+}
+
 int	del_cote(t_node *av, t_node *entre, int option)
 {
 	t_type_input	t_cote;
 
 	t_cote = entre->next_node->type_input;
-	if (!av || av->next_node->type_input == SEPARATOR)
+	if (is_legitfusion(av))
 		option = pas_davant(av, entre, t_cote, option);
 	else
 	{
