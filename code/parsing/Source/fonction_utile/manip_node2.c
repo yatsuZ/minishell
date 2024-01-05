@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/02 23:43:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 03:09:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
 			i_start = i_end;
 		}
 	}
+	if (!nn)
+		add_last_node(&nn, ft_strdup(""));
 	return (nn);
 }
 
@@ -47,7 +49,7 @@ t_node	*get_last_node(t_node *tete)
 	}
 	return (tete);
 }
-
+// ndonzonfouezn rgefko)efko  | "" prout $ap,jep  '$ok" $' $"$"$a
 void	remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next)
 {

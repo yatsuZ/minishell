@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/03 01:53:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 02:27:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ static void	quick_define(t_node *n)
 
 static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 {
-	t_node	*futur;
+	t_node	*key;
 	char	*value;
 	t_node	*new_pres;
 
-	futur = pres->next_node;
-	if (futur == NULL || is_a_legit_va_env(futur->str) == FALSE)
+	key = pres->next_node;
+	if (key == NULL || is_a_legit_va_env(key->str) == FALSE)
 		return (fail_key(all_va, pres, pass));
-	value = get_value(all_va, futur->str);
+	value = get_value(all_va, key->str);
 	new_pres = no_define_to_node2(value, 0, 0);
 	quick_define(new_pres);
 	if (pass && (pass->type_input == STR || \
@@ -66,8 +66,8 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass)
 		fusion_node(pres, STR);
 	else
 		fusion_node(pres, NON_DEFINI);
-	futur = pres->next_node;
-	remplace_node(&pres, new_pres, &pass, futur);
+	key = pres->next_node;
+	remplace_node(&pres, new_pres, &pass, key);
 	fusion_va(all_va, pres->next_node, pres);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 21:17:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 04:17:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 // Faire un get prompte qui recupere 
 // tout le prompte de la meme maniere que geat next line.
+
+void	reset_var(t_all_struct *all)
+{
+	free(all->prompte->brut);
+	all->prompte->brut = NULL;
+	free_all_node(all->prompte->all_cmd_line);
+	all->prompte->all_cmd_line = NULL;
+}
 
 void	ft_minishell(t_all_struct *all)
 {
@@ -24,14 +32,13 @@ void	ft_minishell(t_all_struct *all)
 	while (tour--)
 	{
 		iderr = parsing(all);
-		show_prompt(all->prompte);
 		if (iderr)
 			error_parsing(iderr);
+		prompte_to_execute(all);
+		show_execute(all->exe, 0);
 		add_history(all->prompte->brut);
-		free(all->prompte->brut);
-		all->prompte->brut = NULL;
-		free_all_node(all->prompte->all_cmd_line);
-		all->prompte->all_cmd_line = NULL;
+		//EXECUTE
+		reset_var(all);
 	}
 }
 

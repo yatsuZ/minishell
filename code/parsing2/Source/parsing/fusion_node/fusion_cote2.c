@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/03 01:42:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 03:11:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	del_cote(t_node *av, t_node *entre, int option)
 	t_type_input	t_cote;
 
 	t_cote = entre->next_node->type_input;
-	if (!av || av->next_node->type_input != SEPARATOR)
+	if (!av || av->next_node->type_input == SEPARATOR)
 		option = pas_davant(av, entre, t_cote, option);
 	else
 	{

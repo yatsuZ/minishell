@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/28 14:51:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 04:12:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 typedef struct s_redirection
 {
-	char					*str_rd;
 	char					*str_file;
-	int						type_rd;
+	t_type_input			type_rd;
 	struct s_redirection	*next;
 }	t_redirection;
 
@@ -59,7 +58,7 @@ typedef struct s_env
 typedef struct s_all_struct
 {
 	struct s_prompt	*prompte;
-
+	t_execute		*exe;
 	t_env			*all_va;
 	int				err;
 }	t_all_struct;

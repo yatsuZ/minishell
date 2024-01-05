@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/03 01:19:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 04:41:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void		find_cmd_and_arg(t_node *n, t_node *prev, int option);
 // fusion
 void		fusion_cote(t_node *all);
 void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
+
+// Execution
+void	prompte_to_execute(t_all_struct *all);
 
 // Fonction de fin
 
@@ -72,6 +75,11 @@ int			add_node(t_node *previous_n, char *str);
 int			add_last_node(t_node **tete, char *str);
 int			init_all_va(t_env **all_va, char **arg_env);
 void		free_all_va(t_env *all_va);
+t_execute	*init_execute(char *cmd, char **arg, t_redirection *rd, int *err);
+void		free_execute(t_execute *res);
+t_redirection\
+			*init_redirection(char *f, t_type_input t_rd, int *err);
+void		free_redirection(t_redirection *rd);
 
 // Fonction Inutile
 
@@ -81,5 +89,6 @@ void		show_prompt(t_prompt *promp);
 void		show_type_input(t_type_input ti);
 void		show_all_va(t_env *env);
 void		show_node(t_node *tmp);
+void		show_execute(t_execute *exe, size_t i);
 
 #endif

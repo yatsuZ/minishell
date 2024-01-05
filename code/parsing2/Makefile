@@ -6,11 +6,14 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/02 23:41:43 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/05 01:46:40 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
+
+EXECUTION_PATH = execution/
+EXECUTION_FILES =	prompte_to_execute.c
 
 STR_MANIP_PATH = str_manip/
 STR_MANIP_FILES = 	ft_strcpm.c		\
@@ -29,7 +32,8 @@ FT_UTILE_FILES =	ft_calloc.c		\
 INUTILE_PATH = inutile/
 INUTILE_FILES = color.c			\
 				show_struct.c	\
-				show_struct2.c
+				show_struct2.c	\
+				show_struct3.c
 
 FIND_TYPE_PATH =	find_type_input/
 FIND_TYPE_FILES =	cote_and_va_env.c		\
@@ -49,16 +53,19 @@ PARSING_FILES =	parsing.c					\
 STRUCT_PATH = struct/
 STRUCT_FILES = 	initfree_all.c		\
 				initfree_node.c		\
-				initfree_all_va.c		\
-				initfree_prompt.c
+				initfree_execute.c	\
+				initfree_all_va.c	\
+				initfree_prompt.c	\
+				initfree_redirection.c
 
 MINISHELL_PATH = Source/
-MINISHELL_FILES =	main.c 				\
-					error.c				\
+MINISHELL_FILES =	main.c 												\
+					error.c												\
 					${addprefix ${FT_UTILE_PATH}, ${FT_UTILE_FILES}}	\
 					${addprefix ${INUTILE_PATH}, ${INUTILE_FILES}}		\
 					${addprefix ${PARSING_PATH}, ${PARSING_FILES}}		\
-					${addprefix ${STRUCT_PATH}, ${STRUCT_FILES}}
+					${addprefix ${STRUCT_PATH}, ${STRUCT_FILES}}		\
+					${addprefix ${EXECUTION_PATH}, ${EXECUTION_FILES}}
 
 OBJ_PATH = obj/
 MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
