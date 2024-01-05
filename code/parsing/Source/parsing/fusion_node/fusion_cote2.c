@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 12:51:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 17:14:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ int	no_legit_fusion_str(t_node *av)
 	return (1);
 }
 
-int	is_legitfusion(t_node *av)
+int	is_legitfusion(t_node *av, int option)
 {
 	if (!av)
 		return (1);
 	if (av->type_input == NON_DEFINI || av->type_input == CMD || \
 	av->type_input == ARG || av->type_input == F_RD)
 	{
-		if (av->next_node->type_input != SEPARATOR)
+		if (option == 0 && av->next_node->type_input != SEPARATOR)
+			return (0);
+		else if (option)
 			return (0);
 	}
 	return (1);
@@ -71,7 +73,7 @@ int	del_cote(t_node *av, t_node *entre, int option)
 	t_type_input	t_cote;
 
 	t_cote = entre->next_node->type_input;
-	if (is_legitfusion(av))
+	if (is_legitfusion(av, 0))
 		option = pas_davant(av, entre, t_cote, option);
 	else
 	{
@@ -84,7 +86,7 @@ int	del_cote(t_node *av, t_node *entre, int option)
 		}
 		del_next_node(entre);
 	}
-	if (entre->next_node && entre->next_node == NON_DEFINI)
+	if (is_legitfusion(entre->next_node, 1) == 0)
 		fusion_node(entre, -1);
 	find_cmd_and_arg(entre->next_node, entre, option);
 	return (option);

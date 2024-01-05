@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:27:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 04:15:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 16:49:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ void	free_redirection(t_redirection *rd)
 	rd->next = NULL;
 	free(rd);
 	rd = NULL;
+}
+
+int	add_rd(t_redirection **all_rd, t_type_input t_rd, char *f)
+{
+	int	err;
+
+	if (*all_rd == NULL)
+	{
+		err = 0;
+		(*all_rd) = init_redirection(f, t_rd, &err);
+		return (err);
+	}
+	return (add_rd(&((*all_rd)->next), t_rd, f));
 }

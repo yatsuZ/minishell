@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 04:41:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 16:23:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ int			add_last_node(t_node **tete, char *str);
 int			init_all_va(t_env **all_va, char **arg_env);
 void		free_all_va(t_env *all_va);
 t_execute	*init_execute(char *cmd, char **arg, t_redirection *rd, int *err);
-void		free_execute(t_execute *res);
+void		free_execute(t_execute *exe);
 t_redirection\
 			*init_redirection(char *f, t_type_input t_rd, int *err);
 void		free_redirection(t_redirection *rd);
-
+int			add_rd(t_redirection **all_rd, t_type_input t_rd, char *f);
 // Fonction Inutile
 
 void		show_color(void);

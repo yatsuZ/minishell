@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:26:36 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 04:14:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/05 17:26:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	free_execute(t_execute *res)
 	i = 0;
 	if (!res)
 		return ;
-	free_redirection(res->all_rd);
+	if (res->all_rd)
+		free_redirection(res->all_rd);
 	if (res->arg)
 	{
 		while (res->arg[i])
@@ -43,7 +44,8 @@ void	free_execute(t_execute *res)
 		free(res->arg);
 		res->arg = NULL;
 	}
-	free(res->cmd);
+	if (res->cmd)
+		free(res->cmd);
 	res->cmd = NULL;
 	free_execute(res->pip);
 	res->pip = NULL;
