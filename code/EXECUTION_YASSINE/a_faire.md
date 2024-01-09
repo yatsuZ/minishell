@@ -1,5 +1,3 @@
-# Parsing 2
+# EXEC Yassine
 
-# Je dois tranfromer ma strcture prompte en structure execute
-
-JE dois transformer ma strcuture prompte en structure execute.
+Ce que je dois faire c'est l'execution et les heardoc, (Je dois jeter un coup d'oeil aux pip que j'ai fais).
