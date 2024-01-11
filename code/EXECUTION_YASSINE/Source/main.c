@@ -6,14 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:28:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 21:01:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
-
-// Faire un get prompte qui recupere 
-// tout le prompte de la meme maniere que geat next line.
 
 void	reset_var(t_all_struct *all)
 {
@@ -30,20 +27,20 @@ void	ft_minishell(t_all_struct *all)
 	int	tour;
 	int	iderr;
 
-	tour = 1;
+	tour = 4;
 	while (tour--)
 	{
 		iderr = parsing(all);
 		if (iderr)
 			error_parsing(iderr);
+		show_prompt(all->prompte);
 		prompte_to_execute(all);
-		// show_prompt(all->prompte);
 		show_execute(all->exe, 0);
 		add_history(all->prompte->brut);
-		//EXECUTE
 		reset_var(all);
 	}
 }
+//EXECUTE
 
 int	main(int ac, char **av, char **env)
 {

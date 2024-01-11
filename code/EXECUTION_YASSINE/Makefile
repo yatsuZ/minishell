@@ -6,14 +6,15 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/05 01:46:40 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/11 17:39:14 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
 EXECUTION_PATH = execution/
-EXECUTION_FILES =	prompte_to_execute.c
+EXECUTION_FILES =	prompte_to_execute.c	\
+					get_all_rinlimit.c
 
 STR_MANIP_PATH = str_manip/
 STR_MANIP_FILES = 	ft_strcpm.c		\

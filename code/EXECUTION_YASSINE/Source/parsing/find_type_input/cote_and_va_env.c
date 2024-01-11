@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:43:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 19:40:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/09 17:23:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,33 @@ int	find_cote_and_va(t_node *n, int previous_type)
 	else if (previous_type == SINGLE_COTE)
 		return (previous_single_cote(n));
 	return (0);
+}
+
+t_node	*only_str(t_node *n, t_type_input type)
+{
+	if (type == SINGLE_COTE)
+	{
+		if (n->next_node->type_input == STR)
+			n = n->next_node->next_node->next_node;
+		else
+			n = n->next_node->next_node;
+	}
+	else if (type == DOUBLE_COTE)
+	{
+		n = n->next_node;
+		if (n->type_input != DOUBLE_COTE)
+			type = n->next_node->type_input;
+		while (n->type_input != DOUBLE_COTE && type != DOUBLE_COTE)
+		{
+			if (n->type_input != STR || type != STR)
+				fusion_node(n, STR);
+			else
+				n = n->next_node;
+			type = n->next_node->type_input;
+		}
+		n = n->next_node;
+		if (n && n->type_input == DOUBLE_COTE)
+			n = n->next_node;
+	}
+	return (n);
 }

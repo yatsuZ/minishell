@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:42:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:58:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)
 	n->type_input == R_OUT_ADD || n->type_input == R_IN_LIMIT)
 	{
 		if (n->next_node->type_input == SEPARATOR)
-			err = add_rd(all_rd, n->type_input, n->next_node->next_node->str);
+			err = add_rd(all_rd, n->type_input, n->next_node->next_node);
 		else
-			err = add_rd(all_rd, n->type_input, n->next_node->str);
+			err = add_rd(all_rd, n->type_input, n->next_node);
 	}
 	return (err);
 }
@@ -82,5 +82,6 @@ void	prompte_to_execute(t_all_struct *all)
 	err = 0;
 	all->exe = get_all_exe(all->prompte, all->prompte->all_cmd_line, 0, &err);
 	if (err)
-		printf("ERROR DE ALLOC DANS PROMPTE TO EXECUTE.\n\n");// JE dois faie tout les r_in_limit.
+		printf("ERROR DE ALLOC DANS PROMPTE TO EXECUTE.\n\n");
+	get_all_rinlimit(all->exe, all->prompte->brut);
 }

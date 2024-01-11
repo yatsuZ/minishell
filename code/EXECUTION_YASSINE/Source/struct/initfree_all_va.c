@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/31 18:11:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 18:12:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static t_env	*env_null(int *err)
 		return ((*err) = 1, res);
 	res->key = ft_strdup("PWD");
 	res->value = getcwd(0, 0);
-	printf("ICI\n");
 	res->next_va = ft_calloc(1, sizeof(t_env));
 	if (!res->next_va)
 		return ((*err) = 1, res);
