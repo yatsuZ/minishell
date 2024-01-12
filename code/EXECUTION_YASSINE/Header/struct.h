@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:39:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 00:05:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_execute
 	char				*cmd;
 	char				**arg;
 	t_redirecte			*all_rd;
+	int					fd_in;
+	int					fd_out;
 	struct s_execute	*pip;
 }	t_execute;
 
