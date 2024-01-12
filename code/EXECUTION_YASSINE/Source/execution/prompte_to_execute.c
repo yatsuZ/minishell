@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:58:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/12 17:48:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ void	prompte_to_execute(t_all_struct *all)
 	all->exe = get_all_exe(all->prompte, all->prompte->all_cmd_line, 0, &err);
 	if (err)
 		printf("ERROR DE ALLOC DANS PROMPTE TO EXECUTE.\n\n");
-	get_all_rinlimit(all->exe, all->prompte->brut);
+	// get_all_rinlimit(all->exe, all->prompte->brut);
 }
