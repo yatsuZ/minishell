@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:28:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:37:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:09:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	show_all_rd(t_redirecte *rd, size_t i)
 	else
 		printf("ERROR = ");
 	put_color_txt(BLEU);
-	printf("%s\n", rd->str_file);
+	if (rd->type_rd == R_IN_LIMIT && rd->va_activate)
+		printf("VA ON \n\"%s\"\n", rd->str_file);
+	else if (rd->type_rd == R_IN_LIMIT)
+		printf("VA OFF\n\"%s\"\n", rd->str_file);
+	else
+		printf("%s\n", rd->str_file);
 	show_all_rd(rd->next, (i + 1));
 }
 

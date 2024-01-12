@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:37:37 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 03:09:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:46:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,13 @@ int	cmd_or_arg(t_node *n, t_node *p, int o)
 		o = 1;
 	}
 	else
-		n->type_input = F_RD;
-	if (n->next_node && n->next_node->type_input == NON_DEFINI)
+	{
+		if (p->type_input == R_IN_LIMIT && n->type_input == NON_DEFINI)
+			n->type_input = F_RD2;
+		else
+			n->type_input = F_RD;
+	}
+	while (n->next_node && n->next_node->type_input == NON_DEFINI)
 		fusion_node(n, -1);
 	return (o);
 }

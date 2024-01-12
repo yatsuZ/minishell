@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:12:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 19:09:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:18:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	show_type_input3(t_type_input ti)
 		put_color_txt(MAGENTA);
 		printf("PIP");
 	}
+	else if (ti == F_RD2)
+		printf("F_RD2");
 	put_color_txt(EMPTY_COLOR);
 }
 

@@ -6,21 +6,26 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:27:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:37:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:58:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-t_redirecte	*init_redirecte(char *f, t_type_input t_rd, int *err)
+t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err)
 {
 	t_redirecte	*res;
 
 	res = ft_calloc(1, sizeof(t_redirecte));
 	if (!res)
 		return (*err = 1, res);
-	res->str_file = ft_strdup(f);
+	res->str_file = ft_strdup(f_n->str);
 	res->type_rd = t_rd;
+	res->error = 0;
+	if (f_n->type_input == F_RD2)
+		res->va_activate = 1;
+	else
+		res->va_activate = 0;
 	res->next = NULL;
 	return (res);
 }
@@ -37,15 +42,15 @@ void	free_redirection(t_redirecte *rd)
 	rd = NULL;
 }
 
-int	add_rd(t_redirecte **all_rd, t_type_input t_rd, char *f)
+int	add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n)
 {
 	int	err;
 
 	if (*all_rd == NULL)
 	{
 		err = 0;
-		(*all_rd) = init_redirecte(f, t_rd, &err);
+		(*all_rd) = init_redirecte(f_n, t_rd, &err);
 		return (err);
 	}
-	return (add_rd(&((*all_rd)->next), t_rd, f));
+	return (add_rd(&((*all_rd)->next), t_rd, f_n));
 }

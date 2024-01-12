@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:34:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:49:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_legitfusion(t_node *av, int option)
 	if (!av)
 		return (1);
 	if (av->type_input == NON_DEFINI || av->type_input == CMD || \
-	av->type_input == ARG || av->type_input == F_RD)
+	av->type_input == ARG || av->type_input == F_RD || av->type_input == F_RD2)
 	{
 		if (option == 0 && av->next_node->type_input != SEPARATOR)
 			return (0);
@@ -80,8 +80,10 @@ int	del_cote(t_node *av, t_node *entre, int option)
 			t_cote = entre->next_node->type_input;
 		}
 		del_next_node(entre);
+		if (entre->type_input == F_RD2)
+			entre->type_input = F_RD;
 	}
-	if (is_legitfusion(entre->next_node, 1) == 0)
+	while (is_legitfusion(entre->next_node, 1) == 0)
 		fusion_node(entre, -1);
 	find_cmd_and_arg(entre->next_node, entre, option);
 	return (option);

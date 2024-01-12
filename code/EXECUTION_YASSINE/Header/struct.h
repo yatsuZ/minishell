@@ -6,7 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/01/11 00:05:27 by yzaoui           ###   ########.fr       */
+=======
+/*   Updated: 2024/01/11 19:28:30 by yzaoui           ###   ########.fr       */
+>>>>>>> c5bf03d7a8726330b3b27ff6a26e9f85e24a275e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,9 @@ typedef struct s_redirecte
 {
 	char				*str_file;
 	t_type_input		type_rd;
+	int					va_activate;
+	int					fd;
+	int					error;
 	struct s_redirecte	*next;
 }	t_redirecte;
 

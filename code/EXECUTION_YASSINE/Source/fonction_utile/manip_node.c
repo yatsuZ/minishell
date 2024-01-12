@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 19:08:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 18:28:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	del_next_node(t_node *n)
 	index_update(n);
 }
 
-// fusionne les noeud -1 garde le meme type
 void	fusion_node(t_node *n, int new_type)
 {
 	char	*new_str;

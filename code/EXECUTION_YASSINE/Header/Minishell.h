@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:37:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:56:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int			fusion_str_and_env(t_node *tete_str);
 void		error_parsing(int iderr);
 int			del_cote(t_node *av, t_node *entre, int option);
 int			cmd_or_arg(t_node *n, t_node *p, int o);
+t_node		*only_str(t_node *n, t_type_input type);
 // find
 int			find_cote_and_va(t_node *n, int previous_type);
 int			find_all_rd_and_pip(t_prompt *p);
@@ -33,6 +34,7 @@ void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
+void		get_all_rinlimit(t_execute *all_exe, char *brut);
 
 // Fonction de fin
 void		end(t_all_struct *all);
@@ -76,9 +78,9 @@ int			init_all_va(t_env **all_va, char **arg_env);
 void		free_all_va(t_env *all_va);
 t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err);
 void		free_execute(t_execute *exe);
-t_redirecte	*init_redirecte(char *f, t_type_input t_rd, int *err);
+t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
-int			add_rd(t_redirecte **all_rd, t_type_input t_rd, char *f);
+int			add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n);
 // Fonction Inutile
 
 void		show_color(void);

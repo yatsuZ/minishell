@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/31 17:56:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/11 20:14:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef enum e_color
 // << fais un heardock (le plus dur)
 // > Redirection de sortie
 // *char ce aui suit une R
+// *char qui suit un R_IN_LIMIT
 // | doit faire une redirection de sortie principal quoi qu'il arrive
 typedef enum e_type_input
 {
@@ -66,6 +67,7 @@ typedef enum e_type_input
 	R_IN_LIMIT ,
 	R_OUT_ADD ,
 	F_RD ,
+	F_RD2 ,
 	PIP
 }	t_type_input;
 
