@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 01:17:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/14 14:22:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*get_rinlimit(char *limit, char *history, int va_on)
 
 	add_history(history);
 	input = readline("heredoc>>");
-	if (ft_strcpm_last_nwl(limit, &input, history, va_on) == TRUE)// doit verifier aue tout est bon prendre en compte juste le dernier \n et remplace le va par leur val si va on
+	if (ft_strcpm_last_nwl(limit, &input, history, va_on) == 1)
 	{
 		rl_clear_history();
 		return (ft_strdup("\n"));
