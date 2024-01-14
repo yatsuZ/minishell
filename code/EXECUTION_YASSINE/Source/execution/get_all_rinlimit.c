@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 14:22:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:42:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-void	free_str(char **s1, char **s2)
+void	free_2str(char **s1, char **s2)
 {
 	if (s1 && *s1)
 	{
@@ -26,44 +26,61 @@ void	free_str(char **s1, char **s2)
 	}
 }
 
-static char	*add_nwl(char *str)
+void	to_va_env(char **str, t_env *all_env)
 {
-	char	*new;
+	t_node	*n;
+	t_node	*tmp;
 
-	new = ft_strjoin(str, "\n");
-	free_str(&str, NULL);
-	return (new);
+	if (!str || !(*str))
+		return ;
+	n = NULL;
+	str_to_node(*str, &n);
+	tmp = n;
+	while (tmp)
+	{
+		if (tmp->str[0] == '$')
+			tmp->type_input = VA_ENV;
+		tmp = tmp->next_node;
+	}
+	tmp = NULL;
+	fusion_va(all_env, n, NULL);
+	show_node(n);
+	while (n && n->next_node)
+		fusion_node(n, NON_DEFINI);
+	free(*str);
+	*str = NULL;
+	*str = ft_strdup(n->str);
+	free_all_node(n);
 }
 
-static char	*get_rinlimit(char *limit, char *history, int va_on)
+// Doit verifier au'il n a pas de \n et je dois gerer l'historique aussi
+static char	*get_rinlimit(char *limit, int va_on, t_env *all_env)
 {
+	char	*tmp;
 	char	*res;
 	char	*input;
-	char	*fusion;
 
-	add_history(history);
 	input = readline("heredoc>>");
-	if (ft_strcpm_last_nwl(limit, &input, history, va_on) == 1)
-	{
-		rl_clear_history();
-		return (ft_strdup("\n"));
-	}
-	res = add_nwl(input);
-	fusion = ft_strjoin(history, res);
-	add_history(fusion);
-	input = get_rinlimit(limit, fusion, va_on);
-	free_str(&res, NULL);
-	res = ft_strjoin(fusion, input);
-	return (free_str(&input, &fusion), res);
+	if (ft_strcpm(limit, input) == 1)
+		return (free_2str(&input, NULL), ft_strdup(""));
+	if (va_on)
+		to_va_env(&input, all_env);
+	tmp = ft_strjoin(input, "\n");
+	free_2str(&input, NULL);
+	input = get_rinlimit(limit, va_on, all_env);
+	res = ft_strjoin(tmp, input);
+	free_2str(&tmp, &input);
+	return (res);
 }
 
 // Je dois refaire le parssing rconcernant 
 // le heredoc et les Variable denvironement
-void	get_all_rinlimit(t_execute *all_exe, char *brut)
+void	get_all_rinlimit(t_execute *all_exe, char *brut, t_env *all_env)
 {
 	t_redirecte	*rd;
 	char		*res;
 
+	(void) brut;
 	while (all_exe)
 	{
 		rd = all_exe->all_rd;
@@ -71,9 +88,8 @@ void	get_all_rinlimit(t_execute *all_exe, char *brut)
 		{
 			if (rd->type_rd == R_IN_LIMIT)
 			{
-				res = get_rinlimit(rd->str_file, brut, rd->va_activate);
-				free(rd->str_file);
-				rd->str_file = NULL;
+				res = get_rinlimit(rd->str_file, rd->va_activate, all_env);
+				free_2str(&(rd->str_file), NULL);
 				rd->str_file = res;
 			}
 			rd = rd->next;

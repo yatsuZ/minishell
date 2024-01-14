@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:35:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:18:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ t_node **previous, t_node *next)
 		index_update((*previous));
 	else
 		index_update(new);
-	(*old) = new;
+	if (previous && !*previous)
+		**old = *new;
+	else
+		*old = new;
 }
 
 t_node	*no_define_to_node(t_node **nodef, t_node **prev)

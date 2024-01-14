@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 14:22:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/14 19:42:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
 void		prompte_to_execute(t_all_struct *all);
 
 // HEREDOC
-int			ft_strcpm_last_nwl(char *lmt, char **str, char *history, \
-int va_on);
-void		get_all_rinlimit(t_execute *all_exe, char *brut);
+void		get_all_rinlimit(t_execute *all_exe, char *brut, t_env *all_env);
 
 // Fonction de fin
 void		end(t_all_struct *all);
