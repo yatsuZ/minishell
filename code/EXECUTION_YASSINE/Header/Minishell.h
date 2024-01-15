@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 09:33:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/15 10:13:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void		del_next_node(t_node *n);
 void		free_2str(char **s1, char **s2);
 void		str_add(char **s, char *s2, int free);
 void		str_change_env(char **str, t_env *all_env);
+t_boolean	have_nwl(char *s, size_t i);
 
 // Structure
 

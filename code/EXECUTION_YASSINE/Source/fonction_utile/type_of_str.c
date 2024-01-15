@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 16:12:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/30 18:01:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/15 10:13:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ t_boolean	have_space(char *s, size_t i)
 	if (!s)
 		return (FALSE);
 	while (s[i] != '\0' && s[i] != ' ' && s[i] != '\t')
+		i++;
+	if (s[i] == '\0')
+		return (FALSE);
+	return (TRUE);
+}
+
+t_boolean	have_nwl(char *s, size_t i)
+{
+	if (!s)
+		return (FALSE);
+	while (s[i] != '\0' && s[i] != '\n')
 		i++;
 	if (s[i] == '\0')
 		return (FALSE);
