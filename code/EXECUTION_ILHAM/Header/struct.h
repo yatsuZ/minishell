@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/13 21:00:28 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/15 18:52:39 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ typedef struct s_redirecte
 
 typedef struct s_execute
 {
-	char				*cmd;
-	char				**arg;
+	const char			*cmd;
+	const char			**arg;
+	const char			cmds;// cmds = {&cmd, arg};
 	t_redirecte			*all_rd;
 	struct s_execute	*pip;
 }	t_execute;
