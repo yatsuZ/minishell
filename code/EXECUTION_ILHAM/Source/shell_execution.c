@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/15 14:30:53 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/15 18:48:59 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	child_process(t_data *data, t_all_struct *all, int i)
 {
 	redirect(data, i);
 	//data->cmds = ft_split(cmds[i], ' ');
-    data->cmds == {all->exe->cmd, all->exe->arg};
+	data->cmds == {all->exe->cmd, all->exe->arg};
 	if (data->cmds == NULL)
 		free_all_data(data, 1, 2);
 	data->cmdpath = access_check(data->env, data->cmds[0]);
