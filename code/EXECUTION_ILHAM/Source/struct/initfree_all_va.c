@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initfree_all_va.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/31 18:11:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/10 22:28:12 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ static void	add_key_value(t_env **node, char *str, int *err)
 		*err = *err + 1;
 	(*node)->value = ft_strcut(str, start, stop);
 }
-
+/**
+ * What is the meaning of err == -1, err <= -2 ??? 
+*/
 static t_env	*copy_env(t_env *tete, char **arg, size_t i, int *err)
 {
 	if (arg[i] == NULL || *err > 0)

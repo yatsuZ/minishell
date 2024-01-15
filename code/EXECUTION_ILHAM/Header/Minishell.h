@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:37:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/13 20:28:09 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,26 @@ void		free_execute(t_execute *exe);
 t_redirecte	*init_redirecte(char *f, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, char *f);
+
+// Fonctions pour l'execution du shell
+void	close_fd(int *fd);
+void	redirect(t_data	*data, int i);
+void	close_pipes(t_data *data);
+void	sub_redirect(t_data	*data, int fd);
+void	init(t_data *data, int ac, char **av, char **env);
+void	loop_cmd(t_data *data, char **cmds);
+int	    ft_strncmp(const char *s1, const char *s2, const size_t n);
+int	    ft_strcmp(const char *s1, const char *s2);
+char	*access_check(char **env, char *cmd);
+char	*get_path_var(char **env);
+void	child_process(t_data *data, char **cmds, int i);
+void	loop_cmd(t_data *data, char **cmds);
+void	init(t_data *data, t_all_struct *all, char **env);
+void	child_process(t_data *data, char **cmds, int i);
+int	    execute(t_all_struct *all);
+
+
+
 // Fonction Inutile
 
 void		show_color(void);

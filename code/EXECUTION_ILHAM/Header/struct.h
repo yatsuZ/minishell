@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/05 17:39:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/13 21:00:28 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,26 @@ typedef struct s_all_struct
 	t_env			*all_va;
 	int				err;
 }	t_all_struct;
+
+/* je rajoute un tableau cmds dans data
+char	**cmds = {(*char *)cmd, (char **)arg}
+*/
+typedef struct s_data
+{
+	char		**env;
+	pid_t		*pids;
+	int			fd[2];
+	int			prev;
+	char		**cmds;
+	char		*cmdpath;
+	int			nb_cmd;
+	char		*infile;
+	char		*outfile;
+	int			len;
+	char		*limiter;
+	int			fd_h;
+	int			here_doc;
+	int			j;
+}		t_data;
 
 #endif
