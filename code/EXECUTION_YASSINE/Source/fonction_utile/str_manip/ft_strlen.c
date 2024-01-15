@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 23:45:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/25 22:58:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/15 08:43:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,18 @@ size_t	ft_strlen(const char *cha)
 	while (cha[i] != '\0')
 		i++;
 	return (i);
+}
+
+void	free_2str(char **s1, char **s2)
+{
+	if (s1 && *s1)
+	{
+		free(*s1);
+		*s1 = NULL;
+	}
+	if (s2 && *s2)
+	{
+		free(*s2);
+		*s2 = NULL;
+	}
 }

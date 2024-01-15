@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 19:05:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/15 09:33:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,30 @@ char	*get_value(t_env *all_va, char *key)
 	if (!value)
 		value = ft_strdup("");
 	return (value);
+}
+
+void	str_change_env(char **str, t_env *all_env)
+{
+	t_node	*n;
+	t_node	*tmp;
+
+	if (!str || !(*str))
+		return ;
+	n = NULL;
+	str_to_node(*str, &n);
+	tmp = n;
+	while (tmp)
+	{
+		if (tmp->str[0] == '$')
+			tmp->type_input = VA_ENV;
+		tmp = tmp->next_node;
+	}
+	tmp = NULL;
+	fusion_va(all_env, n, NULL);
+	while (n && n->next_node)
+		fusion_node(n, NON_DEFINI);
+	free(*str);
+	*str = NULL;
+	*str = ft_strdup(n->str);
+	free_all_node(n);
 }
