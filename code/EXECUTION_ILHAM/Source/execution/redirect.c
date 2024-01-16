@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/11 14:57:07 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/16 15:18:48 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	sub_redirect(t_data	*data, int fd)
 	close(fd);
 }
 
-void	redirect(t_data	*data, int i)
+/*void	redirect(t_data	*data, int i)
 {
 	int	fd;
 
 	fd = -1;
-	if (i == 2 + data->here_doc)
+	if (i == 0 || i == data->len - 1)
 		sub_redirect(data, fd);
 	else
 	{
@@ -70,4 +70,9 @@ void	redirect(t_data	*data, int i)
 	else
 		dup2(data->fd[1], STDOUT_FILENO);
 	close_pipes(data);
-}
+}*/
+
+void	redirect(t_data *data, t_execute *exe)
+
+
+

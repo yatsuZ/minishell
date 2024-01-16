@@ -3,31 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   exec_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/13 20:23:12 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:03:14 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-char	*get_path_var(char **env)
+char	*get_path_var(t_env *env)
 {
-	int	i;
+	t_env	*tmp;
 
-	i = -1;
-	while (env[++i])
+	tmp = env;
+	while (tmp)
 	{
-		if (ft_strncmp(env[i], "PATH", 4) == 0)
-			return (env[i]);
+		if (ft_strncmp(env->key, "PATH", 4) == 0)
+			return (env->value);
+		tmp = tmp->next_va;
 	}
 	exit(1);
 }
 
 char	**get_paths_from_environment(char *path)
 {
-	return (ft_split(path + 5, ':'));
+	return (ft_split(path, ':'));
 }
 
 char	*access_check(char **env, char *cmd)

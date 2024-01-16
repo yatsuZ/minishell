@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 18:52:39 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:05:39 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_execute
 {
 	const char			*cmd;
 	const char			**arg;
-	const char			cmds;// cmds = {&cmd, arg};
+	const char			**cmds;// cmds = {&cmd, arg};
 	t_redirecte			*all_rd;
 	struct s_execute	*pip;
 }	t_execute;
@@ -78,7 +78,6 @@ typedef struct s_data
 	int			nb_cmd;
 	char		*infile;
 	char		*outfile;
-	int			len;
 	char		*limiter;
 	int			fd_h;
 	int			here_doc;

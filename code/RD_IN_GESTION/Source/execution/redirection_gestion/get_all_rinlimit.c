@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_rinlimit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 23:53:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/16 16:14:29 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static char	*add_new_input(char *input, t_redirecte *rd, t_env *env, char **hs)
 	char	*tmp;
 	char	*res;
 
-	if (rd->va_activate)
-		str_change_env(&input, env);
 	tmp = ft_strjoin(input, "\n");
 	add_input_to_history(tmp, hs);
+	if (rd->va_activate)
+		str_change_env(&input, env);
 	free_2str(&input, NULL);
 	input = get_rinlimit(rd, env, hs);
 	res = ft_strjoin(tmp, input);
@@ -53,10 +53,10 @@ static char	*multi_line(char *str, t_redirecte *rd, t_env *env, char **hs)
 		if (ft_strcpm(rd->str_file, n->next_node->str) == 1)
 		{
 			res = ft_strdup(n->str);
-			if (rd->va_activate)
-				str_change_env(&res, env);
 			add_input_to_history(res, hs);
 			add_input_to_history(n->next_node->str, hs);
+			if (rd->va_activate)
+				str_change_env(&res, env);
 			return (free_node(n), free_2str(&str, NULL), res);
 		}
 		fusion_node(n, -1);

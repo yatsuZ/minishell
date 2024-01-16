@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/13 20:28:09 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/16 16:04:21 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	loop_cmd(t_data *data, char **cmds);
 int	    ft_strncmp(const char *s1, const char *s2, const size_t n);
 int	    ft_strcmp(const char *s1, const char *s2);
 char	*access_check(char **env, char *cmd);
-char	*get_path_var(char **env);
+char	*get_path_var(t_env *env);
 void	child_process(t_data *data, char **cmds, int i);
 void	loop_cmd(t_data *data, char **cmds);
 void	init(t_data *data, t_all_struct *all, char **env);
