@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/16 16:05:40 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:40:59 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,36 +54,22 @@ void	init(t_data *data, t_all_struct *all, t_env *env)
 {
 	if (!all)
 		exit(1);
-	/*if (ac < 5)
-		return (ft_putstr_fd("Not enough arguments", 2), exit(1));
-	data->fd_h = -1;
-	if (ft_strcmp(av[1], "here_doc") == 0 && ac > 5)
-	{
-		data->here_doc = 1;
-		data->limiter = ft_strjoin(av[2], "\n");
-		if (data->limiter == NULL)
-			exit(1);
-		here_doc(data);
-	}
-	else if (ft_strcmp(av[1], "here_doc") == 0 && ac < 6)
-		return (ft_putstr_fd("Not enough arguments", 2), exit(1));*/
 	data->nb_cmd = all->prompt->nbr_of_pip + 1;
 	data->fd[0] = -1;
 	data->fd[1] = -1;
 	data->env = get_paths_from_environment(get_path_var(env));
 	if (data->env == NULL)
 		exit(1);
-	data->infile = av[1];
-	data->outfile = av[ac - 1];
 	data->pids = malloc(sizeof(int) * data->nb_cmd);
 	if (data->pids == NULL)
 		return (free_tab(data->env), exit(1));
 }
+
 /**
  * @brief each iteration, we have a command to execute, so we have to precise the
  * input file, the outfile, the cmd and its arguments; besides we have to precise whether
  * there is a here_doc or not, to open all the outfiles, and define the fd_in and fd_out
- * ATTENTION: les here_doc doiven s'executer dans des forks
+ * ATTENTION: les here_doc doivent s'executer dans des forks, a voir !
  * @param data 
  * @param all 
  * @param env 
@@ -93,7 +79,7 @@ void	init_data(t_data *data, t_execute *exe, t_redirecte *all_rd, char **env)
 	
 	if (all_rd->type_rd == R_IN_LIMIT)
 	{
-		data->limiter = ;
+		data->limiter = all_rd->str_file;
 		if (data->limiter == NULL)
 			exit(1);
 		here_doc(data);
@@ -105,12 +91,10 @@ void	loop_cmd(t_data *data, t_execute *exe, )
 {
 	int	i;
 
-	i = 0;
-	while (++i < data->len)
+	i = -1;
+	while (++i < data->nb_cmd)
 	{
-		data->j = i;
-		if ((i != data->len - 1) && pipe(data->fd) == -1)
-			free_all_data(data, 1, i);
+		//data->j = i;
 		data->pids[i] = fork();
 		if (data->pids[i] == -1)
 			free_all_data(data, 1, i);
@@ -123,6 +107,7 @@ void	loop_cmd(t_data *data, t_execute *exe, )
 			close_fd(&data->prev);
 			data->prev = data->fd[0];
 		}
+		data->
 	}
 	i = -1;
 	while (++i < data->nb_cmd)
