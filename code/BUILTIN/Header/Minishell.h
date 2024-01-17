@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 19:41:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:36:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
+int			ft_exec(t_execute *exe, t_all_struct **all);
 
 // HEREDOC
 void		get_all_rinlimit(t_execute *all_exe, char **brut, t_env *all_env);
@@ -69,6 +70,7 @@ void		str_add(char **s, char *s2, int free);
 void		str_change_env(char **str, t_env *all_env);
 t_boolean	have_nwl(char *s, size_t i);
 void		str_to_node_nwl(char *str, t_node **res);
+char		*int_to_str(int nbr);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);

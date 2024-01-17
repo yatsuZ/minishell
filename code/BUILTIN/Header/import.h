@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/17 14:16:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:06:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@
 # include <term.h>
 
 # include <sys/ioctl.h>
+
+#include <limits.h>
 
 #endif

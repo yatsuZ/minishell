@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 20:08:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:30:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,13 @@ int	is_a_legit_va_env(char *s)
 	return (TRUE);
 }
 
-static char	*get_exit_status(void)
-{
-	return (ft_strdup("Jai pas encore fais les signal -_-.\n"));
-}
-
 char	*get_value(t_env *all_va, char *key)
 {
 	char	*value;
 
 	value = NULL;
 	if (ft_strcpm(key, "?") == TRUE)
-		value = get_exit_status();
+		value = int_to_str(status);
 	while (all_va && !value)
 	{
 		if (ft_strcpm(all_va->key, key) == TRUE)
