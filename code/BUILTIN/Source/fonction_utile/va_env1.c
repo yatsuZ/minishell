@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/17 11:30:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:48:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_value(t_env *all_va, char *key)
 
 	value = NULL;
 	if (ft_strcpm(key, "?") == TRUE)
-		value = int_to_str(status);
+		value = int_to_str(STATUS);
 	while (all_va && !value)
 	{
 		if (ft_strcpm(all_va->key, key) == TRUE)

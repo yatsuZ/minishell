@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/16 18:03:46 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/17 11:41:36 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ RD_GESTION_FILES = get_all_rinlimit.c
 
 EXECUTION_PATH = execution/
 EXECUTION_FILES =	prompte_to_execute.c	\
+					execute.c				\
 					${addprefix ${RD_GESTION_PATH}, ${RD_GESTION_FILES}}
 
 STR_MANIP_PATH = str_manip/
@@ -41,6 +42,7 @@ FT_UTILE_FILES =	ft_calloc.c		\
 					manip_node.c	\
 					manip_node2.c	\
 					type_of_str.c	\
+					int_to_str.c	\
 					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 
 INUTILE_PATH = inutile/
