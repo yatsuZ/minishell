@@ -6,16 +6,12 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/17 11:49:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/18 09:21:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTE_H
 # define CONSTANTE_H
-
-# ifndef STATUS
-#	define int STATUS = 0;
-# endif
 
 typedef enum e_boolean
 {

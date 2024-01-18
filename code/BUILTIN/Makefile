@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/17 11:41:36 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/18 09:48:09 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,9 +89,11 @@ MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
 
 ############### ligne de commande
 
+HEADER = ./Header
+
 RM = rm -rf
 CC = cc
-C_FLAGS = -g3 -Wall -Wextra -Werror
+C_FLAGS = -g3 -Wall -Wextra -Werror -g -I ${HEADER}
 
 READLINE = -lreadline
 

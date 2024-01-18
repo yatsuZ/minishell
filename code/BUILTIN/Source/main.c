@@ -6,11 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/17 11:48:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/18 09:49:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
+
+int	status;
 
 void	reset_var(t_all_struct *all)
 {
@@ -28,6 +30,7 @@ void	ft_minishell(t_all_struct *all)
 	int	iderr;
 
 	tour = 4;
+	status = 0;
 	while (tour--)
 	{
 		iderr = parsing(all);
@@ -36,9 +39,9 @@ void	ft_minishell(t_all_struct *all)
 		// show_prompt(all->prompte);
 		add_history(all->prompte->brut);
 		prompte_to_execute(all);
-		// show_execute(all->exe, 0);
+		show_execute(all->exe, 0);
 		if (all)
-			STATUS = ft_exec(all->exe, &all);
+			status = ft_exec(all->exe, &all);
 		reset_var(all);
 	}
 }
