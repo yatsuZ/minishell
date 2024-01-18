@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/16 15:05:39 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:52:38 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_data
 	char		*infile;
 	char		*outfile;
 	char		*limiter;
-	int			fd_h;
+	int			*fd_h;
 	int			here_doc;
 	int			j;
 }		t_data;

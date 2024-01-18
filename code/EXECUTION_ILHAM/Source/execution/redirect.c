@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/16 15:18:48 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:14:50 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,34 @@ void	sub_redirect(t_data	*data, int fd)
 	close_pipes(data);
 }*/
 
-void	redirect(t_data *data, t_execute *exe)
+void	redirect(t_data *data, t_execute *exe, int i)
+{
+	int			fd;
+	t_redirecte	*tmp;
+
+	tmp = exe->all_rd;
+	while (tmp)
+	{
+		if (tmp->type_rd ==  R_IN || tmp->type_rd ==  R_IN_LIMIT)
+			tmp = tmp->next;
+	}
+}
+
+void	fd_open(t_data *data, t_execute *exe, int i)
+{
+	int			fd;
+	t_redirecte	*tmp;
+
+	tmp = exe->all_rd;
+	while (tmp)
+	{
+		if (tmp->type_rd ==  R_IN || tmp->type_rd ==  R_IN_LIMIT ||
+				tmp->type_rd ==  R_OUT_ADD || tmp->type_rd ==  R_OUT)
+		{
+			fd = open(tmp->str_file, O_RDONLY);
+		}	
+	}
+}
 
 
 
