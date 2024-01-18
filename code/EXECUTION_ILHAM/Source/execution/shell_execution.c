@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/17 23:57:53 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/18 15:36:03 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	child_process(t_data *data, t_execute *exe, int i)
 	data->cmds == {&exe->cmd, exe->arg};
 	if (data->cmds == NULL)
 		free_all_data(data, 1, 2);
-	data->cmdpath = access_check(data->env, data->cmds[0]);
+	data->cmdpath = access_check(data->env, exe->cmd);
 	if (data->cmdpath != NULL)
 	{
 		execve(data->cmdpath, data->cmds, data->env);
@@ -36,8 +36,9 @@ void	here_doc(t_data *data)
 		exit(1);
 	while (1)
 	{
-		ft_putstr_fd("heredoc>: ", 1);
-		line = get_next_line(0, 1);
+		//ft_putstr_fd("heredoc>: ", 1);
+		//line = get_next_line(0, 1);
+		line = readline("heredoc>: ")
 		if (line == NULL || ft_strcmp(data->limiter, line) == 0)
 			break ;
 		write(data->fd[1], line, ft_strlen(line));
@@ -96,7 +97,7 @@ void	init_data(t_data *data, t_execute *exe, *env)
 	t_redirecte	*tmp_rd;
 
 	tmp_rd = exe->all_rd;
-	data->fd_h = malloc(sizeof(int) * count_hdoc()
+	data->fd_h = malloc(sizeof(int) * count_hdoc())
 	if (all_rd->type_rd == R_IN_LIMIT)
 	{
 		data->limiter = all_rd->str_file;
@@ -115,6 +116,8 @@ void	loop_cmd(t_data *data, t_execute *exe, )
 	while (++i < data->nb_cmd)
 	{
 		data->j = i;
+		if (i == 0)
+		
 		if ((i != data->nb_cmd - 1) && pipe(data->fd) == -1)
 			free_all_data(data, 1, i);
 		data->pids[i] = fork();
