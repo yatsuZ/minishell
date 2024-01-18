@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 09:21:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/18 10:06:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,17 @@ typedef enum e_type_input
 	F_RD2 ,
 	PIP
 }	t_type_input;
+
+typedef enum e_builtin
+{
+	NON_BUILTIN,
+	CD,
+	ECHO,
+	ENV,
+	EXIT,
+	EXPORT,
+	PWD,
+	UNSET
+}	t_builtin;
 
 #endif

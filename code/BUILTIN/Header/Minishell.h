@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 09:30:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/18 10:23:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void		fusion_va(t_env *all_va, t_node *present, t_node *previous);
 // Execution
 void		prompte_to_execute(t_all_struct *all);
 int			ft_exec(t_execute *exe, t_all_struct **all);
+// builtin
+t_builtin	find_builtin(char *str);
+int			exec_builtin(t_execute *exe, t_all_struct **all, \
+t_builtin built);
+int			exec_unset(t_execute *exe, t_all_struct **all);
+int			exec_pwd(t_execute *exe, t_all_struct **all);
+int			exec_export(t_execute *exe, t_all_struct **all);
+int			exec_exit(t_execute *exe, t_all_struct **all);
+int			exec_env(t_execute *exe, t_all_struct **all);
+int			exec_echo(t_execute *exe, t_all_struct **all);
+int			exec_cd(t_execute *exe, t_all_struct **all);
 
 // HEREDOC
 void		get_all_rinlimit(t_execute *all_exe, char **brut, t_env *all_env);
