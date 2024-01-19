@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:23:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/07 12:29:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 18:48:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	pwd(void)
 int main() {
 	pwd();
     // Changer le répertoire de travail vers "./obj"
-    if (chdir("./obj") != 0)
+    if (chdir("~") != 0)
         perror("Erreur lors du changement de répertoire");
 
     printf("Le répertoire de travail a été changé.\n");
