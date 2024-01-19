@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 16:48:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 18:09:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,32 @@ void	str_change_env(char **str, t_env *all_env)
 	*str = NULL;
 	*str = ft_strdup(n->str);
 	free_all_node(n);
+}
+
+t_env	*add_key_value(char *key, char *value)
+{
+	t_env	*res;
+
+	res = ft_calloc(1, sizeof(t_env));
+	res->key = ft_strdup(key);
+	res->value = ft_strdup(value);
+	res->next_va = NULL;
+	return (res);
+}
+
+int	change_or_add_va(t_env *all_env, char *key, char *value)
+{
+	while (all_env)
+	{
+		if (ft_strcpm(all_env->key, key) == TRUE)
+		{
+			free(all_env->value);
+			all_env->value = NULL;
+			all_env->value = ft_strdup(value);
+			return (0);
+		}
+		all_env = all_env->next_va;
+	}
+	all_env = add_key_value(key, value);
+	return (0);
 }
