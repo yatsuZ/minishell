@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:37 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/11 16:08:06 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/19 12:12:53 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_tab(char **tab)
 	free (tab);
 }
 
-void	free_all_data(t_data *data, int code, int code2)
+void	free_all_data(t_all_struct *all, int code, int code2)
 {
 	if (code2 < 4)
 		perror("");

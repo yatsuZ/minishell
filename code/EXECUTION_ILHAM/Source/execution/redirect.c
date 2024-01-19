@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/18 16:48:32 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:24:25 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,85 +72,64 @@ void	sub_redirect(t_data	*data, int fd)
 	close_pipes(data);
 }*/
 
-void	redirect(t_data *data, t_execute *exe, int i)
+void	fd_open(t_all_struct *all, t_redirecte tmp)
 {
-	int			fd;
+	if (tmp->type_rd ==  R_IN )
+		tmp->fd = open(data->infile, O_RDONLY);
+	else if (tmp->type_rd == R_IN_LIMIT)
+		get_here_doc_fd(tmp); // get tmp->fd = fd_h
+	else if (tmp->type_rd ==  R_OUT)
+		tmp->fd = open(tmp->str_file, O_CREAT | O_TRUNC | O_WRONLY, 0666);
+	else if (tmp->type_rd ==  R_OUT_ADD )
+		tmp->fd = open(tmp->str_file, O_CREAT | O_APPEND | O_WRONLY, 0666);
+	if (tmp->fd == -1)
+	{
+		perror("open file problem !");
+		free_all_data(all, 1, 3);
+	}
+}
+
+void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
+{
+	if (i != all->nb_cmds - 1)
+	{
+		close_fd(&exe->fd[0]);
+		dup2(exe->fd[1], STDOUT_FILENO);
+		close(exe->fd[1]);
+	}
+	if (i != 0)
+	{
+		close_fd(&exe->fd[1]);
+		dup2(all->prev, STDIN_FILENO);
+		close(all->prev);
+	}
+}
+
+void	redirect(t_all_struct *all, t_execute *exe, int i)
+{
 	t_redirecte	*tmp;
 
 	tmp = exe->all_rd;
 	while (tmp)
 	{
-		if (tmp->type_rd ==  R_IN || tmp->type_rd ==  R_IN_LIMIT)
-			tmp = tmp->next;
+		fd_open(tmp);
+		if (tmp->type_rd == R_IN || tmp->type_rd == R_IN_LIMIT)
+			dup2(tmp->fd, STDIN_FILENO);
+		else if (tmp->type_rd == R_OUT || tmp->type_rd == R_OUT_ADD)
+			dup2(tmp->fd, STDOUT_FILENO);
+		close(tmp->fd);
+		tmp = tmp->next;
 	}
 }
 
-void	fd_open(t_data *data, t_execute *exe, int i)
+void	get_here_doc_fd(t_redirecte rd)
 {
-	int			fd;
-	t_redirecte	*tmp;
-
-	tmp = exe->all_rd;
-	while (tmp)
+	if (pipe(rd->fd) == -1)
 	{
-		if (tmp->type_rd ==  R_IN || tmp->type_rd ==  R_IN_LIMIT ||
-				tmp->type_rd ==  R_OUT_ADD || tmp->type_rd ==  R_OUT)
-		{
-			fd = open(data->infile, O_RDONLY);
-		}	
+		perror("ERROR: pipe rd in limit fail");
+		exit(EXIT_FAILURE);
 	}
+	write(rd->fd[1], rd->str_file, ft_strlen(rd->str_file));
+	close_fd(rd->fd[1]);
+	rd->fd = rd->fd[0];
 }
-void	redirecte_pipe(t_data *data, t_execute *exe, int i)
-{
-	
-}
-
-void	redirect_infile(t_data *data, t_execute *exe, int i)
-{
-	int			fd;
-	t_redirecte	*tmp;
-
-	tmp = exe->all_rd;
-	while (tmp)
-	{
-		if (tmp->type_rd == R_IN)
-		{
-			data->infile = tmp->str_file;
-			fd = open(data->infile, O_RDONLY);
-			if (fd < 0)
-				perror("open file problem !")
-			dup2(fd, STDIN_FILENO);
-		}
-		else if (tmp->type_rd == R_IN_LIMIT)
-		{
-			data->fd_h = get_here_doc_fd(s_redirecte rd);
-			if (fd < 0)
-				perror("open file problem !")
-			dup2(data->fd_h[i], STDIN_FILENO);//fd_h[i] designe le fd du dernier here_doc retenu en input
-		}
-		else if (tmp->type_rd == R_OUT)
-		{
-			data->outfile = tmp->str_file;
-			fd = open(data->outfile, O_CREAT | O_TRUNC | O_WRONLY, 0666);
-			if (fd < 0)
-				perror("open file problem !")
-			dup2(data->prev, STDOUT_FILENO);
-		}
-		else if (tmp->type_rd == R_OUT_ADD)
-		{
-			data->outfile = here_doc();
-			fd = open(data->outfile, O_CREAT | O_APPEND | O_WRONLY, 0666);
-			if (fd < 0)
-				perror("open file problem !")
-			dup2(data->prev, STDOUT_FILENO);
-		}
-
-	}
-
-}
-
-				// if (pipe(rd->fd))
-				// 	printf("ERROR: pipe rd in limit fail on sen occupe plus tard\n");
-				// write(rd->fd[1], res, ft_strlen(res));
-				// close(fd);
-

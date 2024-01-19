@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 15:59:06 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:31:09 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ typedef struct s_redirecte
 typedef struct s_execute
 {
 	size_t				index;
-	const char			*cmd;// La premiere commande
-	const char			**arg;// tout ce qui suit une commande et qui n' est pas une rd
-	const char			**cmds;// cmd + arg
-	t_redirecte			*all_rd;//Toute les redirection
+	const char			*cmd;
+	const char			**arg;
+	const char			**cmds;
+	t_redirecte			*all_rd;
 	t_redirecte			*last_out;
 	t_redirecte			*last_in;
-	pid_t				*pid;// process identifier de l'execution de la command
-	int					fd[2];// Ecriture dentre et sortie du pip
-	
+	int					fd[2];
 	struct s_execute	*pip;
 }	t_execute;
 
@@ -69,6 +67,11 @@ typedef struct s_all_struct
 	t_execute		*exe;
 	t_env			*all_va;
 	int				err;
+	int				prev;
+	int				nb_cmds;
+	pid_t			*pids;
+	char			**env;
+	char			*cmdpath;
 }	t_all_struct;
 
 /* je rajoute un tableau cmds dans data
