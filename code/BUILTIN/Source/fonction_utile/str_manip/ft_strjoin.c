@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:47:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 09:26:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:22:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ static void	init_ij(size_t *i, size_t *j)
 	*j = 0;
 }
 
+static char	*ft_strjoin_empty(char const *s1, char const *s2)
+{
+	if (!s1 && !s2)
+		return (NULL);
+	else if (!s1)
+		return (ft_strdup(s2));
+	return (ft_strdup(s1));
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
@@ -27,7 +36,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*s;
 
 	if (!s1 || !s2)
-		return (NULL);
+		return (ft_strjoin_empty(s1, s2));
 	cs1 = (char *) s1;
 	cs2 = (char *) s2;
 	init_ij(&i, &j);

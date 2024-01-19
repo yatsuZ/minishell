@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 09:49:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 15:19:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_minishell(t_all_struct *all)
 		// show_prompt(all->prompte);
 		add_history(all->prompte->brut);
 		prompte_to_execute(all);
-		show_execute(all->exe, 0);
+		// show_execute(all->exe, 0);
 		if (all)
 			status = ft_exec(all->exe, &all);
 		reset_var(all);

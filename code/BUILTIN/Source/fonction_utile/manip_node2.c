@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 19:18:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:18:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
 	t_node	*nn;
 
 	nn = NULL;
-	while (str[i_end])
+	while (str && str[i_end])
 	{
 		if (is_space(str, i_end) != 0)
 		{
@@ -35,7 +35,7 @@ t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
 		}
 	}
 	if (!nn)
-		add_last_node(&nn, ft_strdup(""));
+		add_last_node(&nn, NULL);
 	return (nn);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/14 19:31:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:22:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	quick_define(t_node *n)
 {
 	while (n)
 	{
-		if (n->str[0] == ' ' || n->str[0] == '\t')
+		if (n->str && (n->str[0] == ' ' || n->str[0] == '\t'))
 			n->type_input = SEPARATOR;
 		else
 			n->type_input = NON_DEFINI;

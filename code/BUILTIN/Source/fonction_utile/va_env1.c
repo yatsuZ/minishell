@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 09:48:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 15:59:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_value(t_env *all_va, char *key)
 		all_va = all_va->next_va;
 	}
 	if (!value)
-		value = ft_strdup("");
+		value = NULL;
 	return (value);
 }
 
