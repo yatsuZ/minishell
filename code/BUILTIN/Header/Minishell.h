@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 10:23:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:49:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./struct.h"
 
-extern int status;
+extern int	g_status;
 
 // Parsing
 char		*get_all_input(t_prompt *promp);

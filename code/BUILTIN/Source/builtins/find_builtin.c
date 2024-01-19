@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:55:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 10:23:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:48:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	exec_builtin(t_execute *exe, t_all_struct **all, t_builtin built)
 {
 	if (!exe || !all || !(*all) || built == NON_BUILTIN)
 	{
-		printf("ERROR EXEC de status\n");
-		return (status);
+		printf("ERROR EXEC de g_status\n");
+		return (g_status);
 	}
 	if (built == CD)
 		return (exec_cd(exe, all));
@@ -54,6 +54,5 @@ int	exec_builtin(t_execute *exe, t_all_struct **all, t_builtin built)
 		return (exec_pwd(exe, all));
 	if (built == UNSET)
 		return (exec_unset(exe, all));
-	return (status);
+	return (g_status);
 }
-

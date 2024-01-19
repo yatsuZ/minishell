@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 23:19:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:46:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	parsing(t_all_struct *all)
 	int	err_parsing;
 
 	all->prompte->brut = readline(all->prompte->invite);
+	if (all->prompte->brut == NULL)
+		return (0);
 	if (have_nwl(all->prompte->brut, 0))
 		return (err_parsing = 8, err_parsing);
 	str_to_node(all->prompte->brut, &(all->prompte->all_cmd_line));
