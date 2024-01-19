@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 18:54:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 20:27:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 		chemin = ft_strdup(exe->arg[0]);
 	if (!chemin)
 		return (printf("Minishell error: cd: HOME not set\n"), 1);
-	printf("Je dois faire la commande cd\n");
 	if (chdir(chemin))
 	{
-		printf("Minishell error: cd")
+		printf("Minishell error: cd");
 		return (free(chemin), chemin = NULL, 1);
 	}
 	tmp = getcwd(NULL, 0);
