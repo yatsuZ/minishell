@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 18:12:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/20 16:57:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	add_key_value(t_env **node, char *str, int *err)
 	while (str[stop])
 		stop++;
 	if (ft_strcpm((*node)->key, "PATH"))
-	{
 		*err = *err + 2;
+	else if (ft_strcpm((*node)->key, "PWD"))
+	{
+		*err = *err + 1;
 		(*node)->value = getcwd(0, 0);
 		return ;
 	}
-	else if (ft_strcpm((*node)->key, "PWD"))
-		*err = *err + 1;
 	(*node)->value = ft_strcut(str, start, stop);
 }
 

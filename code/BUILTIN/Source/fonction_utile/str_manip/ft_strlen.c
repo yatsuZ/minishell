@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 23:45:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 18:33:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/20 18:09:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ void	free_2str(char **s1, char **s2)
 		free(*s2);
 		*s2 = NULL;
 	}
+}
+
+int	print_fd(char *str, int fd)
+{
+	return (write(fd, str, ft_strlen(str)));
 }
