@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 19:16:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/21 01:50:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,7 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 		print_fd("bash: exit: too many arguments\n", 2);
 		return (1);
 	}
-	if (!exe->arg[0])
-		res = g_status;
-	else
-		res = str_to_modul255(exe->arg[0], 0);
+	res = str_to_modul255(exe->arg[0], 0);
 	if (res == -2)
 	{
 		msg = ft_strjoin("bash: exit: ", exe->arg[0]);

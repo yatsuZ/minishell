@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 19:01:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 19:58:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	ft_minishell(t_all_struct *all)
 		else
 		{
 			prompte_to_execute(all);
-			if (all && all->exe)
-				g_status = ft_exec(all->exe, &all);
-			show_execute(all->exe, 0);
+			execute(all);
+			// if (all && all->exe)
+			// 	g_status = ft_exec(all->exe, &all);
+			// show_execute(all->exe, 0);
 		}
 		reset_var(all);
 	}
