@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/19 22:22:21 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/22 17:08:46 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*get_path_var(t_env *env)
 	tmp = env;
 	while (tmp)
 	{
-		if (ft_strncmp(env->key, "PATH", 4) == 0)
+		if (ft_strcpm(env->key, "PATH") == TRUE)
 			return (env->value);
 		tmp = tmp->next_va;
 	}
-	exit(1);
+	return (NULL);
 }
 
 char	**get_paths_from_environment(char *path)

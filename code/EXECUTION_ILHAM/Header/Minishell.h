@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 14:00:39 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/22 16:36:40 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # include "./struct.h"
-# include "../libft/libft.h"
+//# include "../libft/libft.h"
 
 // Parsing
 char		*get_all_input(t_prompt *promp);
@@ -85,19 +85,25 @@ int			add_rd(t_redirecte **all_rd, t_type_input t_rd, char *f);
 char	*get_path_var(t_env *env);
 char	**get_paths_from_environment(char *path);
 char	*access_check(char **env, char *cmd);
-int	    ft_strncmp(const char *s1, const char *s2, const size_t n);
+int		ft_strncmp(const char *s1, const char *s2, const size_t n);
 void	free_table(char **table);
 void	free_all_data(t_all_struct *all, int code, int code2);
 void	fd_open(t_all_struct *all, t_redirecte *tmp);
 void	redirect_pipe(t_all_struct *all, t_execute *exe, int i);
-void	redirect(t_all_struct *all, t_execute *exe, int i);
+void	redirect(t_all_struct *all, t_execute *exe);
 void	close_fd(int *fd);
-void	redirect(t_all_struct *all, t_execute *exe, int i);
 void	get_here_doc_fd(t_redirecte *rd);
 void	child_process(t_all_struct *all, t_execute *exe, int i);
 void	init_data(t_all_struct *all);
 void	loop_cmd(t_all_struct *all);
-int	    execute(t_all_struct *all);
+int		execute(t_all_struct *all);
+
+// utils pour la partie exec
+char	*ft_strchr(const char *s, int c);
+char	**ft_split(char const *s, char c);
+void	ft_putstr_fd(char *s, int fd);
+char	**ft_concat_cmds(char *cmd, char **arg);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 // Fonction Inutile
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 12:07:33 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/22 17:03:34 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ typedef struct s_redirecte
 	char				*str_file;
 	t_type_input		type_rd;
 	struct s_redirecte	*next;
-	int					fd[2];
+	int					fd;
 }	t_redirecte;
 
 typedef struct s_execute
 {
 	size_t				index;
-	const char			*cmd;
-	const char			**arg;
-	const char			**cmds;
+	char				*cmd;
+	char				**arg;
+	char				**cmds;
 	t_redirecte			*all_rd;
 	t_redirecte			*last_out;
 	t_redirecte			*last_in;
-	int					fd;
+	int					fd[2];
 	struct s_execute	*pip;
 }	t_execute;
 
@@ -67,7 +67,6 @@ typedef struct s_all_struct
 	t_execute		*exe;
 	t_env			*all_va;
 	int				err;
-	int				fd[2];
 	int				prev;
 	int				nb_cmds;
 	pid_t			*pids;
