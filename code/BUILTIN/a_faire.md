@@ -11,3 +11,7 @@ Voici les builtin que je dois faire :
 | `unset`		   | NON				   | key... | Retire une key et vide sa value 
 | `env`			   | NON				   | IGNORE TOUT | affiche toutes les env et leur value | |
 | `exit`		   | NON				   | n = numeric | quite le programme et retourne larguement ou $? si null bash error si cest non un caractere numeric et 2 par consequnt | modulo de 255, si y a un pipe modife juste $?|
+
+Il ne reste plus que export.
+Retirer tout les g_status et remplacer par un element de la structure.
+Puis fusion la partie exec
