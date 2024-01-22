@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 18:09:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 16:20:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_a_legit_va_env(char *s)
 	size_t	i;
 
 	i = 0;
-	if (!s)
+	if (!s || (s[0] >= '0' && s[0] <= '9'))
 		return (FALSE);
 	while (s[i])
 	{
@@ -83,19 +83,19 @@ t_env	*add_key_value(char *key, char *value)
 	return (res);
 }
 
-int	change_or_add_va(t_env *all_env, char *key, char *value)
+int	change_or_add_va(t_env **all_env, char *key, char *value)
 {
-	while (all_env)
+	while (*all_env)
 	{
-		if (ft_strcpm(all_env->key, key) == TRUE)
+		if (ft_strcpm((*all_env)->key, key) == TRUE)
 		{
-			free(all_env->value);
-			all_env->value = NULL;
-			all_env->value = ft_strdup(value);
+			free((*all_env)->value);
+			(*all_env)->value = NULL;
+			(*all_env)->value = ft_strdup(value);
 			return (0);
 		}
-		all_env = all_env->next_va;
+		(*all_env) = (*all_env)->next_va;
 	}
-	all_env = add_key_value(key, value);
+	(*all_env) = add_key_value(key, value);
 	return (0);
 }

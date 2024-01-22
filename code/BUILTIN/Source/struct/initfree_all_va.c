@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 10:43:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 15:27:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-static void	add_key_value(t_env **node, char *str, int *err)
+static void	add_key_value(t_env **node, char *str)
 {
 	size_t	start;
 	size_t	stop;
@@ -25,80 +25,29 @@ static void	add_key_value(t_env **node, char *str, int *err)
 	start = stop + 1;
 	while (str[stop])
 		stop++;
-	if (ft_strcpm((*node)->key, "PATH"))
-		*err = *err + 1;
-	else if (ft_strcpm((*node)->key, "PWD"))
-	{
-		*err = *err + 2;
-		(*node)->value = getcwd(0, 0);
-		return ;
-	}
 	(*node)->value = ft_strcut(str, start, stop);
 }
 
-static t_env	*copy_env(t_env *tete, char **arg, size_t i, int *err)
+static t_env	*copy_env(t_env *tete, char **arg, size_t i)
 {
-	if (arg[i] == NULL || *err > 0)
+	if (arg[i] == NULL)
 		return (NULL);
 	tete = ft_calloc(1, sizeof(t_env));
 	if (!tete)
-		return (*err = 1, NULL);
-	else if (arg[i] == NULL)
-	{
-		if (*err <= -2)
-		{
-			put_color_txt(ROUGE);
-			printf("ICI\n");
-			*err = *err + 2;
-			return (tete->key = ft_strdup("PATH"), tete->value = ft_strdup(""), \
-			tete->next_va = copy_env(tete->next_va, arg, ++i, err), \
-			tete);
-		}
-		else if (*err == -1)
-		{
-			*err = *err + 1;
-			return (tete->key = ft_strdup("PWD"), tete->value = getcwd(0, 0), \
-			tete->next_va = copy_env(tete->next_va, arg, ++i, err), \
-			tete);
-		}
-	}
-	add_key_value(&tete, arg[i], err);
-	tete->next_va = copy_env(tete->next_va, arg, ++i, err);
+		return (NULL);
+	add_key_value(&tete, arg[i]);
+	tete->next_va = copy_env(tete->next_va, arg, ++i);
 	return (tete);
-}
-
-static t_env	*env_null(int *err)
-{
-	t_env	*res;
-
-	res = ft_calloc(1, sizeof(t_env));
-	if (!res)
-		return ((*err) = 1, res);
-	res->key = ft_strdup("PWD");
-	res->value = getcwd(0, 0);
-	res->next_va = ft_calloc(1, sizeof(t_env));
-	if (!res->next_va)
-		return ((*err) = 1, res);
-	res->next_va->key = ft_strdup("PATH");
-	res->next_va->value = ft_strdup("");
-	res->next_va->next_va = NULL;
-	return (res);
 }
 
 int	init_all_va(t_env **all_va, char **arg_env)
 {
 	t_env	*res;
-	int		err;
 
-	err = -3;
-	if (!arg_env || !arg_env[0])
-		res = env_null(&err);
-	else
-	{
-		res = NULL;
-		res = copy_env(res, arg_env, 0, &err);
-	}
-	return ((*all_va) = res, err);
+	res = NULL;
+	if (arg_env)
+		res = copy_env(res, arg_env, 0);
+	return ((*all_va) = res, 0);
 }
 
 void	free_all_va(t_env *all_va)

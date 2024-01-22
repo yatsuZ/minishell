@@ -6,17 +6,37 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 16:22:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 16:50:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
+
+static int	del_failure(t_node **dolar, t_node **key)
+{
+	char	*tmp;
+
+	if (!(*key))
+		return (0);
+	if ((*key)->type_input == SINGLE_COTE || (*key)->type_input == DOUBLE_COTE)
+		return (free_2str(&((*dolar)->str), NULL), \
+		(*dolar)->str = ft_strdup(""), 0);
+	if ((*key)->str[0] >= '0' || (*key)->str[0] <= '9')
+	{
+		tmp = ft_strcut((*key)->str, 1, ft_strlen((*key)->str));
+		free_2str(&((*dolar)->str), &(*key)->str);
+		(*dolar)->str = ft_strdup("");
+		(*key)->str = tmp;
+	}
+	return (0);
+}
 
 static void	fail_key(t_env *all_va, t_node *pres, t_node *pass)
 {
 	t_node	*futur;
 
 	futur = pres->next_node;
+	del_failure(&pres, &pres->next_node);
 	if (pass && (pass->type_input == NON_DEFINI || \
 	pass->type_input == STR || pass->type_input == F_RD || \
 	pass->type_input == F_RD2))
