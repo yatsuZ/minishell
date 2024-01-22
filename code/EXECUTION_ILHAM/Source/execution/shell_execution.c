@@ -6,21 +6,40 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/19 13:35:31 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:10:29 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
+char	**ft_concat_cmds(char *cmd, char **arg)
+{
+	char	**res;
+	int		i;
+
+	i = 0;
+	while (arg[i])
+		i++;
+	res = (char **)malloc(sizeof(char *) * (i + 2));
+	res[0] = ft_strdup(cmd);
+	i = 0;
+	while (arg[i])
+	{
+		res[1 + i] = ft_strdup(arg[i]);
+		i++;
+	}
+	res[i] = NULL;
+	return (res);
+}
 void	child_process(t_all_struct *all, t_execute *exe, int i)
 {
 	redirect_pipe(all, exe, i);
-	redirect(all, exe, i);
-	exe->cmds == {&exe->cmd, exe->arg};
+	redirect(all, exe);
+	exe->cmds = ft_concat_cmds(exe->cmd, exe->arg);
 	if (exe->cmds == NULL)
 		free_all_data(all, 1, 2);
 	all->cmdpath = access_check(all->env, exe->cmd);
-	if (data->cmdpath != NULL)
+	if (all->cmdpath != NULL)
 	{
 		execve(all->cmdpath, exe->cmds, all->env);
 		free_all_data(all, 1, 3);
@@ -46,11 +65,16 @@ void	init_data(t_all_struct *all)
 	all->nb_cmds = all->prompte->nbr_of_pip + 1;
 	all->prev = -1;
 	all->env = get_paths_from_environment(get_path_var(all->all_va));
+	printf("SALUT\n\n\n");
+	
+	int	i=0;
 	if (all->env == NULL)
-		exit(1);
+		printf("C NULLLL\n\n\n");
+	while (all->env[i])
+		printf("%s\n", all->env[i++]);
 	all->pids = malloc(sizeof(int) * all->nb_cmds);
 	if (all->pids == NULL)
-		return (free_tab(all->env), exit(1));
+		return (free_table(all->env), exit(1));
 	
 }
 
@@ -71,7 +95,7 @@ void	loop_cmd(t_all_struct *all)
 		if (all->pids[i] == -1)
 			free_all_data(all, 1, i);
 		if (all->pids[i] == 0)
-			child_process(all, exec->cmds, i);
+			child_process(all, exec, i);
 		else
 		{
 			close_fd(&exec->fd[1]);
@@ -81,7 +105,7 @@ void	loop_cmd(t_all_struct *all)
 		exec = exec->pip;
 	}
 	i = -1;
-	while (++i < data->nb_cmd)
+	while (++i < all->nb_cmds)
 		waitpid(all->pids[i], NULL, 0);
 }
 
@@ -96,7 +120,8 @@ int	execute(t_all_struct *all)
 {
 	init_data(all);
 	loop_cmd(all);
-	free_all_data(t_all_struct *all, 0, 4);
+	free_all_data(all, 0, 4);
+	return (EXIT_FAILURE);
 }
 /*
 int	count_hdoc(t_redirecte *all_rd)

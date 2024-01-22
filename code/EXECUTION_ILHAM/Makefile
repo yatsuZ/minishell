@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/05 01:46:40 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/22 15:33:46 by ilouacha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
 EXECUTION_PATH = execution/
-EXECUTION_FILES =	prompte_to_execute.c
+EXECUTION_FILES =	prompte_to_execute.c \
+					free_data.c exec_parsing.c redirect.c shell_execution.c utils.c utils2.c
 
 STR_MANIP_PATH = str_manip/
 STR_MANIP_FILES = 	ft_strcpm.c		\
@@ -70,7 +71,7 @@ MINISHELL_FILES =	main.c 												\
 OBJ_PATH = obj/
 MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
 
-############### ligne de commande
+############### ligne de commande + add libft
 
 RM = rm -rf
 CC = cc
@@ -85,7 +86,7 @@ PROGRAM_NAME = minishell
 all: $(OBJ_PATH) ${PROGRAM_NAME}
 
 ${PROGRAM_NAME}: ${MINISHELL_OBJ}
-	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} $(READLINE) -o ${PROGRAM_NAME}
+	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} $(LIBFT) $(READLINE) -o ${PROGRAM_NAME}
 
 $(OBJ_PATH)%.o: $(MINISHELL_PATH)%.c
 	@mkdir -p $(@D)

@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 10:55:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 11:23:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
 
-static void	get_key_value(t_env **node, char *str)
+static void	add_key_value(t_env **node, char *str, int *err)
 {
 	size_t	start;
 	size_t	stop;
@@ -34,9 +34,28 @@ static t_env	*copy_env(t_env *tete, char **arg, size_t i)
 		return (NULL);
 	tete = ft_calloc(1, sizeof(t_env));
 	if (!tete)
-		return (NULL);
-	get_key_value(&tete, arg[i]);
-	tete->next_va = copy_env(tete->next_va, arg, ++i);
+		return (*err = 1, NULL);
+	else if (arg[i] == NULL)
+	{
+		if (*err <= -2)
+		{
+			put_color_txt(ROUGE);
+			printf("ICI\n");
+			*err = *err + 2;
+			return (tete->key = ft_strdup("PATH"), tete->value = ft_strdup(""), \
+			tete->next_va = copy_env(tete->next_va, arg, ++i, err), \
+			tete);
+		}
+		else if (*err == -1)
+		{
+			*err = *err + 1;
+			return (tete->key = ft_strdup("PWD"), tete->value = getcwd(0, 0), \
+			tete->next_va = copy_env(tete->next_va, arg, ++i, err), \
+			tete);
+		}
+	}
+	add_key_value(&tete, arg[i], err);
+	tete->next_va = copy_env(tete->next_va, arg, ++i, err);
 	return (tete);
 }
 
@@ -44,10 +63,15 @@ int	init_all_va(t_env **all_va, char **arg_env)
 {
 	t_env	*res;
 
-	res = NULL;
-	if (!(!arg_env || !arg_env[0]))
-		res = copy_env(res, arg_env, 0);
-	return ((*all_va) = res, 0);
+	err = -3;
+	if (!arg_env || !arg_env[0])
+		res = env_null(&err);
+	else
+	{
+		res = NULL;
+		res = copy_env(res, arg_env, 0, &err);
+	}
+	return ((*all_va) = res, err);
 }
 
 void	free_all_va(t_env *all_va)

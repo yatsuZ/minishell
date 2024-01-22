@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/16 16:03:14 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:08:46 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*get_path_var(t_env *env)
 	tmp = env;
 	while (tmp)
 	{
-		if (ft_strncmp(env->key, "PATH", 4) == 0)
+		if (ft_strcpm(env->key, "PATH") == TRUE)
 			return (env->value);
 		tmp = tmp->next_va;
 	}
-	exit(1);
+	return (NULL);
 }
 
 char	**get_paths_from_environment(char *path)
@@ -56,18 +56,6 @@ char	*access_check(char **env, char *cmd)
 	write(2, cmd, strlen(cmd));
 	write(2, "\n", 1);
 	return (NULL);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (-1);
-	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, const size_t n)

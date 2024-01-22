@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 11:02:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 11:22:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ char	**init_tab(t_node *n)
 			nbr_of_arg++;
 		n = n->next_node;
 	}
-	if (nbr_of_arg == 0)
-		return (NULL);
-	return (ft_calloc(nbr_of_arg + 1, sizeof(char *)));
+	return (ft_calloc(nbr_of_arg, sizeof(char *)));
 }
 
 int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)

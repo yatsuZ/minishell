@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 14:02:50 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/10 03:05:30 by yatsu            ###   ########.fr       */
+/*   Updated: 2024/01/19 23:28:06 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 t_cmd	*ft_init_cmd(char *argv, char **env, int *error);
 t_pipex	*ft_init_pipex(char **argv, char **env);
 void	free_cmd(t_cmd *cmd);
-void	free_tab(char **tab);
+void	free_tab(char **table);
 char	*get_path_cmd(char **env, char *cmd, int *error);
 void	free_pipex(t_pipex *pipex);
 
