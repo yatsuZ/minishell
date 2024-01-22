@@ -6,7 +6,7 @@
 /*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 10:20:30 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/22 12:07:33 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_execute
 	t_redirecte			*all_rd;
 	t_redirecte			*last_out;
 	t_redirecte			*last_in;
-	int					fd[2];
+	int					fd;
 	struct s_execute	*pip;
 }	t_execute;
 
@@ -67,6 +67,7 @@ typedef struct s_all_struct
 	t_execute		*exe;
 	t_env			*all_va;
 	int				err;
+	int				fd[2];
 	int				prev;
 	int				nb_cmds;
 	pid_t			*pids;
