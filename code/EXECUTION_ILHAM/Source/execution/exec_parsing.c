@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/16 16:03:14 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/19 22:22:21 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,6 @@ char	*access_check(char **env, char *cmd)
 	write(2, cmd, strlen(cmd));
 	write(2, "\n", 1);
 	return (NULL);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int	i;
-
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (-1);
-	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, const size_t n)

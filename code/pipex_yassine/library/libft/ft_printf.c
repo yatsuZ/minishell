@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:09:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/03/27 18:50:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/19 23:28:13 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 //pas besoin de mettre un break vue que jai un return qui tope la fonction
-int	ft_findtype(const char *str, unsigned long i, va_list tab)
+int	ft_findtype(const char *str, unsigned long i, va_list table)
 {
 	if (str[i] == 'c')
 		return (ft_printchar((char) va_arg(tab, int)));
@@ -46,7 +46,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			nbrc += ft_findtype(str, ++i, tab);
+			nbrc += ft_findtype(str, ++i, table);
 		else
 			nbrc += ft_printchar(str[i]);
 		i++;

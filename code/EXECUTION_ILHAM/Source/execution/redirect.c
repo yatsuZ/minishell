@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/19 13:24:25 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/19 22:36:33 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,58 +21,7 @@ void	close_fd(int *fd)
 	*fd = -1;
 }
 
-void	close_pipes(t_data *data)
-{
-	if ((data->j + 1) < data->len)
-		close_fd(&data->fd[0]);
-	close_fd(&data->fd[1]);
-}
-
-void	sub_redirect(t_data	*data, int fd)
-{
-	if (data->here_doc == 0)
-		fd = open(data->infile, O_RDONLY);
-	else
-		fd = data->fd_h;
-	if (fd == -1)
-	{
-		close(data->fd[0]);
-		close(data->fd[1]);
-		free_all_data(data, 1, 3);
-	}
-	dup2(fd, STDIN_FILENO);
-	close(fd);
-}
-
-/*void	redirect(t_data	*data, int i)
-{
-	int	fd;
-
-	fd = -1;
-	if (i == 0 || i == data->len - 1)
-		sub_redirect(data, fd);
-	else
-	{
-		dup2(data->prev, STDIN_FILENO);
-		close(data->prev);
-	}
-	if (i == data->len - 1)
-	{
-		if (data->here_doc)
-			fd = open(data->outfile, O_CREAT | O_APPEND | O_WRONLY, 0666);
-		else
-			fd = open(data->outfile, O_CREAT | O_TRUNC | O_WRONLY, 0666);
-		if (fd == -1)
-			free_all_data(data, 1, 3);
-		dup2(fd, STDOUT_FILENO);
-		close(fd);
-	}
-	else
-		dup2(data->fd[1], STDOUT_FILENO);
-	close_pipes(data);
-}*/
-
-void	fd_open(t_all_struct *all, t_redirecte tmp)
+void	fd_open(t_all_struct *all, t_redirecte *tmp)
 {
 	if (tmp->type_rd ==  R_IN )
 		tmp->fd = open(data->infile, O_RDONLY);
@@ -122,7 +71,7 @@ void	redirect(t_all_struct *all, t_execute *exe, int i)
 	}
 }
 
-void	get_here_doc_fd(t_redirecte rd)
+void	get_here_doc_fd(t_redirecte *rd)
 {
 	if (pipe(rd->fd) == -1)
 	{

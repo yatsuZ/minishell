@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 13:31:09 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/22 10:20:30 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_redirecte
 	char				*str_file;
 	t_type_input		type_rd;
 	struct s_redirecte	*next;
-	int					fd;
+	int					fd[2];
 }	t_redirecte;
 
 typedef struct s_execute
@@ -73,25 +73,5 @@ typedef struct s_all_struct
 	char			**env;
 	char			*cmdpath;
 }	t_all_struct;
-
-/* je rajoute un tableau cmds dans data
-char	**cmds = {(*char *)cmd, (char **)arg}
-*/
-typedef struct s_data
-{
-	char		**env;
-	pid_t		*pid;
-	int			fd[2];
-	int			prev;
-	char		**cmds;
-	char		*cmdpath;
-	int			nb_cmd;
-	char		*infile;
-	char		*outfile;
-	char		*limiter;
-	int			*fd_h;
-	int			here_doc;
-	int			j;
-}		t_data;
 
 #endif

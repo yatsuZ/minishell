@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/16 16:04:21 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/22 10:10:21 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include "./struct.h"
+# include "../libft/libft.h"
 
 // Parsing
 char		*get_all_input(t_prompt *promp);
@@ -81,23 +82,22 @@ void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, char *f);
 
 // Fonctions pour l'execution du shell
-void	close_fd(int *fd);
-void	redirect(t_data	*data, int i);
-void	close_pipes(t_data *data);
-void	sub_redirect(t_data	*data, int fd);
-void	init(t_data *data, int ac, char **av, char **env);
-void	loop_cmd(t_data *data, char **cmds);
-int	    ft_strncmp(const char *s1, const char *s2, const size_t n);
-int	    ft_strcmp(const char *s1, const char *s2);
-char	*access_check(char **env, char *cmd);
 char	*get_path_var(t_env *env);
-void	child_process(t_data *data, char **cmds, int i);
-void	loop_cmd(t_data *data, char **cmds);
-void	init(t_data *data, t_all_struct *all, char **env);
-void	child_process(t_data *data, char **cmds, int i);
+char	**get_paths_from_environment(char *path);
+char	*access_check(char **env, char *cmd);
+int	    ft_strncmp(const char *s1, const char *s2, const size_t n);
+void	free_table(char **table);
+void	free_all_data(t_all_struct *all, int code, int code2);
+void	fd_open(t_all_struct *all, t_redirecte *tmp);
+void	redirect_pipe(t_all_struct *all, t_execute *exe, int i);
+void	redirect(t_all_struct *all, t_execute *exe, int i);
+void	close_fd(int *fd);
+void	redirect(t_all_struct *all, t_execute *exe, int i);
+void	get_here_doc_fd(t_redirecte *rd);
+void	child_process(t_all_struct *all, t_execute *exe, int i);
+void	init_data(t_all_struct *all);
+void	loop_cmd(t_all_struct *all);
 int	    execute(t_all_struct *all);
-
-
 
 // Fonction Inutile
 

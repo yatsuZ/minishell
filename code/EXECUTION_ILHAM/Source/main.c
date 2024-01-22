@@ -6,7 +6,7 @@
 /*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 15:06:51 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/19 23:14:35 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_minishell(t_all_struct *all)
 		show_execute(all->exe, 0);
 		add_history(all->prompte->brut);
 		//EXECUTE
-		execute(all);
+		//execute(all);
 		reset_var(all);
 	}
 }

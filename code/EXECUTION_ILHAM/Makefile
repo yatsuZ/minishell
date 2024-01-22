@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/05 01:46:40 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/22 10:06:28 by ilham_oua        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
 EXECUTION_PATH = execution/
-EXECUTION_FILES =	prompte_to_execute.c
+EXECUTION_FILES =	prompte_to_execute.c free_data.c exec_parsing.c redirect.c shell_execution.c
 
 STR_MANIP_PATH = str_manip/
 STR_MANIP_FILES = 	ft_strcpm.c		\
@@ -70,11 +70,12 @@ MINISHELL_FILES =	main.c 												\
 OBJ_PATH = obj/
 MINISHELL_OBJ = ${addprefix ${OBJ_PATH}, ${MINISHELL_FILES:.c=.o}}
 
-############### ligne de commande
+############### ligne de commande + add libft
+LIBFT = libft/libft.a
 
 RM = rm -rf
 CC = cc
-C_FLAGS = -g3 -Wall -Wextra -Werror
+C_FLAGS = -g3 -Ilibft -Wall -Wextra -Werror
 
 READLINE = -lreadline
 
@@ -85,7 +86,8 @@ PROGRAM_NAME = minishell
 all: $(OBJ_PATH) ${PROGRAM_NAME}
 
 ${PROGRAM_NAME}: ${MINISHELL_OBJ}
-	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} $(READLINE) -o ${PROGRAM_NAME}
+	make -C libft
+	$(CC) $(C_FLAGS) ${MINISHELL_OBJ} $(LIBFT) $(READLINE) -o ${PROGRAM_NAME}
 
 $(OBJ_PATH)%.o: $(MINISHELL_PATH)%.c
 	@mkdir -p $(@D)
@@ -95,9 +97,11 @@ $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
 
 clean:
+	make -C libft clean 
 	$(RM) $(OBJ_PATH)
 
 fclean: clean
+	rm -f $(LIBFT)
 	$(RM) ${PROGRAM_NAME}
 
 norme:

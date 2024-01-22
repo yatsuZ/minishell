@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/19 13:35:31 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/19 23:24:51 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_data(t_all_struct *all)
 		exit(1);
 	all->pids = malloc(sizeof(int) * all->nb_cmds);
 	if (all->pids == NULL)
-		return (free_tab(all->env), exit(1));
+		return (free_table(all->env), exit(1));
 	
 }
 
@@ -97,6 +97,7 @@ int	execute(t_all_struct *all)
 	init_data(all);
 	loop_cmd(all);
 	free_all_data(t_all_struct *all, 0, 4);
+	return (EXIT_FAILURE);
 }
 /*
 int	count_hdoc(t_redirecte *all_rd)
