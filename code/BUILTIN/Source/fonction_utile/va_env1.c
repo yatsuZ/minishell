@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 16:20:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 00:27:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ char	*get_value(t_env *all_va, char *key)
 			value = ft_strdup(all_va->value);
 		all_va = all_va->next_va;
 	}
-	if (!value)
-		value = NULL;
 	return (value);
 }
 
@@ -83,19 +81,23 @@ t_env	*add_key_value(char *key, char *value)
 	return (res);
 }
 
-int	change_or_add_va(t_env **all_env, char *key, char *value)
+void	change_or_add_va(t_env **all_env, char *key, char *value)
 {
-	while (*all_env)
+	if (*all_env == NULL)
 	{
-		if (ft_strcpm((*all_env)->key, key) == TRUE)
-		{
-			free((*all_env)->value);
-			(*all_env)->value = NULL;
-			(*all_env)->value = ft_strdup(value);
-			return (0);
-		}
-		(*all_env) = (*all_env)->next_va;
+		*all_env = add_key_value(key, value);
+		return ;
 	}
-	(*all_env) = add_key_value(key, value);
-	return (0);
+	else if ((*all_env)->next_va == NULL)
+	{
+		*all_env = add_key_value(key, value);
+		return ;
+	}
+	else if (ft_strcpm(key, (*all_env)->key) == TRUE)
+	{
+		free_2str(&((*all_env)->value), NULL);
+		(*all_env)->value = ft_strdup(value);
+		return ;
+	}
+	change_or_add_va(&(*all_env)->next_va, key, value);
 }

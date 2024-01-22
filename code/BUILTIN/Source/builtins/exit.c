@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 11:21:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 23:11:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 	char	*msg;
 	
 	printf("exit\n");
-	if (exe->arg && exe->arg[1] != NULL)
-	{
-		print_fd("bash: exit: too many arguments\n", 2);
-		return (1);
-	}
-	res = str_to_modul255(exe->arg[0], 0);
+	if (!exe->arg)
+		res = g_status;
+	else
+		res = str_to_modul255(exe->arg[0], 0);
 	if (res == -2)
 	{
 		msg = ft_strjoin("bash: exit: ", exe->arg[0]);
@@ -76,6 +74,11 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 		print_fd(msg, 2);
 		free_2str(&msg, NULL);
 		end(*all);
+	}
+	if (exe->arg && exe->arg[1] != NULL)
+	{
+		print_fd("bash: exit: too many arguments\n", 2);
+		return (1);
 	}
 	end(*all);
 	return (0);

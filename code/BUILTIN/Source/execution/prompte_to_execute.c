@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 11:22:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 23:08:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ char	**init_tab(t_node *n)
 			nbr_of_arg++;
 		n = n->next_node;
 	}
+	if (!nbr_of_arg)
+		return (NULL);
+	nbr_of_arg++;
 	return (ft_calloc(nbr_of_arg, sizeof(char *)));
 }
 
