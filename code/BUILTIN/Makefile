@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/18 09:48:09 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/21 23:52:29 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ PARSING_FILES =	parsing.c					\
 
 
 STRUCT_PATH = struct/
-STRUCT_FILES = 	initfree_all.c		\
+STRUCT_FILES = 	free_env.c			\
+				initfree_all.c		\
 				initfree_node.c		\
 				initfree_execute.c	\
 				initfree_all_va.c	\

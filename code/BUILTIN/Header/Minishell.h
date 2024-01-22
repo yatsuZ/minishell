@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 18:09:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:33:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void		str_change_env(char **str, t_env *all_env);
 t_boolean	have_nwl(char *s, size_t i);
 void		str_to_node_nwl(char *str, t_node **res);
 char		*int_to_str(int nbr);
-int		change_or_add_va(t_env *all_env, char *key, char *value);
+int			change_or_add_va(t_env *all_env, char *key, char *value);
+int			print_fd(char *str, int fd);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);
@@ -103,6 +104,8 @@ void		free_execute(t_execute *exe);
 t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n);
+void		free_env(t_env **env);
+
 // Fonction Inutile
 
 void		show_color(void);

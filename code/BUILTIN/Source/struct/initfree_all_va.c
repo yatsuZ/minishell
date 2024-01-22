@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 18:12:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:43:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void	add_key_value(t_env **node, char *str, int *err)
 	while (str[stop])
 		stop++;
 	if (ft_strcpm((*node)->key, "PATH"))
+		*err = *err + 1;
+	else if (ft_strcpm((*node)->key, "PWD"))
 	{
 		*err = *err + 2;
 		(*node)->value = getcwd(0, 0);
 		return ;
 	}
-	else if (ft_strcpm((*node)->key, "PWD"))
-		*err = *err + 1;
 	(*node)->value = ft_strcut(str, start, stop);
 }
 
@@ -47,6 +47,8 @@ static t_env	*copy_env(t_env *tete, char **arg, size_t i, int *err)
 	{
 		if (*err <= -2)
 		{
+			put_color_txt(ROUGE);
+			printf("ICI\n");
 			*err = *err + 2;
 			return (tete->key = ft_strdup("PATH"), tete->value = ft_strdup(""), \
 			tete->next_va = copy_env(tete->next_va, arg, ++i, err), \
