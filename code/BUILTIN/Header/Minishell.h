@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/21 23:50:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:33:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void		free_execute(t_execute *exe);
 t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n);
-void		free_env(t_env *env);
+void		free_env(t_env **env);
 
 // Fonction Inutile
 

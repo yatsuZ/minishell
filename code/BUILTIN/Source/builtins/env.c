@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/20 16:49:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:34:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*all_va_to_char(t_env *all_va)
 	char	*next_str;
 
 	if (!all_va)
-		return (NULL);
+		return (ft_strdup(""));
 	str = ft_strjoin(all_va->key, "=");
 	str_add(&str, all_va->value, 0);
 	next_str = all_va_to_char(all_va->next_va);

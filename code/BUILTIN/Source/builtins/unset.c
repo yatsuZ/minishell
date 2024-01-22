@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/21 23:54:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:31:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_env	*del_va(char *key, t_env *env)
 	if (ft_strcpm(key, env->key))
 	{
 		new_va_next = env->next_va;
-		free_env(env);
+		free_env(&env);
 		return (new_va_next);
 	}
 	env->next_va = del_va(key, env->next_va);
@@ -35,6 +35,6 @@ int	exec_unset(t_execute *exe, t_all_struct **all)
 	(void) all;
 	i = 0;
 	while (exe->arg && exe->arg[i])
-		del_va(exe->arg[i++], (*all)->all_va);
+		(*all)->all_va = del_va(exe->arg[i++], (*all)->all_va);
 	return (0);
 }
