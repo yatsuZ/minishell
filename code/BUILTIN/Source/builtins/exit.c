@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/21 01:50:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/22 11:17:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	str_to_modul255(char *str, size_t i)
 	int			err;
 
 	err = 0;
-	if (!str)
-		return (-1);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	nbr = is_numeric2(str, i, &err);
@@ -64,12 +62,15 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 	char	*msg;
 	
 	printf("exit\n");
-	if (!(exe->arg == NULL || exe->arg[0] == NULL || exe->arg[1] == NULL))
+	if (exe->arg && exe->arg[1] != NULL)
 	{
 		print_fd("bash: exit: too many arguments\n", 2);
 		return (1);
 	}
-	res = str_to_modul255(exe->arg[0], 0);
+	if (!exe->arg)
+		res = g_status;
+	else
+		res = str_to_modul255(exe->arg[0], 0);
 	if (res == -2)
 	{
 		msg = ft_strjoin("bash: exit: ", exe->arg[0]);
@@ -79,8 +80,6 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 		free_2str(&msg, NULL);
 		end(*all);
 	}
-	if (res != -1)
-		g_status = res;
 	end(*all);
 	return (0);
 }
