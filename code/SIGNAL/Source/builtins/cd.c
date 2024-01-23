@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:00:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 17:16:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 	char	*tmp2;
 
 	if (exe->arg == NULL)
-		chemin = get_value((*all)->all_va, "HOME");
+		chemin = get_value((*all)->all_va, "HOME", (*all)->status);
 	else
 		chemin = ft_strdup(exe->arg[0]);
 	if (!chemin)
@@ -29,7 +29,7 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 		print_fd("Minishell error: cd: chemin non existant OU non les droits\n", 2);
 		return (free(chemin), chemin = NULL, 1);
 	}
-	tmp2 = get_value((*all)->all_va, "PWD");
+	tmp2 = get_value((*all)->all_va, "PWD", (*all)->status);
 	if (tmp2)
 		change_or_add_va(&((*all)->all_va), "OLDPWD", tmp2);
 	tmp = getcwd(NULL, 0);

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_strcpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:59:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:16:01 by yzaoui           ###   ########.fr       */
+/*   Created: 2023/12/10 23:44:15 by yzaoui            #+#    #+#             */
+/*   Updated: 2023/12/25 22:57:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../Header/Minishell.h"
+#include "../../../Header/Minishell.h"
 
-static void	print_env(t_env *all_va)
+int	ft_strcpm(char *s1, char *s2)
 {
-	if (!all_va)
-		return ;
-	printf("%s=\"%s\"\n", all_va->key, all_va->value);
-	print_env(all_va->next_va);
-}
+	long	i;
 
-int	exec_env(t_execute *exe, t_all_struct **all)
-{
-	(void) exe;
-	print_env((*all)->all_va);
-	return (0);
+	i = 0;
+	if (!s1 && !s2)
+		return (1);
+	else if (!s1 || !s2)
+		return (FALSE);
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (FALSE);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return (FALSE);
+	return (TRUE);
 }

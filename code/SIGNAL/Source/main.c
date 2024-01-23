@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:29:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 17:23:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
 
-int	g_status;
+int	g_signal;
 
 void	reset_var(t_all_struct *all)
 {
@@ -33,8 +33,6 @@ void	ft_minishell(t_all_struct *all)
 	while (all)
 	{
 		iderr = parsing(all);
-		if (all->prompte->brut == NULL)
-			end(all);
 		add_history(all->prompte->brut);
 		// show_prompt(all->prompte);
 		if (iderr)
@@ -43,7 +41,7 @@ void	ft_minishell(t_all_struct *all)
 		{
 			prompte_to_execute(all);
 			if (all && all->exe)
-				g_status = ft_exec(all->exe, &all);
+				all->status = ft_exec(all->exe, &all);
 			// show_execute(all->exe, 0);
 		}
 		reset_var(all);
@@ -57,7 +55,7 @@ int	main(int ac, char **av, char **env)
 
 	(void) ac;
 	(void) av;
-	g_status = 0;
+	g_signal = 0;
 	if (init_all(&all, env))
 		end(all);
 	ft_minishell(all);

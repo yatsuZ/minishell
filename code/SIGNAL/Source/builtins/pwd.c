@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:59:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:16:01 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/16 17:56:28 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/01/21 23:31:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-static void	print_env(t_env *all_va)
+int	exec_pwd(t_execute *exe, t_all_struct **all)
 {
-	if (!all_va)
-		return ;
-	printf("%s=\"%s\"\n", all_va->key, all_va->value);
-	print_env(all_va->next_va);
-}
+	char	*pwd_msg;
 
-int	exec_env(t_execute *exe, t_all_struct **all)
-{
+	(void) all;
 	(void) exe;
-	print_env((*all)->all_va);
+	pwd_msg = getcwd(NULL, 0);
+	if (pwd_msg == NULL)
+		return (print_fd("ERROR pour recuperation du pwd\n", 2), 1);
+	printf("%s\n", pwd_msg);
+	free_2str(&pwd_msg, NULL);
 	return (0);
 }

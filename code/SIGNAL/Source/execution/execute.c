@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:59:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:16:01 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/01/23 17:41:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-static void	print_env(t_env *all_va)
+//partie importante je vais juste moccupe des builtin
+int	ft_exec(t_execute *exe, t_all_struct **all)
 {
-	if (!all_va)
-		return ;
-	printf("%s=\"%s\"\n", all_va->key, all_va->value);
-	print_env(all_va->next_va);
-}
+	int	status;
 
-int	exec_env(t_execute *exe, t_all_struct **all)
-{
-	(void) exe;
-	print_env((*all)->all_va);
-	return (0);
+	status = 0;
+	if (!all)
+		end(NULL);
+	else if (!(*all))
+		end(*all);
+	else if (!exe)
+		return ((*all)->status);
+	if (find_builtin(exe->cmd) != NON_BUILTIN)
+	{
+		(*all)->status = exec_builtin(exe, all, find_builtin(exe->cmd));
+		return (ft_exec(exe->pip, all));
+	}
+	return (ft_exec(exe->pip, all));
 }
