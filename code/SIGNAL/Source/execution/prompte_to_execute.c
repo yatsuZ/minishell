@@ -6,29 +6,26 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 18:01:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:06:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-char	**init_tab(t_node *n)
+char	**init_tab(t_node *n, size_t *nbr_of_arg)
 {
-	size_t	nbr_of_arg;
-
 	if (!n)
 		return (NULL);
-	nbr_of_arg = 0;
+	(*nbr_of_arg) = 0;
 	while (n && n->type_input != PIP)
 	{
 		if (n->type_input == ARG)
-			nbr_of_arg++;
+			(*nbr_of_arg)++;
 		n = n->next_node;
 	}
-	if (!nbr_of_arg)
+	if (!(*nbr_of_arg))
 		return (NULL);
-	nbr_of_arg++;
-	return (ft_calloc(nbr_of_arg, sizeof(char *)));
+	return (ft_calloc(1 + (*nbr_of_arg), sizeof(char *)));
 }
 
 int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)
@@ -62,7 +59,7 @@ t_execute	*get_all_exe(t_prompt *p, t_node *n, size_t i, int *err)
 	if (!n)
 		return (NULL);
 	res = init_execute(NULL, NULL, NULL, err);
-	res->arg = init_tab(n);
+	res->arg = init_tab(n, &(res->nbr_of_arg));
 	all_rd = NULL;
 	if (*err)
 		return (res);

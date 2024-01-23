@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 18:01:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:25:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		str_change_env(char **str, t_env *all_env, int status);
 t_boolean	have_nwl(char *s, size_t i);
 void		str_to_node_nwl(char *str, t_node **res);
 char		*int_to_str(int nbr);
-void		change_or_add_va(t_env **all_env, char *key, char *value);
+t_env		**change_or_add_va(t_env **all_env, char *key, char *value);
 int			print_fd(char *str, int fd);
 
 // Structure

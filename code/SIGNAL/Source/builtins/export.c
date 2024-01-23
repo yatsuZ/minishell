@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:44:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:23:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ int	ft_export(char *str, t_env **all_env)
 		print_fd("\': key non valide\n", 2);
 		return (free_2str(&key, NULL), value = NULL, 1);
 	}
-	if (str[stop] == '\0' || str[stop + 1] == '\0')
+	if (str[stop] == '\0')
+		value = NULL;
+	else if (str[stop + 1] == '\0')
 		value = ft_strdup("");
 	else
 		value = get_value_from_str(str, stop);
-	return (change_or_add_va(all_env, key, value), free_2str(&key, &value), 0);
+	return ((*all_env) = change_or_add_va(all_env, key, value), free_2str(&key, &value), 0);
 }
 
 int	exec_export(t_execute *exe, t_all_struct **all)

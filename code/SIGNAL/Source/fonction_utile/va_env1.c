@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:39:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 20:25:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	str_change_env(char **str, t_env *all_env, int status)
 		fusion_node(n, NON_DEFINI);
 	free(*str);
 	*str = NULL;
-	*str = ft_strdup(n->str);
+	if (!n)
+		*str = NULL;
+	else
+		*str = ft_strdup(n->str);
 	free_all_node(n);
 }
 
@@ -76,28 +79,32 @@ t_env	*add_key_value(char *key, char *value)
 
 	res = ft_calloc(1, sizeof(t_env));
 	res->key = ft_strdup(key);
-	res->value = ft_strdup(value);
+	if (!value)
+		res->value = NULL;
+	else
+		res->value = ft_strdup(value);
 	res->next_va = NULL;
 	return (res);
 }
 
-void	change_or_add_va(t_env **all_env, char *key, char *value)
+t_env	**change_or_add_va(t_env **all_env, char *key, char *value)
 {
 	if (*all_env == NULL)
 	{
 		*all_env = add_key_value(key, value);
-		return ;
+		return (all_env);
 	}
 	else if ((*all_env)->next_va == NULL)
 	{
 		*all_env = add_key_value(key, value);
-		return ;
+		return (all_env);
 	}
 	else if (ft_strcpm(key, (*all_env)->key) == TRUE)
 	{
 		free_2str(&((*all_env)->value), NULL);
 		(*all_env)->value = ft_strdup(value);
-		return ;
+		return (all_env);
 	}
-	change_or_add_va(&(*all_env)->next_va, key, value);
+	(*all_env)->next_va = change_or_add_va(&(*all_env)->next_va, key, value);
+	return (all_env);
 }
