@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/22 17:28:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:28:05 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	close_fd(int *fd)
 
 void	fd_open(t_all_struct *all, t_redirecte *tmp)
 {
+	if (tmp == NULL)
+		return ;
 	if (tmp->type_rd ==  R_IN )
 		tmp->fd = open(tmp->str_file, O_RDONLY);
 	else if (tmp->type_rd == R_IN_LIMIT)
@@ -39,9 +41,7 @@ void	fd_open(t_all_struct *all, t_redirecte *tmp)
 }
 
 void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
-{
-	(void)	i;
-	
+{	
 	if (i != all->nb_cmds - 1)
 	{
 		close_fd(&exe->fd[0]);
@@ -61,6 +61,8 @@ void	redirect(t_all_struct *all, t_execute *exe)
 	t_redirecte	*tmp;
 
 	tmp = exe->all_rd;
+	if (tmp == NULL)
+		return ;
 	while (tmp)
 	{
 		fd_open(all, tmp);

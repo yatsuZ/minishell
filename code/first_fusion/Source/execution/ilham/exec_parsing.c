@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/22 17:41:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 16:30:36 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*access_check(char **env, char *cmd)
 		return (ft_putstr_fd("command not found\n", 2), NULL);
 	if (ft_strchr(cmd, '/'))
 		return (cmd);
+	if (!env)
+		return (ft_putstr_fd("env not found\n", 2), NULL);
 	while (env[j])
 	{
 		tmp = ft_strjoin("/", cmd);
@@ -49,6 +51,9 @@ char	*access_check(char **env, char *cmd)
 		free(tmp);
 		if (access(path_cmd, F_OK) == 0)
 			return (path_cmd);
+		else if (access(path_cmd, F_OK) == -1)
+			
+		
 		j++;
 		free(path_cmd);
 	}
