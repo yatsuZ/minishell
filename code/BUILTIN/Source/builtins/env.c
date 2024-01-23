@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:30 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 10:58:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 09:08:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-char	*all_va_to_char(t_env *all_va)
+static char	*all_va_to_char(t_env *all_va)
 {
 	char	*str;
 	char	*next_str;
