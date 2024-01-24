@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 18:01:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 12:01:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		fusion_va(t_env *all_va, t_node *present, t_node *previous, int status);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
-int			ft_exec(t_execute *exe, t_all_struct **all);
+int			ft_all_exec(t_execute *exe, t_all_struct **all);
 // builtin
 t_builtin	find_builtin(char *str);
 int			exec_builtin(t_execute *exe, t_all_struct **all, \
