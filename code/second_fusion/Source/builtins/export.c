@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:44:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 19:50:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ static void	print_env_export(t_env *all_va)
 {
 	if (!all_va)
 		return ;
-	printf("export %s=\"%s\"\n", all_va->key, all_va->value);
+	if (all_va->show)
+	{
+		if (all_va->value)
+			printf("export %s=\"%s\"\n", all_va->key, all_va->value);
+		else
+			printf("export %s\n", all_va->key);
+	}
 	print_env_export(all_va->next_va);
 }
 
@@ -42,10 +48,11 @@ int	ft_export(char *str, t_env **all_env)
 	while (str && str[stop] && str[stop] != '=')
 		stop++;
 	key = ft_strcut(str, 0, stop);
-	if (is_a_legit_va_env(key) == FALSE)
+	if (is_a_legit_va_env(key) == FALSE || ft_strcpm("?", key) == TRUE)
 	{
 		print_fd("Minishelle : export: `", 2);
-		print_fd(key, 2);
+		if (key)
+			print_fd(key, 2);
 		print_fd("\': key non valide\n", 2);
 		return (free_2str(&key, NULL), value = NULL, 1);
 	}

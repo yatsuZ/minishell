@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:39:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:18:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,28 @@ t_env	*add_key_value(char *key, char *value)
 
 void	change_or_add_va(t_env **all_env, char *key, char *value)
 {
+	if (!all_env)
+		return ;
 	if (*all_env == NULL)
 	{
 		*all_env = add_key_value(key, value);
 		return ;
 	}
-	else if ((*all_env)->next_va == NULL)
+	while ((*all_env)->next_va)
 	{
-		*all_env = add_key_value(key, value);
-		return ;
+		if (ft_strcpm(key, (*all_env)->key) == TRUE)
+		{
+			free_2str(&((*all_env)->value), NULL);
+			(*all_env)->value = ft_strdup(value);
+			return ;
+		}
+		all_env = &((*all_env)->next_va);
 	}
-	else if (ft_strcpm(key, (*all_env)->key) == TRUE)
+	if (ft_strcpm(key, (*all_env)->key) == TRUE)
 	{
 		free_2str(&((*all_env)->value), NULL);
 		(*all_env)->value = ft_strdup(value);
-		return ;
 	}
-	change_or_add_va(&(*all_env)->next_va, key, value);
+	else
+		(*all_env)->next_va = add_key_value(key, value);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:50:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 19:47:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
+	t_boolean		show;
 	struct s_env	*next_va;
 }	t_env;
 

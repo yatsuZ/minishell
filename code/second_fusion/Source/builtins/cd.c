@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:16:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:57:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 		return (free(chemin), chemin = NULL, 1);
 	}
 	tmp2 = get_value((*all)->all_va, "PWD", (*all)->status);
-	if (tmp2)
-		change_or_add_va(&((*all)->all_va), "OLDPWD", tmp2);
+	change_or_add_va(&((*all)->all_va), "OLDPWD", tmp2);
 	tmp = getcwd(NULL, 0);
 	change_or_add_va(&((*all)->all_va), "PWD", tmp);
 	return (free_2str(&tmp, &tmp2), free(chemin), chemin = NULL, 0);

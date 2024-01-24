@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 12:10:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:34:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 	// RD
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
-	
+	if (exe->pip)
+		ft_all_exec(exe->pip, all);
 	return (status);
 }
 
@@ -40,5 +41,4 @@ int	ft_all_exec(t_execute *exe, t_all_struct **all)
 	else if (!exe)
 		return ((*all)->status);
 	return (ft_exec(exe, all));
-	return (ft_all_exec(exe->pip, all));
 }
