@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:50:24 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/07 10:59:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:35:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+int	g_global = 1;
+
 void sigint_handler2(int signum) {
 	printf("Signal SIGINT reçu.\nsignum = %d\n", signum);
 	// Rétablir le comportement par défaut pour SIGINT
+	g_global = 0;
+	while (1)
+		printf("????\n\n");
 	signal(SIGINT, SIG_DFL);
+	
 }
 
 int main() {
@@ -29,7 +35,7 @@ int main() {
 
 	printf("Attente de signaux...\n");
 
-	while (1) {
+	while (g_global) {
 		if (res == SIG_DFL)
 			printf("Comportement par defaut\n");
 		else
@@ -37,6 +43,6 @@ int main() {
 		printf("Jattend un signal :|\n");
 		sleep(1);
 	}
-
+	printf("Pas de fork\n");
 	return 0;
 }
