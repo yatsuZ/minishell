@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 00:48:36 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/16 17:56:28 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/01/21 23:31:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-//partie importante je vais juste moccupe des builtin
-int	ft_exec(t_execute *exe, t_all_struct **all)
+int	exec_pwd(t_execute *exe, t_all_struct **all)
 {
-	if (!all)
-		end(NULL);
-	else if (!(*all))
-		end(*all);
-	else if (!exe)
-		return ((*all)->status);
-	if (find_builtin(exe->cmd) != NON_BUILTIN)
-	{
-		(*all)->status = exec_builtin(exe, all, find_builtin(exe->cmd));
-		return (ft_exec(exe->pip, all));
-	}
-	return (ft_exec(exe->pip, all));
+	char	*pwd_msg;
+
+	(void) all;
+	(void) exe;
+	pwd_msg = getcwd(NULL, 0);
+	if (pwd_msg == NULL)
+		return (print_fd("ERROR pour recuperation du pwd\n", 2), 1);
+	printf("%s\n", pwd_msg);
+	free_2str(&pwd_msg, NULL);
+	return (0);
 }

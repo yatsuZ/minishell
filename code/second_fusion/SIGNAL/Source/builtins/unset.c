@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 00:48:36 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/16 17:59:18 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/01/23 20:12:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-//partie importante je vais juste moccupe des builtin
-int	ft_exec(t_execute *exe, t_all_struct **all)
+t_env	*del_va(char *key, t_env *env)
 {
-	if (!all)
-		end(NULL);
-	else if (!(*all))
-		end(*all);
-	else if (!exe)
-		return ((*all)->status);
-	if (find_builtin(exe->cmd) != NON_BUILTIN)
+	t_env	*new_va_next;
+
+	if (!env)
+		return (env);
+	if (ft_strcpm(key, env->key))
 	{
-		(*all)->status = exec_builtin(exe, all, find_builtin(exe->cmd));
-		return (ft_exec(exe->pip, all));
+		new_va_next = env->next_va;
+		free_env(&env);
+		return (new_va_next);
 	}
-	return (ft_exec(exe->pip, all));
+	env->next_va = del_va(key, env->next_va);
+	return (env);
+}
+
+int	exec_unset(t_execute *exe, t_all_struct **all)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < exe->nbr_of_arg)
+		(*all)->all_va = del_va(exe->arg[i++], (*all)->all_va);
+	return (0);
 }
