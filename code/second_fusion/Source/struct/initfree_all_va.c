@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 19:50:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/25 02:49:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ int	init_all_va(t_env **all_va, char **arg_env)
 	res = NULL;
 	if (arg_env)
 		res = copy_env(res, arg_env, 0);
-	init_va_required(&res);
+	printf("res = %p\n", res);
+	res = init_va_required(res, res);
+	show_all_va(res);
 	return ((*all_va) = res, 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 23:36:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 20:29:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/25 02:46:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,62 @@ void	free_env(t_env **env)
 	(*env) = NULL;
 }
 
-void	init_va_required(t_env **env)
+static void	compare(char *str, int *nbr, t_env **env, int err)
 {
-	int	shlvl_present;// shlvl = + 1 pour shlvl ou egale a 1 si null/ vide ou + ou = a 999 | est egale a 0 siest egale a 0 et/ou negativ (10 numa la suite)
-	int	pwd_present;// faire PWD et OLDPWD avec si on les affiche ou non
-	int	oldpwd_present;
-	int	underscore_present;// la va _ et egale aucdernier cmd ou arg commande sauf exit=ne modefie pas. concernant laffichage lors de env on affiche la cmd et export rien donc par defaux _ on ne laffiche jammais, si la clée est _ alors la value est gale a tout
-	if (!all_env)
-		return ;
-	if (*all_env == NULL)
+	long long	shlvl;
+	char		*nbr_str;
+
+	if (ft_strcpm("OLDPWD", str) == TRUE)
+		(*nbr) = (*nbr) - 8;
+	else if (ft_strcpm("PWD", str) == TRUE)
+		(*nbr) = (*nbr) - 4;
+	else if (ft_strcpm("SHLVL", str) == TRUE)
 	{
-		*all_env = add_key_value(key, value);
-		return ;
-	}
-	while ((*all_env)->next_va)
-	{
-		if (ft_strcpm(key, (*all_env)->key) == TRUE)
+		(*nbr) = (*nbr) - 2;
+		err = 0;
+		shlvl = is_numeric2(str, 0, &err);
+		if (shlvl < -1000 || shlvl == 999 || err)
+			change_or_add_va(env, "SHLVL", "1", 1);
+		else if (shlvl < 0)
+			change_or_add_va(env, "SHLVL", "0", 1);
+		else
 		{
-			free_2str(&((*all_env)->value), NULL);
-			(*all_env)->value = ft_strdup(value);
-			return ;
+			nbr_str = int_to_str((int) (shlvl + 1));
+			change_or_add_va(env, "SHLVL", nbr_str, 1);
+			free(nbr_str);
 		}
-		all_env = &((*all_env)->next_va);
 	}
-	if (ft_strcpm(key, (*all_env)->key) == TRUE)
+	else if (ft_strcpm("_", str) == TRUE)
+		(*nbr) = (*nbr) - 1;
+}
+
+t_env	*init_va_required(t_env *tete, t_env *i)
+{
+	int	option;
+
+	option = 15;
+	while (i)
 	{
-		free_2str(&((*all_env)->value), NULL);
-		(*all_env)->value = ft_strdup(value);
+		compare(i->key, &option, &tete, 0);
+		i = i->next_va;
 	}
-	else
-		(*all_env)->next_va = add_key_value(key, value);
-
-
+	if (option >= 8)
+	{
+		printf("N = %d\n", option);
+		change_or_add_va(&tete, "OLDPWD", NULL, 1);
+		option = option - 8;
+	}
+	else if (option >= 4)
+	{
+		change_or_add_va(&tete, "PWD", getcwd(NULL, 0), 1);
+		option = option - 4;
+	}
+	else if (option >= 2)
+	{
+		change_or_add_va(&tete, "SHLVL", "1", 1);
+		option = option - 2;
+	}
+	else if (option)
+		change_or_add_va(&tete, "_", "minishell ;)", 0);
+	return (tete);
 }

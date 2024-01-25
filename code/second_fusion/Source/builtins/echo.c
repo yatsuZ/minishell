@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 20:43:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/25 02:51:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ int	exec_echo(t_execute *exe, t_all_struct **all)
 	int		option;
 
 	i = 0;
-	if (exe->arg == NULL)
+	if (exe->nbr_arg == 0)
 		return(printf("\n"), 0);
 	option = 1;
-	while (exe->arg[i])
+	while (i < exe->nbr_arg)
 	{
 		if (!i && is_a_option(exe->arg[i]))
 			option = 0;
 		else
 		{
-			printf("%s", exe->arg[i]);
+			if (exe->arg[i])
+				printf("%s", exe->arg[i]);
 			if (exe->arg[i + 1] != NULL)
 				printf(" ");
 		}

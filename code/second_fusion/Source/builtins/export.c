@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/24 19:50:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/25 02:57:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	print_env_export(t_env *all_va)
 {
+	printf("CHEF\n");
 	if (!all_va)
 		return ;
 	if (all_va->show)
@@ -60,7 +61,7 @@ int	ft_export(char *str, t_env **all_env)
 		value = ft_strdup("");
 	else
 		value = get_value_from_str(str, stop);
-	return (change_or_add_va(all_env, key, value), free_2str(&key, &value), 0);
+	return (change_or_add_va(all_env, key, value, 1), free_2str(&key, &value), 0);
 }
 
 int	exec_export(t_execute *exe, t_all_struct **all)
@@ -70,9 +71,9 @@ int	exec_export(t_execute *exe, t_all_struct **all)
 
 	i = 0;
 	status = 0;
-	if (exe->arg == NULL)
+	if (exe->nbr_arg == 0)
 		return (print_env_export((*all)->all_va), status);
-	while (exe->arg[i])
+	while (i < exe->nbr_arg)
 	{
 		if (ft_export(exe->arg[i], &(*all)->all_va))
 			status = 1;
