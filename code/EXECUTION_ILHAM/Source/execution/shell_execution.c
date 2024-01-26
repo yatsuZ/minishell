@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/22 17:10:29 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:11:01 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_data(t_all_struct *all)
 	all->nb_cmds = all->prompte->nbr_of_pip + 1;
 	all->prev = -1;
 	all->env = get_paths_from_environment(get_path_var(all->all_va));
-	printf("SALUT\n\n\n");
+	//printf("SALUT\n\n\n");
 	
 	int	i=0;
 	if (all->env == NULL)
