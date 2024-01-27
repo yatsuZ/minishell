@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:47:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 01:13:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int			find_all_rd_and_pip(t_prompt *p);
 void		find_cmd_and_arg(t_node *n, t_node *prev, int option);
 // fusion
 void		fusion_cote(t_node *all);
-void		fusion_va(t_env *all_va, t_node *present, t_node *previous, int status);
+void		fusion_va(t_env *all_va, t_node *present, \
+t_node *previous, int status);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
@@ -50,7 +51,8 @@ int			exec_echo(t_execute *exe, t_all_struct **all);
 int			exec_cd(t_execute *exe, t_all_struct **all);
 
 // HEREDOC
-void		get_all_rinlimit(t_execute *all_exe, char **brut, t_all_struct *all);
+void		get_all_rinlimit(t_execute *all_exe, char **brut, \
+t_all_struct *all);
 
 // Fonction de fin
 void		end(t_all_struct *all);
@@ -87,6 +89,7 @@ char		*int_to_str(int nbr);
 void		change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
+t_boolean	key_exist(t_env *env, char *str);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);
@@ -106,7 +109,6 @@ t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n);
 void		free_env(t_env **env);
-t_env		*init_va_required(t_env *tete, t_env *i);
 
 // Fonction Inutile
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:57:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 01:12:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	print_env_export(t_env *all_va)
 {
-	printf("CHEF\n");
 	if (!all_va)
 		return ;
 	if (all_va->show)
@@ -57,11 +56,14 @@ int	ft_export(char *str, t_env **all_env)
 		print_fd("\': key non valide\n", 2);
 		return (free_2str(&key, NULL), value = NULL, 1);
 	}
-	if (str[stop] == '\0' || str[stop + 1] == '\0')
+	if (str[stop] == '\0')
+		value = NULL;
+	else if (str[stop + 1] == '\0')
 		value = ft_strdup("");
 	else
 		value = get_value_from_str(str, stop);
-	return (change_or_add_va(all_env, key, value, 1), free_2str(&key, &value), 0);
+	return (change_or_add_va(all_env, key, value, 1), \
+	free_2str(&key, &value), 0);
 }
 
 int	exec_export(t_execute *exe, t_all_struct **all)

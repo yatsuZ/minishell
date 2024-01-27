@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:51:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 01:13:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_boolean	i_can_show_va(t_env *env, char *str)
 {
 	while (env && str)
 	{
-		if (strcmp(env->key, str))
+		if (ft_strcpm(env->key, str))
 			return (env->show);
 		env = env->next_va;
 	}
@@ -27,7 +27,7 @@ t_boolean	key_exist(t_env *env, char *str)
 {
 	while (env)
 	{
-		if (strcmp(env->key, str))
+		if (ft_strcpm(env->key, str))
 			return (TRUE);
 		env = env->next_va;
 	}
@@ -48,10 +48,8 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 	if (!chemin)
 		return (print_fd("Minishell error: cd: HOME not set\n", 2), 1);
 	if (chemin[0] != '\0' && chdir(chemin))
-	{
-		print_fd("Minishell error: cd: chemin non existant OU non les droits\n", 2);
-		return (free(chemin), chemin = NULL, 1);
-	}
+		return (print_fd("Minishell error: cd: \
+chemin non existant OU non les droits\n", 2), free(chemin), chemin = NULL, 1);
 	tmp2 = get_value((*all)->all_va, "PWD", (*all)->status);
 	show = i_can_show_va((*all)->all_va, "OLDPWD");
 	if (key_exist((*all)->all_va, "PWD"))

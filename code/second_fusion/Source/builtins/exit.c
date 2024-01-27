@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:55:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 01:11:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long long	is_numeric2(char *str, size_t i, int *err)
 	long long	nbr;
 
 	nbr = 0;
-	if (str[i] == '\0')
+	if (!str || str[i] == '\0')
 		return (*err = -1, 0);
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
@@ -56,15 +56,37 @@ int	str_to_modul255(char *str, size_t i)
 	return (nbr % 256);
 }
 
+static int	get_res(char **arg, size_t ac, t_boolean *many_arg, int status)
+{
+	size_t	i;
+	size_t	nbr_of_arg;
+	int		res;
+
+	i = 0;
+	nbr_of_arg = 0;
+	res = status;
+	while (arg && i < ac)
+	{
+		if (!nbr_of_arg && arg[i])
+		{
+			res = str_to_modul255(arg[i], 0);
+			nbr_of_arg++;
+		}
+		if (arg[i] && nbr_of_arg)
+			return (*many_arg = TRUE, res);
+		i++;
+	}
+	return (res);
+}
+
 int	exec_exit(t_execute *exe, t_all_struct **all)
 {
-	int		res;
-	
+	int			res;
+	t_boolean	many_arg;
+
 	printf("exit\n");
-	if (!exe->arg)// JE DOIS REFAIRE SI IL Y A DES ARGUE?ENT NULL
-		res = (*all)->status;
-	else
-		res = str_to_modul255(exe->arg[0], 0);
+	many_arg = FALSE;
+	res = get_res(exe->arg, exe->nbr_arg, &many_arg, (*all)->status);
 	if (res == -2)
 	{
 		(*all)->status = 2;
@@ -73,7 +95,7 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 		print_fd(": numeric argument required\n", 2);
 		end(*all);
 	}
-	if (exe->arg && exe->arg[1] != NULL)
+	if (many_arg)
 	{
 		print_fd("bash: exit: too many arguments\n", 2);
 		return (1);
