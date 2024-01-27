@@ -12,3 +12,7 @@ FT exec :
 	2. EXECUTION
 	3. REDIRECTION
 Juste faire le travail mais sans la boucle de pip ouverture et fermeture des fichier
+
+Faire l'excution des commande autre que bultin.
+faire la redirection des fichier 
+faire la redirection des pips

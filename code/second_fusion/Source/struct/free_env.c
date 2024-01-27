@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 23:36:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:08:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 00:40:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,10 @@ void	free_env(t_env **env)
 	(*env)->next_va = NULL;
 	free(*env);
 	(*env) = NULL;
+}
+
+
+void	update_env(t_all_struct *all)
+{
+
 }

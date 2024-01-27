@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:13:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 15:57:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ t_boolean	key_exist(t_env *env, char *str)
 	return (FALSE);
 }
 
+char	*get_first_arg_no_null(char **argv, size_t argc, size_t i)
+{
+	while (i < argc)
+	{
+		if (argv[i] != NULL)
+			return (ft_strdup(argv[i]));
+		i++;
+	}
+	return (NULL);
+}
+
 int	exec_cd(t_execute *exe, t_all_struct **all)
 {
 	char		*chemin;
@@ -41,10 +52,9 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 	char		*tmp2;
 	t_boolean	show;
 
-	if (exe->nbr_arg == 0)
+	chemin = get_first_arg_no_null(exe->arg, exe->argc, 0);
+	if (!chemin)
 		chemin = get_value((*all)->all_va, "HOME", (*all)->status);
-	else
-		chemin = ft_strdup(exe->arg[0]);
 	if (!chemin)
 		return (print_fd("Minishell error: cd: HOME not set\n", 2), 1);
 	if (chemin[0] != '\0' && chdir(chemin))

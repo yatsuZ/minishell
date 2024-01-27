@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:31:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 15:53:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	change_va_undescore(t_execute *exe, t_env **env)
 	if (!exe || ft_strcpm(exe->cmd, "exit"))
 		return ;
 	new_end = NULL;
-	i = exe->nbr_arg;
+	i = exe->argc;
 	while (exe->arg && i && !new_end)
 	{
 		new_end = exe->arg[i];

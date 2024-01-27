@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:13:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 15:57:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
+char		*get_first_arg_no_null(char **argv, size_t argc, size_t i);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);

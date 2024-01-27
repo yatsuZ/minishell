@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:11:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 23:17:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,18 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 {
 	int			res;
 	t_boolean	many_arg;
+	char		*first_arg;
 
 	printf("exit\n");
 	many_arg = FALSE;
-	res = get_res(exe->arg, exe->nbr_arg, &many_arg, (*all)->status);
+	res = get_res(exe->arg, exe->argc, &many_arg, (*all)->status);
 	if (res == -2)
 	{
 		(*all)->status = 2;
+		first_arg = get_first_arg_no_null(exe->arg, exe->argc, 0);
 		print_fd("bash: exit: ", 2);
-		print_fd(exe->arg[0], 2);
+		print_fd(first_arg, 2);
+		free_2str(&first_arg, NULL);
 		print_fd(": numeric argument required\n", 2);
 		end(*all);
 	}

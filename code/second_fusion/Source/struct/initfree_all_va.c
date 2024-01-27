@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:08:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 23:17:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static t_env	*init_va_required(t_env *tete, int err, long long shlvl)
 			free(nbr_str);
 		}
 	}
+	if (key_exist(tete, "PATH") == FALSE)
+		change_or_add_va(&tete, "PATH", "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", 0);
 	return (change_or_add_va(&tete, "_", "minishell", 0), tete);
 }
 

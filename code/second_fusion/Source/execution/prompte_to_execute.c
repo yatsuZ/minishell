@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/25 02:31:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 15:53:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_execute	*get_all_exe(t_prompt *p, t_node *n, size_t i, int *err)
 	if (!n)
 		return (NULL);
 	res = init_execute(NULL, NULL, NULL, err);
-	res->arg = init_tab(n, &(res->nbr_arg));
+	res->arg = init_tab(n, &(res->argc));
 	all_rd = NULL;
 	if (*err)
 		return (res);
