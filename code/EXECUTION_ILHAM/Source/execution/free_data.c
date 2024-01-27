@@ -6,7 +6,7 @@
 /*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:37 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/22 09:42:45 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/01/25 14:38:34 by ilham_oua        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	free_table(char **table)
 	free (table);
 }
 
+/**
+ * free all the allocated structures taking 
+ * into account the code, which structure 
+*/
 void	free_all_data(t_all_struct *all, int code, int code2)
 {
 	if (code2 < 4)
