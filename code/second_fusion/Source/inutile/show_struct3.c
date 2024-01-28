@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:28:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:09:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:42:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,18 @@ void	show_execute(t_execute *exe, size_t i)
 	}
 	show_all_rd(exe->all_rd, 0);
 	show_execute(exe->pip, (i + 1));
+}
+
+void	show_tab(char **t)
+{
+	size_t i;
+
+	i = 0;
+	while (t && t[i])
+	{
+		printf("t[%ld] = %s\n", i, t[i]);
+		i++;
+	}
+	if (t)
+		printf("t[%ld] = %s\n", i, t[i]);
 }

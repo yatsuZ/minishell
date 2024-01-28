@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 15:53:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:39:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 	// RD
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
+	show_tab((*all)->env);
 	change_va_undescore(exe, &((*all)->all_va));
 	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 15:40:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:35:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_all(t_all_struct *all)
 	free_execute(all->exe);
 	free_prompt(all->prompte);
 	free_all_va(all->all_va);
+	free_tab(&(all->env));
 	free(all);
 	all = NULL;
 }

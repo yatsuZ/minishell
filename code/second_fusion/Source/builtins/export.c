@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 15:53:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:36:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	exec_export(t_execute *exe, t_all_struct **all)
 			status = 1;
 		i++;
 	}
+	update_env(all);
 	return (status);
 }

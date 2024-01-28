@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 15:41:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:39:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
 char		*get_first_arg_no_null(char **argv, size_t argc, size_t i);
+void		free_tab(char ***tableau);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);
@@ -121,5 +122,6 @@ void		show_type_input(t_type_input ti);
 void		show_all_va(t_env *env);
 void		show_node(t_node *tmp);
 void		show_execute(t_execute *exe, size_t i);
+void		show_tab(char **t);
 
 #endif

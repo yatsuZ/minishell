@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 23:36:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 15:48:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 20:44:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,48 @@ void	free_env(t_env **env)
 	(*env) = NULL;
 }
 
+void	free_tab(char ***tableau)
+{
+	size_t	i;
+
+	i = 0;
+	if (!tableau || !(*tableau))
+		return ;
+	while ((*tableau)[i])
+	{
+		free((*tableau)[i]);
+		(*tableau)[i] = NULL;
+		i++;
+	}
+	free((*tableau));
+	(*tableau) = NULL;
+}
+
+char	**creat_env(size_t nbr_of_env, t_env *all_va)
+{
+	char	*str;
+	char	**res;
+	size_t	i;
+
+	i = 0;
+	res = NULL;
+	if (nbr_of_env)
+		res = ft_calloc(nbr_of_env + 1, sizeof(char **));
+	while (all_va)
+	{
+		str = NULL;
+		if (all_va->show && all_va->value)
+		{
+			str_add(&str, all_va->key, 0);
+			str_add(&str, "=", 0);
+			str_add(&str, all_va->value, 0);
+			res[i++] = ft_strdup(str);
+			free_2str(&str, NULL);
+		}
+		all_va = all_va->next_va;
+	}
+	return (res);
+}
 
 void	update_env(t_all_struct **all)
 {
