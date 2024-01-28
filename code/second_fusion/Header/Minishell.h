@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 15:57:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 15:41:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err);
 void		free_redirection(t_redirecte *rd);
 int			add_rd(t_redirecte **all_rd, t_type_input t_rd, t_node *f_n);
 void		free_env(t_env **env);
+void		update_env(t_all_struct **all);
 
 // Fonction Inutile
 

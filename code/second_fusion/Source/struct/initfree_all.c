@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:51:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/28 15:40:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	init_all(t_all_struct **res, char **env)
 	(*res)->err = init_prompt(&(*res)->prompte);
 	(*res)->exe = NULL;
 	(*res)->status = 0;
+	(*res)->env = NULL;
+	update_env(res);
 	return ((*res)->err);
 }
 
