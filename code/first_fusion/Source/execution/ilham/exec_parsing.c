@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:33:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/23 16:30:36 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:04:22 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ char	*access_check(char **env, char *cmd)
 		free(tmp);
 		if (access(path_cmd, F_OK) == 0)
 			return (path_cmd);
-		else if (access(path_cmd, F_OK) == -1)
-			
-		
 		j++;
 		free(path_cmd);
 	}

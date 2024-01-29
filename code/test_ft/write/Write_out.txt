@@ -1,1 +1,0 @@
-Ceci est un message du main.c de write de la fonction ecrire_dans_un_fichier_text!
