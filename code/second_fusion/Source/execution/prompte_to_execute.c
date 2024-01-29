@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 15:53:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:05:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**init_tab(t_node *n, size_t *nbr_of_arg)
 		return (NULL);
 	while (n && n->type_input != PIP)
 	{
-		if (n->type_input == ARG)
+		if (n->type_input == ARG || n->type_input == CMD)
 			*nbr_of_arg = *nbr_of_arg + 1;
 		n = n->next_node;
 	}
@@ -33,7 +33,11 @@ int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)
 
 	err = 0;
 	if (n->type_input == CMD)
+	{
 		(*res)->cmd = ft_strdup(n->str);
+		(*res)->arg[*i] = ft_strdup(n->str);
+		*i = *i + 1;
+	}
 	else if (n->type_input == ARG)
 	{
 		(*res)->arg[*i] = ft_strdup(n->str);

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:25:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/17 20:51:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:08:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,4 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_memset(pt, 0, totalsize);
 	return (pt);
-}
-
-int	ft_calloc_verif(size_t nmemb, size_t size, void **pt)
-{
-	*pt = ft_calloc(nmemb, size);
-	if (!*pt)
-		return (1);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:56:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/26 18:51:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:19:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	init_prompt(t_prompt **promp)
 {
-	if (ft_calloc_verif(1, sizeof(t_prompt), (void **)promp))
+	if (!promp)
+		return (1);
+	*promp = ft_calloc(1, sizeof(t_prompt));
+	if (!(*promp))
 		return (1);
 	(*promp)->invite = ft_strdup("$>");
 	(*promp)->brut = NULL;
@@ -29,7 +32,10 @@ void	free_prompt(t_prompt *promp)
 {
 	if (!promp)
 		return ;
+	free_all_node(promp->all_cmd_line);
+	promp->all_cmd_line = NULL;
 	free(promp->invite);
+	promp->invite = NULL;
 	free(promp);
 	promp = NULL;
 }

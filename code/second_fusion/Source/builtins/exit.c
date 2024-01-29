@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 23:17:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:07:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	get_res(char **arg, size_t ac, t_boolean *many_arg, int status)
 	size_t	nbr_of_arg;
 	int		res;
 
-	i = 0;
+	i = 1;
 	nbr_of_arg = 0;
 	res = status;
 	while (arg && i < ac)
@@ -72,7 +72,7 @@ static int	get_res(char **arg, size_t ac, t_boolean *many_arg, int status)
 			res = str_to_modul255(arg[i], 0);
 			nbr_of_arg++;
 		}
-		if (arg[i] && nbr_of_arg)
+		else if (arg[i] && nbr_of_arg)
 			return (*many_arg = TRUE, res);
 		i++;
 	}
@@ -91,7 +91,7 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 	if (res == -2)
 	{
 		(*all)->status = 2;
-		first_arg = get_first_arg_no_null(exe->arg, exe->argc, 0);
+		first_arg = get_first_arg_no_null(exe->arg, exe->argc, 1);
 		print_fd("bash: exit: ", 2);
 		print_fd(first_arg, 2);
 		free_2str(&first_arg, NULL);

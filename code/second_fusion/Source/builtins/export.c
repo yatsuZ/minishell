@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 20:36:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:09:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int	exec_export(t_execute *exe, t_all_struct **all)
 	int		status;
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	status = 0;
-	if (exe->argc == 0)
+	if (exe->argc == 1)
 		return (print_env_export((*all)->all_va), status);
 	while (i < exe->argc)
 	{

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 23:13:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:16:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,44 @@ static void	change_va_undescore(t_execute *exe, t_env **env)
 	change_or_add_va(env, "_", new_end, 0);
 }
 
-// trouver la commande avec PATH et en local 
-// 1 verifier si j'ai un chemin ou non verifier dans path puis local verifier si il existe puis verifier si c'est un dossier verifier les droit dexecution puis execute
-void	find_cmd(t_execute *exe, t_all_struct **all)
-{
-
-}
-
 // 1 Faire une ft qui execute la commande ouverture puis fermeture des fichier
 int	ft_exec(t_execute *exe, t_all_struct **all)
 {
-	int	status;
+	pid_t	f;
+	int		status;
 
 	status = 0;
 	// Open rd
 	// EXEC
 	// RD
+	change_va_undescore(exe, &((*all)->all_va));
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
-	else
+	else if (exe->cmd)
 	{
-		find_cmd(exe, all);
-		status = execve(exe->cmd, exe->arg, (*all)->env);
+		if (find_cmd(NULL, &(exe->cmd), all))
+		{
+			if (access(exe->cmd, F_OK) == 0)
+			{
+				f = fork();
+				if (f == -1)
+					printf("ERROR de fork!!\n\n");
+				if (!f)
+				{
+					execve(exe->cmd, exe->arg, (*all)->env);
+				}
+				waitpid(f, &status, 0);
+			}
+			else
+			{
+				print_fd("On ne peut pas executer: \"", 2);
+				print_fd(exe->cmd, 2);
+				print_fd("\" car soit un dossier ou non les droits\n", 2);
+			}
+		}
+		else
+			status = 127;
 	}
-	show_tab((*all)->env);
-	change_va_undescore(exe, &((*all)->all_va));
 	return (status);
 }
 

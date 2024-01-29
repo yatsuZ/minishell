@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 20:39:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 17:52:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_node *previous, int status);
 // Execution
 void		prompte_to_execute(t_all_struct *all);
 int			ft_all_exec(t_execute *exe, t_all_struct **all);
+int			find_cmd(char **all_path, char **cmd, t_all_struct **all);
+
 // builtin
 t_builtin	find_builtin(char *str);
 int			exec_builtin(t_execute *exe, t_all_struct **all, \
@@ -60,7 +62,6 @@ void		end(t_all_struct *all);
 // Fonction utile
 
 int			ft_strcpm(char *s1, char *s2);
-int			ft_calloc_verif(size_t nmemb, size_t size, void **pt);
 size_t		ft_strlen(const char *cha);
 char		*ft_strdup(const char *s);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -92,6 +93,7 @@ long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
 char		*get_first_arg_no_null(char **argv, size_t argc, size_t i);
 void		free_tab(char ***tableau);
+char		**ft_split(const char *s, char c);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);

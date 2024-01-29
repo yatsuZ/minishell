@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 23:17:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 15:50:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_env	*init_va_required(t_env *tete, int err, long long shlvl)
 {
 	char		*nbr_str;
+	char		*str;
 
 	if (key_exist(tete, "OLDPWD") == FALSE)
 		change_or_add_va(&tete, "OLDPWD", NULL, 1);
@@ -24,7 +25,9 @@ static t_env	*init_va_required(t_env *tete, int err, long long shlvl)
 		change_or_add_va(&tete, "SHLVL", "1", 1);
 	else
 	{
-		shlvl = is_numeric2(get_value(tete, "SHLVL", 0), 0, &err);
+		str = get_value(tete, "SHLVL", 0);
+		shlvl = is_numeric2(str, 0, &err);
+		free_2str(&str, NULL);
 		if (shlvl >= 999)
 			print_fd("minishell: warning shell leve too high, reset at 1\n", 2);
 		if (shlvl >= 999 || err)

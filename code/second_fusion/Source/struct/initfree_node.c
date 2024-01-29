@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
-/*   Updated: 2023/12/26 14:06:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:20:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	init_node(t_node **n, char *str)
 {
-	if (ft_calloc_verif(1, sizeof(t_node), (void **)n))
+	if (!n)
+		return (1);
+	*n = ft_calloc(1, sizeof(t_node));
+	if (!(*n))
 		return (1);
 	(*n)->str = str;
 	(*n)->next_node = NULL;
@@ -48,6 +51,7 @@ void	free_all_node(t_node *tete)
 	free_all_node(tete->next_node);
 	tete->next_node = NULL;
 	free_node(tete);
+	tete = NULL;
 }
 
 int	add_last_node(t_node **tete, char *str)
@@ -55,7 +59,10 @@ int	add_last_node(t_node **tete, char *str)
 	int	retour;
 
 	if (!(*tete))
-		return (init_node(tete, str));
+	{
+		retour = init_node(tete, str);
+		return (retour);
+	}
 	else if (!(*tete)->next_node)
 	{
 		retour = add_node((*tete), str);
