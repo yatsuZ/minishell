@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/22 23:37:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:15:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	exec_unset(t_execute *exe, t_all_struct **all)
 {
 	size_t	i;
 
-	i = 0;
-	while (exe->arg && exe->arg[i])
+	i = 1;
+	while (i < exe->argc)
 		(*all)->all_va = del_va(exe->arg[i++], (*all)->all_va);
+	update_env(all);
 	return (0);
 }

@@ -6,20 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 18:01:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 11:41:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../../Header/Minishell.h"
 
-static void	add_input_to_history(char *str, char **hs)
-{
-	rl_clear_history();
-	if ((*hs)[ft_strlen(*hs) - 1] != '\n')
-		str_add(hs, "\n", 0);
-	str_add(hs, str, 0);
-	add_history(*hs);
-}
+// History mise en commentaire pour linstant pour eviter tout cas de bug en +
+// static void	add_input_to_history(char *str, char **hs)
+// {
+// 	rl_clear_history();
+// 	if ((*hs)[ft_strlen(*hs) - 1] != '\n')
+// 		str_add(hs, "\n", 0);
+// 	str_add(hs, str, 0);
+// 	add_history(*hs);
+// }
 
 static char	*get_rinlimit(t_redirecte *rd, t_all_struct *all, char **hs);
 
@@ -31,7 +32,7 @@ static char	*add_new_input(char *input, t_redirecte *rd, t_all_struct *all, char
 
 	env = all->all_va;
 	tmp = ft_strjoin(input, "\n");
-	add_input_to_history(tmp, hs);
+	// add_input_to_history(tmp, hs);
 	if (rd->va_activate)
 		str_change_env(&input, env, all->status);
 	free_2str(&input, NULL);
@@ -57,8 +58,8 @@ static char	*multi_line(char *str, t_redirecte *rd, t_all_struct *all, char **hs
 		if (ft_strcpm(rd->str_file, n->next_node->str) == 1)
 		{
 			res = ft_strdup(n->str);
-			add_input_to_history(res, hs);
-			add_input_to_history(n->next_node->str, hs);
+			// add_input_to_history(res, hs);
+			// add_input_to_history(n->next_node->str, hs);
 			if (rd->va_activate)
 				str_change_env(&res, env, all->status);
 			return (free_node(n), free_2str(&str, NULL), res);
@@ -78,7 +79,7 @@ static char	*get_rinlimit(t_redirecte *rd, t_all_struct *all, char **hs)
 		return (multi_line(input, rd, all, hs));
 	if (ft_strcpm(rd->str_file, input) == 1)
 	{
-		add_input_to_history(input, hs);
+		// add_input_to_history(input, hs);
 		return (free_2str(&input, NULL), ft_strdup(""));
 	}
 	return (add_new_input(input, rd, all, hs));

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:41:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 00:48:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 //partie importante je vais juste moccupe des builtin
 int	ft_exec(t_execute *exe, t_all_struct **all)
 {
-	int	status;
-
-	status = 0;
 	if (!all)
 		end(NULL);
 	else if (!(*all))

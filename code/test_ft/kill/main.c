@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:37:15 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/07 11:48:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:37:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int main() {
 		perror("Erreur lors de l'envoi du signal");
 		return 1;
 	}
+
 	return 0;
 }

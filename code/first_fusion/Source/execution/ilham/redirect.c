@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/23 16:28:05 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:32:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	fd_open(t_all_struct *all, t_redirecte *tmp)
 	if (tmp->fd == -1)
 	{
 		perror("open file problem !");
-		free_all_data(all, 1, 3);
+		free_all_data(all, 1);
 	}
 }
 

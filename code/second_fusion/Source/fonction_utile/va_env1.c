@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:39:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/27 00:55:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,34 +70,45 @@ void	str_change_env(char **str, t_env *all_env, int status)
 	free_all_node(n);
 }
 
-t_env	*add_key_value(char *key, char *value)
+t_env	*add_key_value(char *key, char *value, int show)
 {
 	t_env	*res;
 
 	res = ft_calloc(1, sizeof(t_env));
 	res->key = ft_strdup(key);
 	res->value = ft_strdup(value);
+	res->show = FALSE;
+	if (show)
+		res->show = TRUE;
 	res->next_va = NULL;
 	return (res);
 }
 
-void	change_or_add_va(t_env **all_env, char *key, char *value)
+void	change_or_add_va(t_env **all_env, char *key, char *value, int show)
 {
-	if (*all_env == NULL)
+	if (!all_env || *all_env == NULL)
 	{
-		*all_env = add_key_value(key, value);
+		if (all_env)
+			*all_env = add_key_value(key, value, show);
 		return ;
 	}
-	else if ((*all_env)->next_va == NULL)
+	while ((*all_env)->next_va)
 	{
-		*all_env = add_key_value(key, value);
-		return ;
+		if (ft_strcpm(key, (*all_env)->key) == TRUE)
+		{
+			free_2str(&((*all_env)->value), NULL);
+			(*all_env)->value = ft_strdup(value);
+			(*all_env)->show = show;
+			return ;
+		}
+		all_env = &((*all_env)->next_va);
 	}
-	else if (ft_strcpm(key, (*all_env)->key) == TRUE)
+	if (ft_strcpm(key, (*all_env)->key) == TRUE)
 	{
 		free_2str(&((*all_env)->value), NULL);
 		(*all_env)->value = ft_strdup(value);
-		return ;
+		(*all_env)->show = show;
 	}
-	change_or_add_va(&(*all_env)->next_va, key, value);
+	else
+		(*all_env)->next_va = add_key_value(key, value, show);
 }

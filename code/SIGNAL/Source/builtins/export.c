@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 16:44:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/24 00:52:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ static void	print_env_export(t_env *all_va)
 {
 	if (!all_va)
 		return ;
-	printf("export %s=\"%s\"\n", all_va->key, all_va->value);
+	printf("export %s", all_va->key);
+	if (all_va->value)
+		printf("=\"%s\"", all_va->value);
+	printf("\n");
 	print_env_export(all_va->next_va);
 }
 
@@ -49,7 +52,9 @@ int	ft_export(char *str, t_env **all_env)
 		print_fd("\': key non valide\n", 2);
 		return (free_2str(&key, NULL), value = NULL, 1);
 	}
-	if (str[stop] == '\0' || str[stop + 1] == '\0')
+	if (str[stop] == '\0')
+		value = NULL;
+	else if (str[stop + 1] == '\0')
 		value = ft_strdup("");
 	else
 		value = get_value_from_str(str, stop);
