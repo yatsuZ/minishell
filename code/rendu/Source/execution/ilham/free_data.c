@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:56:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/21 23:31:08 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/11 15:16:37 by ilham_oua         #+#    #+#             */
+/*   Updated: 2024/01/31 00:12:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../Header/Minishell.h"
+#include "./../../../Header/Minishell.h"
 
-int	exec_pwd(t_execute *exe, t_all_struct **all)
+void	free_table(char **table)
 {
-	char	*pwd_msg;
+	int	i;
 
-	(void) all;
-	(void) exe;
-	pwd_msg = getcwd(NULL, 0);
-	if (pwd_msg == NULL)
-		return (print_fd("ERROR pour recuperation du pwd\n", 2), 1);
-	printf("%s\n", pwd_msg);
-	free_2str(&pwd_msg, NULL);
-	return (0);
+	i = 0;
+	if (table == NULL)
+		return ;
+	while (table[i])
+	{
+		free (table[i]);
+		i++;
+	}
+	free (table);
+}
+
+void	free_all_data(t_all_struct *all, int code2)
+{
+	if (code2 < 4)
+		perror("");
+	if (code2 > 1)
+		// perror("free cmds table");//free_table(all->exe->cmds);
+	if (code2 > 2)
+	{
+		free(all->pids);
+		all->pids = NULL;
+	}
 }

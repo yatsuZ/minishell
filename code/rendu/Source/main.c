@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 20:27:32 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:28:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	ft_minishell(t_all_struct *all)
 		{
 			prompte_to_execute(all);
 			if (all && all->exe)
-				all->status = ft_all_exec(all->exe, &all);
-			show_execute(all->exe, 0);
+				all->status = execute(all);
+				// all->status = ft_all_exec(all->exe, &all);
+			// show_execute(all->exe, 0);
 		}
 		reset_var(all);
 	}

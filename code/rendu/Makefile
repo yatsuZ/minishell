@@ -6,11 +6,19 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/29 17:54:41 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/01/30 23:03:59 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
+
+ILHAM_GESTION_PATH =	ilham/
+ILHAM_GESTION_FILES =	exec_parsing.c		\
+						free_data.c			\
+						redirect.c			\
+						shell_execution.c	\
+						utils.c				\
+						utils2.c
 
 BULTINS_PATH =	builtins/
 BULTINS_FILES =	cd.c			\
@@ -29,13 +37,15 @@ EXECUTION_PATH = execution/
 EXECUTION_FILES =	prompte_to_execute.c	\
 					execute.c				\
 					find_cmd.c				\
-					${addprefix ${RD_GESTION_PATH}, ${RD_GESTION_FILES}}
+					${addprefix ${RD_GESTION_PATH}, ${RD_GESTION_FILES}}	\
+					${addprefix ${ILHAM_GESTION_PATH}, ${ILHAM_GESTION_FILES}}
 
 STR_MANIP_PATH = str_manip/
 STR_MANIP_FILES = 	ft_strcpm.c		\
 					ft_strlen.c		\
 					ft_strcpy.c		\
-					ft_strjoin.c
+					ft_strjoin.c	\
+					ft_strchr.c
 
 FT_UTILE_PATH = fonction_utile/
 FT_UTILE_FILES =	ft_calloc.c		\
@@ -44,7 +54,6 @@ FT_UTILE_FILES =	ft_calloc.c		\
 					manip_node2.c	\
 					type_of_str.c	\
 					int_to_str.c	\
-					ft_split.c		\
 					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 
 INUTILE_PATH = inutile/

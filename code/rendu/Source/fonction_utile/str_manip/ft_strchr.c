@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 23:45:22 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 01:08:58 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/01/30 22:22:50 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/01/30 22:24:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-size_t	ft_strlen(const char *cha)
+char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
 	i = 0;
-	while (cha[i] != '\0')
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] == (unsigned char) c)
+			return ((char *)(s + i));
 		i++;
-	return (i);
-}
-
-void	free_2str(char **s1, char **s2)
-{
-	if (s1 && *s1)
-	{
-		free(*s1);
-		*s1 = NULL;
 	}
-	if (s2 && *s2)
-	{
-		free(*s2);
-		*s2 = NULL;
-	}
-}
-
-int	print_fd(char *str, int fd)
-{
-	if (!str)
-		return (0);
-	return (write(fd, str, ft_strlen(str)));
+	return (NULL);
 }

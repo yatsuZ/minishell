@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/27 16:06:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/31 00:11:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ typedef struct s_redirecte
 
 typedef struct s_execute
 {
+	int					index;
 	char				*cmd;
 	char				**arg;
+	char				**cmds;
 	size_t				argc;
 	t_redirecte			*all_rd;
-	int					fd_in;
-	int					fd_out;
+	t_redirecte			*last_out;
+	t_redirecte			*last_in;
+	int					*fd;
 	struct s_execute	*pip;
 }	t_execute;
 
@@ -67,6 +70,9 @@ typedef struct s_all_struct
 	struct s_prompt	*prompte;
 	t_execute		*exe;
 	t_env			*all_va;
+	int				prev;
+	int				nb_cmds;
+	pid_t			*pids;
 	char			**env;
 	int				status;
 	int				err;
