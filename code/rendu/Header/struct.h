@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 00:11:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/31 13:19:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_execute
 	int					index;
 	char				*cmd;
 	char				**arg;
-	char				**cmds;
 	size_t				argc;
 	t_redirecte			*all_rd;
 	t_redirecte			*last_out;

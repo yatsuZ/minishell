@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:26:36 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/30 23:28:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/31 13:19:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err)
 		return (*err = 1, res);
 	res->index = 0;
 	res->cmd = ft_strdup(cmd);
-	res->cmds = NULL;
 	res->arg = arg;
 	res->all_rd = rd;
 	res->argc = 0;
