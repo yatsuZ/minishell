@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 13:29:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:49:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 extern int	g_signal;
 
 // Fonctions pour l'execution du shell
-char	*get_path_var(t_env *env);
-char	**get_paths_from_environment(char *path);
-int		ft_strncmp(const char *s1, const char *s2, const size_t n);
-void	free_table(char **table);
-void	free_all_data(t_all_struct *all, int code2);
-void	fd_open(t_all_struct *all, t_redirecte *tmp);
-void	redirect_pipe(t_all_struct *all, t_execute *exe, int i);
-void	redirect(t_all_struct *all, t_execute *exe);
-void	close_fd(int *fd);
-void	get_here_doc_fd(t_redirecte *rd);
-void	child_process(t_all_struct **all, t_execute *exe, int i);
-void	init_data(t_all_struct *all);
-void	loop_cmd(t_execute *exec, t_all_struct **all);
-int		execute(t_all_struct **all);
+char		*get_path_var(t_env *env);
+char		**get_paths_from_environment(char *path);
+int			ft_strncmp(const char *s1, const char *s2, const size_t n);
+void		free_table(char **table);
+void		free_all_data(t_all_struct *all, int code2);
+void		fd_open(t_all_struct *all, t_redirecte *tmp);
+void		redirect_pipe(t_all_struct *all, t_execute *exe, int i);
+void		redirect(t_all_struct *all, t_execute *exe);
+void		close_fd(int *fd);
+void		get_here_doc_fd(t_redirecte *rd);
+void		child_process(t_all_struct **all, t_execute *exe, int i);
+void		init_data(t_all_struct *all);
+void		loop_cmd(t_execute *exec, t_all_struct **all);
+int			execute(t_all_struct **all);
 
 // Parsing
 char		*get_all_input(t_prompt *promp);

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:28:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 20:42:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:49:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	show_execute(t_execute *exe, size_t i)
 
 void	show_tab(char **t)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (t && t[i])
