@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/31 22:45:41 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/02/01 13:26:35 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
 	if (i != 0)
 	{
 		close_fd(&exe->fd[1]);
-		if (all->prev !)
+		// if (all->prev)
 		dup2(all->prev, STDIN_FILENO);
-		close(all->prev);
+		close_fd(&all->prev);
 	}
 }
 

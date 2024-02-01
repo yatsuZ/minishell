@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/31 13:29:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/01 14:10:17 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,36 @@ void	init_data(t_all_struct *all)
 void	loop_cmd(t_execute *exec, t_all_struct **all)
 {
 	int	i;
+	// int	status;
 
 	i = -1;
 	while (++i < (*all)->nb_cmds && exec)
 	{
 		exec->index = i;
+		if (i == 0 && find_builtin(exec->cmd) != NON_BUILTIN)
+		{
+			redirect(*all, exe);
+			status = exec_builtin(exec, all, find_builtin(exec->cmd));
+		}
 		if ((i != (*all)->nb_cmds - 1) && pipe(exec->fd) == -1)
 		{
 			free_all_data((*all), i);
 		}
-		(*all)->pids[i] = fork();
-		if ((*all)->pids[i] == -1)
+		if (find_builtin(exec->cmd) != NON_BUILTIN)
 		{
-			free_all_data((*all), i);
+			redirect(*all, exe);
+			status = exec_builtin(exec, all, find_builtin(exec->cmd));
 		}
+		else if (find_builtin(exec->cmd) == NON_BUILTIN)
+		{
+			(*all)->pids[i] = fork();
+			if ((*all)->pids[i] == -1)
+			{
+				free_all_data((*all), i);
+			}
 		if ((*all)->pids[i] == 0)
-			child_process(all, exec, i);
+				child_process(all, exec, i);
+		}
 		else
 		{
 			close_fd(&exec->fd[1]);
