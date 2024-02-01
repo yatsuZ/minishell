@@ -16,3 +16,5 @@ Juste faire le travail mais sans la boucle de pip ouverture et fermeture des fic
 Faire l'excution des commande autre que bultin.
 faire la redirection des fichier 
 faire la redirection des pips
+
+Faire le redirection de bultin pour les File in et out
