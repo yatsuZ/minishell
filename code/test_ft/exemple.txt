@@ -1,0 +1,3 @@
+descripteurFichier = 4
+Je dois etre dans le fichier
+descripteurFichier = 4

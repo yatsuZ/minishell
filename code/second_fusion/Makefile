@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/29 17:54:41 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/02/02 17:57:21 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ EXECUTION_PATH = execution/
 EXECUTION_FILES =	prompte_to_execute.c	\
 					execute.c				\
 					find_cmd.c				\
+					prompte_to_execute.c	\
 					${addprefix ${RD_GESTION_PATH}, ${RD_GESTION_FILES}}
 
 STR_MANIP_PATH = str_manip/

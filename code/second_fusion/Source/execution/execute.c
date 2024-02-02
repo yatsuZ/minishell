@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/02 15:27:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:02:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 	// EXEC
 	// RD
 	change_va_undescore(exe, &((*all)->all_va));
+	if (get_rd_file(exe, exe->all_rd))// change les redirection de exec avec les file descriptor
+		return (1);
 	// rd descriptor
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
@@ -56,7 +58,9 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 					printf("ERROR de fork!!\n\n");
 				if (!f)
 				{
-					exit(execve(exe->cmd, exe->arg, (*all)->env));
+					execve(exe->cmd, exe->arg, (*all)->env);
+					printf("ERROR lors du execve\n\n");
+					exit(1);
 				}
 				waitpid(f, &status, 0);
 			}

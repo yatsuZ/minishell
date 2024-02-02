@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/02 14:10:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 18:53:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char		**get_paths_from_environment(char *path);
 int			ft_strncmp(const char *s1, const char *s2, const size_t n);
 void		free_table(char **table);
 void		free_all_data(t_all_struct *all, int code2);
-void		fd_open(t_all_struct *all, t_redirecte *tmp);
+int			fd_open(t_redirecte *tmp);
 void		redirect_pipe(t_all_struct *all, t_execute *exe, int i);
-void		redirect(t_all_struct *all, t_execute *exe, int i);
+int			redirect(t_execute *exe);
 void		close_fd(int *fd);
 void		get_here_doc_fd(t_redirecte *rd);
 int			child_process(t_all_struct **all, t_execute *exe, int i);

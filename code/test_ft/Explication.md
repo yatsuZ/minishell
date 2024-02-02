@@ -9,3 +9,10 @@ Chaque dossier contiendra :
 - un dossier `utile` nécessaire à l'utilisation de la fonction externe si je veux utiliser d'autres fonctions.
 
 Voir la liste des fonctions externes et leur brève description : [Liste des fonctions externes autorisées](./../../documentation/Documentation.md#liste-de-toutes-les-fonctions-externes-autorisées).
+
+## pour test random
+
+
+cc test_random.c && ./a.out
+
+valgrind --track-fds=yes --trace-children=yes ./a.out
