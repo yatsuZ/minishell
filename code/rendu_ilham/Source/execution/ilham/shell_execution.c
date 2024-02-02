@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/01 14:10:17 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:37:52 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	loop_cmd(t_execute *exec, t_all_struct **all)
 	while (++i < (*all)->nb_cmds && exec)
 	{
 		exec->index = i;
-		if (i == 0 && find_builtin(exec->cmd) != NON_BUILTIN)
+		if (i == 0 && find_builtin(exec->cmd) != NON_BUILTIN (*all->nb_cmds))
 		{
 			redirect(*all, exe);
 			status = exec_builtin(exec, all, find_builtin(exec->cmd));
