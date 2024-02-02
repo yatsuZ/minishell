@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/02 13:47:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 14:09:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 	{
 		redirect_pipe(*all, exe, i);
 	}
-	redirect(*all, exe);
+	redirect(*all, exe, i);
 	status = 0;
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
@@ -57,7 +57,7 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 	}
 	if (i == -2)
 	{
-		close_fd(&((*all)->exe->all_rd->fd));
+		close_fd((*all)->exe->fd);
 	}
 	return (status);
 }
