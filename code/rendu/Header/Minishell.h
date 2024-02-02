@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 16:49:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:29:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void		redirect_pipe(t_all_struct *all, t_execute *exe, int i);
 void		redirect(t_all_struct *all, t_execute *exe);
 void		close_fd(int *fd);
 void		get_here_doc_fd(t_redirecte *rd);
-void		child_process(t_all_struct **all, t_execute *exe, int i);
-void		init_data(t_all_struct *all);
+int			child_process(t_all_struct **all, t_execute *exe, int i);
+int			init_data(t_all_struct *all);
 void		loop_cmd(t_execute *exec, t_all_struct **all);
 int			execute(t_all_struct **all);
 

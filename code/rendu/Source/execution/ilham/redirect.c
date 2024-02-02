@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/31 23:14:34 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/02/02 13:48:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
 	if (i != 0)
 	{
 		close_fd(&exe->fd[1]);
-		if (all->prev !)
 		dup2(all->prev, STDIN_FILENO);
 		close(all->prev);
 	}
@@ -72,6 +71,7 @@ void	redirect(t_all_struct *all, t_execute *exe)
 		else if (tmp->type_rd == R_OUT || tmp->type_rd == R_OUT_ADD)
 			dup2(tmp->fd, STDOUT_FILENO);
 		close(tmp->fd);
+		printf("tmp->fd = %d\n\n", tmp->fd);
 		tmp = tmp->next;
 	}
 }

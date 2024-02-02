@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/31 13:29:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 13:47:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ char	**ft_concat_cmds(char *cmd, char **arg)
 	}
 	return (res);
 }
-void	child_process(t_all_struct **all, t_execute *exe, int i)
+int	child_process(t_all_struct **all, t_execute *exe, int i)
 {
 	int		status;
 	char	*cmdpath;
 
-	redirect_pipe(*all, exe, i);
+	if (i != -2)
+	{
+		redirect_pipe(*all, exe, i);
+	}
 	redirect(*all, exe);
 	status = 0;
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
@@ -52,22 +55,29 @@ void	child_process(t_all_struct **all, t_execute *exe, int i)
 		else
 			free_all_data((*all), 4);
 	}
-	exit(status);
+	if (i == -2)
+	{
+		close_fd(&((*all)->exe->all_rd->fd));
+	}
+	return (status);
 }
 
-void	init_data(t_all_struct *all)
+int	init_data(t_all_struct *all)
 {
 	all->nb_cmds = all->prompte->nbr_of_pip + 1;
 	all->prev = -1;
+	if (all->nb_cmds == 1 && find_builtin(all->exe->cmd) != NON_BUILTIN)
+		return (1);
 	all->pids = ft_calloc(all->nb_cmds, sizeof(int));
 	if (all->pids == NULL)
-		return (all->err = 1, free_table(all->env), end(all));
-	
+		return (all->err = 1, free_table(all->env), end(all), 0);
+	return (0);
 }
 
 void	loop_cmd(t_execute *exec, t_all_struct **all)
 {
 	int	i;
+	int	status;
 
 	i = -1;
 	while (++i < (*all)->nb_cmds && exec)
@@ -83,7 +93,10 @@ void	loop_cmd(t_execute *exec, t_all_struct **all)
 			free_all_data((*all), i);
 		}
 		if ((*all)->pids[i] == 0)
-			child_process(all, exec, i);
+		{
+			status = child_process(all, exec, i);
+			exit(status);
+		}
 		else
 		{
 			close_fd(&exec->fd[1]);
@@ -99,7 +112,9 @@ void	loop_cmd(t_execute *exec, t_all_struct **all)
 
 int	execute(t_all_struct **all)
 {
-	init_data(*all);
+	// Si bultin et 1 commande 
+	if (init_data(*all))
+		return (child_process(all, (*all)->exe, -2));
 	loop_cmd((*all)->exe, all);
 	free_all_data(*all, 4);
 	return (0);
