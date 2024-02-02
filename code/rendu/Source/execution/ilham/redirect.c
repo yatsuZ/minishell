@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/02 14:10:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 14:40:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,23 @@ void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
 void	redirect(t_all_struct *all, t_execute *exe, int i)
 {
 	t_redirecte	*tmp;
+	int			dup_fd;
 
+	(void)	i;
 	tmp = exe->all_rd;
-	printf("tmp->fd = %d\n\n", tmp->fd);
 	if (tmp == NULL)
 		return ;
+	// printf("tmp->fd = %d\n\n", tmp->fd);
 	while (tmp)
 	{
 		fd_open(all, tmp);
-		if (i != -2 && (tmp->type_rd == R_IN || tmp->type_rd == R_IN_LIMIT))
-			dup2(tmp->fd, STDIN_FILENO);
-		else if (i != -2 && (tmp->type_rd == R_OUT || tmp->type_rd == R_OUT_ADD))
-			dup2(tmp->fd, STDOUT_FILENO);
+		// printf("tmp->fd = %d\n\n", tmp->fd);
+		if (tmp->type_rd == R_IN || tmp->type_rd == R_IN_LIMIT)
+			dup_fd = dup2(tmp->fd, STDIN_FILENO);
+		else if (tmp->type_rd == R_OUT || tmp->type_rd == R_OUT_ADD)
+			dup_fd = dup2(tmp->fd, STDOUT_FILENO);
 		close(tmp->fd);
+		// printf("tmp->fd = %d\n\n", tmp->fd);
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/02 14:09:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/02 15:16:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,14 @@ void	loop_cmd(t_execute *exec, t_all_struct **all)
 		if ((*all)->pids[i] == 0)
 		{
 			status = child_process(all, exec, i);
+			close(exec->fd[1]);
+			close_fd(&((*all)->prev));
+			(*all)->prev = exec->fd[0];
 			exit(status);
 		}
 		else
 		{
-			close_fd(&exec->fd[1]);
+			close(exec->fd[1]);
 			close_fd(&((*all)->prev));
 			(*all)->prev = exec->fd[0];
 		}

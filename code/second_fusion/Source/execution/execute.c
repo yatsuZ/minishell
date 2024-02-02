@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 10:23:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 19:42:39 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:27:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 	// EXEC
 	// RD
 	change_va_undescore(exe, &((*all)->all_va));
+	// rd descriptor
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
 	else if (exe->cmd)
@@ -69,6 +70,7 @@ int	ft_exec(t_execute *exe, t_all_struct **all)
 		else
 			status = 127;
 	}
+	// rd _ close descriptor
 	return (status);
 }
 
