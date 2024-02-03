@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:26:36 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 13:19:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/03 01:11:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err)
 	res->fd = ft_calloc(2, sizeof(int));
 	res->fd[0] = -1;
 	res->fd[1] = -1;
-	res->last_in = NULL;
-	res->last_out = NULL;
 	res->pip = NULL;
 	return (res);
 }

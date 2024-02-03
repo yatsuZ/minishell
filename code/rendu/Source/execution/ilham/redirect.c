@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/02 20:03:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/03 01:15:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	fd_open(t_redirecte *tmp)
 	else if (tmp->type_rd == R_OUT_ADD )
 		tmp->fd = open(tmp->str_file, O_CREAT | O_APPEND | O_WRONLY, 0666);
 	if (tmp->fd == -1)
+	{
+		perror("");
 		return (1);
+	}
 	return (0);
 }
 
