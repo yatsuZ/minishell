@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/02/04 15:04:28 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/02/04 21:09:38 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ ILHAM_GESTION_PATH =	ilham/
 ILHAM_GESTION_FILES =	exec_parsing.c		\
 						free_data.c			\
 						redirect.c			\
+						redirect2.c			\
 						shell_execution.c	\
 						utils.c				\
 

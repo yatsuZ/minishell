@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/04 15:42:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 22:32:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 
 	if (i != -2)
 		redirect_pipe(*all, exe, i);
-	if (redirect(exe))
+	if (redirect(exe, i))
 		return (1);
 	status = 0;
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
@@ -33,7 +33,9 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 			free_2str(&cmdpath, NULL);
 		}
 	}
-	return (status);
+	if (i == -2)
+		return (close_fd_child(exe), status);
+	return (free_all(*all), *all = NULL, status);
 }
 
 int	init_data(t_all_struct *all)
@@ -64,41 +66,27 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 			status = child_process(all, exec, i);
 			exit(status);
 		}
-		else
-		{
-			close_fd(&(exec->fd[1]));
-			close_fd(&((*all)->prev));
-			(*all)->prev = exec->fd[0];
-		}
+		close_fd(&(exec->fd[1]));
+		close_fd(&((*all)->prev));
+		(*all)->prev = exec->fd[0];
 		exec = exec->pip;
 	}
 	i = -1;
 	while (++i < (*all)->nb_cmds)
 		waitpid((*all)->pids[i], NULL, 0);
-	if ((*all)->prev != -1)
-		close_fd(&(*all)->prev);
 }
 
 int	execute(t_all_struct **all)
 {
-	int	fd_in;
-	int	fd_out;
 	int	status;
 
 	if (init_data(*all))
 	{
-		fd_in = dup(STDIN_FILENO);
-		fd_out = dup(STDOUT_FILENO);
 		status = child_process(all, (*all)->exe, -2);
-		if ((*all)->exe->fd_in)
-			dup2(fd_in, STDIN_FILENO);
-		if ((*all)->exe->fd_out)
-			dup2(fd_out, STDOUT_FILENO);
-		close(fd_in);
-		close(fd_out);
 		return (status);
 	}
 	loop_cmd((*all)->exe, all, -1, 0);
-	free_all_data(*all, 4);
+	free((*all)->pids);
+	(*all)->pids = NULL;
 	return (0);
 }
