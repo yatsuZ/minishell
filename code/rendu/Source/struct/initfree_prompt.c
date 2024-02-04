@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:56:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 16:19:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/03 15:19:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	free_prompt(t_prompt *promp)
 		return ;
 	free_all_node(promp->all_cmd_line);
 	promp->all_cmd_line = NULL;
+	free(promp->brut);
+	promp->brut = NULL;
 	free(promp->invite);
 	promp->invite = NULL;
 	free(promp);

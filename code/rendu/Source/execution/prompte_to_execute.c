@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 13:21:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 17:05:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,29 @@ int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)
 
 t_execute	*get_all_exe(t_prompt *p, t_node *n, size_t i, int *err)
 {
+	size_t			j;
 	t_execute		*res;
 	t_redirecte		*all_rd;
 
 	if (!n)
 		return (NULL);
+	j = 0;
 	res = init_execute(NULL, NULL, NULL, err);
+	res->index = i;
 	res->arg = init_tab(n, &(res->argc));
 	all_rd = NULL;
 	if (*err)
 		return (res);
 	while (n && n->type_input != PIP && *err == 0)
 	{
-		(*err) = get_all_exe2(n, &i, &res, &all_rd);
+		(*err) = get_all_exe2(n, &j, &res, &all_rd);
 		n = n->next_node;
 	}
 	res->all_rd = all_rd;
 	if (!n || *err)
 		return (res);
-	res->pip = get_all_exe(p, n->next_node, 0, err);
+	i++;
+	res->pip = get_all_exe(p, n->next_node, i, err);
 	return (res);
 }
 
@@ -86,5 +90,5 @@ void	prompte_to_execute(t_all_struct *all)
 	all->exe = get_all_exe(all->prompte, all->prompte->all_cmd_line, 0, &err);
 	if (err)
 		printf("ERROR D'ALLOC DANS PROMPTE TO EXECUTE.\n\n");
-	get_all_rinlimit(all->exe, &(all->prompte->brut), all);
+	get_all_rinlimit(all->exe, all);
 }

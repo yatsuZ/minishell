@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/01/30 23:03:59 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/02/04 15:04:28 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ ILHAM_GESTION_FILES =	exec_parsing.c		\
 						redirect.c			\
 						shell_execution.c	\
 						utils.c				\
-						utils2.c
 
 BULTINS_PATH =	builtins/
 BULTINS_FILES =	cd.c			\
@@ -35,7 +34,6 @@ RD_GESTION_FILES = get_all_rinlimit.c
 
 EXECUTION_PATH = execution/
 EXECUTION_FILES =	prompte_to_execute.c	\
-					execute.c				\
 					find_cmd.c				\
 					${addprefix ${RD_GESTION_PATH}, ${RD_GESTION_FILES}}	\
 					${addprefix ${ILHAM_GESTION_PATH}, ${ILHAM_GESTION_FILES}}
@@ -47,13 +45,20 @@ STR_MANIP_FILES = 	ft_strcpm.c		\
 					ft_strjoin.c	\
 					ft_strchr.c
 
+NODE_MANIP_PATH = manip_node/
+NODE_MANIP_FILES = 	manip_node.c	\
+					manip_node2.c
+
+VA_ENV_MANIP_PATH = va_manip/
+VA_ENVV_MANIP_FILES = 	va_env1.c	\
+						va_env2.c
+
 FT_UTILE_PATH = fonction_utile/
-FT_UTILE_FILES =	ft_calloc.c		\
-					va_env1.c		\
-					manip_node.c	\
-					manip_node2.c	\
-					type_of_str.c	\
-					int_to_str.c	\
+FT_UTILE_FILES =	ft_calloc.c													\
+					type_of_str.c												\
+					int_to_str.c												\
+					${addprefix ${NODE_MANIP_PATH}, ${NODE_MANIP_FILES}}		\
+					${addprefix ${VA_ENV_MANIP_PATH}, ${VA_ENVV_MANIP_FILES}}	\
 					${addprefix ${STR_MANIP_PATH}, ${STR_MANIP_FILES}}
 
 INUTILE_PATH = inutile/
@@ -78,7 +83,7 @@ PARSING_FILES =	parsing.c					\
 
 
 STRUCT_PATH = struct/
-STRUCT_FILES = 	free_env.c			\
+STRUCT_FILES = 	initfree_env.c		\
 				initfree_all.c		\
 				initfree_node.c		\
 				initfree_execute.c	\

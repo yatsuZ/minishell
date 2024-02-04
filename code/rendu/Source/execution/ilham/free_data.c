@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:16:37 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/01/31 00:12:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 14:57:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	free_all_data(t_all_struct *all, int code2)
 {
 	if (code2 < 4)
 		perror("");
-	if (code2 > 1)
-		// perror("free cmds table");//free_table(all->exe->cmds);
 	if (code2 > 2)
 	{
 		free(all->pids);

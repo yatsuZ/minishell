@@ -6,11 +6,38 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:09:15 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/01/30 23:03:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 15:02:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../../Header/Minishell.h"
+
+static char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	len_s;
+	unsigned int	i;
+	char			*z;
+
+	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if ((start > len_s) || (len_s == 0))
+		return (ft_strdup(""));
+	i = 0;
+	while ((i < len) && (i < (len_s - start)))
+		i++;
+	z = malloc(sizeof(*z) * (i + 1));
+	if (!z)
+		return (NULL);
+	i = 0;
+	while ((i < len) && (i < (len_s - start)))
+	{
+		z[i] = s[start + i];
+		i++;
+	}
+	z[i] = '\0';
+	return (z);
+}
 
 static unsigned int	count_word(char const *s, char c)
 {
@@ -79,7 +106,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	splitted = (char **)malloc(((count_word(s, c)) + 1) * sizeof(char *));
+	splitted = ft_calloc(((count_word(s, c)) + 1), sizeof(char *));
 	if (!splitted)
 		return (NULL);
 	splitted = ft_under_split(s, c, splitted);

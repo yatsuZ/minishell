@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/02 18:53:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 17:04:54 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void		close_fd(int *fd);
 void		get_here_doc_fd(t_redirecte *rd);
 int			child_process(t_all_struct **all, t_execute *exe, int i);
 int			init_data(t_all_struct *all);
-void		loop_cmd(t_execute *exec, t_all_struct **all);
 int			execute(t_all_struct **all);
 
 // Parsing
@@ -53,8 +52,6 @@ t_node *previous, int status);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
-int			ft_all_exec(t_execute *exe, t_all_struct **all);
-int			find_cmd(char **all_path, char **cmd, t_all_struct **all);
 
 // builtin
 t_builtin	find_builtin(char *str);
@@ -69,8 +66,7 @@ int			exec_echo(t_execute *exe, t_all_struct **all);
 int			exec_cd(t_execute *exe, t_all_struct **all);
 
 // HEREDOC
-void		get_all_rinlimit(t_execute *all_exe, char **brut, \
-t_all_struct *all);
+void		get_all_rinlimit(t_execute *all_exe, t_all_struct *all);
 
 // Fonction de fin
 void		end(t_all_struct *all);
@@ -111,8 +107,9 @@ char		*get_first_arg_no_null(char **argv, size_t argc, size_t i);
 void		free_tab(char ***tableau);
 char		**ft_split(const char *s, char c);
 char		*ft_strchr(const char *s, int c);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*find_cmd2(char **all_path, char *cmd, t_all_struct **all);
+void		change_va_undescore(t_execute *exe, t_env **env);
+void		update_shlvl(t_env *tete, int err, long long shlvl);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);
