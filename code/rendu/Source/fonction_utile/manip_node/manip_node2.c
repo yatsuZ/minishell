@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 16:04:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 13:55:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/Minishell.h"
+#include "../../../Header/Minishell.h"
 
 t_node	*no_define_to_node2(char *str, size_t i_start, size_t i_end)
 {

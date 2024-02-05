@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 13:19:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 23:55:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	free_all(t_all_struct *all)
 {
 	if (!all)
 		return ;
+	if (all->pids)
+		free(all->pids);
+	all->pids = NULL;
 	free_execute(all->exe);
 	free_prompt(all->prompte);
 	free_all_va(all->all_va);

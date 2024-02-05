@@ -1,20 +1,5 @@
-# Ajoue des execute avec pip a partir des travaux de Namia
+# A faire
 
-Je dois ajouter la partie execute a partire des travaux de namia ouverture et fermerutre des fichier et redirection.
-
-1. Faire un fork
-2. Ouverture et fermeture des fichier (interpreter les cat derreur si il y a quelque chose de faux)
-
-FT exec :
-
-1. Tant que PIP
-	1. Ouverture fermeture des fichier
-	2. EXECUTION
-	3. REDIRECTION
-Juste faire le travail mais sans la boucle de pip ouverture et fermeture des fichier
-
-Faire l'excution des commande autre que bultin.
-faire la redirection des fichier 
-faire la redirection des pips
-
-Faire le redirection de bultin pour les File in et out
+sortie en securite 
+les signal
+verifeir labscence de leak error et de fichier ouvert (fermer les fichier dans bultin). - check

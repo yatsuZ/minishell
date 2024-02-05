@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_env.c                                         :+:      :+:    :+:   */
+/*   initfree_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 23:36:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/28 20:44:02 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/02/04 13:57:52 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/02/04 14:30:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Header/Minishell.h"
-
-void	free_env(t_env **env)
-{
-	if (!env)
-		return ;
-	free_2str(&((*env)->key), &((*env)->value));
-	(*env)->next_va = NULL;
-	free(*env);
-	(*env) = NULL;
-}
 
 void	free_tab(char ***tableau)
 {
@@ -39,7 +29,17 @@ void	free_tab(char ***tableau)
 	(*tableau) = NULL;
 }
 
-char	**creat_env(size_t nbr_of_env, t_env *all_va)
+void	free_env(t_env **env)
+{
+	if (!env)
+		return ;
+	free_2str(&((*env)->key), &((*env)->value));
+	(*env)->next_va = NULL;
+	free(*env);
+	(*env) = NULL;
+}
+
+static char	**creat_env(size_t nbr_of_env, t_env *all_va)
 {
 	char	*str;
 	char	**res;

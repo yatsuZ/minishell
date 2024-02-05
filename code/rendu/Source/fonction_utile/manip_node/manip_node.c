@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 16:03:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/04 13:55:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Header/Minishell.h"
+#include "../../../Header/Minishell.h"
 
 void	index_update(t_node *n)
 {
