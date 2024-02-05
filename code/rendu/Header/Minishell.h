@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 21:09:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 18:29:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ char		*ft_strchr(const char *s, int c);
 char		*find_cmd2(char **all_path, char *cmd, t_all_struct **all);
 void		change_va_undescore(t_execute *exe, t_env **env);
 void		update_shlvl(t_env *tete, int err, long long shlvl);
+int			good_condition_fusion_rd_with_pip(t_node *n, t_node *next, \
+int *nbr_pip);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);

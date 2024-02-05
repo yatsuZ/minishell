@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/04 23:50:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 18:40:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 		{
 			redirect_pipe(*all, exec, i);
 			status = child_process(all, exec, i);
+			close_fd(&exec->fd[1]);
+			close_fd(&exec->fd[0]);
+			close_fd(&((*all)->prev));
 			exit(status);
 		}
 		close_fd(&exec->fd[1]);

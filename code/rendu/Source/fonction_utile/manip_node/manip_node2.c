@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 13:55:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 18:28:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,18 @@ t_node	*no_define_to_node(t_node **nodef, t_node **prev)
 	remplace_node(nodef, present, prev, next);
 	*nodef = present;
 	return ((*nodef));
+}
+
+int	good_condition_fusion_rd_with_pip(t_node *n, t_node *next, int *nbr_pip)
+{
+	if (!n || !next || !(ft_strcpm(n->str, "|")))
+		return (0);
+	*nbr_pip = *nbr_pip - 1;
+	n->type_input = NON_DEFINI;
+	if (next->type_input == NON_DEFINI || next->type_input == CMD || \
+	next->type_input == ARG)
+		return (!(ft_strcpm(next->str, ">") || ft_strcpm(next->str, ">>") || \
+		ft_strcpm(next->str, "<") || ft_strcpm(next->str, "<<") || \
+		ft_strcpm(next->str, "|")));
+	return (0);
 }
