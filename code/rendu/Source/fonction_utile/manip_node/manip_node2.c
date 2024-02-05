@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 18:28:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 20:39:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ t_node	*no_define_to_node(t_node **nodef, t_node **prev)
 		i = i->next_node;
 	}
 	remplace_node(nodef, present, prev, next);
+	free_2str(&(*prev)->str, NULL);
+	free(prev);
+	prev = NULL;
 	*nodef = present;
 	return ((*nodef));
 }

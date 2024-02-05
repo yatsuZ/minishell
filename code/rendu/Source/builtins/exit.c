@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 19:07:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 19:39:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	str_to_modul255(char *str, size_t i)
 	if (err)
 		return (-2);
 	if (str[0] == '-' && nbr != 0)
-		return (256 - (nbr % 256));
+		return (256 + (nbr % 256));
 	return (nbr % 256);
 }
 
@@ -81,14 +81,13 @@ static int	get_res(char **arg, size_t ac, t_boolean *many_arg, int status)
 
 int	exec_exit(t_execute *exe, t_all_struct **all)
 {
-	int			res;
 	t_boolean	many_arg;
 	char		*first_arg;
 
 	printf("exit\n");
 	many_arg = FALSE;
-	res = get_res(exe->arg, exe->argc, &many_arg, (*all)->status);
-	if (res == -2)
+	(*all)->status = get_res(exe->arg, exe->argc, &many_arg, (*all)->status);
+	if ((*all)->status == -2)
 	{
 		(*all)->status = 2;
 		first_arg = get_first_arg_no_null(exe->arg, exe->argc, 1);
@@ -101,6 +100,7 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 	if (many_arg)
 	{
 		print_fd("bash: exit: too many arguments\n", 2);
+		(*all)->status = 1;
 		return (1);
 	}
 	end(*all);

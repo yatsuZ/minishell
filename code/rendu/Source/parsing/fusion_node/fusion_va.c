@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/23 17:38:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 20:05:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass, int status)
 		return (fail_key(all_va, pres, pass, status));
 	value = get_value(all_va, key->str, status);
 	new_pres = no_define_to_node2(value, 0, 0);
+	free_2str(&value, NULL);
 	quick_define(new_pres);
 	if (!pass || (pass->type_input == STR || \
 	pass->type_input == DOUBLE_COTE || pass->type_input == F_RD))

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/05 18:40:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/05 19:58:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 	int		status;
 	char	*cmdpath;
 
+	if (i != -2)
+		redirect_pipe(*all, exe, i);
 	if (redirect(exe, i))
 		return (1);
 	status = 0;
@@ -61,11 +63,10 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 		(*all)->pids[i] = fork();
 		if ((*all)->pids[i] == 0)
 		{
-			redirect_pipe(*all, exec, i);
 			status = child_process(all, exec, i);
-			close_fd(&exec->fd[1]);
-			close_fd(&exec->fd[0]);
-			close_fd(&((*all)->prev));
+			// close_fd(&exec->fd[1]);
+			// close_fd(&exec->fd[0]);
+			// close_fd(&((*all)->prev));
 			exit(status);
 		}
 		close_fd(&exec->fd[1]);

@@ -9,6 +9,7 @@ verifeir labscence de leak error et de fichier ouvert (fermer les fichier dans b
 ## Leaks
 
 - Leaks quand la commande n'existe pas (ca leak pas a chaque fois bizarrement, mais ca arrive apres un `echo $?` par exemple)
+- leak avec les va env
 
 - Leaks quand redirection seule
 
@@ -73,6 +74,7 @@ $>echo $?
 ### Builtins
 
 #### echo
+FAIS
 
 - Mauvaise gestion `-n`
 ```sh
