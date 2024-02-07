@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 20:39:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 03:23:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,26 @@ void	remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next)
 {
 	t_node	*last_new;
+	(void) previous;
 
+	free_2str(&((*old)->str), NULL);
+	**old = *new;
 	if (previous && (*previous))
 	{
-		(*previous)->next_node = new;
-		if ((*previous)->type_input == new->type_input)
+		if ((*previous)->type_input == (*old)->type_input)
 		{
 			fusion_node((*previous), -1);
-			new = (*previous);
+			*old = *previous;
 		}
 	}
-	last_new = get_last_node(new);
+	last_new = get_last_node(*old);
 	last_new->next_node = next;
 	if (next && last_new->type_input == next->type_input)
 		fusion_node(last_new, -1);
 	if (previous && (*previous))
 		index_update((*previous));
-	else
-		index_update(new);
-	if (previous && !*previous)
-		**old = *new;
-	else
-		*old = new;
+	free(new);
+	new = NULL;
 }
 
 t_node	*no_define_to_node(t_node **nodef, t_node **prev)

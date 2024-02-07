@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 20:46:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 03:23:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ft_minishell(t_all_struct *all)
 			add_history(all->prompte->brut);
 		if (iderr)
 			error_parsing(iderr);
-		// else
-		// {
-		// 	prompte_to_execute(all);
-		// 	if (all && all->exe)
-		// 		all->status = execute(&all);
-		// }
+		else
+		{
+			prompte_to_execute(all);
+			if (all && all->exe)
+				all->status = execute(&all);
+		}
 		reset_var(all);
 	}
 }

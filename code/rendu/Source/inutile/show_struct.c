@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 22:38:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/12/31 17:54:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 02:44:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	show_node(t_node *tmp)
 		put_color_txt(BLEU);
 		printf("Node numéro");
 		put_color_txt(ROUGE);
-		printf("[%ld]: \t", tmp->index);
+		printf("[%ld] (%p): \t", tmp->index, tmp);
 		put_color_txt(VERT);
 		printf("\"%s\"\n", tmp->str);
 		printf("Type node = ");
