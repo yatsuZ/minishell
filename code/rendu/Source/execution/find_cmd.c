@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:46:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 14:59:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 23:55:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ char	*find_cmd2(char **all_path, char *cmd, t_all_struct **all)
 	char	*path_cmd;
 
 	j = 0;
-	if (!cmd || ft_strchr(cmd, '/'))
+	if (cmd && ft_strchr(cmd, '/') && access(cmd, F_OK) == 0)
 		return (ft_strdup(cmd));
+	else if (!cmd || cmd[0] == '\0')
+		return (NULL);
 	get_all_path(&all_path, all);
 	path_cmd = NULL;
 	while (all_path && all_path[j])
@@ -44,5 +46,5 @@ char	*find_cmd2(char **all_path, char *cmd, t_all_struct **all)
 	print_fd("command not found: ", 2);
 	print_fd(cmd, 2);
 	print_fd("\n", 2);
-	return (free_tab(&all_path), ft_strdup(cmd));
+	return (free_tab(&all_path), NULL);
 }

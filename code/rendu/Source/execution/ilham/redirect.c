@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:56:16 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/04 23:23:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 13:43:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	fd_open(t_redirecte *tmp)
 
 void	redirect_pipe(t_all_struct *all, t_execute *exe, int i)
 {
+	if (i == -2)
+		return ;
 	if (i != all->nb_cmds - 1)
 	{
 		close_fd(&exe->fd[0]);

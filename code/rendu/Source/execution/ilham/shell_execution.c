@@ -6,31 +6,51 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/04 23:50:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 00:49:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../../Header/Minishell.h"
 
+static int	exe_no_bultin(t_all_struct **all, t_execute *exe, int status)
+{
+	char		*cmdpath;
+
+	cmdpath = find_cmd2(NULL, exe->cmd, all);
+	if (!cmdpath)
+		return (126);
+	if (stat(cmdpath, &info_cmd))
+	{
+		print_fd("ERROR avec la fonction state\n", 2);
+		status = 127;
+	}
+	else if (S_ISREG(info_cmd.st_mode) && info_cmd.st_mode & S_IXUSR)
+		status = execve(cmdpath, exe->arg, (*all)->env);
+	else
+	{
+		if (S_ISDIR(info_cmd.st_mode) || (info_cmd.st_mode & S_IXUSR) == 0)
+			print_fd(cmdpath, 2);
+		if (S_ISDIR(info_cmd.st_mode))
+			print_fd(": Is a directory\n", 2);
+		else if ((info_cmd.st_mode & S_IXUSR) == 0)
+			print_fd(": Permission denied\n", 2);
+		status = 126;
+	}
+	return (free_2str(&cmdpath, NULL), status);
+}
+
 int	child_process(t_all_struct **all, t_execute *exe, int i)
 {
-	int		status;
-	char	*cmdpath;
+	int			status;
+	struct stat	info_cmd;
 
+	redirect_pipe(*all, exe, i);
 	if (redirect(exe, i))
 		return (1);
-	status = 0;
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
 	else if (exe->cmd)
-	{
-		cmdpath = find_cmd2(NULL, exe->cmd, all);
-		if (cmdpath)
-		{
-			status = execve(cmdpath, exe->arg, (*all)->env);
-			free_2str(&cmdpath, NULL);
-		}
-	}
+		status = exe_no_bultin(all, exe, 0);
 	if (i == -2)
 		return (close_fd_child(exe), status);
 	return (free_all(*all), *all = NULL, status);
@@ -61,7 +81,6 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 		(*all)->pids[i] = fork();
 		if ((*all)->pids[i] == 0)
 		{
-			redirect_pipe(*all, exec, i);
 			status = child_process(all, exec, i);
 			exit(status);
 		}
@@ -73,7 +92,8 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 	}
 	i = -1;
 	while (++i < (*all)->nb_cmds)
-		waitpid((*all)->pids[i], NULL, 0);
+		waitpid((*all)->pids[i], &status, 0);
+	(*all)->status = WEXITSTATUS(status);
 }
 
 int	execute(t_all_struct **all)
@@ -88,5 +108,5 @@ int	execute(t_all_struct **all)
 	loop_cmd((*all)->exe, all, -1, 0);
 	free((*all)->pids);
 	(*all)->pids = NULL;
-	return (0);
+	return ((*all)->status);
 }

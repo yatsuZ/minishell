@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:13:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 16:49:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 02:33:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,32 @@ static void	change_str(char *str, int nbr, size_t i)
 	if (nbr < 0)
 	{
 		str[0] = '-';
-		change_str(str, nbr * -1, i + 1);
+		change_str(str, nbr * -1, i);
 	}
 	else if (nbr < 10)
-		str[i] = nbr + '0';
+		str[--i] = nbr + '0';
 	else
 	{
-		str[i] = (nbr % 10) + '0';
-		change_str(str, nbr / 10, i + 1);
+		str[--i] = (nbr % 10) + '0';
+		change_str(str, nbr / 10, i);
 	}
 }
 
-char	*int_to_str(int nbr)
+char	*int_to_str(int nbr, int *err)
 {
+	size_t	nbr_c;
 	char	*str;
 
+	if (*err)
+		return (NULL);
 	if (nbr == INT_MAX)
-		return (ft_strdup("2147483647"));
+		return (ft_strdup("2147483647", err));
 	else if (nbr == INT_MIN)
-		return (ft_strdup("-2147483648"));
-	str = ft_calloc(nbr_of_char(nbr) + 1, sizeof(char));
-	change_str(str, nbr, 0);
+		return (ft_strdup("-2147483648", err));
+	nbr_c = nbr_of_char(nbr);
+	str = ft_calloc(nbr_c + 1, sizeof(char));
+	if (!str)
+		return (*err = 1, NULL);
+	change_str(str, nbr, nbr_c);
 	return (str);
 }

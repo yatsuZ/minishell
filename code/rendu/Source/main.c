@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 13:09:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/07 03:23:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	ft_minishell(t_all_struct *all)
 	while (all)
 	{
 		iderr = parsing(all);
-		add_history(all->prompte->brut);
+		if (all->prompte->brut[0])
+			add_history(all->prompte->brut);
 		if (iderr)
 			error_parsing(iderr);
 		else

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/01/29 16:20:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 01:06:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,26 @@ void	free_all_node(t_node *tete)
 	tete = NULL;
 }
 
-int	add_last_node(t_node **tete, char *str)
+int	add_last_node(t_node **tete, char *str, int *err)
 {
-	int	retour;
+	t_node	*next;
 
+	if (*err)
+		return (*err);
 	if (!(*tete))
 	{
-		retour = init_node(tete, str);
-		return (retour);
+		*err = init_node(tete, str);
+		return (*err);
 	}
 	else if (!(*tete)->next_node)
 	{
-		retour = add_node((*tete), str);
-		if (!retour)
+		next = NULL;
+		*err = init_node(&next, str);
+		(*tete)->next_node = next;
+		next = NULL;
+		if ((*tete)->next_node)
 			(*tete)->next_node->index = (*tete)->index + 1;
-		return (retour);
+		return (*err);
 	}
 	return (add_last_node(&(*tete)->next_node, str));
 }
