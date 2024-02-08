@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:57:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 14:30:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 18:34:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_env(t_env **env)
 	(*env) = NULL;
 }
 
-static char	**creat_env(size_t nbr_of_env, t_env *all_va)
+static char	**creat_env(size_t nbr_of_env, t_env *all_va, int *err)
 {
 	char	*str;
 	char	**res;
@@ -49,15 +49,17 @@ static char	**creat_env(size_t nbr_of_env, t_env *all_va)
 	res = NULL;
 	if (nbr_of_env)
 		res = ft_calloc(nbr_of_env + 1, sizeof(char **));
-	while (all_va)
+	if (nbr_of_env && res == NULL)
+		return (*err = 1, NULL);
+	while (*err == 0 && all_va)
 	{
 		str = NULL;
 		if (all_va->show && all_va->value)
 		{
-			str_add(&str, all_va->key, 0);
-			str_add(&str, "=", 0);
-			str_add(&str, all_va->value, 0);
-			res[i++] = ft_strdup(str);
+			str_add(&str, all_va->key, 0, err);
+			str_add(&str, "=", 0, err);
+			str_add(&str, all_va->value, 0, err);
+			res[i++] = ft_strdup(str, err);
 			free_2str(&str, NULL);
 		}
 		all_va = all_va->next_va;

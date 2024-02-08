@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:49:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:07:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,30 @@
 static int	pas_davant(t_node *av, t_node *entre, t_type_input t_cote, int opt)
 {
 	char	*buff;
+	int		err;
 
+	err = 0;
 	t_cote = entre->next_node->type_input;
 	while (t_cote != DOUBLE_COTE && t_cote != SINGLE_COTE)
 	{
-		fusion_node(entre, -1);
+		fusion_node(entre, -1, &err);
+		if (err)
+			return (-1);
 		t_cote = entre->next_node->type_input;
 	}
 	del_next_node(entre);
-	buff = ft_strdup(entre->str);
-	free(entre->str);
-	entre->str = NULL;
+	buff = ft_strdup(entre->str, &err);
+	if (err)
+		return (-1);
+	free_2str(&(entre->str), NULL);
 	if (ft_strcpm(buff, "\"") == TRUE)
-		entre->str = ft_strdup("");
+		entre->str = ft_strdup("", &err);
 	else
-		entre->str = ft_strcut(buff, 1, ft_strlen(buff));
-	free(buff);
-	buff = NULL;
-	return (cmd_or_arg(entre, av, opt));
+		entre->str = ft_strcut(buff, 1, ft_strlen(buff), &err);
+	free_2str(&buff, NULL);
+	if (err)
+		return (-1);
+	return (cmd_or_arg(entre, av, opt, &err), err);
 }
 
 int	no_legit_fusion_str(t_node *av)
@@ -62,29 +68,36 @@ int	is_legitfusion(t_node *av, int option)
 	}
 	return (1);
 }
+void	del_colte2(int *err, t_node *av,t_type_input t_cote)
+{
+	del_next_node(av);
+	while (t_cote != DOUBLE_COTE && t_cote != SINGLE_COTE)
+	{
+		fusion_node(av, -1, err);
+		t_cote = av->next_node->type_input;
+	}
+	del_next_node(av);
+	if (av->type_input == F_RD2)
+		av->type_input = F_RD;
+}
 
-int	del_cote(t_node *av, t_node *entre, int option)
+int	del_cote(t_node *av, t_node *entre, int option, int *err)
 {
 	t_type_input	t_cote;
 
+	if (*err)
+		return (*err);
 	t_cote = entre->next_node->type_input;
 	if (is_legitfusion(av, 0))
 		option = pas_davant(av, entre, t_cote, option);
 	else
-	{
-		entre = av;
-		del_next_node(entre);
-		while (t_cote != DOUBLE_COTE && t_cote != SINGLE_COTE)
-		{
-			fusion_node(entre, -1);
-			t_cote = entre->next_node->type_input;
-		}
-		del_next_node(entre);
-		if (entre->type_input == F_RD2)
-			entre->type_input = F_RD;
-	}
-	while (is_legitfusion(entre->next_node, 1) == 0)
-		fusion_node(entre, -1);
-	find_cmd_and_arg(entre->next_node, entre, option);
+		del_colte2(err, av, t_cote);
+	if (option == -1 || *err)
+		return (*err = 1, *err);
+	while (*err == 0 && is_legitfusion(entre->next_node, 1) == 0)
+		fusion_node(entre, -1, err);
+	if (*err)
+		return (option);
+	find_cmd_and_arg(entre->next_node, entre, option, err);
 	return (option);
 }
