@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 03:15:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:09:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int			parsing(t_all_struct *all);
 int			first_parsing(t_all_struct *all);
 int			fusion_str_and_env(t_node *tete_str);
 void		error_parsing(int iderr);
-int			del_cote(t_node *av, t_node *entre, int option);
-int			cmd_or_arg(t_node *n, t_node *p, int o);
+int			del_cote(t_node *av, t_node *entre, int option, int *err);
+int			cmd_or_arg(t_node *n, t_node *p, int o, int *err);
 t_node		*only_str(t_node *n, t_type_input type, int *err);
 // find
 int			find_cote_and_va(t_node *n, int previous_type);
-int			find_all_rd_and_pip(t_prompt *p);
-void		find_cmd_and_arg(t_node *n, t_node *prev, int option);
+int			find_all_rd_and_pip(t_prompt *p, int *err);
+void		find_cmd_and_arg(t_node *n, t_node *prev, int option, int *err);
 // fusion
-void		fusion_cote(t_node *all);
-void		fusion_va(t_env *all_va, t_node *present, \
+void		fusion_cote(t_node *all, int *err);
+int			fusion_va(t_env *all_va, t_node *present, \
 t_node *previous, int status);
 
 // Execution
@@ -74,6 +74,7 @@ void		end(t_all_struct *all);
 
 // Fonction utile
 
+int	find_file_rd2(t_node *n, int limit, int *nbr_pip);
 int			ft_strcpm(char *s1, char *s2);
 size_t		ft_strlen(const char *cha);
 char		*ft_strdup(const char *s, int *err);

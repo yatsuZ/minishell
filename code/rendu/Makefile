@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/02/04 21:09:38 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/02/08 16:29:46 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ STR_MANIP_FILES = 	ft_strcpm.c		\
 
 NODE_MANIP_PATH = manip_node/
 NODE_MANIP_FILES = 	manip_node.c	\
-					manip_node2.c
+					manip_node2.c	\
+					manip_node3.c
 
 VA_ENV_MANIP_PATH = va_manip/
 VA_ENVV_MANIP_FILES = 	va_env1.c	\

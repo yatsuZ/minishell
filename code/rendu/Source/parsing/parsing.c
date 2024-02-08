@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 03:14:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:19:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	cut_new_space(t_node **tete, t_node *prev, int *err)
 	prev = no_define_to_node(tete, &prev, err);
 	cut_new_space(&(prev->next_node), prev, err);
 }
+
+// static int	parsing2(t_all_struct *all)
+// {
+	
+// }
 
 int	parsing(t_all_struct *all)
 {
@@ -37,12 +42,18 @@ int	parsing(t_all_struct *all)
 	err_parsing = find_cote_and_va(all->prompte->all_cmd_line, NON_DEFINI);
 	if (err_parsing)
 		return (err_parsing);
-	fusion_cote(all->prompte->all_cmd_line);
-	err_parsing = find_all_rd_and_pip(all->prompte);
+	fusion_cote(all->prompte->all_cmd_line, &(all->err));
+	if (all->err)
+		return (all->err = 1, end(all), 1);
+	err_parsing = find_all_rd_and_pip(all->prompte, &(all->err));
+	if (all->err)
+		return (all->err = 1, end(all), 1);
 	if (err_parsing)
 		return (err_parsing);
 	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL, all->status);
-	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0);
+	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0, &(all->err));
+	if (all->err)
+		return (all->err = 1, end(all), 1);
 	index_update(all->prompte->all_cmd_line);
-	return (err_parsing);
+	return (0);
 }

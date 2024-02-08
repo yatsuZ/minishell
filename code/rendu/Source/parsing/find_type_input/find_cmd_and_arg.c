@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:37:37 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:46:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:20:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,16 @@ static t_boolean	is_r(t_node *n)
 	return (FALSE);
 }
 
-int	cmd_or_arg(t_node *n, t_node *p, int o)
+int	cmd_or_arg(t_node *n, t_node *p, int o, int *err)
 {
+	if (*err)
+		return (-1);
 	if (!is_r(p))
 	{
 		if (o == 0)
-		{
 			n->type_input = CMD;
-		}
 		else
-		{
 			n->type_input = ARG;
-		}
 		o = 1;
 	}
 	else
@@ -46,28 +44,28 @@ int	cmd_or_arg(t_node *n, t_node *p, int o)
 		else
 			n->type_input = F_RD;
 	}
-	while (n->next_node && n->next_node->type_input == NON_DEFINI)
-		fusion_node(n, -1);
+	while (*err == 0 && n->next_node && n->next_node->type_input == NON_DEFINI)
+		fusion_node(n, -1, err);
 	return (o);
 }
 
-void	find_cmd_and_arg(t_node *n, t_node *prev, int option)
+void	find_cmd_and_arg(t_node *n, t_node *prev, int option, int *err)
 {
-	if (!n)
+	if (!n || *err)
 		return ;
 	if (n->type_input == SEPARATOR && n->next_node \
 	&& n->next_node->type_input == SEPARATOR)
-		fusion_node(n, -1);
+		fusion_node(n, -1, err);
 	else if (n->type_input == NON_DEFINI)
-		option = cmd_or_arg(n, prev, option);
+		option = cmd_or_arg(n, prev, option, err);
 	else if (n->type_input == DOUBLE_COTE || n->type_input == SINGLE_COTE)
 	{
-		del_cote(prev, n, option);
+		del_cote(prev, n, option, err);
 		return ;
 	}
 	if (n->type_input != SEPARATOR)
 		prev = n;
 	if (prev && prev->type_input == PIP)
 		option = 0;
-	find_cmd_and_arg(n->next_node, prev, option);
+	find_cmd_and_arg(n->next_node, prev, option, err);
 }
