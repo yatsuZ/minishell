@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 12:44:56 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:04:05 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void		show_tab(char **t);
  * Signal handling
 */
 void		init_signal(int sig_int, int sig_quit);
-void		signal_in_father(int status);
+int			signal_in_father(int status);
 void		signal_in_fork(void);
 void		signal_in_child(int num);
 void		sig_handler(int signum);

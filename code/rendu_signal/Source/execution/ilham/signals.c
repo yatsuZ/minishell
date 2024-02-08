@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:05:40 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/02/08 12:45:08 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:02:30 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,26 @@ void	signal_in_fork(void)
 	signal(SIGQUIT, signal_in_child);
 }
 
-void	signal_in_father(int status)
+int	signal_in_father(int status)
 {
 	if (WIFEXITED(status))
-		g_exit_signal = WEXITSTATUS(status);
+		return (WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
 	{
 		if (WTERMSIG(status) == 2)
 		{
 			print_fd("\n", 2);
-			g_exit_signal = 130;
+			return (130);
 		}
 		else if (WTERMSIG(status) == 3)
 		{
 			print_fd(" Quit (core dumped)\n", 2);
-			g_exit_signal = 131;
+			return (131);
 		}
 		else
-			g_exit_signal = 128 + WTERMSIG(status);
+			return (128 + WTERMSIG(status));
 	}
+	return (0);
 }
 
 

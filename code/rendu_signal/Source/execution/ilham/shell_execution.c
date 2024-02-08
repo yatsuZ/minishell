@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/08 15:14:47 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:03:17 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,14 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 	while (++i < (*all)->nb_cmds)
 	{
 		signal(SIGINT, SIG_IGN);
-		if (waitpid((*all)->pids[i], &status, 0) == -1)
-		{
-			perror("waitpid");
-			exit(EXIT_FAILURE);
-		}
-		signal_in_father(status);
+		//if (waitpid((*all)->pids[i], &status, 0) == -1)
+		//{
+		//	perror("waitpid");
+		//	exit(EXIT_FAILURE);
+		//}
+		waitpid((*all)->pids[i], &status, 0);
 	}
+	(*all)->status = signal_in_father(status);
 }
 
 int	execute(t_all_struct **all)
@@ -103,5 +104,5 @@ int	execute(t_all_struct **all)
 	loop_cmd((*all)->exe, all, -1, 0);
 	free((*all)->pids);
 	(*all)->pids = NULL;
-	return (0);
+	return ((*all)->status);
 }

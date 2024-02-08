@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 12:41:19 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:51:09 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_minishell(t_all_struct *all)
 
 	while (all)
 	{
+		init_signal(SHE, IGN);
 		iderr = parsing(all);
 		if (all->prompte->brut[0])
 			add_history(all->prompte->brut);
@@ -55,13 +56,9 @@ int	main(int ac, char **av, char **env)
 	(void) av;
 	if (ac == 1)
 	{
-		while (1)
-		{
-			init_signal(SHE, IGN);
-			if (init_all(&all, env))
-				end(all);
-			ft_minishell(all);
-		}
+		if (init_all(&all, env))
+			end(all);
+		ft_minishell(all);
 		end(all);
 	}
 	else
