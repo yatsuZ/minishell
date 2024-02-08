@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 02:45:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 01:45:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	parsing(t_all_struct *all)
 		end(all);
 	if (have_nwl(all->prompte->brut, 0))
 		return (err_parsing = 8, err_parsing);
-	str_to_node(all->prompte->brut, &(all->prompte->all_cmd_line));
+	if (str_to_node(all->prompte->brut, \
+	&(all->prompte->all_cmd_line), &(all->err)))
+		return (all->err = 1, end(all), 1);
 	err_parsing = find_cote_and_va(all->prompte->all_cmd_line, NON_DEFINI);
 	if (err_parsing)
 		return (err_parsing);
@@ -39,9 +41,7 @@ int	parsing(t_all_struct *all)
 	err_parsing = find_all_rd_and_pip(all->prompte);
 	if (err_parsing)
 		return (err_parsing);
-	// show_node(all->prompte->all_cmd_line);
 	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL, all->status);
-	// show_node(all->prompte->all_cmd_line);
 	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0);
 	index_update(all->prompte->all_cmd_line);
 	return (err_parsing);

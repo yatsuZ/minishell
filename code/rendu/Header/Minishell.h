@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 18:29:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 01:56:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,29 +76,30 @@ void		end(t_all_struct *all);
 
 int			ft_strcpm(char *s1, char *s2);
 size_t		ft_strlen(const char *cha);
-char		*ft_strdup(const char *s);
+char		*ft_strdup(const char *s, int *err);
 void		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_strcut(const char *s, size_t start, size_t end);
+char		*ft_strcut(const char *s, size_t start, size_t end, int *err);
 int			is_a_legit_va_env(char *str);
 int			type_of_str(char c);
-void		fusion_node(t_node *n, int new_type);
-char		*ft_strjoin(char const *s1, char const *s2);
+void		fusion_node(t_node *n, int new_type, int *err);
+char		*ft_strjoin(char const *s1, char const *s2, int *err);
 size_t		is_separator(char *str, size_t i);
-void		str_to_node(char *str, t_node **res);
+int			str_to_node(char *str, t_node **res, int *err);
 char		*get_value(t_env *all_va, char *key, int status);
-t_node		*no_define_to_node(t_node **nodef, t_node **prev);
+t_node		*no_define_to_node(t_node **nodef, t_node **prev, int *err);
 size_t		is_space(char *str, size_t i);
 t_boolean	have_space(char *s, size_t i);
 void		index_update(t_node *n);
-t_node		*no_define_to_node2(char *str, size_t i_start, size_t i_end);
-void		remplace_node(t_node **old, t_node *new, \
+t_node		*no_define_to_node2(char *str, size_t i_start, \
+size_t i_end, int *err);
+int			remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next);
 void		del_next_node(t_node *n);
 void		free_2str(char **s1, char **s2);
 void		str_add(char **s, char *s2, int free);
 void		str_change_env(char **str, t_env *all_env, int status);
 t_boolean	have_nwl(char *s, size_t i);
-void		str_to_node_nwl(char *str, t_node **res);
+void		str_to_node_nwl(char *str, t_node **res, int *err);
 char		*int_to_str(int nbr);
 void		change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
@@ -123,7 +124,7 @@ void		free_prompt(t_prompt *promp);
 void		free_node(t_node *n);
 void		free_all_node(t_node *tete);
 int			add_node(t_node *previous_n, char *str);
-int			add_last_node(t_node **tete, char *str);
+int			add_last_node(t_node **tete, char *str, int *err);
 int			init_all_va(t_env **all_va, char **arg_env);
 void		free_all_va(t_env *all_va);
 t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err);

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:47:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/19 16:22:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 01:32:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ static void	init_ij(size_t *i, size_t *j)
 	*j = 0;
 }
 
-static char	*ft_strjoin_empty(char const *s1, char const *s2)
+static char	*ft_strjoin_empty(char const *s1, char const *s2, int *err)
 {
-	if (!s1 && !s2)
+	if (*err || (!s1 && !s2))
 		return (NULL);
 	else if (!s1)
-		return (ft_strdup(s2));
-	return (ft_strdup(s1));
+		return (ft_strdup(s2, err));
+	return (ft_strdup(s1, err));
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2, int *err)
 {
 	size_t	i;
 	size_t	j;
@@ -35,14 +35,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*cs2;
 	char	*s;
 
-	if (!s1 || !s2)
-		return (ft_strjoin_empty(s1, s2));
+	if (*err || !s1 || !s2)
+		return (ft_strjoin_empty(s1, s2, err));
 	cs1 = (char *) s1;
 	cs2 = (char *) s2;
 	init_ij(&i, &j);
 	s = ft_calloc(ft_strlen(cs1) + ft_strlen(cs2) + 1, sizeof(char));
 	if (!s)
-		return (NULL);
+		return (*err = 1, NULL);
 	while (i < ft_strlen(cs1))
 	{
 		s[i] = cs1[i];

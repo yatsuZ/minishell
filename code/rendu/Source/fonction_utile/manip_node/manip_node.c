@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:45:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 17:24:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 01:29:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ void	del_next_node(t_node *n)
 	index_update(n);
 }
 
-void	fusion_node(t_node *n, int new_type)
+void	fusion_node(t_node *n, int new_type, int *err)
 {
 	char	*new_str;
 
-	if (n->next_node == NULL)
+	if (!(*err) || !n || n->next_node == NULL)
 		return ;
-	new_str = ft_strjoin(n->str, n->next_node->str);
+	new_str = ft_strjoin(n->str, n->next_node->str, err);
+	if (*err)
+		return ;
 	free(n->str);
 	n->str = NULL;
 	n->str = new_str;
@@ -57,57 +59,58 @@ void	fusion_node(t_node *n, int new_type)
 		n->type_input = new_type;
 }
 
-void	str_to_node(char *str, t_node **res)
+int	str_to_node(char *str, t_node **res, int *err)
 {
 	size_t	i_start;
 	size_t	i_end;
 
 	if (!str)
-		return ;
+		return (*err);
 	i_end = 0;
 	i_start = 0;
-	while (str[i_end])
+	while (str[i_end] && *err == 0)
 	{
 		if (is_separator(str, i_end) != 0)
 		{
 			i_start = i_end;
 			i_end = i_end + is_separator(str, i_start);
-			add_last_node(res, ft_strcut(str, i_start, i_end));
+			add_last_node(res, ft_strcut(str, i_start, i_end, err), err);
 		}
 		if (is_separator(str, i_end) == 0 && str[i_end])
 		{
 			i_start = i_end;
 			while (is_separator(str, i_end) == 0 && str[i_end])
 				i_end++;
-			add_last_node(res, ft_strcut(str, i_start, i_end));
+			add_last_node(res, ft_strcut(str, i_start, i_end, err), err);
 			i_start = i_end;
 		}
 	}
+	return (*err);
 }
 
-void	str_to_node_nwl(char *str, t_node **res)
+void	str_to_node_nwl(char *str, t_node **res, int *err)
 {
 	size_t	i_start;
 	size_t	i_end;
 
-	if (!str)
+	if (!str || *err)
 		return ;
 	i_end = 0;
 	i_start = 0;
-	while (str[i_end])
+	while (str[i_end] && !(*err))
 	{
 		if (str[i_end] == '\n')
 		{
 			i_start = i_end;
 			i_end = i_end + 1;
-			add_last_node(res, ft_strcut(str, i_start, i_end));
+			add_last_node(res, ft_strcut(str, i_start, i_end, err), err);
 		}
 		if (str[i_end] != '\n' && str[i_end])
 		{
 			i_start = i_end;
 			while (str[i_end] != '\n' && str[i_end])
 				i_end++;
-			add_last_node(res, ft_strcut(str, i_start, i_end));
+			add_last_node(res, ft_strcut(str, i_start, i_end, err), err);
 			i_start = i_end;
 		}
 	}
