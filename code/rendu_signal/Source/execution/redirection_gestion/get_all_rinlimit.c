@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_rinlimit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 17:54:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:00:42 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ static char	*get_rinlimit(t_redirecte *rd, t_all_struct *all)
 	input = readline("heredoc>>");
 	if (have_nwl(input, 0))
 		return (multi_line(input, rd, all));
+	if (!input)
+	{
+		print_fd("warning: here-document delimited by end of file (wanted `", 2);
+		print_fd(rd->str_file, 2);
+		return (print_fd("\')\n", 2), NULL);
+	}
 	if (ft_strcpm(rd->str_file, input) == 1)
 		return (free_2str(&input, NULL), ft_strdup(""));
 	return (add_new_input(input, rd, all));

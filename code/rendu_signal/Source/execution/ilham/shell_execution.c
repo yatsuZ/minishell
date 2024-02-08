@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/08 08:44:21 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/02/08 15:14:47 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 {
 	int		status;
 	char	*cmdpath;
+	char	*tmp;
 
 	if (i != -2)
 		redirect_pipe(*all, exe, i);
@@ -30,7 +31,10 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 		if (cmdpath)
 		{
 			status = execve(cmdpath, exe->arg, (*all)->env);
-			free_2str(&cmdpath, NULL);
+			tmp = int_to_str(status);
+			print_fd(tmp, 2);
+			print_fd(" = status\n", 2);
+			free_2str(&cmdpath, &tmp);
 		}
 	}
 	if (i == -2)
@@ -56,7 +60,7 @@ int	init_data(t_all_struct *all)
 
 static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 {
-	int	status;
+	
 	while (++i < (*all)->nb_cmds && exec)
 	{
 		if ((i != (*all)->nb_cmds - 1) && pipe(exec->fd) == -1)
@@ -78,9 +82,11 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 	while (++i < (*all)->nb_cmds)
 	{
 		signal(SIGINT, SIG_IGN);
-		waitpid((*all)->pids[i], status, 0);
-		if (waitpid(pid, &status, 0) == -1) 
-        	exit(perror("waitpid"), EXIT_FAILURE);
+		if (waitpid((*all)->pids[i], &status, 0) == -1)
+		{
+			perror("waitpid");
+			exit(EXIT_FAILURE);
+		}
 		signal_in_father(status);
 	}
 }

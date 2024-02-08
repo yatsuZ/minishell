@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   constante.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/18 10:06:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 11:37:58 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTE_H
 # define CONSTANTE_H
+
+# define MAXLINE 1024
+# define SHE 10
+# define HER 11
+# define IGN 12
 
 typedef enum e_boolean
 {

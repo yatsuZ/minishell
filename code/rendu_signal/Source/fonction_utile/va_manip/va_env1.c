@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   va_env1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 17:45:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:48:36 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	str_change_env(char **str, t_env *all_env, int status)
 		fusion_node(n, NON_DEFINI);
 	free_2str(str, NULL);
 	*str = ft_strdup(n->str);
-	printf("str = %s\n", *str);
 	free_all_node(n);
 }
 

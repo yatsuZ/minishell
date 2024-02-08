@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/08 00:49:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 15:45:00 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 static int	exe_no_bultin(t_all_struct **all, t_execute *exe, int status)
 {
 	char		*cmdpath;
+	struct stat	info_cmd;
 
 	cmdpath = find_cmd2(NULL, exe->cmd, all);
 	if (!cmdpath)
-		return (126);
+		return (127);
 	if (stat(cmdpath, &info_cmd))
 	{
-		print_fd("ERROR avec la fonction state\n", 2);
-		status = 127;
+		print_fd("stat fonction failed\n", 2);
+		status = 1;
 	}
 	else if (S_ISREG(info_cmd.st_mode) && info_cmd.st_mode & S_IXUSR)
 		status = execve(cmdpath, exe->arg, (*all)->env);
@@ -42,7 +43,6 @@ static int	exe_no_bultin(t_all_struct **all, t_execute *exe, int status)
 int	child_process(t_all_struct **all, t_execute *exe, int i)
 {
 	int			status;
-	struct stat	info_cmd;
 
 	redirect_pipe(*all, exe, i);
 	if (redirect(exe, i))
@@ -50,7 +50,14 @@ int	child_process(t_all_struct **all, t_execute *exe, int i)
 	if (find_builtin(exe->cmd) != NON_BUILTIN)
 		status = exec_builtin(exe, all, find_builtin(exe->cmd));
 	else if (exe->cmd)
+	{
 		status = exe_no_bultin(all, exe, 0);
+		if (status == -1)
+		{
+			status = 1;
+			print_fd("execve fonction failed.\n", 2);
+		}
+	}
 	if (i == -2)
 		return (close_fd_child(exe), status);
 	return (free_all(*all), *all = NULL, status);

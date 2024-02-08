@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 23:39:59 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/02/08 12:41:19 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
+
+int	g_exit_signal = 0;
 
 void	reset_var(t_all_struct *all)
 {
@@ -49,6 +51,7 @@ int	main(int ac, char **av, char **env)
 {
 	t_all_struct	*all;
 
+	// g_exit_signal = 0;
 	(void) av;
 	if (ac == 1)
 	{

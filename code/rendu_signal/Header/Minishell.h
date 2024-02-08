@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilham_oua <ilham_oua@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 23:28:37 by ilham_oua        ###   ########.fr       */
+/*   Updated: 2024/02/08 12:44:56 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINISHELL_H
 
 # include "./struct.h"
+//#include "./import.h"
+//#include "./constante.h"
 
 extern int	g_exit_signal;
 
@@ -147,6 +149,10 @@ void		show_tab(char **t);
 /**
  * Signal handling
 */
-void	    init_signal(int sig_int, int sig_quit);
+void		init_signal(int sig_int, int sig_quit);
+void		signal_in_father(int status);
+void		signal_in_fork(void);
+void		signal_in_child(int num);
+void		sig_handler(int signum);
 
 #endif
