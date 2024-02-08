@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 02:33:25 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:15:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			fusion_str_and_env(t_node *tete_str);
 void		error_parsing(int iderr);
 int			del_cote(t_node *av, t_node *entre, int option);
 int			cmd_or_arg(t_node *n, t_node *p, int o);
-t_node		*only_str(t_node *n, t_type_input type);
+t_node		*only_str(t_node *n, t_type_input type, int *err);
 // find
 int			find_cote_and_va(t_node *n, int previous_type);
 int			find_all_rd_and_pip(t_prompt *p);
@@ -85,7 +85,7 @@ void		fusion_node(t_node *n, int new_type, int *err);
 char		*ft_strjoin(char const *s1, char const *s2, int *err);
 size_t		is_separator(char *str, size_t i);
 int			str_to_node(char *str, t_node **res, int *err);
-char		*get_value(t_env *all_va, char *key, int status);
+char		*get_value(t_env *all_va, char *key, int status, int *err);
 t_node		*no_define_to_node(t_node **nodef, t_node **prev, int *err);
 size_t		is_space(char *str, size_t i);
 t_boolean	have_space(char *s, size_t i);
@@ -96,12 +96,12 @@ int			remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next);
 void		del_next_node(t_node *n);
 void		free_2str(char **s1, char **s2);
-void		str_add(char **s, char *s2, int free);
-void		str_change_env(char **str, t_env *all_env, int status);
+void		str_add(char **s, char *s2, int free, int *err);
+void		str_change_env(char **str, t_env *all_env, int status, int *err);
 t_boolean	have_nwl(char *s, size_t i);
 void		str_to_node_nwl(char *str, t_node **res, int *err);
 char		*int_to_str(int nbr, int *err);
-void		change_or_add_va(t_env **all_env, char *key, char *value, int show);
+int			change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
@@ -111,7 +111,7 @@ char		**ft_split(const char *s, char c);
 char		*ft_strchr(const char *s, int c);
 char		*find_cmd2(char **all_path, char *cmd, t_all_struct **all);
 void		change_va_undescore(t_execute *exe, t_env **env);
-void		update_shlvl(t_env *tete, int err, long long shlvl);
+int			update_shlvl(t_env *tete, int err, long long shlvl);
 int			good_condition_fusion_rd_with_pip(t_node *n, t_node *next, \
 int *nbr_pip);
 

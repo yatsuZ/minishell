@@ -6,15 +6,17 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 20:18:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:03:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../Header/Minishell.h"
 
-char	**init_tab(t_node *n, size_t *nbr_of_arg)
+char	**init_tab(t_node *n, size_t *nbr_of_arg, int *err)
 {
-	if (!n)
+	char	**tab_var;
+
+	if (!n || *err)
 		return (NULL);
 	while (n && n->type_input != PIP)
 	{
@@ -24,7 +26,10 @@ char	**init_tab(t_node *n, size_t *nbr_of_arg)
 	}
 	if (!nbr_of_arg)
 		return (NULL);
-	return (ft_calloc((*nbr_of_arg) + 1, sizeof(char *)));
+	tab_var = ft_calloc((*nbr_of_arg) + 1, sizeof(char *));
+	if (!tab_var)
+		*err = 1;
+	return (tab_var);
 }
 
 int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)

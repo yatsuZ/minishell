@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:43:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/02 19:54:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:15:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	find_cote_and_va(t_node *n, int previous_type)
 	return (0);
 }
 
-t_node	*only_str(t_node *n, t_type_input type)
+t_node	*only_str(t_node *n, t_type_input type, int *err)
 {
 	if (type == SINGLE_COTE)
 	{
@@ -88,7 +88,7 @@ t_node	*only_str(t_node *n, t_type_input type)
 		while (n->type_input != DOUBLE_COTE && type != DOUBLE_COTE)
 		{
 			if (n->type_input != STR || type != STR)
-				fusion_node(n, STR);
+				fusion_node(n, STR, err);
 			else
 				n = n->next_node;
 			type = n->next_node->type_input;

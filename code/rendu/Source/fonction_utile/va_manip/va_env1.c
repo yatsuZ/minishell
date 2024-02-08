@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 01:51:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:05:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ int	is_a_legit_va_env(char *s)
 	return (TRUE);
 }
 
-char	*get_value(t_env *all_va, char *key, int status)
+char	*get_value(t_env *all_va, char *key, int status, int *err)
 {
 	char	*value;
 
 	value = NULL;
-	if (ft_strcpm(key, "?") == TRUE)
-		value = int_to_str(status);
-	while (all_va && !value)
+	if (*err == 0 && ft_strcpm(key, "?") == TRUE)
+		value = int_to_str(status, err);
+	while (*err == 0 && all_va && !value)
 	{
 		if (ft_strcpm(all_va->key, key) == TRUE)
-			value = ft_strdup(all_va->value);
+			value = ft_strdup(all_va->value, err);
 		all_va = all_va->next_va;
 	}
 	return (value);
@@ -49,10 +49,8 @@ void	str_change_env(char **str, t_env *all_env, int status, int *err)
 	t_node	*n;
 	t_node	*tmp;
 
-	if (*err || !str || !(*str))
-		return ;
 	n = NULL;
-	if (str_to_node(*str, &n, *err))
+	if (*err || !str || !(*str) || str_to_node(*str, &n, err))
 		return ;
 	tmp = n;
 	while (tmp)
@@ -71,13 +69,17 @@ void	str_change_env(char **str, t_env *all_env, int status, int *err)
 	free_all_node(n);
 }
 
-t_env	*add_key_value(char *key, char *value, int show)
+t_env	*add_key_value(char *key, char *value, int show, int *err)
 {
 	t_env	*res;
 
+	if (*err)
+		return (NULL);
 	res = ft_calloc(1, sizeof(t_env));
-	res->key = ft_strdup(key);
-	res->value = ft_strdup(value);
+	if (!res)
+		return (*err = 1, NULL);
+	res->key = ft_strdup(key, err);
+	res->value = ft_strdup(value, err);
 	res->show = FALSE;
 	if (show)
 		res->show = TRUE;
@@ -85,31 +87,31 @@ t_env	*add_key_value(char *key, char *value, int show)
 	return (res);
 }
 
-void	change_or_add_va(t_env **all_env, char *key, char *value, int show)
+int	change_or_add_va(t_env **all_env, char *key, char *value, int show)
 {
+	int	err;
+
+	err = 0;
 	if (!all_env || *all_env == NULL)
 	{
 		if (all_env)
-			*all_env = add_key_value(key, value, show);
-		return ;
+			*all_env = add_key_value(key, value, show, &err);
+		return (err);
 	}
 	while ((*all_env)->next_va)
 	{
 		if (ft_strcpm(key, (*all_env)->key) == TRUE)
-		{
-			free_2str(&((*all_env)->value), NULL);
-			(*all_env)->value = ft_strdup(value);
-			(*all_env)->show = show;
-			return ;
-		}
+			return (free_2str(&((*all_env)->value), NULL), \
+(*all_env)->value = ft_strdup(value, &err), (*all_env)->show = show, err);
 		all_env = &((*all_env)->next_va);
 	}
 	if (ft_strcpm(key, (*all_env)->key) == TRUE)
 	{
 		free_2str(&((*all_env)->value), NULL);
-		(*all_env)->value = ft_strdup(value);
+		(*all_env)->value = ft_strdup(value, &err);
 		(*all_env)->show = show;
 	}
 	else
-		(*all_env)->next_va = add_key_value(key, value, show);
+		(*all_env)->next_va = add_key_value(key, value, show, &err);
+	return (err);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:15:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 14:28:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:11:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,31 @@ void	change_va_undescore(t_execute *exe, t_env **env)
 	change_or_add_va(env, "_", new_end, 0);
 }
 
-void	update_shlvl(t_env *tete, int err, long long shlvl)
+int	update_shlvl(t_env *tete, int err, long long shlvl)
 {
+	int			err_malloc;
 	char		*nbr_str;
 	char		*str;
 
-	str = get_value(tete, "SHLVL", 0);
+	err_malloc = 0;
+	str = get_value(tete, "SHLVL", 0, &err_malloc);
+	if (err_malloc)
+		return (1);
 	shlvl = is_numeric2(str, 0, &err);
 	free_2str(&str, NULL);
 	if (shlvl >= 999)
 		print_fd("minishell: warning shell leve too high, reset at 1\n", 2);
 	if (shlvl >= 999 || err)
-		change_or_add_va(&tete, "SHLVL", "1", 1);
+		err_malloc = change_or_add_va(&tete, "SHLVL", "1", 1);
 	else if (shlvl < 0)
-		change_or_add_va(&tete, "SHLVL", "0", 1);
+		err_malloc = change_or_add_va(&tete, "SHLVL", "0", 1);
 	else
 	{
-		nbr_str = int_to_str((int)(shlvl + 1));
-		change_or_add_va(&tete, "SHLVL", nbr_str, 1);
+		nbr_str = int_to_str((int)(shlvl + 1), &err_malloc);
+		if (err_malloc)
+			return (1);
+		err_malloc = change_or_add_va(&tete, "SHLVL", nbr_str, 1);
 		free_2str(&nbr_str, NULL);
 	}
+	return (err_malloc);
 }

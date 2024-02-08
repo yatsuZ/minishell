@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 17:47:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 01:32:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 03:12:54 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ char	*ft_strjoin(char const *s1, char const *s2, int *err)
 	return (s);
 }
 
-void	str_add(char **s, char *s2, int free)
+void	str_add(char **s, char *s2, int free, int *err)
 {
 	char	*tmp;
 
-	if (!s || !s2)
+	if (*err | !s || !s2)
 		return ;
 	else if (!(*s))
 	{
-		*s = ft_strdup(s2);
-		if (free)
+		*s = ft_strdup(s2, err);
+		if (free || *err)
 			free_2str(&s2, NULL);
 		return ;
 	}
-	tmp = ft_strdup(*s);
+	tmp = ft_strdup(*s, err);
 	free_2str(s, NULL);
-	*s = ft_strjoin(tmp, s2);
-	if (free)
+	*s = ft_strjoin(tmp, s2, err);
+	if (free || *err)
 		free_2str(&tmp, &s2);
 	else
 		free_2str(&tmp, NULL);
