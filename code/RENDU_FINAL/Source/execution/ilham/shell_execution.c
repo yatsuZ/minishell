@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/05 19:58:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:08:10 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 		(*all)->pids[i] = fork();
 		if ((*all)->pids[i] == 0)
 		{
+			signal_in_fork();
 			status = child_process(all, exec, i);
-			// close_fd(&exec->fd[1]);
-			// close_fd(&exec->fd[0]);
-			// close_fd(&((*all)->prev));
 			exit(status);
 		}
 		close_fd(&exec->fd[1]);
@@ -77,7 +75,11 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 	}
 	i = -1;
 	while (++i < (*all)->nb_cmds)
-		waitpid((*all)->pids[i], NULL, 0);
+	{
+		signal(SIGINT, SIG_IGN);
+		waitpid((*all)->pids[i], &status, 0);
+	}
+	(*all)->status = signal_in_father(status);
 }
 
 int	execute(t_all_struct **all)

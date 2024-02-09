@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 18:29:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 09:58:11 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./struct.h"
 
-extern int	g_signal;
+extern int	g_exit_signal;
 
 // Fonctions pour l'execution du shell
 char		*get_path_var(t_env *env);
@@ -144,5 +144,14 @@ void		show_all_va(t_env *env);
 void		show_node(t_node *tmp);
 void		show_execute(t_execute *exe, size_t i);
 void		show_tab(char **t);
+
+/**
+ * Signal handling
+*/
+void		init_signal(int sig_int, int sig_quit);
+int			signal_in_father(int status);
+void		signal_in_fork(void);
+void		signal_in_child(int num);
+void		sig_handler(int signum);
 
 #endif

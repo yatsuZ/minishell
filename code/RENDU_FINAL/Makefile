@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 03:10:21 by yzaoui            #+#    #+#              #
-#    Updated: 2024/02/04 21:09:38 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/02/09 10:09:12 by ilouacha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de Minishell
 
 ILHAM_GESTION_PATH =	ilham/
-ILHAM_GESTION_FILES =	exec_parsing.c		\
-						free_data.c			\
+ILHAM_GESTION_FILES =	free_data.c			\
 						redirect.c			\
 						redirect2.c			\
 						shell_execution.c	\
 						utils.c				\
+						signals.c			\
 
 BULTINS_PATH =	builtins/
 BULTINS_FILES =	cd.c			\
