@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:26:36 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 21:19:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:26:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err)
 	if (!res)
 		return (*err = 1, res);
 	res->index = 0;
-	res->cmd = ft_strdup(cmd);
+	res->cmd = ft_strdup(cmd, err);
+	if (*err)
+		return (res);
 	res->arg = arg;
 	res->all_rd = rd;
 	res->argc = 0;
 	res->fd = ft_calloc(2, sizeof(int));
+	if (res->fd == NULL)
+		return (*err = 1, res);
 	res->fd[0] = -1;
 	res->fd[1] = -1;
 	res->fd_in = -1;

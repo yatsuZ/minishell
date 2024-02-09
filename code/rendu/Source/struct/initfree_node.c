@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:51:06 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/02/08 01:06:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 21:25:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,5 @@ int	add_last_node(t_node **tete, char *str, int *err)
 			(*tete)->next_node->index = (*tete)->index + 1;
 		return (*err);
 	}
-	return (add_last_node(&(*tete)->next_node, str));
+	return (add_last_node(&(*tete)->next_node, str, err));
 }

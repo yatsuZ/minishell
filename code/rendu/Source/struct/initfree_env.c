@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:57:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 18:34:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:24:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	update_env(t_all_struct **all)
 	size_t	nbr_of_va;
 	t_env	*all_va;
 
-	if (!all || !(*all))
+	if (!all || !(*all) || (*all)->err)
 		return ;
 	if ((*all)->env)
 		free_tab(&((*all)->env));
@@ -84,5 +84,7 @@ void	update_env(t_all_struct **all)
 			nbr_of_va++;
 		all_va = all_va->next_va;
 	}
-	(*all)->env = creat_env(nbr_of_va, (*all)->all_va);
+	(*all)->env = creat_env(nbr_of_va, (*all)->all_va, &((*all)->err));
+	if ((*all)->err)
+		end(*all);
 }

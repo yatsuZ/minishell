@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/29 19:09:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:21:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,29 @@ static void	print_env_export(t_env *all_va)
 	print_env_export(all_va->next_va);
 }
 
-static char	*get_value_from_str(char *str, size_t stop)
+static char	*get_value_from_str(char *str, size_t stop, int *err)
 {
 	char	*res;
 	size_t	start;
 
+	if (*err)
+		return (NULL);
 	start = stop + 1;
 	while (str[stop])
 		stop++;
-	res = ft_strcut(str, start, stop);
+	res = ft_strcut(str, start, stop, err);
 	return (res);
 }
 
-int	ft_export(char *str, t_env **all_env)
+int	ft_export(char *str, t_env **all_env, size_t stop, int *err)
 {
 	char	*key;
 	char	*value;
-	size_t	stop;
 
-	stop = 0;
 	while (str && str[stop] && str[stop] != '=')
 		stop++;
-	key = ft_strcut(str, 0, stop);
-	if (is_a_legit_va_env(key) == FALSE || ft_strcpm("?", key) == TRUE)
+	key = ft_strcut(str, 0, stop, err);
+	if (!*err && (is_a_legit_va_env(key) == FALSE || ft_strcpm("?", key) == TRUE))
 	{
 		print_fd("Minishelle : export: `", 2);
 		if (key)
@@ -59,10 +59,12 @@ int	ft_export(char *str, t_env **all_env)
 	if (str[stop] == '\0')
 		value = NULL;
 	else if (str[stop + 1] == '\0')
-		value = ft_strdup("");
+		value = ft_strdup("", err);
 	else
-		value = get_value_from_str(str, stop);
-	return (change_or_add_va(all_env, key, value, 1), \
+		value = get_value_from_str(str, stop, err);
+	if (*err)
+		return (free_2str(&key, &value), 0);
+	return (*err = change_or_add_va(all_env, key, value, 1), \
 	free_2str(&key, &value), 0);
 }
 
@@ -77,8 +79,10 @@ int	exec_export(t_execute *exe, t_all_struct **all)
 		return (print_env_export((*all)->all_va), status);
 	while (i < exe->argc)
 	{
-		if (ft_export(exe->arg[i], &(*all)->all_va))
+		if (ft_export(exe->arg[i], &(*all)->all_va, 0, &((*all)->err)))
 			status = 1;
+		if ((*all)->err)
+			end(*all);
 		i++;
 	}
 	update_env(all);

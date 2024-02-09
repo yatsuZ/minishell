@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 22:06:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/05 18:54:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 01:23:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	init_all(t_all_struct **res, char **env)
 	(*res) = ft_calloc(1, sizeof(t_all_struct));
 	if (!res)
 		return (1);
-	(*res)->err = init_all_va(&(*res)->all_va, env);
-	(*res)->err = init_prompt(&(*res)->prompte);
+	(*res)->err = init_all_va(&(*res)->all_va, env, &((*res)->err));
+	(*res)->err = init_prompt(&(*res)->prompte, &((*res)->err));
 	(*res)->exe = NULL;
 	(*res)->status = 0;
 	(*res)->env = NULL;

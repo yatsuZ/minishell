@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 17:09:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 00:52:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int			change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
-char		*get_first_arg_no_null(char **argv, size_t argc, size_t i);
+char		*get_first_arg_no_null(char **argv, size_t argc, size_t i, int *err);
 void		free_tab(char ***tableau);
-char		**ft_split(const char *s, char c);
+char		**ft_split(const char *s, char c, int *err);
 char		*ft_strchr(const char *s, int c);
 char		*find_cmd2(char **all_path, char *cmd, t_all_struct **all);
 void		change_va_undescore(t_execute *exe, t_env **env);
@@ -118,7 +118,7 @@ int *nbr_pip);
 
 // Structure
 int			init_all(t_all_struct **res, char **env);
-int			init_prompt(t_prompt **promp);
+int			init_prompt(t_prompt **promp, int *err);
 int			init_node(t_node **n, char *str);
 void		free_all(t_all_struct *all);
 void		free_prompt(t_prompt *promp);
@@ -126,7 +126,7 @@ void		free_node(t_node *n);
 void		free_all_node(t_node *tete);
 int			add_node(t_node *previous_n, char *str);
 int			add_last_node(t_node **tete, char *str, int *err);
-int			init_all_va(t_env **all_va, char **arg_env);
+int			init_all_va(t_env **all_va, char **arg_env, int *err);
 void		free_all_va(t_env *all_va);
 t_execute	*init_execute(char *cmd, char **arg, t_redirecte *rd, int *err);
 void		free_execute(t_execute *exe);

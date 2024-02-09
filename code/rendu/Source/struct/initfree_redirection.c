@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:27:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:58:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 22:00:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ t_redirecte	*init_redirecte(t_node *f_n, t_type_input t_rd, int *err)
 	res = ft_calloc(1, sizeof(t_redirecte));
 	if (!res)
 		return (*err = 1, res);
-	res->str_file = ft_strdup(f_n->str);
+	res->str_file = ft_strdup(f_n->str, err);
+	if (*err)
+		return (res);
 	res->type_rd = t_rd;
 	res->error = 0;
 	if (f_n->type_input == F_RD2)

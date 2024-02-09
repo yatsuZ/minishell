@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 17:54:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 00:25:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,74 @@ static char	*add_new_input(char *input, t_redirecte *rd, t_all_struct *all)
 
 	env = all->all_va;
 	if (rd->va_activate)
-		str_change_env(&input, env, all->status);
-	tmp = ft_strjoin(input, "\n");
+		str_change_env(&input, env, all->status, &(all->err));
+	tmp = ft_strjoin(input, "\n", &(all->err));
 	free_2str(&input, NULL);
+	if (all->err)
+		end(all);
 	input = get_rinlimit(rd, all);
-	res = ft_strjoin(tmp, input);
+	res = ft_strjoin(tmp, input, &(all->err));
 	free_2str(&tmp, &input);
 	return (res);
+}
+
+char	*multi_line2(t_node *n, char *str, t_redirecte *rd, t_all_struct *all)
+{
+	char	*res;
+
+	while (n && n->next_node)
+	{
+		if (ft_strcpm(rd->str_file, n->next_node->str) == 1)
+		{
+			res = ft_strdup(n->str, &(all->err));
+			if (all->err == 0 && rd->va_activate)
+				str_change_env(&res, all->all_va, all->status, &(all->err));
+			if (all->err)
+				return (free_2str(&str, NULL), free_node(n), end(all), res);
+			return (free_2str(&str, NULL), free_node(n), res);
+		}
+		fusion_node(n, -1, &(all->err));
+		if (all->err)
+			return (free_2str(&str, NULL), free_node(n), end(all), res);
+	}
+	return (free_node(n), add_new_input(str, rd, all));
 }
 
 static char	*multi_line(char *str, t_redirecte *rd, t_all_struct *all)
 {
 	char	*res;
-	t_env	*env;
 	t_node	*n;
 
-	env = all->all_va;
 	n = NULL;
-	str_to_node_nwl(str, &n);
+	str_to_node_nwl(str, &n, &(all->err));
+	if (all->err)
+		end(all);
 	if (n && ft_strcpm(rd->str_file, n->str) == 1)
-		return (free_2str(&str, NULL), free_node(n), ft_strdup(""));
-	while (n && n->next_node)
 	{
-		if (ft_strcpm(rd->str_file, n->next_node->str) == 1)
-		{
-			res = ft_strdup(n->str);
-			if (rd->va_activate)
-				str_change_env(&res, env, all->status);
-			return (free_node(n), free_2str(&str, NULL), res);
-		}
-		fusion_node(n, -1);
+		res = ft_strdup("", &(all->err));
+		if (all->err)
+			return (free_2str(&str, NULL), free_node(n), end(all), res);
+		return (free_2str(&str, NULL), free_node(n), res);
 	}
-	return (free_node(n), add_new_input(str, rd, all));
+	return (multi_line2(n, str, rd, all));
 }
 
 static char	*get_rinlimit(t_redirecte *rd, t_all_struct *all)
 {
 	char	*input;
+	char	*tmp;
 
 	input = readline("heredoc>>");
 	if (have_nwl(input, 0))
 		return (multi_line(input, rd, all));
 	if (ft_strcpm(rd->str_file, input) == 1)
-		return (free_2str(&input, NULL), ft_strdup(""));
+	{
+		free_2str(&input, NULL);
+		tmp = ft_strdup("", &(all->err));
+		if (all->err)
+			return (free_2str(&tmp, NULL), end(all), NULL);
+		return (tmp);
+	}
 	return (add_new_input(input, rd, all));
 }
 

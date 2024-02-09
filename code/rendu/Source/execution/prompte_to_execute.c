@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:00:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 03:03:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/08 22:03:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	get_all_exe2(t_node *n, size_t *i, t_execute **res, t_redirecte **all_rd)
 	err = 0;
 	if (n->type_input == CMD)
 	{
-		(*res)->cmd = ft_strdup(n->str);
-		(*res)->arg[*i] = ft_strdup(n->str);
+		(*res)->cmd = ft_strdup(n->str, &err);
+		(*res)->arg[*i] = ft_strdup(n->str, &err);
 		*i = *i + 1;
 	}
 	else if (n->type_input == ARG)
 	{
-		(*res)->arg[*i] = ft_strdup(n->str);
+		(*res)->arg[*i] = ft_strdup(n->str, &err);
 		*i = *i + 1;
 	}
 	else if (n->type_input == R_IN || n->type_input == R_OUT || \
@@ -70,7 +70,7 @@ t_execute	*get_all_exe(t_prompt *p, t_node *n, size_t i, int *err)
 	j = 0;
 	res = init_execute(NULL, NULL, NULL, err);
 	res->index = i;
-	res->arg = init_tab(n, &(res->argc));
+	res->arg = init_tab(n, &(res->argc), err);
 	all_rd = NULL;
 	if (*err)
 		return (res);
