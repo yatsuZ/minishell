@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 10:08:51 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:46:20 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ void	ft_minishell(t_all_struct *all)
 		else
 		{
 			prompte_to_execute(all);
-			if (all && all->exe)
+			if (g_exit_signal != 130 && all && all->exe)
 				all->status = execute(&all);
 		}
+		g_exit_signal = 0;
 		reset_var(all);
 	}
 }

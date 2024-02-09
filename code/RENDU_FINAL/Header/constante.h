@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 09:57:08 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:03:49 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef enum e_boolean
 	TRUE
 }	t_boolean;
 
-// COLOR CONSTANTE
 typedef enum e_color
 {
 	EMPTY_COLOR ,
@@ -37,24 +36,6 @@ typedef enum e_color
 	BLANC
 }	t_color;
 
-////// TYPE INPUT
-// si je nai pas encore categoriser les string
-// \\ si seul ou suis un caractere speciaux
-// char * si il fais partie d'un ensemble de string
-// Espace tab ou autre
-// *char fichier executable = un chemin = Premier text
-// **char Tout ce qui suit un cmd
-// $ voir la syntaxe autorise des variable d'env
-// $? retourne la valeur retour (le signal)
-// ' les VA d'ENV de ne marche pas doit etre fermé
-// " les VA d'ENV marche doit etre fermé contenue = string
-// < Redirection d'entre
-// > Redirection de sortie
-// << fais un heardock (le plus dur)
-// > Redirection de sortie
-// *char ce aui suit une R
-// *char qui suit un R_IN_LIMIT
-// | doit faire une redirection de sortie principal quoi qu'il arrive
 typedef enum e_type_input
 {
 	NON_DEFINI,

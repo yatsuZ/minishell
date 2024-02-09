@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 02:45:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 19:41:45 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	parsing(t_all_struct *all)
 	int	err_parsing;
 
 	all->prompte->brut = readline(all->prompte->invite);
+	if (g_exit_signal == 130)
+		all->status = 130;
+	g_exit_signal = 0;
 	if (all->prompte->brut == NULL)
 		end(all);
 	if (have_nwl(all->prompte->brut, 0))
@@ -39,9 +42,7 @@ int	parsing(t_all_struct *all)
 	err_parsing = find_all_rd_and_pip(all->prompte);
 	if (err_parsing)
 		return (err_parsing);
-	// show_node(all->prompte->all_cmd_line);
 	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL, all->status);
-	// show_node(all->prompte->all_cmd_line);
 	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0);
 	index_update(all->prompte->all_cmd_line);
 	return (err_parsing);

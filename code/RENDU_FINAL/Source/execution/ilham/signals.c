@@ -6,7 +6,7 @@
 /*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:05:40 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/02/09 10:44:03 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:29:35 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	signal_in_father(int status)
 		else
 			return (128 + WTERMSIG(status));
 	}
-	return (0);
+	return (status);
 }
 
 void	sig_handler(int signum)

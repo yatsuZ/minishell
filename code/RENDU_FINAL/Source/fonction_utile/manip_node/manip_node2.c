@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manip_node2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:47:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 03:23:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 20:27:01 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	remplace_node(t_node **old, t_node *new, \
 t_node **previous, t_node *next)
 {
 	t_node	*last_new;
-	(void) previous;
 
+	(void) previous;
 	free_2str(&((*old)->str), NULL);
 	**old = *new;
 	if (previous && (*previous))

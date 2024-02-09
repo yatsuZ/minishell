@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_rinlimit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 00:25:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:37:37 by ilouacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*add_new_input(char *input, t_redirecte *rd, t_all_struct *all)
 
 char	*multi_line2(t_node *n, char *str, t_redirecte *rd, t_all_struct *all)
 {
-	char	*res;
+	char	*res = NULL;
 
 	while (n && n->next_node)
 	{
