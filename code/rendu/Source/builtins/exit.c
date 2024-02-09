@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:59:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 00:59:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:49:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ int	exec_exit(t_execute *exe, t_all_struct **all)
 	if ((*all)->status == -2)
 	{
 		(*all)->status = 2;
-		first_arg = get_first_arg_no_null(exe->arg, exe->argc, 1, &((*all)->err));
+		first_arg = \
+		get_first_arg_no_null(exe->arg, exe->argc, 1, &((*all)->err));
 		if ((*all)->err)
 			end(*all);
 		print_fd("bash: exit: ", 2);

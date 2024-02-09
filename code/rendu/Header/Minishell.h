@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 00:52:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void		find_cmd_and_arg(t_node *n, t_node *prev, int option, int *err);
 void		fusion_cote(t_node *all, int *err);
 int			fusion_va(t_env *all_va, t_node *present, \
 t_node *previous, int status);
+int			fail_key2(t_env *all_va, t_node *mtn, int status);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
@@ -74,7 +75,7 @@ void		end(t_all_struct *all);
 
 // Fonction utile
 
-int	find_file_rd2(t_node *n, int limit, int *nbr_pip);
+int			find_file_rd2(t_node *n, int limit, int *nbr_pip);
 int			ft_strcpm(char *s1, char *s2);
 size_t		ft_strlen(const char *cha);
 char		*ft_strdup(const char *s, int *err);
@@ -106,12 +107,13 @@ int			change_or_add_va(t_env **all_env, char *key, char *value, int show);
 int			print_fd(char *str, int fd);
 long long	is_numeric2(char *str, size_t i, int *err);
 t_boolean	key_exist(t_env *env, char *str);
-char		*get_first_arg_no_null(char **argv, size_t argc, size_t i, int *err);
+char		\
+*get_first_arg_no_null(char **arv, size_t arc, size_t i, int *err);
 void		free_tab(char ***tableau);
 char		**ft_split(const char *s, char c, int *err);
 char		*ft_strchr(const char *s, int c);
 char		*find_cmd2(char **all_path, char *cmd, t_all_struct **all);
-void		change_va_undescore(t_execute *exe, t_env **env);
+int			change_va_undescore(t_execute *exe, t_env **env);
 int			update_shlvl(t_env *tete, int err, long long shlvl);
 int			good_condition_fusion_rd_with_pip(t_node *n, t_node *next, \
 int *nbr_pip);

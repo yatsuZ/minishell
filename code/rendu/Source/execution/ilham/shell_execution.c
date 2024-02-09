@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_execution.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:41:18 by ilham_oua         #+#    #+#             */
-/*   Updated: 2024/02/08 15:45:00 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:28:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ int	init_data(t_all_struct *all)
 	all->prev = -1;
 	if (all->nb_cmds == 1)
 	{
-		change_va_undescore(all->exe, &(all->all_va));
+		if (change_va_undescore(all->exe, &(all->all_va)))
+			return (all->err = 1, end(all), 0);
 		if (find_builtin(all->exe->cmd) != NON_BUILTIN)
 			return (1);
 	}
 	all->pids = ft_calloc(all->nb_cmds, sizeof(int));
 	if (!all->pids)
-		printf("pids ERROR\n\n");
+		return (all->err = 1, end(all), 0);
 	return (0);
 }
 
@@ -84,7 +85,10 @@ static void	loop_cmd(t_execute *exec, t_all_struct **all, int i, int status)
 	while (++i < (*all)->nb_cmds && exec)
 	{
 		if ((i != (*all)->nb_cmds - 1) && pipe(exec->fd) == -1)
-			print_fd("ERROR pip\n\n", 2);
+		{
+			(*all)->err = 2;
+			end(*all);
+		}
 		(*all)->pids[i] = fork();
 		if ((*all)->pids[i] == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 17:19:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:33:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ void	cut_new_space(t_node **tete, t_node *prev, int *err)
 	cut_new_space(&(prev->next_node), prev, err);
 }
 
-// static int	parsing2(t_all_struct *all)
-// {
-	
-// }
+static int	parsing2(t_all_struct *all)
+{
+	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL, all->status);
+	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0, &(all->err));
+	if (all->err)
+		return (all->err = 1, end(all), 1);
+	index_update(all->prompte->all_cmd_line);
+	return (0);
+}
 
 int	parsing(t_all_struct *all)
 {
@@ -50,10 +55,5 @@ int	parsing(t_all_struct *all)
 		return (all->err = 1, end(all), 1);
 	if (err_parsing)
 		return (err_parsing);
-	fusion_va(all->all_va, all->prompte->all_cmd_line, NULL, all->status);
-	find_cmd_and_arg(all->prompte->all_cmd_line, NULL, 0, &(all->err));
-	if (all->err)
-		return (all->err = 1, end(all), 1);
-	index_update(all->prompte->all_cmd_line);
-	return (0);
+	return (parsing2(all));
 }

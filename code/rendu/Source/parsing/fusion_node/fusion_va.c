@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 18:28:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,28 @@ static int	del_failure(t_node **dolar, t_node **key)
 	return (err);
 }
 
-static int	fail_key(t_env *all_va, t_node *pres, t_node *pass, int status)
+static int	fail_key(t_env *all_va, t_node *mtn, t_node *pass, int status)
 {
-	t_node	*futur;
 	int		err;
 
-	futur = pres->next_node;
-	err = del_failure(&pres, &pres->next_node);
+	err = del_failure(&mtn, &mtn->next_node);
 	if (err)
 		return (err);
-	if (pass && (pass->type_input == NON_DEFINI || \
-	pass->type_input == STR || pass->type_input == F_RD || \
-	pass->type_input == F_RD2))
+	if (pass && (pass->type_input == NON_DEFINI || pass->type_input == STR \
+	|| pass->type_input == F_RD || pass->type_input == F_RD2))
 	{
 		fusion_node(pass, -1, &err);
-		pres = pass;
+		mtn = pass;
 	}
-	else if (pass && pass->type_input == DOUBLE_COTE && \
-	futur && (futur->type_input == STR || futur->type_input == DOUBLE_COTE))
-		pres->type_input = STR;
+	else if (pass && pass->type_input == DOUBLE_COTE && mtn->next_node && \
+	(mtn->next_node->type_input == STR || \
+	mtn->next_node->type_input == DOUBLE_COTE))
+		mtn->type_input = STR;
 	else
-		pres->type_input = NON_DEFINI;
+		mtn->type_input = NON_DEFINI;
 	if (err)
 		return (err);
-	futur = pres->next_node;
-	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
-		fusion_node(pres, -1, &err);
-	if (err)
-		return (err);
-	futur = pres->next_node;
-	if (futur && (futur->type_input == STR || futur->type_input == NON_DEFINI))
-		fusion_node(pres, -1, &err);
-	if (err)
-		return (err);
-	return (fusion_va(all_va, pres->next_node, pres, status));
+	return (fail_key2(all_va, mtn, status));
 }
 
 static void	quick_define(t_node *n)
@@ -84,7 +72,7 @@ static void	quick_define(t_node *n)
 	}
 }
 
-static int	is_va(t_env *all_va, t_node *pres, t_node *pass, int status)
+static int	is_va(t_env *all_va, t_node *mtn, t_node *pass, int status)
 {
 	t_node	*key;
 	char	*value;
@@ -92,9 +80,9 @@ static int	is_va(t_env *all_va, t_node *pres, t_node *pass, int status)
 	int		err;
 
 	err = 0;
-	key = pres->next_node;
+	key = mtn->next_node;
 	if (key == NULL || is_a_legit_va_env(key->str) == FALSE)
-		return (fail_key(all_va, pres, pass, status));
+		return (fail_key(all_va, mtn, pass, status));
 	value = get_value(all_va, key->str, status, &err);
 	new_pres = no_define_to_node2(value, 0, 0, &err);
 	if (err)
@@ -103,12 +91,12 @@ static int	is_va(t_env *all_va, t_node *pres, t_node *pass, int status)
 	quick_define(new_pres);
 	if (!pass || (pass->type_input == STR || \
 	pass->type_input == DOUBLE_COTE || pass->type_input == F_RD))
-		fusion_node(pres, STR, &err);
+		fusion_node(mtn, STR, &err);
 	else
-		fusion_node(pres, NON_DEFINI, &err);
-	key = pres->next_node;
-	remplace_node(&pres, new_pres, &pass, key);
-	return (new_pres = NULL, fusion_va(all_va, pres->next_node, pres, status));
+		fusion_node(mtn, NON_DEFINI, &err);
+	key = mtn->next_node;
+	remplace_node(&mtn, new_pres, &pass, key);
+	return (new_pres = NULL, fusion_va(all_va, mtn->next_node, mtn, status));
 }
 
 int	fusion_va(t_env *all_va, t_node *present, t_node *previous, int status)

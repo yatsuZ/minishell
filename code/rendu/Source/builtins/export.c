@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 01:21:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:49:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	ft_export(char *str, t_env **all_env, size_t stop, int *err)
 	while (str && str[stop] && str[stop] != '=')
 		stop++;
 	key = ft_strcut(str, 0, stop, err);
-	if (!*err && (is_a_legit_va_env(key) == FALSE || ft_strcpm("?", key) == TRUE))
+	if (!*err && (is_a_legit_va_env(key) == FALSE || \
+	ft_strcpm("?", key) == TRUE))
 	{
 		print_fd("Minishelle : export: `", 2);
 		if (key)
