@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 03:05:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:31:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	change_or_add_va(t_env **all_env, char *key, char *value, int show)
 	{
 		if (ft_strcpm(key, (*all_env)->key) == TRUE)
 			return (free_2str(&((*all_env)->value), NULL), \
-(*all_env)->value = ft_strdup(value, &err), (*all_env)->show = show, err);
+	(*all_env)->value = ft_strdup(value, &err), (*all_env)->show = show, err);
 		all_env = &((*all_env)->next_va);
 	}
 	if (ft_strcpm(key, (*all_env)->key) == TRUE)

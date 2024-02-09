@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 00:55:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:52:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ t_boolean	key_exist(t_env *env, char *str)
 	return (FALSE);
 }
 
-char	*get_first_arg_no_null(char **argv, size_t argc, size_t i, int *err)
+char	*get_first_arg_no_null(char **arv, size_t arc, size_t i, int *err)
 {
-	while (i < argc)
+	while (i < arc)
 	{
-		if (argv[i] != NULL)
-			return (ft_strdup(argv[i], err));
+		if (arv[i] != NULL)
+			return (ft_strdup(arv[i], err));
 		i++;
 	}
 	return (NULL);
@@ -71,7 +71,8 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 
 	chemin = get_first_arg_no_null(exe->arg, exe->argc, 1, &((*all)->err));
 	if ((*all)->err == 0 && !chemin)
-		chemin = get_value((*all)->all_va, "HOME", (*all)->status, &((*all)->err));
+		chemin = get_value((*all)->all_va, "HOME", \
+		(*all)->status, &((*all)->err));
 	if ((*all)->err == 0 && !chemin)
 		return (print_fd("Minishell error: cd: HOME not set\n", 2), 1);
 	if ((*all)->err == 0 && chemin[0] != '\0' && chdir(chemin))

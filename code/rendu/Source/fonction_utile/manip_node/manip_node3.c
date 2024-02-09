@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:29:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 16:37:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:29:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	find_file_rd2(t_node *n, int limit, int *nbr_pip)
 	err = 0;
 	if (n->type_input == NON_DEFINI || n->type_input == PIP)
 	{
-		if (limit && good_condition_fusion_rd_with_pip(n, n->next_node, nbr_pip))
+		if (limit && \
+		good_condition_fusion_rd_with_pip(n, n->next_node, nbr_pip))
 		{
 			fusion_node(n, NON_DEFINI, &err);
 			tmp = ft_strcut(n->str, 1, ft_strlen(n->str), &err);

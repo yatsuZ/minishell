@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:09:15 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/02/09 00:30:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:20:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static char	**ft_under_split(char const *s, char c, char **splitted, int *err)
 		else if (((s[i] == c) || (s[i] == '\0')) && (j >= 0))
 		{
 			splitted[k] = ft_substr(s, j, i - j, err);
-			if (*err == 0 || !splitted[k])
+			if (*err == 1 || !splitted[k])
 				return (*err = 1, free_all_split(splitted, k));
 			k++;
 			j = -1;

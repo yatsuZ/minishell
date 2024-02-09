@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 23:46:35 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 16:39:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:48:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int	find_all_pip(t_node *n, t_type_input previous, int nbr_pip)
 		previous = n->type_input;
 	return (find_all_pip(n->next_node, previous, nbr_pip));
 }
-static int	find_all_rd(t_node *n, t_type_input prev, int nbr_rd, int *nbr_pip);
 
+static int	find_all_rd(t_node *n, t_type_input prev, int nbr_rd, int *nbr_pip);
 
 static int	find_file_rd(t_node *n, int nbr_rd, int limit, int *nbr_pip)
 {

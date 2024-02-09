@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:28:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 17:07:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:33:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	is_legitfusion(t_node *av, int option)
 	}
 	return (1);
 }
-void	del_colte2(int *err, t_node *av,t_type_input t_cote)
+
+void	del_colte2(int *err, t_node *av, t_type_input t_cote)
 {
 	del_next_node(av);
 	while (t_cote != DOUBLE_COTE && t_cote != SINGLE_COTE)

@@ -6,19 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:15:17 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/08 03:11:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 14:27:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-void	change_va_undescore(t_execute *exe, t_env **env)
+int	change_va_undescore(t_execute *exe, t_env **env)
 {
 	char	*new_end;
 	size_t	i;
 
 	if (!exe || ft_strcpm(exe->cmd, "exit"))
-		return ;
+		return (0);
 	new_end = NULL;
 	i = exe->argc;
 	while (exe->arg && i && !new_end)
@@ -28,7 +28,7 @@ void	change_va_undescore(t_execute *exe, t_env **env)
 	}
 	if (new_end == NULL)
 		new_end = exe->cmd;
-	change_or_add_va(env, "_", new_end, 0);
+	return (change_or_add_va(env, "_", new_end, 0));
 }
 
 int	update_shlvl(t_env *tete, int err, long long shlvl)
