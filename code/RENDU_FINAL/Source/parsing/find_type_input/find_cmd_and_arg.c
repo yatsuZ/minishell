@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:37:37 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/11 20:46:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 23:27:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ int	cmd_or_arg(t_node *n, t_node *p, int o)
 {
 	if (!is_r(p))
 	{
-		if (o == 0)
+		if (n->str && o == 0)
 		{
 			n->type_input = CMD;
+			o = 1;
 		}
 		else
-		{
 			n->type_input = ARG;
-		}
-		o = 1;
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:46:25 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 20:27:06 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 23:41:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	*find_acces_path(char **all_path, char *cmd, t_all_struct **all)
 		j++;
 		free_2str(&path_cmd, NULL);
 	}
-	return (NULL);
+	return (free_tab(&all_path), NULL);
 }
 
 char	*find_cmd2(char **all_path, char *cmd, t_all_struct **all)

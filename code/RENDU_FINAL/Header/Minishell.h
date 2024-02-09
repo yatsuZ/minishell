@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 09:58:11 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 23:08:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		error_parsing(int iderr);
 int			del_cote(t_node *av, t_node *entre, int option);
 int			cmd_or_arg(t_node *n, t_node *p, int o);
 t_node		*only_str(t_node *n, t_type_input type);
+void		key_status_beggin(t_env *all_va, t_node *pres, int status);
 // find
 int			find_cote_and_va(t_node *n, int previous_type);
 int			find_all_rd_and_pip(t_prompt *p);
@@ -79,7 +80,7 @@ size_t		ft_strlen(const char *cha);
 char		*ft_strdup(const char *s);
 void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strcut(const char *s, size_t start, size_t end);
-int			is_a_legit_va_env(char *str);
+int			is_a_legit_va_env(char *str, int option);
 int			type_of_str(char c);
 void		fusion_node(t_node *n, int new_type);
 char		*ft_strjoin(char const *s1, char const *s2);

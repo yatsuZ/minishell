@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_rinlimit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 19:47:02 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 23:38:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*add_new_input(char *input, t_redirecte *rd, t_all_struct *all)
 	t_env	*env;
 
 	env = all->all_va;
-	if (rd->va_activate)
+	if (rd->va_activate && input && input[0])
 		str_change_env(&input, env, all->status);
 	tmp = ft_strjoin(input, "\n");
 	free_2str(&input, NULL);

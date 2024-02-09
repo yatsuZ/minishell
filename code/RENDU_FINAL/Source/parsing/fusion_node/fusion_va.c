@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/07 03:23:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 23:11:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ static int	del_failure(t_node **dolar, t_node **key)
 	char	*tmp;
 
 	if (!(*key))
+		return (0);
+	if ((*key)->type_input == STR && \
+	((*key)->str[0] == ' ' || (*key)->str[0] == '\t'))
 		return (0);
 	if ((*key)->type_input == SINGLE_COTE || (*key)->type_input == DOUBLE_COTE)
 		return (free_2str(&((*dolar)->str), NULL), \
@@ -77,9 +80,15 @@ static void	is_va(t_env *all_va, t_node *pres, t_node *pass, int status)
 	t_node	*new_pres;
 
 	key = pres->next_node;
-	if (key == NULL || is_a_legit_va_env(key->str) == FALSE)
+	if (key == NULL || is_a_legit_va_env(key->str, 0) == FALSE)
 		return (fail_key(all_va, pres, pass, status));
-	value = get_value(all_va, key->str, status);
+	if (key && key->str && key->str[0] == '?' && key->str[1] != '\0')
+	{
+		key_status_beggin(all_va, pres, status);
+		return ;
+	}
+	else
+		value = get_value(all_va, key->str, status);
 	new_pres = no_define_to_node2(value, 0, 0);
 	free_2str(&value, NULL);
 	quick_define(new_pres);

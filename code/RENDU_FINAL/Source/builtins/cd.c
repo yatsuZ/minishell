@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:56:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 21:09:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 22:30:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	exec_cd(t_execute *exe, t_all_struct **all)
 {
 	char		*chemin;
 
+	if (exe->argc > 2)
+		return (print_fd("Minishell error: cd: too many arguments\n", 2), 1);
 	chemin = get_first_arg_no_null(exe->arg, exe->argc, 1);
 	if (!chemin)
 		chemin = get_value((*all)->all_va, "HOME", (*all)->status);

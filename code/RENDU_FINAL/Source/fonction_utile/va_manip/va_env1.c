@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   va_env1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 22:18:03 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 20:10:42 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/09 23:08:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Header/Minishell.h"
 
-int	is_a_legit_va_env(char *s)
+int	is_a_legit_va_env(char *s, int option)
 {
 	size_t	i;
 
@@ -22,6 +22,8 @@ int	is_a_legit_va_env(char *s)
 	while (s[i])
 	{
 		if (type_of_str(s[i]) >= 0 || s[i] == '\n')
+			return (FALSE);
+		if (option && s[i] && s[i] == '-')
 			return (FALSE);
 		i++;
 	}

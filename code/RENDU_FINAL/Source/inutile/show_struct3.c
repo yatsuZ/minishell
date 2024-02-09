@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:28:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/31 16:49:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 23:31:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	show_execute(t_execute *exe, size_t i)
 		printf("Pas darguement.\n");
 	else
 		printf("ALL ARG :\n");
-	while (exe->arg && exe->arg[j])
+	while (j < exe->argc)
 	{
 		printf("\t- ARG[%ld] : \"%s\"\n", j, exe->arg[j]);
 		j++;
