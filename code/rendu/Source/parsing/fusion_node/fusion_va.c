@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 21:06:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 14:47:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	fail_key(t_env *all_va, t_node *mtn, t_node *pass, int status)
 		mtn->type_input = NON_DEFINI;
 	if (err)
 		return (err);
-	return (fail_key2(all_va, mtn, pass, status));
+	return (fail_key2(all_va, mtn, status));
 }
 
 static void	quick_define(t_node *n)

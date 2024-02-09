@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 14:56:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/09 15:00:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		find_cmd_and_arg(t_node *n, t_node *prev, int option, int *err);
 void		fusion_cote(t_node *all, int *err);
 int			fusion_va(t_env *all_va, t_node *present, \
 t_node *previous, int status);
-int			fail_key2(t_env *all_va, t_node *mtn, t_node *pass, int status);
+int			fail_key2(t_env *all_va, t_node *mtn, int status);
 
 // Execution
 void		prompte_to_execute(t_all_struct *all);
