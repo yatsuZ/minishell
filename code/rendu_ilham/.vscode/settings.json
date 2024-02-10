@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"minishell.h": "c",
-		"struct.h": "c",
-		"import.h": "c",
-		"constante.h": "c"
-	},
-	"C_Cpp.errorSquiggles": "disabled"
-}

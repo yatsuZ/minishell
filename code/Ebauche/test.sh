@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "test"
-echo $1
-echo $2
-echo $3

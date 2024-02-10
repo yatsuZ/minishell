@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:05:40 by ilouacha          #+#    #+#             */
-/*   Updated: 2024/02/09 19:29:35 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:58:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	signal_in_child(int num)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		g_exit_signal = 130;
+		g_exit_signal = SIGINT;
 	}
 	if (num == SIGQUIT)
-		g_exit_signal = 131;
+		g_exit_signal = SIGQUIT;
 }
 
 void	signal_in_fork(void)
@@ -61,7 +61,7 @@ void	sig_handler(int signum)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	g_exit_signal = 130;
+	g_exit_signal = SIGINT;
 }
 
 void	init_signal(int sig_int, int sig_quit)
@@ -78,4 +78,6 @@ void	init_signal(int sig_int, int sig_quit)
 		signal(SIGQUIT, SIG_IGN);
 	if (sig_quit == SHE)
 		signal(SIGQUIT, sig_handler);
+	if (sig_quit == HERDOC && sig_int == SIGINT)
+		signal(SIGINT, sig_handler_here_doc);
 }

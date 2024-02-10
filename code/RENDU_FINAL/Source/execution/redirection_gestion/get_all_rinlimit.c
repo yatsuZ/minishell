@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:21:40 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 23:38:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 17:05:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,34 @@ static char	*get_rinlimit(t_redirecte *rd, t_all_struct *all)
 {
 	char	*input;
 
+	rl_done = 0;
+	rl_event_hook = event;
 	input = readline("heredoc>>");
-	if (g_exit_signal == 130)
-		return (NULL);
+	if (g_exit_signal == SIGINT)
+		return (free_2str(&input, NULL), NULL);
+	else if (!input)
+	{
+		print_fd("Minishell: warning: here-document delimited \
+by end-of-file (wanted `", 2);
+		print_fd(rd->str_file, 2);
+		print_fd("')\n", 2);
+		return (ft_strdup(""));
+	}
 	if (have_nwl(input, 0))
 		return (multi_line(input, rd, all));
 	if (ft_strcpm(rd->str_file, input) == 1)
 		return (free_2str(&input, NULL), ft_strdup(""));
 	return (add_new_input(input, rd, all));
+}
+
+void	sig_handler_here_doc(int signum)
+{
+	(void)signum;
+	write(1, "\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_done = 1;
+	g_exit_signal = SIGINT;
 }
 
 void	get_all_rinlimit(t_execute *all_exe, t_all_struct *all)
@@ -76,10 +96,11 @@ void	get_all_rinlimit(t_execute *all_exe, t_all_struct *all)
 	char		*res;
 
 	rd = NULL;
-	while (all_exe)
+	init_signal(SIGINT, HERDOC);
+	while (all_exe && !g_exit_signal)
 	{
 		rd = all_exe->all_rd;
-		while (rd)
+		while (rd && !g_exit_signal)
 		{
 			if (rd->type_rd == R_IN_LIMIT)
 			{
@@ -91,4 +112,9 @@ void	get_all_rinlimit(t_execute *all_exe, t_all_struct *all)
 		}
 		all_exe = all_exe->pip;
 	}
+	if (g_exit_signal == SIGINT)
+		all->status = 130;
+	init_signal(SHE, IGN);
+	rl_event_hook = NULL;
+	rl_done = 0;
 }

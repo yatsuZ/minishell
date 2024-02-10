@@ -6,13 +6,18 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 23:35:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 17:01:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Header/Minishell.h"
 
 int	g_exit_signal = 0;
+
+int	event(void)
+{
+	return (rl_done);
+}
 
 void	reset_var(t_all_struct *all)
 {
@@ -41,10 +46,10 @@ void	ft_minishell(t_all_struct *all)
 		else
 		{
 			prompte_to_execute(all);
-			if (g_exit_signal != 130 && all && all->exe)
+			if (g_exit_signal != SIGINT && all && all->exe)
 				all->status = execute(&all);
+			g_exit_signal = 0;
 		}
-		g_exit_signal = 0;
 		reset_var(all);
 	}
 }

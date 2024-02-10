@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 09:30:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/01/15 23:18:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 16:38:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@ void	error_parsing(int iderr)
 	printf("Error Parsing :\t");
 	put_color_txt(JAUNE);
 	if (iderr == 0)
-		printf("Y a pas d'erreur.");
+		printf("No error.");
 	else if (iderr == 1)
-		printf("SINGLE COTE non refermée.");
+		printf("Unclosed SINGLE QUOTE.");
 	else if (iderr == 2)
-		printf("DOUBLE COTE non refermée.");
+		printf("Unclosed DOUBLE QUOTE.");
 	else if (iderr == 3)
-		printf("PIP a la suite.");
+		printf("PIP that follows.");
 	else if (iderr == 4)
-		printf("TERMINE par un PIP.");
+		printf("Ends with a PIPE.");
 	else if (iderr == 5)
-		printf("COMMENCE par un PIP.");
+		printf("Starts with a PIPE.");
 	else if (iderr == 6)
-		printf("Termine par une REDIRECTION VIDE.");
+		printf("Ends with an EMPTY REDIRECTION.");
 	else if (iderr == 7)
-		printf("REDIRECTION VIDE.");
+		printf("EMPTY REDIRECTION.");
 	else if (iderr == 8)
-		printf("New line non interpreter.");
+		printf("New line not interpreted.");
+	else if (iderr == 9)
+		printf("Too many characters, the maximum is %d.", MAXLINE);
 	printf("\n");
 	put_color_txt(EMPTY_COLOR);
 }

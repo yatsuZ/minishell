@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:10:12 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 23:08:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 17:01:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,7 @@ int			signal_in_father(int status);
 void		signal_in_fork(void);
 void		signal_in_child(int num);
 void		sig_handler(int signum);
+void		sig_handler_here_doc(int signum);
+int			event(void);
 
 #endif

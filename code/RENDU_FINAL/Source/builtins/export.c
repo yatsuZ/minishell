@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:57:47 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 23:08:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 16:29:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_export(char *str, t_env **all_env, size_t stop, int *err)
 	if (!*err && (is_a_legit_va_env(key, 1) == FALSE || \
 	ft_strcpm("?", key) == TRUE))
 	{
-		print_fd("Minishelle : export: `", 2);
+		print_fd("Minishell : export: `", 2);
 		if (key)
 			print_fd(key, 2);
 		print_fd("\': key non valide\n", 2);

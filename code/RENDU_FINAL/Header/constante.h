@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constante.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilouacha <ilouacha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:20:26 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 19:03:49 by ilouacha         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:56:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define SHE 10
 # define HER 11
 # define IGN 12
+# define HERDOC 13
 
 typedef enum e_boolean
 {

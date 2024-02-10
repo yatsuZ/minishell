@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 00:52:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/09 23:27:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 16:43:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	parsing(t_all_struct *all)
 	int	err_parsing;
 
 	all->prompte->brut = readline(all->prompte->invite);
-	if (g_exit_signal == 130)
+	if (g_exit_signal == SIGINT)
 		all->status = 130;
 	g_exit_signal = 0;
 	if (all->prompte->brut == NULL)
 		end(all);
+	else if (ft_strlen(all->prompte->brut) > MAXLINE)
+		return (err_parsing = 9, err_parsing);
 	if (have_nwl(all->prompte->brut, 0))
 		return (err_parsing = 8, err_parsing);
 	str_to_node(all->prompte->brut, &(all->prompte->all_cmd_line));
