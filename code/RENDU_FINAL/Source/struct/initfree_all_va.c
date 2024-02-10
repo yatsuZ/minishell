@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:01:02 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/02/04 14:30:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/02/10 18:19:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 static t_env	*init_va_required(t_env *tete, int err, long long shlvl)
 {
 	char	*all_path;
+	char	*tmp;
 
 	all_path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
 	if (key_exist(tete, "OLDPWD") == FALSE)
 		change_or_add_va(&tete, "OLDPWD", NULL, 1);
 	if (key_exist(tete, "PWD") == FALSE)
-		change_or_add_va(&tete, "PWD", getcwd(NULL, 0), 1);
+	{
+		tmp = getcwd(NULL, 0);
+		change_or_add_va(&tete, "PWD", tmp, 1);
+		free_2str(&tmp, NULL);
+	}
 	if (key_exist(tete, "SHLVL") == FALSE)
 		change_or_add_va(&tete, "SHLVL", "1", 1);
 	else
