@@ -42,7 +42,10 @@ void	ft_minishell(t_all_struct *all)
 		if (all->prompte->brut[0])
 			add_history(all->prompte->brut);
 		if (iderr)
+		{
+			all->status = 1;
 			error_parsing(iderr);
+		}
 		else
 		{
 			prompte_to_execute(all);
